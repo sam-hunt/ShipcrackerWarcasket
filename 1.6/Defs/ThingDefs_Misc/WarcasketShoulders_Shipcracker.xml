@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    Templated from VFEP's VFEP_WarcasketShoulders_Siegebreaker (VFEPirates.WarcasketDef,
+    ParentName="VFEP_WarcasketShoulderPadBase") at VFEP commit e237aba (2026-08-29),
+    1.6/Defs/ThingDefs_Misc/Apparel_Various.xml. Numbers are untuned Siegebreaker
+    copies, not tuning decisions. See Warcasket_Shipcracker.xml's header for the
+    SOS2/Odyssey patch findings and the WarcasketVeteran/WarcasketAll tag research;
+    same conclusion applies here.
+    TEXTURES ARE BORROWED: texPath and wornGraphicPath point at VFEP's own Marine
+    warcasket art (Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarineShoulders) so the
+    set renders during early testing without shipping throwaway placeholder PNGs.
+    When the commissioned art lands, retarget both paths to
+    Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerShoulders (the .gitkeep
+    markers under Common/Textures/... reserve those exact file paths) and drop the
+    markers. Tracked in TODOs.md.
+  -->
+  <VFEPirates.WarcasketDef ParentName="VFEP_WarcasketShoulderPadBase">
+    <defName>SCWC_WarcasketShoulders_Shipcracker</defName>
+    <label>shipcracker warcasket shoulders</label>
+    <shortDescription>Placeholder shipcracker warcasket pauldrons. Stats are an untuned copy of the siegebreaker warcasket shoulders for now.</shortDescription>
+    <description>Placeholder description for the shipcracker warcasket pauldrons. It is a stand-in for later art and tuning, not lore.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarineShoulders</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>20</Mass>
+      <ArmorRating_Sharp>2</ArmorRating_Sharp>
+      <ArmorRating_Blunt>1</ArmorRating_Blunt>
+      <ArmorRating_Heat>1</ArmorRating_Heat>
+      <Insulation_Cold>22</Insulation_Cold>
+      <Insulation_Heat>22</Insulation_Heat>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">0.2</SlaveSuppressionOffset>
+      <EnergyShieldRechargeRate>1</EnergyShieldRechargeRate>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.1</VacuumResistance>
+    </equippedStatOffsets>
+    <costList>
+      <Plasteel>60</Plasteel>
+    </costList>
+    <researchPrerequisites>
+      <li>VFEP_SpacerWarcaskets</li>
+    </researchPrerequisites>
+    <apparel>
+      <bodyPartGroups>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Hands</li>
+        <li>Neck</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarineShoulders</wornGraphicPath>
+      <layers>
+        <li>OnSkin</li>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <!-- Reusing WarcasketVeteran puts this set on every Junker/Mercenary
+             veteran-tier pawnkind (and Odyssey's salvager pawnkind); see
+             TODOs.md open question.
+        <li>WarcasketVeteran</li>
+        -->
+        <li>WarcasketAll</li>
+      </tags>
+    </apparel>
+  </VFEPirates.WarcasketDef>
+</Defs>

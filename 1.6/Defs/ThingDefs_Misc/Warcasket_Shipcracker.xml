@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    Templated from VFEP's VFEP_Warcasket_Siegebreaker (VFEPirates.WarcasketDef,
+    ParentName="VFEP_WarcasketArmorBase") at VFEP commit e237aba (2026-08-29),
+    1.6/Defs/ThingDefs_Misc/Apparel_Various.xml. Every statBases/equippedStatOffsets/
+    costList/apparel/comps/modExtensions node below is copied from that def as-is;
+    the numbers (and the VFEP_SpacerWarcaskets research prereq) are untuned
+    placeholders, not tuning decisions (TODOs.md).
+
+    Not carried over from VFEP, on purpose:
+    - VFEP's 1.6/Patches/SOS2Patch.xml (gated on "Save Our Ship 2"/"Universum")
+      adds an EVA apparel tag and overrides Insulation_Cold to 100 on VFEP's own
+      warcasket armor/helmet defs, matched by an explicit defName list that does
+      not include this mod's defs. Parity would need an equivalent gated patch
+      here; not done in this pass.
+    - VFEP's 1.6/Patches/Odyssey.xml does not touch any warcasket apparel def by
+      defName. It only adds a PawnKindDef (VFEP_Salvager_Warcasket) whose
+      apparelTags/weaponTags include WarcasketVeteran, so it is not itself a
+      reason to gate anything here on Odyssey.
+
+    apparel tags: checked 1.6/Defs/PawnKindDefs_Humanlikes/PawnKinds_Mercenaries.xml,
+    PawnKinds_Junkers.xml and 1.6/Patches/Odyssey.xml for both tags.
+    - WarcasketVeteran is used by VFEP_Major (Mercenaries) and VFEP_Veteran
+      (Junkers) apparelTags/weaponTags, plus Odyssey's VFEP_Salvager_Warcasket
+      apparelTags/weaponTags: every veteran-tier raid pawnkind across both
+      factions, not just Odyssey content. Left commented out below per
+      TODOs.md's open question (reusing it puts this set on all of them).
+    - WarcasketAll is used only by VFEP_General (Mercenaries), the faction
+      leader pawnkind. Included below.
+    TEXTURES ARE BORROWED: texPath and wornGraphicPath point at VFEP's own Marine
+    warcasket art (Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarine) so the
+    set renders during early testing without shipping throwaway placeholder PNGs.
+    When the commissioned art lands, retarget both paths to
+    Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcracker (the .gitkeep
+    markers under Common/Textures/... reserve those exact file paths) and drop the
+    markers. Tracked in TODOs.md.
+  -->
+  <VFEPirates.WarcasketDef ParentName="VFEP_WarcasketArmorBase">
+    <defName>SCWC_Warcasket_Shipcracker</defName>
+    <label>shipcracker warcasket</label>
+    <shortDescription>Placeholder shipcracker warcasket shell. Stats are an untuned copy of the siegebreaker warcasket for now.</shortDescription>
+    <description>Placeholder description for the shipcracker warcasket shell. It is a stand-in for later art and tuning, not lore.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarine</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>50</Mass>
+      <ArmorRating_Sharp>2</ArmorRating_Sharp>
+      <ArmorRating_Blunt>1</ArmorRating_Blunt>
+      <ArmorRating_Heat>1</ArmorRating_Heat>
+      <Insulation_Cold>80</Insulation_Cold>
+      <Insulation_Heat>80</Insulation_Heat>
+      <EquipDelay>1</EquipDelay>
+      <EnergyShieldRechargeRate>0.01</EnergyShieldRechargeRate>
+      <EnergyShieldEnergyMax>2.5</EnergyShieldEnergyMax>
+    </statBases>
+    <equippedStatOffsets>
+      <PsychicSensitivity>-0.5</PsychicSensitivity>
+      <ToxicResistance>0.5</ToxicResistance>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">0.3</SlaveSuppressionOffset>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.2</VacuumResistance>
+    </equippedStatOffsets>
+    <costList>
+      <ComponentSpacer>6</ComponentSpacer>
+      <Plasteel>145</Plasteel>
+      <Uranium>50</Uranium>
+    </costList>
+    <researchPrerequisites>
+      <li>VFEP_SpacerWarcaskets</li>
+    </researchPrerequisites>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Legs</li>
+        <li>Feet</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarine</wornGraphicPath>
+      <layers>
+        <li>OnSkin</li>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <!-- Reusing WarcasketVeteran puts this set on every Junker/Mercenary
+             veteran-tier pawnkind (and Odyssey's salvager pawnkind); see
+             TODOs.md open question.
+        <li>WarcasketVeteran</li>
+        -->
+        <li>WarcasketAll</li>
+      </tags>
+    </apparel>
+    <comps>
+      <li Class="VEF.Apparels.CompProperties_ShieldBubble">
+        <compClass>VEF.Apparels.CompShieldBubble</compClass>
+        <blockRangedAttack>true</blockRangedAttack>
+        <blockMeleeAttack>false</blockMeleeAttack>
+        <showWhenDrafted>true</showWhenDrafted>
+        <showOnHostiles>true</showOnHostiles>
+        <showOnNeutralInCombat>true</showOnNeutralInCombat>
+        <shieldTexPath>Other/ShieldBubble</shieldTexPath>
+        <chargeFullyWhenMade>true</chargeFullyWhenMade>
+        <minShieldSize>2.1</minShieldSize>
+        <maxShieldSize>2.7</maxShieldSize>
+        <disableRotation>true</disableRotation>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="VEF.Apparels.ApparelExtension">
+        <traitsOnEquip>
+          <li>VFEP_WarcasketTrait</li>
+        </traitsOnEquip>
+        <traitsOnUnequip>
+          <li>VFEP_Shellcasket</li>
+        </traitsOnUnequip>
+        <pawnCapacityMinLevels>
+          <li>
+            <capacity>Moving</capacity>
+            <minLevel>0.7</minLevel>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <minLevel>0.7</minLevel>
+          </li>
+        </pawnCapacityMinLevels>
+      </li>
+    </modExtensions>
+  </VFEPirates.WarcasketDef>
+</Defs>

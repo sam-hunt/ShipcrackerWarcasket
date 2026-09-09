@@ -26,6 +26,13 @@ landed.
 - Textures: match VFEP's warcasket texture layout (`Things/Pawn/Warcasketlike/<Set>/...`, north/
   east/south variants, `CompColorable` mask conventions). Art lives under `Common/Textures/`
   (version-independent), or `Mods/Odyssey/Textures/` if the part itself is Odyssey-gated.
+  **Until the commissioned art lands, the three `SCWC_*_Shipcracker` defs borrow VFEP's Marine
+  textures** (`texPath`/`wornGraphicPath` -> `Things/Pawn/Warcasketlike/WarcasketMarine/...`).
+  The final paths are reserved by `.gitkeep` markers under
+  `Common/Textures/Things/Pawn/Warcasketlike/WarcasketShipcracker/` (one per eventual PNG: base
+  icon plus `_north`/`_east`/`_south` for armor, shoulders, helmet; 256x256 RGBA like VFEP's).
+  When the art arrives: drop the PNGs in, retarget both paths in each def, delete the markers and
+  the "TEXTURES ARE BORROWED" header block in each def.
 - Does anything actually need C#? A pure-XML set may need no DLL at all. If no Harmony patch
   lands, remove the Harmony dependency from `About.xml` and the csproj before first release.
 
