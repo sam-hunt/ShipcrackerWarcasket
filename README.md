@@ -9,18 +9,18 @@
 
 ## About
 
-Vanilla Factions Expanded - Pirates lets you weld a pawn into a warcasket: an industrial-tier
-steel shell, customised part by part at the foundry. Its sets top out around the mid game, and the
-threats Odyssey adds to the late game outgrow them. This mod adds the missing set: the Shipcracker,
-a single matched warcasket of armor, shoulder pads and helmet built for the end game, made at the
-foundry like any other set.
+Vanilla Factions Expanded - Pirates lets you weld a pawn into a warcasket: a steel shell,
+customised part by part at the foundry, with a range of sets that carries a colony from the
+industrial era into the late game. This mod adds one more set to that range: the Shipcracker, a
+single matched warcasket of armor, shoulder pads and helmet tailored to the specific end-game
+content Odyssey adds, made at the foundry like any other set.
 
 This mod is in early development. Nothing is implemented yet; the notes below describe the planned
 scope, not shipped content.
 
 - **One complete set** - armor, shoulder pads and helmet, made and worn through VFE Pirates' own
   warcasket systems
-- **Late-game tuning** - pitched at the threats Odyssey brings to the end game
+- **Odyssey-flavoured tuning** - built around the end-game content Odyssey adds
 - **Odyssey optional** - Odyssey-only content ships from a DLC-gated folder and never loads
   without the DLC
 
@@ -31,7 +31,7 @@ scope, not shipped content.
 - **Armor, shoulder pads and helmet** as a single matched warcasket set
 - **Built on VFE Pirates** rather than beside it: the foundry, entombing and removal surgery all
   apply unchanged
-- **Tuned for the end game** reached with the Odyssey DLC installed
+- **Tailored to Odyssey's end game**, complementing the sets VFE Pirates already ships
 
 ### Optional Odyssey Content
 
