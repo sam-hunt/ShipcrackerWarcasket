@@ -7,6 +7,8 @@
 [![Version](https://img.shields.io/badge/Version-0.1.0-brightgreen.svg)](https://github.com/sam-hunt/ShipcrackerWarcasket/releases)
 [![Development Status](https://img.shields.io/badge/Status-In%20Development-yellow.svg)](https://github.com/sam-hunt/ShipcrackerWarcasket/releases)
 
+![Preview](About/Preview.png)
+
 ## About
 
 Vanilla Factions Expanded - Pirates lets you weld a pawn into a warcasket: a steel shell,
