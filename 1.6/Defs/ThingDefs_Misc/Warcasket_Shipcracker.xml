@@ -28,21 +28,17 @@
       TODOs.md's open question (reusing it puts this set on all of them).
     - WarcasketAll is used only by VFEP_General (Mercenaries), the faction
       leader pawnkind. Included below.
-    TEXTURES ARE BORROWED: texPath and wornGraphicPath point at VFEP's own Marine
-    warcasket art (Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarine) so the
-    set renders during early testing without shipping throwaway placeholder PNGs.
-    When the commissioned art lands, retarget both paths to
-    Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcracker (the .gitkeep
-    markers under Common/Textures/... reserve those exact file paths) and drop the
-    markers. Tracked in TODOs.md.
+    Art: Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcracker
+    (+ _north/_east/_south), 256x256 RGBA under the root Textures/ folder, mirroring
+    VFEP's own warcasket layout.
   -->
   <VFEPirates.WarcasketDef ParentName="VFEP_WarcasketArmorBase">
     <defName>SCWC_Warcasket_Shipcracker</defName>
     <label>shipcracker warcasket</label>
     <shortDescription>Placeholder shipcracker warcasket shell. Stats are an untuned copy of the siegebreaker warcasket for now.</shortDescription>
-    <description>Placeholder description for the shipcracker warcasket shell. It is a stand-in for later art and tuning, not lore.</description>
+    <description>Placeholder description for the shipcracker warcasket shell. It is a stand-in for later tuning, not lore.</description>
     <graphicData>
-      <texPath>Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarine</texPath>
+      <texPath>Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcracker</texPath>
     </graphicData>
     <statBases>
       <Mass>50</Mass>
@@ -75,7 +71,7 @@
         <li>Legs</li>
         <li>Feet</li>
       </bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarine</wornGraphicPath>
+      <wornGraphicPath>Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcracker</wornGraphicPath>
       <layers>
         <li>OnSkin</li>
         <li>Middle</li>

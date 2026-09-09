@@ -23,16 +23,12 @@ landed.
   parts `WarcasketVeteran` for pawnkind generation; check `PawnKinds_Junkers.xml` before reusing
   the tag, since reusing it puts our set on every Junker veteran.
 - Research gating: which VFEP research project(s) to parent on (`ResearchProjects_Various.xml`).
-- Textures: match VFEP's warcasket texture layout (`Things/Pawn/Warcasketlike/<Set>/...`, north/
-  east/south variants, `CompColorable` mask conventions). Art lives under `Common/Textures/`
-  (version-independent), or `Mods/Odyssey/Textures/` if the part itself is Odyssey-gated.
-  **Until the commissioned art lands, the three `SCWC_*_Shipcracker` defs borrow VFEP's Marine
-  textures** (`texPath`/`wornGraphicPath` -> `Things/Pawn/Warcasketlike/WarcasketMarine/...`).
-  The final paths are reserved by `.gitkeep` markers under
-  `Common/Textures/Things/Pawn/Warcasketlike/WarcasketShipcracker/` (one per eventual PNG: base
-  icon plus `_north`/`_east`/`_south` for armor, shoulders, helmet; 256x256 RGBA like VFEP's).
-  When the art arrives: drop the PNGs in, retarget both paths in each def, delete the markers and
-  the "TEXTURES ARE BORROWED" header block in each def.
+- Textures: the commissioned art landed 2026-09-10 under
+  `Textures/Things/Pawn/Warcasketlike/WarcasketShipcracker/` (root `Textures/`, like every mod in
+  the family; there is no `Common/` root) and all three defs point at it. Still open: whether the
+  set should be colourable (`CompColorable` mask conventions), and whether any part ends up
+  Odyssey-gated, in which case its art moves to `Mods/Odyssey/Textures/`. Verify in-game that
+  the worn graphics line up with VFEP's pawn offsets.
 - Does anything actually need C#? A pure-XML set may need no DLL at all. If no Harmony patch
   lands, remove the Harmony dependency from `About.xml` and the csproj before first release.
 

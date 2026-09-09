@@ -7,21 +7,17 @@
     copies, not tuning decisions. See Warcasket_Shipcracker.xml's header for the
     SOS2/Odyssey patch findings and the WarcasketVeteran/WarcasketAll tag research;
     same conclusion applies here.
-    TEXTURES ARE BORROWED: texPath and wornGraphicPath point at VFEP's own Marine
-    warcasket art (Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarineShoulders) so the
-    set renders during early testing without shipping throwaway placeholder PNGs.
-    When the commissioned art lands, retarget both paths to
-    Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerShoulders (the .gitkeep
-    markers under Common/Textures/... reserve those exact file paths) and drop the
-    markers. Tracked in TODOs.md.
+    Art: Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerShoulders
+    (+ _north/_east/_south), 256x256 RGBA under the root Textures/ folder, mirroring
+    VFEP's own warcasket layout.
   -->
   <VFEPirates.WarcasketDef ParentName="VFEP_WarcasketShoulderPadBase">
     <defName>SCWC_WarcasketShoulders_Shipcracker</defName>
     <label>shipcracker warcasket shoulders</label>
     <shortDescription>Placeholder shipcracker warcasket pauldrons. Stats are an untuned copy of the siegebreaker warcasket shoulders for now.</shortDescription>
-    <description>Placeholder description for the shipcracker warcasket pauldrons. It is a stand-in for later art and tuning, not lore.</description>
+    <description>Placeholder description for the shipcracker warcasket pauldrons. It is a stand-in for later tuning, not lore.</description>
     <graphicData>
-      <texPath>Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarineShoulders</texPath>
+      <texPath>Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerShoulders</texPath>
     </graphicData>
     <statBases>
       <Mass>20</Mass>
@@ -50,7 +46,7 @@
         <li>Hands</li>
         <li>Neck</li>
       </bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Warcasketlike/WarcasketMarine/WarcasketMarineShoulders</wornGraphicPath>
+      <wornGraphicPath>Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerShoulders</wornGraphicPath>
       <layers>
         <li>OnSkin</li>
         <li>Middle</li>
