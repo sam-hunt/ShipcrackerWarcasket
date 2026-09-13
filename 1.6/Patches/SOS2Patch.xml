@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <!--
+    Save Our Ship 2 / Universum parity for the Shipcracker set.
+
+    VFEP's own 1.6/Patches/SOS2Patch.xml (commit e237aba, 2026-08-29) makes its
+    warcasket armor and helmets space-worthy when either mod is active: it adds
+    the EVA apparel tag and overrides Insulation_Cold to a flat 100. It matches
+    its defs by an explicit defName list, not by parent or tag, so a third-party
+    warcasket parented on the same VFEP bases gets nothing. This file does the
+    same two operations to SCWC_Warcasket_Shipcracker and
+    SCWC_WarcasketHelmet_Shipcracker. Shoulder pads are left alone, as in VFEP.
+
+    Gate: PatchOperationFindMod on the display names "Save Our Ship 2" and
+    "Universum", copied verbatim from VFEP's patch ON PURPOSE. CLAUDE.md's rule
+    to gate on package ids (LoadFolders IfModActive) is for this mod's own
+    optional content; here the point is to fire under exactly the same
+    condition as VFEP's patch, so a VFEP set and the Shipcracker can never
+    disagree about whether warcaskets are EVA-rated. If VFEP ever changes its
+    gate, change this one to match.
+
+    Both xpaths match on the values these defs declare directly (apparel/tags
+    is a list node, statBases/Insulation_Cold a leaf), so the operations are
+    independent of VFEP's abstract bases. PatchOperationReplace on a leaf needs
+    the value to carry the element name, hence <Insulation_Cold> inside <value>.
+  -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Save Our Ship 2</li>
+      <li>Universum</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/VFEPirates.WarcasketDef[defName = "SCWC_Warcasket_Shipcracker" or defName = "SCWC_WarcasketHelmet_Shipcracker"]/apparel/tags</xpath>
+          <value>
+            <li>EVA</li>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>/Defs/VFEPirates.WarcasketDef[defName = "SCWC_Warcasket_Shipcracker" or defName = "SCWC_WarcasketHelmet_Shipcracker"]/statBases/Insulation_Cold</xpath>
+          <value>
+            <Insulation_Cold>100</Insulation_Cold>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>
