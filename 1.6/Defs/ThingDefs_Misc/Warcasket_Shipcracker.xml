@@ -3,21 +3,31 @@
   <!--
     Templated from VFEP's VFEP_Warcasket_Siegebreaker (VFEPirates.WarcasketDef,
     ParentName="VFEP_WarcasketArmorBase") at VFEP commit e237aba (2026-08-29),
-    1.6/Defs/ThingDefs_Misc/Apparel_Various.xml. Every statBases/equippedStatOffsets/
-    costList/apparel/comps/modExtensions node below is copied from that def as-is;
-    the numbers (and the VFEP_SpacerWarcaskets research prereq) are untuned
-    placeholders, not tuning decisions (TODOs.md).
+    1.6/Defs/ThingDefs_Misc/Apparel_Various.xml. Everything not listed under
+    "Tuning" below is still a verbatim Siegebreaker copy (placeholder, per
+    TODOs.md), the VFEP_SpacerWarcaskets research prereq included.
 
-    Not carried over from VFEP, on purpose:
-    - VFEP's 1.6/Patches/SOS2Patch.xml (gated on "Save Our Ship 2"/"Universum")
-      adds an EVA apparel tag and overrides Insulation_Cold to 100 on VFEP's own
-      warcasket armor/helmet defs, matched by an explicit defName list that does
-      not include this mod's defs. Parity would need an equivalent gated patch
-      here; not done in this pass.
-    - VFEP's 1.6/Patches/Odyssey.xml does not touch any warcasket apparel def by
-      defName. It only adds a PawnKindDef (VFEP_Salvager_Warcasket) whose
-      apparelTags/weaponTags include WarcasketVeteran, so it is not itself a
-      reason to gate anything here on Odyssey.
+    Tuning (2026-09-13). VFEP reference numbers are the 10th-generation sets
+    (Siegebreaker, Guardian, Controller, Sarcophagus, Brute) at the commit above:
+    - EnergyShieldEnergyMax 2.0 (Siegebreaker 2.5; Guardian, Controller and
+      Sarcophagus 1.5; Brute 5.0). The Shipcracker is more specialised than the
+      Siegebreaker but less so than the three 1.5 sets, so it sits between them.
+      EnergyShieldRechargeRate stays at the shared 0.01.
+    - costList ComponentSpacer 8 / Plasteel 165 / Uranium 50 (Siegebreaker
+      6 / 145 / 50): a deliberate step up in cost for the whole set. The
+      shoulders and helmet scale with the armor at the ratios the 10th-gen sets
+      use between their pieces; see their headers for the arithmetic.
+
+    SOS2/Universum parity: VFEP's 1.6/Patches/SOS2Patch.xml matches its own
+    warcasket armor/helmet defs by an explicit defName list, so it never reaches
+    this mod's defs. Our 1.6/Patches/SOS2Patch.xml applies the same EVA tag and
+    Insulation_Cold override to this def and the helmet; see its header.
+
+    Not carried over from VFEP, on purpose: VFEP's 1.6/Patches/Odyssey.xml does
+    not touch any warcasket apparel def by defName. It only adds a PawnKindDef
+    (VFEP_Salvager_Warcasket) whose apparelTags/weaponTags include
+    WarcasketVeteran, so it is not itself a reason to gate anything here on
+    Odyssey.
 
     apparel tags: checked 1.6/Defs/PawnKindDefs_Humanlikes/PawnKinds_Mercenaries.xml,
     PawnKinds_Junkers.xml and 1.6/Patches/Odyssey.xml for both tags.
@@ -49,7 +59,7 @@
       <Insulation_Heat>80</Insulation_Heat>
       <EquipDelay>1</EquipDelay>
       <EnergyShieldRechargeRate>0.01</EnergyShieldRechargeRate>
-      <EnergyShieldEnergyMax>2.5</EnergyShieldEnergyMax>
+      <EnergyShieldEnergyMax>2.0</EnergyShieldEnergyMax>
     </statBases>
     <equippedStatOffsets>
       <PsychicSensitivity>-0.5</PsychicSensitivity>
@@ -58,8 +68,8 @@
       <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.2</VacuumResistance>
     </equippedStatOffsets>
     <costList>
-      <ComponentSpacer>6</ComponentSpacer>
-      <Plasteel>145</Plasteel>
+      <ComponentSpacer>8</ComponentSpacer>
+      <Plasteel>165</Plasteel>
       <Uranium>50</Uranium>
     </costList>
     <researchPrerequisites>

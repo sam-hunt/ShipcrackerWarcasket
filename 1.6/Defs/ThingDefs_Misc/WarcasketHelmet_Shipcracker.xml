@@ -3,10 +3,23 @@
   <!--
     Templated from VFEP's VFEP_WarcasketHelmet_Siegebreaker (VFEPirates.WarcasketDef,
     ParentName="VFEP_WarcasketHelmetBase") at VFEP commit e237aba (2026-08-29),
-    1.6/Defs/ThingDefs_Misc/Apparel_Headgear.xml. Numbers (and uiIconScale) are
-    untuned Siegebreaker copies, not tuning decisions. See Warcasket_Shipcracker.xml's
-    header for the SOS2/Odyssey patch findings and the WarcasketVeteran/WarcasketAll
-    tag research; same conclusion applies here.
+    1.6/Defs/ThingDefs_Misc/Apparel_Headgear.xml. Everything not listed under
+    "Tuning" below, uiIconScale included, is still a verbatim Siegebreaker copy
+    (placeholder, per TODOs.md). See Warcasket_Shipcracker.xml's header for the
+    Odyssey patch findings and the WarcasketVeteran/WarcasketAll tag research;
+    the same conclusion applies here.
+
+    Tuning (2026-09-13): costList ComponentSpacer 3 / Plasteel 60 (Siegebreaker
+    2 / 50). Follows the armor's rise to 8 components / 165 plasteel at the
+    helmet-to-armor ratios the 10th-gen sets use: components one third of the
+    armor's (Siegebreaker, Guardian and Sarcophagus 2:6, Controller 4:12;
+    8 / 3 rounds to 3) and plasteel roughly 0.35 to 0.4 (Siegebreaker 50/145,
+    Guardian 70/200, Controller 60/150, Sarcophagus 60/145; 165 x 0.35 to 0.4 is
+    58 to 66, rounded to 60, the 10th-gen helmet norm).
+
+    SOS2/Universum parity: covered by our 1.6/Patches/SOS2Patch.xml alongside the
+    armor (EVA tag + Insulation_Cold 100), mirroring what VFEP's own patch does
+    for its helmets; see that file's header.
     Art: Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerHelmet
     (+ _north/_east/_south), 256x256 RGBA under the root Textures/ folder, mirroring
     VFEP's own warcasket layout.
@@ -36,8 +49,8 @@
       <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.7</VacuumResistance>
     </equippedStatOffsets>
     <costList>
-      <ComponentSpacer>2</ComponentSpacer>
-      <Plasteel>50</Plasteel>
+      <ComponentSpacer>3</ComponentSpacer>
+      <Plasteel>60</Plasteel>
     </costList>
     <researchPrerequisites>
       <li>VFEP_SpacerWarcaskets</li>

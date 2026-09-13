@@ -3,10 +3,21 @@
   <!--
     Templated from VFEP's VFEP_WarcasketShoulders_Siegebreaker (VFEPirates.WarcasketDef,
     ParentName="VFEP_WarcasketShoulderPadBase") at VFEP commit e237aba (2026-08-29),
-    1.6/Defs/ThingDefs_Misc/Apparel_Various.xml. Numbers are untuned Siegebreaker
-    copies, not tuning decisions. See Warcasket_Shipcracker.xml's header for the
-    SOS2/Odyssey patch findings and the WarcasketVeteran/WarcasketAll tag research;
-    same conclusion applies here.
+    1.6/Defs/ThingDefs_Misc/Apparel_Various.xml. Everything not listed under
+    "Tuning" below is still a verbatim Siegebreaker copy (placeholder, per
+    TODOs.md). See Warcasket_Shipcracker.xml's header for the Odyssey patch
+    findings and the WarcasketVeteran/WarcasketAll tag research; the same
+    conclusion applies here.
+
+    Tuning (2026-09-13): costList Plasteel 70 (Siegebreaker 60). Follows the
+    armor's Plasteel rise to 165 at the shoulder-to-armor ratio the 10th-gen
+    sets use, roughly 0.4 (Siegebreaker 60/145, Guardian 80/200, Controller
+    60/150, Sarcophagus 60/145, Brute 60/160): 0.4 x 165 = 66, rounded up to
+    the 10-plasteel steps VFEP's costLists use. No spacer components, like the
+    Siegebreaker, Guardian and Sarcophagus shoulders.
+
+    SOS2/Universum: our 1.6/Patches/SOS2Patch.xml deliberately leaves shoulder
+    pads alone, mirroring VFEP's own patch, which only touches armor and helmets.
     Art: Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerShoulders
     (+ _north/_east/_south), 256x256 RGBA under the root Textures/ folder, mirroring
     VFEP's own warcasket layout.
@@ -34,7 +45,7 @@
       <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.1</VacuumResistance>
     </equippedStatOffsets>
     <costList>
-      <Plasteel>60</Plasteel>
+      <Plasteel>70</Plasteel>
     </costList>
     <researchPrerequisites>
       <li>VFEP_SpacerWarcaskets</li>
