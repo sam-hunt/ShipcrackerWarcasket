@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "gameBuild": "1.6.4871 rev591",
+    "activeDlcs": [
+      "Core",
+      "Odyssey"
+    ],
+    "modPackageId": "shunter.shipcrackerwarcasket",
+    "modName": "Shipcracker Warcasket",
+    "activeMods": [
+      "brrainz.harmony",
+      "ludeon.rimworld",
+      "ludeon.rimworld.odyssey",
+      "oskarpotocki.vanillafactionsexpanded.core",
+      "oskarpotocki.vfe.pirates",
+      "shunter.shipcrackerwarcasket",
+      "shunter.l10nprobe"
+    ]
+  },
+  "defInjections": {
+    "ThingDef": {
+      "SCWC_WarcasketHelmet_Shipcracker.description": {
+        "english": "Placeholder description for the shipcracker warcasket helmet. It is a stand-in for later tuning, not lore.",
+        "required": true
+      },
+      "SCWC_WarcasketHelmet_Shipcracker.label": {
+        "english": "shipcracker warcasket helmet",
+        "required": true
+      },
+      "SCWC_WarcasketHelmet_Shipcracker.shortDescription": {
+        "english": "Placeholder shipcracker warcasket helmet. Stats are an untuned copy of the siegebreaker warcasket helmet for now.",
+        "required": true
+      },
+      "SCWC_WarcasketShoulders_Shipcracker.description": {
+        "english": "Placeholder description for the shipcracker warcasket pauldrons. It is a stand-in for later tuning, not lore.",
+        "required": true
+      },
+      "SCWC_WarcasketShoulders_Shipcracker.label": {
+        "english": "shipcracker warcasket shoulders",
+        "required": true
+      },
+      "SCWC_WarcasketShoulders_Shipcracker.shortDescription": {
+        "english": "Placeholder shipcracker warcasket pauldrons. Stats are an untuned copy of the siegebreaker warcasket shoulders for now.",
+        "required": true
+      },
+      "SCWC_Warcasket_Shipcracker.comps.CompShieldBubble.shieldTexPath": {
+        "english": "Other/ShieldBubble",
+        "normalized": "SCWC_Warcasket_Shipcracker.comps.2.shieldTexPath"
+      },
+      "SCWC_Warcasket_Shipcracker.description": {
+        "english": "Placeholder description for the shipcracker warcasket shell. It is a stand-in for later tuning, not lore.",
+        "required": true
+      },
+      "SCWC_Warcasket_Shipcracker.label": {
+        "english": "shipcracker warcasket",
+        "required": true
+      },
+      "SCWC_Warcasket_Shipcracker.shortDescription": {
+        "english": "Placeholder shipcracker warcasket shell. Stats are an untuned copy of the siegebreaker warcasket for now.",
+        "required": true
+      }
+    }
+  }
+}

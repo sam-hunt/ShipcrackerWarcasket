@@ -13,6 +13,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+        with:
+          submodules: true
 
       - name: Extract release notes from CHANGELOG
         # Notes are authored, not generated: CHANGELOG.md is the curated record,
@@ -42,6 +44,12 @@ jobs:
           fi
           echo "Release notes for $version:"
           cat RELEASE_NOTES.md
+
+      # Validates against the checked-in Scripts/expected-injections.json sidecar
+      # (generated locally by the L10nProbe dev mod via the game's own DefInjected
+      # walker, since CI cannot boot the game) and fails fast before the build.
+      - name: Check translations
+        run: python3 Scripts/check-translations.py
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v5

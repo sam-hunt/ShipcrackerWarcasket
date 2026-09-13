@@ -9,15 +9,12 @@ argument-hint: "[major|minor|patch]"
 
 Prepare and publish a new release for Shipcracker Warcasket.
 
-The user may pass a bump type as `$ARGUMENTS` (one of `major`, `minor`, or `patch`). If omitted, ask which bump type they want (at step 3, where the version is first needed).
+The user may pass a bump type as `$ARGUMENTS` (one of `major`, `minor`, or `patch`). If omitted, ask which bump type they want (at step 5, where the version is first needed).
 
-> **Template note:** this is the trimmed template version of the ecosystem's release
-> skill. Released sibling mods (e.g. UniqueMeleeWeapons) insert three more gates
-> between build and version-bump once the machinery exists: a translation-expectations
-> refresh + checker run (`l10n/` submodule + `Scripts/` shims), a Steam Workshop
-> description sync (`.steamworkshop/Description/<Language>.txt`), and a startup smoke
-> test (`Scripts/integration-smoke-test.py`). When this mod grows translations or a
-> Workshop page, port those steps back from a sibling's release skill.
+> **Note:** this mod has no Steam Workshop page yet, so the Workshop
+> description sync step (`.steamworkshop/Description/<Language>.txt`) from
+> the ecosystem's release skill is not ported here. Port it from a sibling's
+> release skill (e.g. BetterTradersGuild) once this mod has a Workshop page.
 
 ## Current state
 
@@ -26,9 +23,12 @@ The user may pass a bump type as `$ARGUMENTS` (one of `major`, `minor`, or `patc
 
 ## Steps
 
-Work through the steps below in order. The release decision — version,
-changelog, tag — happens once, at step 3, after everything that can still
-change the history. Step 3 is the single release gate; nothing else asks.
+Work through the steps below in order. Steps 1-4 are validation and may
+generate their own commits, which is exactly why the release decision
+(version, changelog, tag) happens once, at step 5, after everything that can
+still change the history. Confirmations: the conditional translation commit
+in step 2 gets a diff review, and step 5 is the single release gate; nothing
+else asks.
 
 ### 1. Review changes
 
@@ -38,17 +38,83 @@ release: use the full history (`git log --oneline --no-merges`) and think in
 terms of the mod's shipped feature set rather than a diff. No confirmation —
 this is orientation, not a decision.
 
-### 2. Clean build and deploy
+### 2. Refresh translation expectations and check freshness
+
+Run, in order:
+```bash
+l10n/tools/bump-consumer.sh   # pin l10n to its latest release tag (commits; no-op when current)
+python3 Scripts/refresh-translation-expectations.py
+python3 Scripts/check-translations.py --strict
+```
+
+- The first command is one of the three moments the l10n pin moves (release,
+  translation-pass start, new upstream major); the checker's `--strict`
+  engine-pin check fails until the pin is on the latest tag. It commits the
+  pointer directly; report its one-line result. If it reports a **MAJOR**
+  bump, stop: upstream changed the shim/flow contract and this repo owes the
+  accompanying edit before the release continues.
+- The refresh script refuses to start while RimWorld is already open (it
+  needs an exclusive boot for the mod-list swap). If it reports that, **stop
+  and ask the user** to close the client, and rerun only after they confirm
+  it is free.
+- The refresh script regenerates `Scripts/expected-injections.json` by
+  launching the local RimWorld client with `-l10nprobe` (graphical boot,
+  ~1-2 min; the L10nProbe dev mod dumps every DefInjected key the live game
+  expects, then quits). This is what surfaces vanilla-inherited and
+  C#-default strings a def-XML scan cannot see. Report its diff summary.
+- If the diff shows **added or changed keys**, translate them in every
+  language now (the `translate` skill's update pass), then rerun the checker.
+- Report the per-language checker result (missing keys, stale entries,
+  errors). CI's release gate runs the same script without `--strict` against
+  the checked-in sidecar; the stricter local run surfaces warnings while
+  there is still time to act on them.
+- If the sidecar or any translations changed, commit them as their own
+  `fix(l10n)` commit (show the diff and **ask the user to confirm**) before
+  moving on: the release commit at step 6 stages only the version-bump
+  files.
+
+### 3. Build and deploy
 
 Run:
 ```bash
-dotnet clean ShipcrackerWarcasket.sln
 dotnet build ShipcrackerWarcasket.sln -c Release
 ```
 
-Report the build result. If the build fails, stop and help the user fix it.
+The build's post-build `StageMod` step wipes and recopies the deployed mod
+folder, so no separate clean step is needed. Report the build result. If the
+build fails, stop and help the user fix it. On success, move straight to the
+smoke test; no confirmation.
 
-### 3. Version, changelog, and the single release confirmation
+### 4. Integration smoke test
+
+Run (game closed, the script refuses while RimWorld is open, same as the
+refresh in step 2; if it reports that, **stop and ask the user** to close the
+client and rerun):
+
+```bash
+python3 Scripts/integration-smoke-test.py
+```
+
+- Boots the freshly deployed build once on a pinned list of Shipcracker
+  Warcasket plus its dependency chain (Harmony, Vanilla Expanded Framework,
+  VFE Pirates, Odyssey) and its single optional integration, Save Our Ship 2
+  (with its dependency Vehicle Framework; graphical boot, ~1-2 min,
+  auto-quits), then classifies every Player.log error by origin and fails on
+  anything attributed to Shipcracker Warcasket or an integration seam. SOS2
+  is the only optional mod this repo integrates with: `1.6/Patches/SOS2Patch.xml`
+  only fires with SOS2 or Universum active, and a failed PatchOperation is
+  exactly the kind of error only a boot with the mod active can surface. This
+  is the only automated coverage that conditional patch gets; it exists
+  because the BetterTradersGuild v1.1.0 CWTL regression showed such a problem
+  can be invisible without an integration mod active (see this repo's
+  CLAUDE.md patch-timing note).
+- On PASS, report the summary line and move on; no confirmation. On FAIL,
+  show the gated error blocks and stop: the release does not proceed until
+  the errors are fixed or the user explicitly waives them. Third-party
+  (`other`) errors are reported but not gating; mention them so the user can
+  judge.
+
+### 5. Version, changelog, and the single release confirmation
 
 Do all of the following, then present it as **one** confirmation:
 
@@ -69,12 +135,12 @@ Do all of the following, then present it as **one** confirmation:
   (`AssemblyVersion` and `AssemblyFileVersion`, four-part `X.Y.Z.0`).
 - Show the user, together: current version → new version (and bump type),
   the changelog notes, the full diff of all three files, and exactly what
-  step 4 will do (rebuild, commit `chore: Bump version to X.Y.Z`, tag
+  step 6 will do (rebuild, commit `chore: Bump version to X.Y.Z`, tag
   `vX.Y.Z`, push with tags).
 - **Ask the user to confirm — this is the only release confirmation.** On
   edits, apply them and re-show only what changed.
 
-### 4. Rebuild, commit, tag, push
+### 6. Rebuild, commit, tag, push
 
 No further questions unless something is unexpected:
 
@@ -91,4 +157,4 @@ No further questions unless something is unexpected:
   The **GitHub** release notes need no paste: the tag-triggered workflow lifts
   this version's `CHANGELOG.md` section into the release body itself (and
   hard-fails the release if the section is missing), so the changelog entry
-  written at step 3 is the release body.
+  written at step 5 is the release body.
