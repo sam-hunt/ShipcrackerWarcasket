@@ -52,8 +52,8 @@ csproj in this order: explicit override (`-p:VfePiratesDir=` / `-p:VefDir=` or t
 the sibling source checkouts under `../VanillaExpanded/`, then the RimWorld `Mods/` folder. The
 Workshop copy is preferred because it is what players run against. Both references are skipped
 silently when the DLL is absent, so a build still succeeds without them until code uses their
-types. **CI has neither DLL**; the first C# use of a VFEP or VEF type must come with a CI source
-for them (see `TODOs.md`).
+types. CI fetches both DLLs from the Workshop with SteamCMD in the release workflow and injects
+them via the `VEF_PATH` / `VFEP_PATH` environment variables.
 
 Reference source checkouts: `../VanillaExpanded/VanillaFactionsExpanded-Pirates/` (its
 `CLAUDE.md` maps the warcasket subsystem: `WarcasketDef`, `Apparel_Warcasket`,

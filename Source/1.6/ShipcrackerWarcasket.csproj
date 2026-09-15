@@ -89,8 +89,9 @@
        Private="false": the DLLs are never copied into 1.6/Assemblies/; the game loads
        the real ones from the dependency mods. Both references are conditioned on the
        file existing, so a machine without them still builds as long as no code uses
-       their types. CI has neither, so the day C# first references a VFEP/VEF type the
-       release workflow needs a source for these DLLs (tracked in TODOs.md). -->
+       their types. The release workflow fetches both Workshop items with SteamCMD
+       (anonymous login) and passes their folders in via the VEF_PATH / VFEP_PATH
+       environment variables (see .github/workflows/release.yml). -->
   <PropertyGroup>
     <SteamWorkshopContent>$([System.IO.Path]::GetFullPath('$(RimWorldPath)/../../workshop/content/294100'))</SteamWorkshopContent>
     <SiblingVanillaExpanded>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)/../../../VanillaExpanded'))</SiblingVanillaExpanded>

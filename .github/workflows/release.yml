@@ -56,6 +56,77 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
+      # VFEPirates.dll and VEF.dll are referenced compile-only by the csproj (Private="false");
+      # the Workshop copy is what players actually run against, so it is the compile contract -
+      # not a locally rebuilt branch DLL. Decided 2026-09-16 to fetch both here with SteamCMD
+      # rather than commit copies under source control, since committing would pin a version and
+      # let it drift from what's live on the Workshop.
+      - name: Compute cache key date
+        id: cache-date
+        run: echo "yyyymm=$(date -u +%Y-%m)" >> "$GITHUB_OUTPUT"
+
+      # Best-effort speedup only, not required for correctness: if the cache misses (wrong month,
+      # first run, or steamcmd's actual download path doesn't match one of the guesses below), the
+      # download step below just fetches from scratch. Keyed on both Workshop ids plus year-month
+      # so the cache self-refreshes monthly instead of pinning forever - github.run_id would never
+      # hit since it's unique per run. restore-keys falls back to the newest same-id cache.
+      - name: Cache Workshop downloads
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Steam/steamapps/workshop/content/294100
+            ~/.steam/steam/steamapps/workshop/content/294100
+            ~/.local/share/Steam/steamapps/workshop/content/294100
+          key: workshop-2023507013-2723801948-${{ steps.cache-date.outputs.yyyymm }}
+          restore-keys: |
+            workshop-2023507013-2723801948-
+
+      - name: Setup SteamCMD
+        uses: CyberAndrii/setup-steamcmd@v1
+
+      # Anonymous SteamCMD login can download public Workshop items without credentials.
+      # Downloads flake occasionally, so retry a few times per item. SteamCMD's download
+      # location varies by install/version, so locate the "294100/<id>" content directory with
+      # find instead of assuming a path, and verify the expected DLL actually landed before
+      # trusting the download.
+      - name: Fetch VEF and VFE Pirates from the Workshop
+        run: |
+          set -euo pipefail
+
+          download_item() {
+            local id="$1"
+            local dll_rel="$2"
+            local attempt=1
+            while [ "$attempt" -le 3 ]; do
+              echo "Downloading Workshop item $id (attempt $attempt/3)..." >&2
+              steamcmd +login anonymous +workshop_download_item 294100 "$id" +quit >&2 || true
+
+              local content_dir
+              content_dir="$(find "$HOME" -type d -path "*/294100/$id" 2>/dev/null | head -n1)"
+              if [ -n "$content_dir" ] && [ -f "$content_dir/$dll_rel" ]; then
+                echo "Found item $id at $content_dir" >&2
+                printf '%s' "$content_dir"
+                return 0
+              fi
+
+              attempt=$((attempt + 1))
+              sleep 10
+            done
+            return 1
+          }
+
+          vef_dir="$(download_item 2023507013 "1.6/Assemblies/VEF.dll")" || {
+            echo "::error::Failed to download Vanilla Expanded Framework (Workshop item 2023507013) after 3 attempts, or VEF.dll is missing from the downloaded content."
+            exit 1
+          }
+          vfep_dir="$(download_item 2723801948 "1.6/Assemblies/VFEPirates.dll")" || {
+            echo "::error::Failed to download Vanilla Factions Expanded - Pirates (Workshop item 2723801948) after 3 attempts, or VFEPirates.dll is missing from the downloaded content."
+            exit 1
+          }
+
+          echo "VEF_PATH=$vef_dir" >> "$GITHUB_ENV"
+          echo "VFEP_PATH=$vfep_dir" >> "$GITHUB_ENV"
+
       - name: Build
         run: dotnet build ShipcrackerWarcasket.sln -c Release
 
