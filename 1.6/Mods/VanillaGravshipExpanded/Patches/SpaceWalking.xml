@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Space walking for the Shipcracker armor under Vanilla Gravship Expanded.
+
+  Stock Odyssey marks the Space terrain Impassable; VGE1's SpaceTraversal.xml makes
+  it walkable at pathCost 490, and its astrorig cancels that with a VEF
+  moveSpeedFactorByTerrainTag of 27.5 on the Space tag (VEF's transpiler in
+  Pawn_PathFollower.CostToMoveIntoCell divides the whole cell cost by the factor).
+  The armor gets a factor of 10 here: roughly half walking speed in open space, a
+  clear step below the dedicated pack, and only meaningful with VGE1, which is
+  why the main tree carries nothing. Appended to the armor's existing
+  ApparelExtension (the one holding the trait swap and capacity floors).
+-->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/modExtensions/li[@Class="VEF.Apparels.ApparelExtension"]</xpath>
+    <value>
+      <moveSpeedFactorByTerrainTag>
+        <li>
+          <key>Space</key>
+          <value>
+            <li>
+              <moveSpeedFactor>10</moveSpeedFactor>
+            </li>
+          </value>
+        </li>
+      </moveSpeedFactorByTerrainTag>
+    </value>
+  </Operation>
+</Patch>

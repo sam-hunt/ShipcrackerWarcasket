@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    Flyer thing spawned by Ability_BreachJump for the flight leg; templated from
+    VFEP's VFEP_PowerJumpPawn. flightSpeed is unused: PawnFlyer_BreachJump derives
+    the flight time from the wearer's VFEP_FlightSpeed stat (base 12) and caps it
+    on space maps. flightDurationMin 0.5 s is the floor either way.
+  -->
+  <ThingDef ParentName="PawnFlyerBase">
+    <defName>SCWC_BreachJumpFlyer</defName>
+    <thingClass>ShipcrackerWarcasket.PawnFlyer_BreachJump</thingClass>
+    <pawnFlyer>
+      <flightDurationMin>0.5</flightDurationMin>
+      <flightSpeed>12</flightSpeed>
+    </pawnFlyer>
+  </ThingDef>
+</Defs>

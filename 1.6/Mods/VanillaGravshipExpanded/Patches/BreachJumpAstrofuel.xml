@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Astrofuel for the Breach Jump under Vanilla Gravship Expanded.
+
+  The armor's jump tank takes chemfuel in the main tree. VGE1 adds astrofuel
+  (VGE_Astrofuel, refined 70 chemfuel to 35 at the biofuel refinery, so one unit
+  is worth two chemfuel plus the work). With VGE1 active the tank takes astrofuel
+  instead and a jump burns 10 charges rather than 20: the same chemfuel-equivalent
+  per jump, so the refining step is never a penalty (decision 2026-09-16: the
+  astrofuel cost per jump must match or undercut chemfuel's). The tank still holds
+  100 units, so it now carries 10 jumps.
+-->
+<Patch>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/comps/li[@Class="CompProperties_ApparelReloadable"]/ammoDef</xpath>
+    <value>
+      <ammoDef>VGE_Astrofuel</ammoDef>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VEF.Abilities.AbilityDef[defName="SCWC_BreachJump"]/modExtensions/li[@Class="ShipcrackerWarcasket.BreachJumpExtension"]/fuelPerJump</xpath>
+    <value>
+      <fuelPerJump>10</fuelPerJump>
+    </value>
+  </Operation>
+</Patch>

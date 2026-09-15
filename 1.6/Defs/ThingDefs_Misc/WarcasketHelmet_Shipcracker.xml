@@ -17,6 +17,19 @@
     Guardian 70/200, Controller 60/150, Sarcophagus 60/145; 165 x 0.35 to 0.4 is
     58 to 66, rounded to 60, the 10th-gen helmet norm).
 
+    Abilities (2026-09-16, design approved that day): the sealed helm.
+    - pawnCapacityMinLevels Breathing 1.0 through VEF's ApparelExtension: a
+      built-in respirator, the Sarcophagus helmet's pattern for one capacity only.
+    - equippedStatFactors AimingDelayFactor x0.9: a small ranged buff so the helmet
+      earns its place without Odyssey (the set's melee lean sits on the shoulders).
+    - No jump-range contribution; see the armor's header.
+    - Under Odyssey alone the set already totals VacuumResistance 1.0
+      (0.2 + 0.1 + 0.7). Under Vanilla Gravship Expanded the compat root lowers this
+      piece to 0.65 (set 0.97) and gives it VGE1's oxygen-provider comp, so the
+      helmet itself restores full immunity while its oxygen lasts, no astrorig or
+      pack needed; see 1.6/Mods/VanillaGravshipExpanded/Patches/HelmetOxygen.xml.
+    - costList GravlitePanel 10 under Odyssey; see the armor's header for the split.
+
     SOS2/Universum parity: covered by our 1.6/Patches/SOS2Patch.xml alongside the
     armor (EVA tag + Insulation_Cold 100), mirroring what VFEP's own patch does
     for its helmets; see that file's header.
@@ -55,6 +68,7 @@
     <costList>
       <ComponentSpacer>3</ComponentSpacer>
       <Plasteel>60</Plasteel>
+      <GravlitePanel MayRequire="Ludeon.RimWorld.Odyssey">10</GravlitePanel>
     </costList>
     <researchPrerequisites>
       <li>VFEP_SpacerWarcaskets</li>
@@ -76,5 +90,18 @@
         <li>WarcasketAll</li>
       </tags>
     </apparel>
+    <modExtensions>
+      <li Class="VEF.Apparels.ApparelExtension">
+        <equippedStatFactors>
+          <AimingDelayFactor>0.9</AimingDelayFactor>
+        </equippedStatFactors>
+        <pawnCapacityMinLevels>
+          <li>
+            <capacity>Breathing</capacity>
+            <minLevel>1</minLevel>
+          </li>
+        </pawnCapacityMinLevels>
+      </li>
+    </modExtensions>
   </VFEPirates.WarcasketDef>
 </Defs>

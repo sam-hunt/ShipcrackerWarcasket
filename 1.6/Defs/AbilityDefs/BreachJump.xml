@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    The Shipcracker armor's jump, granted through VEF's CompAbilitiesApparel on
+    SCWC_Warcasket_Shipcracker and fuelled by the CompApparelReloadable on the same
+    def. Templated from VFEP's VFEP_PowerJump (1.6/Defs/AbilityDefs/Abilities.xml);
+    the rules that differ live in ShipcrackerWarcasket.Ability_BreachJump (planet:
+    ranged, no sight test; space: unlimited range, sight required; landing-only
+    breach blast) and the numbers in the BreachJumpExtension below.
+
+    Tuning (2026-09-16): fuelPerJump 20 of a 100-charge chemfuel tank (Aerial's
+    numbers; 5 jumps per tank). breachDamage 30 / breachRadius 3: with the
+    SCWC_Breach DamageDef's x20 building factor a landing deals 600 to structures,
+    enough for steel walls (300), granite-block walls (about 510) and Odyssey's
+    gravship hull (420); plasteel (840) and uranium (750) need the shoulders'
+    SCWC_BreachPower. Pawn damage 30 in radius 3 is twice Aerial's 15, wearer
+    excluded. spaceFlightMaxSeconds 4 caps long space hops. requireLineOfSight is
+    ignored by the ability class and set false only to document the planet rule.
+
+    Icons are placeholders borrowed from VFEP until the commissioned art lands:
+    Aerial's Power Jump on a planet, Shock's Blast Off (spaceIconPath) in space.
+  -->
+  <VEF.Abilities.AbilityDef>
+    <defName>SCWC_BreachJump</defName>
+    <label>breach jump</label>
+    <description>Fire the warcasket's drop thrusters to hurl the wearer onto a target cell, landing hard enough to smash through walls and hull plating. On a planet the jump is limited by range. In space it can reach any cell in a clear line of sight.</description>
+    <abilityClass>ShipcrackerWarcasket.Ability_BreachJump</abilityClass>
+    <targetMode>Location</targetMode>
+    <iconPath>UI/Abilities/PowerJump</iconPath>
+    <castTime>60</castTime>
+    <requireLineOfSight>false</requireLineOfSight>
+    <keepCarryingThing>true</keepCarryingThing>
+    <modExtensions>
+      <li Class="ShipcrackerWarcasket.BreachJumpExtension">
+        <fuelPerJump>20</fuelPerJump>
+        <breachDamage>30</breachDamage>
+        <breachRadius>3</breachRadius>
+        <spaceFlightMaxSeconds>4</spaceFlightMaxSeconds>
+        <spaceIconPath>UI/Abilities/BlastOff</spaceIconPath>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+</Defs>

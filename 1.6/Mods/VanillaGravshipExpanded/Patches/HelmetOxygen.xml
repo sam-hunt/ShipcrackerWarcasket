@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Built-in oxygen for the Shipcracker helmet under Vanilla Gravship Expanded.
+
+  VacuumResistance.xml (same root) drops the set to VGE1's 0.97 total so it obeys
+  VGE1's rule that a suit alone never reaches full immunity. This patch gives the
+  helmet the same comp VGE1's astrorig and oxygen packs use
+  (VanillaGravshipExpanded.CompApparelOxygenProvider): while it holds oxygen and
+  the wearer's base resistance is at least minResistanceToActivate, VGE1's
+  StatPart_OxygenPack on VacuumResistance forces the wearer to 1.0. The stat part
+  scans every worn apparel for the comp, so a helmet works as well as a belt pack.
+  Numbers: 50 charges (half the astrorig's 100; a helmet-sized tank, about 1.6
+  days of continuous vacuum at the comp's 1 charge per 2000 ticks), refilled 1
+  oxygen canister per charge, auto-refill at a third like the astrorig.
+
+  The comp requires tickerType Normal (a config error otherwise); VFEP's
+  VFEP_WarcasketPartBase sets Never, so the child declares Normal here. Our def
+  has no comps node of its own (the base carries Forbiddable and Colorable), so
+  the whole node is added; child lists append to the parent's on inheritance.
+  The chargeNoun is a new DefInjected point that lives in this root's Languages
+  when translations land, never in the main tree.
+-->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketHelmet_Shipcracker"]</xpath>
+    <value>
+      <tickerType>Normal</tickerType>
+      <comps>
+        <li Class="VanillaGravshipExpanded.CompProperties_ApparelOxygenProvider">
+          <maxCharges>50</maxCharges>
+          <percentageToAutoRefill>0.334</percentageToAutoRefill>
+          <fuelDef>VGE_OxygenCanister</fuelDef>
+          <fuelCountPerCharge>1</fuelCountPerCharge>
+          <destroyOnEmpty>false</destroyOnEmpty>
+          <chargeNoun>oxygen u³</chargeNoun>
+          <minResistanceToActivate>0.12</minResistanceToActivate>
+        </li>
+      </comps>
+    </value>
+  </Operation>
+</Patch>

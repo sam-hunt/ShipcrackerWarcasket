@@ -40,20 +40,22 @@ landed; everything below is still open.
   set should be colourable (`CompColorable` mask conventions), and whether any part ends up
   Odyssey-gated, in which case its art moves to `Mods/Odyssey/Textures/`. Verify in-game that
   the worn graphics line up with VFEP's pawn offsets.
-- Does anything actually need C#? A pure-XML set may need no DLL at all. If no Harmony patch
-  lands, remove the Harmony dependency from `About.xml` and the csproj before first release.
+- C# is now load-bearing (`Source/1.6/Abilities/`), but it still applies no Harmony patch. The
+  Harmony dependency stays anyway: `PawnFlyer_BreachJump` reads the vanilla flyer's private
+  flight distance through `AccessTools.FieldRefAccess`, so `0Harmony.dll` must be present at
+  runtime even with zero patches.
 
 ## Infrastructure follow-ups
 
-- **CI cannot compile against VFEP/VEF yet.** The csproj references `VFEPirates.dll` and
-  `VEF.dll` compile-only and skips them when absent; the release workflow runs on a bare Ubuntu
-  runner. The first C# use of a VFEP/VEF type needs a source in CI: either commit the two DLLs
-  under `Source/refs/` (common practice, but pins a version) or fetch the Workshop copies in the
-  workflow (SteamCMD, anonymous login works for Workshop content).
+- **Confirm the CI Workshop fetch actually works.** The release workflow now fetches VEF and
+  VFEP from the Workshop with SteamCMD (anonymous login) and injects them via `VEF_PATH` /
+  `VFEP_PATH`, but anonymous download of these two items has never been exercised in CI; the
+  first tagged release should confirm it succeeds.
 - **Vanilla Gravship Expanded is not installed locally** (neither Workshop nor `Mods/`), so the
-  `1.6/Mods/VanillaGravshipExpanded` compat root (vacuum-resistance parity patch) is not on the
-  smoke list and has never been booted. Install VGE1 (and VGE2 for the astrofuel idea) and add
-  them to `Scripts/integration-smoke-test.py` before release.
+  `1.6/Mods/VanillaGravshipExpanded` compat root (vacuum parity, helmet oxygen comp, astrofuel
+  tank, space walking) is not on the smoke list and has never been booted. Install VGE1 and add
+  it to `Scripts/integration-smoke-test.py` before release; the oxygen comp's `chargeNoun` is
+  also a DefInjected point that must live in that root's `Languages/` when translations land.
 - Preview image (`About/Preview.png`) and mod icon (`About/ModIcon.png`) before publishing;
   `About/PublishedFileId.txt` is written by the Workshop uploader on first publish.
 - Consider `.steamworkshop/Description/English.txt` once there is a Workshop page; the

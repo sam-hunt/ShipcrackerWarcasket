@@ -16,6 +16,19 @@
     the 10-plasteel steps VFEP's costLists use. No spacer components, like the
     Siegebreaker, Guardian and Sarcophagus shoulders.
 
+    Abilities (2026-09-16, design approved that day): the breaching arms.
+    - SCWC_BreachPower +0.5: the armor's Breach Jump landing deals 45 to pawns and
+      900 to structures with these on (30 / 600 without), enough for plasteel and
+      uranium walls; see 1.6/Defs/StatDefs/BreachPower.xml.
+    - equippedStatFactors MeleeHitChance x1.15 and MeleeDodgeChance x1.15 through
+      VEF's ApparelExtension (Shock's shoulders use x1.2 on the same pair), merged
+      with the base's extension the way VFEP's own sets do it.
+    - No jump-range contribution: a space-centric piece, and the range lives on
+      the armor. The Siegebreaker's EnergyShieldRechargeRate +1 was dropped: VEF's
+      CompShieldBubble reads that stat off the apparel, never the pawn, so the
+      offset never reached the shield (dead XML in VFEP too).
+    - costList GravlitePanel 10 under Odyssey; see the armor's header for the split.
+
     SOS2/Universum: our 1.6/Patches/SOS2Patch.xml deliberately leaves shoulder
     pads alone, mirroring VFEP's own patch, which only touches armor and helmets.
     Vanilla Gravship Expanded: our VGE1 vacuum patch (see the armor's header)
@@ -43,11 +56,12 @@
     </statBases>
     <equippedStatOffsets>
       <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">0.2</SlaveSuppressionOffset>
-      <EnergyShieldRechargeRate>1</EnergyShieldRechargeRate>
       <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.1</VacuumResistance>
+      <SCWC_BreachPower>0.5</SCWC_BreachPower>
     </equippedStatOffsets>
     <costList>
       <Plasteel>70</Plasteel>
+      <GravlitePanel MayRequire="Ludeon.RimWorld.Odyssey">10</GravlitePanel>
     </costList>
     <researchPrerequisites>
       <li>VFEP_SpacerWarcaskets</li>
@@ -74,5 +88,13 @@
         <li>WarcasketAll</li>
       </tags>
     </apparel>
+    <modExtensions>
+      <li Class="VEF.Apparels.ApparelExtension">
+        <equippedStatFactors>
+          <MeleeHitChance>1.15</MeleeHitChance>
+          <MeleeDodgeChance>1.15</MeleeDodgeChance>
+        </equippedStatFactors>
+      </li>
+    </modExtensions>
   </VFEPirates.WarcasketDef>
 </Defs>

@@ -30,6 +30,24 @@
     (gated on VGE1's package id in LoadFolders.xml) applies the same 0.22 here;
     see its header. Without VGE1 the 0.2 below stands.
 
+    Abilities (2026-09-16, design approved that day): the armor is the drop engine.
+    - Breach Jump: VEF CompAbilitiesApparel grants SCWC_BreachJump (rules and numbers
+      in 1.6/Defs/AbilityDefs/BreachJump.xml and Source/1.6/Abilities/), fuelled by
+      the CompApparelReloadable beside it (100 charges of chemfuel at 1 per charge,
+      60-tick reload, 20 per jump; Aerial's tank). The ability reads the tank off
+      the apparel that holds it, so both comps must sit on this one def, which is
+      why the engine is here and not on the shoulders as on Aerial.
+    - SCWC_BreachJumpRange +20: the set's whole planet-side range (the shoulders
+      and helmet add none; Aerial's full set reaches 40). In space the jump has no
+      range limit and requires line of sight instead.
+    - Space walking and the astrofuel swap under Vanilla Gravship Expanded come
+      from 1.6/Mods/VanillaGravshipExpanded/Patches/; stock Odyssey space terrain
+      is impassable, so the main tree carries neither.
+    - costList GravlitePanel 20 under Odyssey (MayRequire on the cost item, as
+      Core's Buildings_Exotic.xml does for ShuttleEngine): the drop thrusters are
+      gravtech. The shoulders take 10 and the helmet 10, the VGE2 combat vacsuit's
+      20 / 10 split, market value 4 each.
+
     Not carried over from VFEP, on purpose: VFEP's 1.6/Patches/Odyssey.xml does
     not touch any warcasket apparel def by defName. It only adds a PawnKindDef
     (VFEP_Salvager_Warcasket) whose apparelTags/weaponTags include
@@ -73,11 +91,13 @@
       <ToxicResistance>0.5</ToxicResistance>
       <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">0.3</SlaveSuppressionOffset>
       <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.2</VacuumResistance>
+      <SCWC_BreachJumpRange>20</SCWC_BreachJumpRange>
     </equippedStatOffsets>
     <costList>
       <ComponentSpacer>8</ComponentSpacer>
       <Plasteel>165</Plasteel>
       <Uranium>50</Uranium>
+      <GravlitePanel MayRequire="Ludeon.RimWorld.Odyssey">20</GravlitePanel>
     </costList>
     <researchPrerequisites>
       <li>VFEP_SpacerWarcaskets</li>
@@ -104,6 +124,21 @@
       </tags>
     </apparel>
     <comps>
+      <li Class="CompProperties_ApparelReloadable">
+        <maxCharges>100</maxCharges>
+        <ammoDef>Chemfuel</ammoDef>
+        <ammoCountPerCharge>1</ammoCountPerCharge>
+        <baseReloadTicks>60</baseReloadTicks>
+        <soundReload>Standard_Reload</soundReload>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>fuel</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+      <li Class="VEF.Abilities.CompProperties_AbilitiesApparel">
+        <abilities>
+          <li>SCWC_BreachJump</li>
+        </abilities>
+      </li>
       <li Class="VEF.Apparels.CompProperties_ShieldBubble">
         <compClass>VEF.Apparels.CompShieldBubble</compClass>
         <blockRangedAttack>true</blockRangedAttack>
