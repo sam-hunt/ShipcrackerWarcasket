@@ -20,6 +20,10 @@
     SOS2/Universum parity: covered by our 1.6/Patches/SOS2Patch.xml alongside the
     armor (EVA tag + Insulation_Cold 100), mirroring what VFEP's own patch does
     for its helmets; see that file's header.
+    Vanilla Gravship Expanded parity: our
+    1.6/Mods/VanillaGravshipExpanded/Patches/VacuumResistance.xml lowers the 0.7
+    below to 0.65 when VGE1 is active, the value VGE1 gives every VFEP spacer
+    warcasket helmet; see the armor's header and that patch.
     Art: Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerHelmet
     (+ _north/_east/_south), 256x256 RGBA under the root Textures/ folder, mirroring
     VFEP's own warcasket layout.

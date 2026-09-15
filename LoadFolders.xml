@@ -31,5 +31,9 @@
     <li IfModActive="ludeon.rimworld.odyssey">Mods/Odyssey</li>
     <li IfModActive="ludeon.rimworld.odyssey">1.6/Mods/Odyssey</li>
     -->
+    <!-- Vanilla Gravship Expanded (chapter 1): mirrors its vacuum-resistance nerf
+         onto our armor and helmet (see that root's Patches/VacuumResistance.xml).
+         Patches only, so no version-independent Mods/ root is needed. -->
+    <li IfModActive="vanillaexpanded.gravship">1.6/Mods/VanillaGravshipExpanded</li>
   </v1.6>
 </loadFolders>

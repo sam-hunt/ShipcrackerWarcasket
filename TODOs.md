@@ -50,6 +50,10 @@ landed; everything below is still open.
   runner. The first C# use of a VFEP/VEF type needs a source in CI: either commit the two DLLs
   under `Source/refs/` (common practice, but pins a version) or fetch the Workshop copies in the
   workflow (SteamCMD, anonymous login works for Workshop content).
+- **Vanilla Gravship Expanded is not installed locally** (neither Workshop nor `Mods/`), so the
+  `1.6/Mods/VanillaGravshipExpanded` compat root (vacuum-resistance parity patch) is not on the
+  smoke list and has never been booted. Install VGE1 (and VGE2 for the astrofuel idea) and add
+  them to `Scripts/integration-smoke-test.py` before release.
 - Preview image (`About/Preview.png`) and mod icon (`About/ModIcon.png`) before publishing;
   `About/PublishedFileId.txt` is written by the Workshop uploader on first publish.
 - Consider `.steamworkshop/Description/English.txt` once there is a Workshop page; the

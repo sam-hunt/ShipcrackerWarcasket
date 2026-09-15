@@ -18,6 +18,8 @@
 
     SOS2/Universum: our 1.6/Patches/SOS2Patch.xml deliberately leaves shoulder
     pads alone, mirroring VFEP's own patch, which only touches armor and helmets.
+    Vanilla Gravship Expanded: our VGE1 vacuum patch (see the armor's header)
+    leaves the shoulders' 0.1 alone, exactly as VGE1 leaves VFEP's.
     Art: Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerShoulders
     (+ _north/_east/_south), 256x256 RGBA under the root Textures/ folder, mirroring
     VFEP's own warcasket layout.

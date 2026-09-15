@@ -23,6 +23,13 @@
     this mod's defs. Our 1.6/Patches/SOS2Patch.xml applies the same EVA tag and
     Insulation_Cold override to this def and the helmet; see its header.
 
+    Vanilla Gravship Expanded parity: VGE1's ArmorVacuumResistancePatch.xml
+    lowers the five VFEP spacer warcasket armors to VacuumResistance 0.22 (helmets
+    0.65) by defName, so a full set needs an oxygen source; it never reaches this
+    def. Our 1.6/Mods/VanillaGravshipExpanded/Patches/VacuumResistance.xml
+    (gated on VGE1's package id in LoadFolders.xml) applies the same 0.22 here;
+    see its header. Without VGE1 the 0.2 below stands.
+
     Not carried over from VFEP, on purpose: VFEP's 1.6/Patches/Odyssey.xml does
     not touch any warcasket apparel def by defName. It only adds a PawnKindDef
     (VFEP_Salvager_Warcasket) whose apparelTags/weaponTags include
