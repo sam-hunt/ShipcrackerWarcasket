@@ -36,6 +36,25 @@
     Art: Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerShoulders
     (+ _north/_east/_south), 256x256 RGBA under the root Textures/ folder, mirroring
     VFEP's own warcasket layout.
+
+    Draw order (2026-09-16): dataNorth offset y 0.05 (base 0.2). A worn apparel
+    node's altitude is its drawData offset's y (added verbatim by
+    PawnRenderTree.TryGetMatrix) plus PawnRenderUtility.AltitudeForLayer(layer),
+    0.000366 per layer unit, where the layer is the ApparelBody node's 20 plus the
+    piece's index among body apparel; the y offsets VFEP's bases carry are what
+    actually order the pieces. With the base's 0.2 the pauldrons sit over the shell
+    in the north view (0.2 vs 0.1). This art wants the shell's back frame over the
+    pauldron inner edges, so this piece drops below the shell there: about 0.058
+    against the shell's 0.107, still well above the bodysuit (VEF's
+    secondaryApparelGraphics feeds VFEP_Warcasket_Bodysuit through vanilla
+    ProcessApparel with that def's own null drawData, so it stays near 0.008 in
+    every facing and is untouched by either set's offsets), the helmet (0.026 in
+    the north, where the head chain has no y offset) and pack-layer apparel (layer
+    93, 0.034). Lowering the pauldrons rather than raising the armor keeps the
+    armor at VFEP's standard altitude for foundry mix-and-match with VFEP sets.
+    South/east/west inherit the base's 0.02. Only the facing that changes is
+    listed: XmlInheritance merges same-named elements recursively, so the other
+    three RotationalData entries come through from VFEP_WarcasketShoulderPadBase.
   -->
   <VFEPirates.WarcasketDef ParentName="VFEP_WarcasketShoulderPadBase">
     <defName>SCWC_WarcasketShoulders_Shipcracker</defName>
@@ -74,6 +93,10 @@
         <li>Neck</li>
       </bodyPartGroups>
       <wornGraphicPath>Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerShoulders</wornGraphicPath>
+      <!-- Under the shell in the north view; see "Draw order" in the header. -->
+      <drawData>
+        <dataNorth><offset>(0, 0.05, 0)</offset></dataNorth>
+      </drawData>
       <layers>
         <li>OnSkin</li>
         <li>Middle</li>

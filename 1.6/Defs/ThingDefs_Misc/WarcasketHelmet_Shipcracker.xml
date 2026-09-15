@@ -40,6 +40,18 @@
     Art: Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerHelmet
     (+ _north/_east/_south), 256x256 RGBA under the root Textures/ folder, mirroring
     VFEP's own warcasket layout.
+
+    Draw order (2026-09-16): dataSouth offset y 0.005 (base 0.001; z 0.07 kept, the
+    whole offset text replaces the base's). See the shoulders' header for the
+    altitude formula. Head apparel hangs off the ApparelHead node (layer 70; the
+    Head node adds no y of its own), so with the base's 0.001 the helmet lands at
+    about 0.027 in the south view, under the pauldrons at 0.020 + (20 + index) x
+    0.000366, up to about 0.028 with a belt worn. The art wants the helmet over the
+    pauldron inner edges when facing south, so 0.005 lifts it to about 0.031: at
+    least 0.002 over the pauldrons and still 0.002 under a held weapon, which
+    PawnRenderer draws at AltitudeForLayer(90) = 0.033 for every facing but north.
+    North stays at the base's 0 (behind the shell and pauldrons, as on VFEP's own
+    sets); east/west inherit the base's values.
   -->
   <VFEPirates.WarcasketDef ParentName="VFEP_WarcasketHelmetBase">
     <defName>SCWC_WarcasketHelmet_Shipcracker</defName>
@@ -78,6 +90,10 @@
         <li>FullHead</li>
       </bodyPartGroups>
       <wornGraphicPath>Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerHelmet</wornGraphicPath>
+      <!-- Over the pauldrons in the south view; see "Draw order" in the header. -->
+      <drawData>
+        <dataSouth><offset>(0, 0.005, 0.07)</offset></dataSouth>
+      </drawData>
       <layers>
         <li>Overhead</li>
       </layers>
