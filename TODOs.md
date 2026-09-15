@@ -1,17 +1,28 @@
 # TODOs
 
 Scoping notes for the feature work. Infrastructure, the three defs, the art, the first stat
-and cost tuning pass (2026-09-13), the SOS2/Universum parity patch and the l10n toolchain have
-landed; everything below is still open.
+and cost tuning pass (2026-09-13), the SOS2/Universum parity patch, the l10n toolchain and the
+set's abilities (2026-09-16: Breach Jump on the armor, breach power and melee factors on the
+shoulders, respirator and aiming factor on the helmet, VGE1 oxygen / astrofuel / space-walking
+compat) have landed; everything below is still open.
 
-- Check whether undersuit is rendered unconditionally in game and whether it's necessary in the mod icon or not since our artist delivered both with/without versions
-- Warcasket abilities (what the Shipcracker does beyond stats); next session
+- reduce default breach jump blast radius by ~1
+- render breach jump landing blast radius preview during targeting
+- breach jump in space should show LoS/valid cells during targeting
+- test ModIcon resize
+- breach jump damage is too high to pawns
+- check helmet/shoulders drawData ordering
+- ability effect flame color swap with VGE1
+- gizmo swap to purple flame variant with VGE1
+- warming-up thruster overlay during cast with orange->purple color switch with VGE1
+- faster breach jump in space with fast shockwave overlay effect
+- **In-game test of the Breach Jump** (space unlimited rangewith sight, fuel gizmo, gizmo icon swap in space, save/load mid-flight).
+- Replace the placeholder ability icons (VFEP's Power Jump on a planet, Blast Off in space) with
+  the artist's textures once the abilities are tested and locked in; both paths are in
+  `1.6/Defs/AbilityDefs/BreachJump.xml`.
 - Real descriptions and `shortDescription` lore text; translation passes wait for the release
-  gate and for this text to be final
-- Investigate VGE2 astrorig functionality, we want something similar that's built-in to our torso piece.
-- Investigate whether we can use either of VFEP's aerial/shock abilities with huge demolish damage on power-jump landing
-- Investigate whether we can switch jump ability while in space/orbit (requires odyssey) to a new one which has infinite range (no gravity), requires LoS
-- Investigate whether we can switch the jump ability to use VGE2's astrofuel instead of chemfuel if the mod is active
+  gate and for this text to be final. The Royalty "shipcracker" backstory is the brief (see
+  `WARCASKET_ABILITIES_RESEARCH.md`).
 - Ensure comments in shipped XML are lean to reduce bundle bloat
 
 ## Scope
