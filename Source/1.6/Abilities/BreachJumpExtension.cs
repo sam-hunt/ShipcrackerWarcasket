@@ -12,9 +12,10 @@ public class BreachJumpExtension : DefModExtension
     // Charges of the holder's CompApparelReloadable that one jump burns.
     public int fuelPerJump = 20;
 
-    // Landing explosion damage before the wearer's SCWC_BreachPower multiplier.
+    // Landing explosion damage before the wearer's SCWC_BreachPower multiplier, and the blast
+    // radius, which Ability_BreachJump also previews at the hovered cell while targeting.
     public int breachDamage = 30;
-    public float breachRadius = 3f;
+    public float breachRadius = 2f;
 
     // Ceiling on flight time on space maps, where the jump has no range limit; the flyer
     // speeds up rather than hang in the air for a long hop.

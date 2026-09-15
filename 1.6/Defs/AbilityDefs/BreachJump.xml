@@ -9,13 +9,18 @@
     breach blast) and the numbers in the BreachJumpExtension below.
 
     Tuning (2026-09-16): fuelPerJump 20 of a 100-charge chemfuel tank (Aerial's
-    numbers; 5 jumps per tank). breachDamage 30 / breachRadius 3: with the
-    SCWC_Breach DamageDef's x20 building factor a landing deals 600 to structures,
-    enough for steel walls (300), granite-block walls (about 510) and Odyssey's
-    gravship hull (420); plasteel (840) and uranium (750) need the shoulders'
-    SCWC_BreachPower. Pawn damage 30 in radius 3 is twice Aerial's 15, wearer
+    numbers; 5 jumps per tank). breachDamage 30: with the SCWC_Breach DamageDef's
+    x20 building factor a landing deals 600 to structures, enough for steel walls
+    (300), granite-block walls (about 510) and Odyssey's gravship hull (420);
+    plasteel (840) and uranium (750) need the shoulders' SCWC_BreachPower.
+    breachRadius 2 (down from 3 the same day): a 13-cell footprint instead of 29,
+    so a landing punches a door-sized hole through the wall it lands beside rather
+    than levelling a room; vanilla's explosion still damages wall cells adjacent to
+    the open cells it reaches. Pawn damage 30 is twice Aerial's 15, wearer
     excluded. spaceFlightMaxSeconds 4 caps long space hops. requireLineOfSight is
     ignored by the ability class and set false only to document the planet rule.
+    The blast radius is previewed at the hovered cell while targeting, and on a
+    space map the reachable cells in view are outlined (see the ability class).
 
     Icons are placeholders borrowed from VFEP until the commissioned art lands:
     Aerial's Power Jump on a planet, Shock's Blast Off (spaceIconPath) in space.
@@ -34,7 +39,7 @@
       <li Class="ShipcrackerWarcasket.BreachJumpExtension">
         <fuelPerJump>20</fuelPerJump>
         <breachDamage>30</breachDamage>
-        <breachRadius>3</breachRadius>
+        <breachRadius>2</breachRadius>
         <spaceFlightMaxSeconds>4</spaceFlightMaxSeconds>
         <spaceIconPath>UI/Abilities/BlastOff</spaceIconPath>
       </li>

@@ -6,9 +6,6 @@ set's abilities (2026-09-16: Breach Jump on the armor, breach power and melee fa
 shoulders, respirator and aiming factor on the helmet, VGE1 oxygen / astrofuel / space-walking
 compat) have landed; everything below is still open.
 
-- reduce default breach jump blast radius by ~1
-- render breach jump landing blast radius preview during targeting
-- breach jump in space should show LoS/valid cells during targeting
 - test ModIcon resize
 - breach jump damage is too high to pawns
 - check helmet/shoulders drawData ordering
@@ -16,7 +13,7 @@ compat) have landed; everything below is still open.
 - gizmo swap to purple flame variant with VGE1
 - warming-up thruster overlay during cast with orange->purple color switch with VGE1
 - faster breach jump in space with fast shockwave overlay effect
-- **In-game test of the Breach Jump** (space unlimited rangewith sight, fuel gizmo, gizmo icon swap in space, save/load mid-flight).
+- **In-game test of the Breach Jump** (space unlimited range with sight and the reachable-cell outline, blast radius preview, fuel gizmo, gizmo icon swap in space, save/load mid-flight).
 - Replace the placeholder ability icons (VFEP's Power Jump on a planet, Blast Off in space) with
   the artist's textures once the abilities are tested and locked in; both paths are in
   `1.6/Defs/AbilityDefs/BreachJump.xml`.

@@ -17,11 +17,30 @@ namespace ShipcrackerWarcasket;
 //  - No takeoff blast. The landing fires SCWC_Breach through PawnFlyer_BreachJump, scaled by
 //    the wearer's SCWC_BreachPower, so the shoulders can make it hit harder.
 // Fuel comes from a CompApparelReloadable on the same apparel as the ability comp.
+//
+// Targeting previews: the vanilla Targeter hands DrawHighlight an invalid target whenever the
+// hovered cell fails CanHitTarget, so VEF's base draws the target highlight and a
+// radiusRingColor ring of GetRadiusForPawn() only over cells the jump can actually reach; we
+// return the breach radius from that so the ring is the landing blast footprint. On a planet
+// VEF's range ring stays as-is (Aerial parity). In space the range ring is meaningless, so we
+// outline every reachable cell in view instead, the way vanilla's Verb_Jump outlines its valid
+// cells: walkable and in sight, tested with the same predicate as CanHitTarget.
 public class Ability_BreachJump : Ability
 {
     // "Unlimited" as a finite number so VEF's range arithmetic and ring drawing stay sane
     // (DrawHighlight already skips the ring above GenRadial.MaxRadialPatternRadius).
     private const float SpaceRange = 10000f;
+
+    // The space preview recomputes when the camera, map or wearer moves, and at most this often
+    // otherwise, so a door opening or a wall dropping shows up without a per-frame LoS sweep.
+    private const int SpacePreviewRefreshTicks = 30;
+
+    private readonly List<IntVec3> leanScratch = new();
+    private readonly List<IntVec3> spacePreviewCells = new();
+    private Map spacePreviewMap;
+    private IntVec3 spacePreviewOrigin;
+    private CellRect spacePreviewRect;
+    private int spacePreviewTick = int.MinValue;
 
     public BreachJumpExtension Ext => def.GetModExtension<BreachJumpExtension>();
 
@@ -36,6 +55,9 @@ public class Ability_BreachJump : Ability
 
     public override float GetRangeForPawn() => InSpace ? SpaceRange : PlanetRange;
 
+    // The landing blast footprint, so VEF's DrawHighlight previews it at the hovered cell.
+    public override float GetRadiusForPawn() => Ext.breachRadius;
+
     // sightCheck (def.requireLineOfSight) is deliberately ignored: the sight rule follows the map.
     public override bool CanHitTarget(LocalTargetInfo target, bool sightCheck)
     {
@@ -44,23 +66,63 @@ public class Ability_BreachJump : Ability
             return false;
 
         var cell = target.Cell;
-        if (!cell.InBounds(map) || !cell.WalkableBy(map, pawn))
+        return cell.InBounds(map) && CanLandOn(cell, map);
+    }
+
+    // Shared by the hit test and the space preview so the outline can never disagree with
+    // what a click accepts. Caller guarantees the cell is in bounds.
+    private bool CanLandOn(IntVec3 cell, Map map)
+    {
+        if (!cell.WalkableBy(map, pawn))
             return false;
 
-        if (!InSpace)
+        if (!IsSpaceMap(map))
             return cell.DistanceTo(pawn.Position) <= PlanetRange;
 
         if (GenSight.LineOfSight(pawn.Position, cell, map))
             return true;
 
         // Same lean-out allowance VEF's base sight check grants.
-        var leanSources = new List<IntVec3>();
-        ShootLeanUtility.LeanShootingSourcesFromTo(pawn.Position, cell, map, leanSources);
-        foreach (var source in leanSources)
+        leanScratch.Clear();
+        ShootLeanUtility.LeanShootingSourcesFromTo(pawn.Position, cell, map, leanScratch);
+        foreach (var source in leanScratch)
             if (GenSight.LineOfSight(source, cell, map))
                 return true;
 
         return false;
+    }
+
+    public override void DrawHighlight(LocalTargetInfo target)
+    {
+        base.DrawHighlight(target);
+        // DrawFieldEdges sizes its grid from Find.CurrentMap, so only outline the map on screen.
+        if (InSpace && pawn.Map == Find.CurrentMap)
+            DrawSpaceValidCells();
+    }
+
+    // Outlines the reachable cells inside the camera view in the range-ring colour. Bounding
+    // the sweep to the view keeps the per-cell line-of-sight walk affordable on an orbit map,
+    // and the result is cached between camera moves.
+    private void DrawSpaceValidCells()
+    {
+        var map = pawn.Map;
+        var rect = Find.CameraDriver.CurrentViewRect.ExpandedBy(1).ClipInsideMap(map);
+        var tick = Find.TickManager.TicksGame;
+        if (map != spacePreviewMap || pawn.Position != spacePreviewOrigin || rect != spacePreviewRect
+            || tick - spacePreviewTick >= SpacePreviewRefreshTicks)
+        {
+            spacePreviewMap = map;
+            spacePreviewOrigin = pawn.Position;
+            spacePreviewRect = rect;
+            spacePreviewTick = tick;
+            spacePreviewCells.Clear();
+            foreach (var cell in rect)
+                if (CanLandOn(cell, map))
+                    spacePreviewCells.Add(cell);
+        }
+
+        if (spacePreviewCells.Count > 0)
+            GenDraw.DrawFieldEdges(spacePreviewCells, def.rangeRingColor);
     }
 
     public override bool IsEnabledForPawn(out string reason)
