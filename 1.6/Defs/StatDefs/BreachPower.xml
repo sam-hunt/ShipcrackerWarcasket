@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   <!--
-    Pawn-level multiplier on the Breach Jump's landing damage (Ability_BreachJump
-    .DoBreach). Base 1. Contributions (2026-09-16): shoulders +0.5, so with them on a
-    landing deals 45 to pawns and 900 to structures, enough for plasteel (840) and
-    uranium (750) walls; see BreachJump.xml for the base numbers.
+    Pawn-level multiplier on the structural damage of a Breach Jump landing, read by
+    DamageWorker_Breach for buildings only (2026-09-17; until then it scaled the whole
+    explosion, so it also raised pawn damage and, through GenExplosion's damage-derived
+    penetration, armor penetration). Base 1. Contributions (2026-09-16): shoulders
+    +0.5, so with them on a landing deals 900 to a wall cell, enough for plasteel
+    (840) and uranium (750), and 225 to passable buildings; pawns take the same 20
+    either way. See DamageDefs/Breach.xml for the base numbers.
   -->
   <StatDef>
     <defName>SCWC_BreachPower</defName>
     <label>breach power</label>
-    <description>A multiplier on the damage a breach jump landing deals.</description>
+    <description>A multiplier on the damage a breach jump landing deals to walls and other structures. Damage to people is unaffected.</description>
     <category>BasicsPawn</category>
     <toStringStyle>PercentZero</toStringStyle>
     <defaultBaseValue>1</defaultBaseValue>

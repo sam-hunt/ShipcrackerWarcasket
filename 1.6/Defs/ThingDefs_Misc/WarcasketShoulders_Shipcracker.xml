@@ -17,9 +17,10 @@
     Siegebreaker, Guardian and Sarcophagus shoulders.
 
     Abilities (2026-09-16, design approved that day): the breaching arms.
-    - SCWC_BreachPower +0.5: the armor's Breach Jump landing deals 45 to pawns and
-      900 to structures with these on (30 / 600 without), enough for plasteel and
-      uranium walls; see 1.6/Defs/StatDefs/BreachPower.xml.
+    - SCWC_BreachPower +0.5: the armor's Breach Jump landing deals 900 to a wall
+      cell with these on (600 without), enough for plasteel and uranium walls.
+      Structures only; pawn damage is unchanged (2026-09-17). See
+      1.6/Defs/StatDefs/BreachPower.xml.
     - equippedStatFactors MeleeHitChance x1.15 and MeleeDodgeChance x1.15 through
       VEF's ApparelExtension (Shock's shoulders use x1.2 on the same pair), merged
       with the base's extension the way VFEP's own sets do it.

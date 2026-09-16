@@ -8,17 +8,21 @@
     ranged, no sight test; space: unlimited range, sight required; landing-only
     breach blast) and the numbers in the BreachJumpExtension below.
 
-    Tuning (2026-09-16): fuelPerJump 20 of a 100-charge chemfuel tank (Aerial's
-    numbers; 5 jumps per tank). breachDamage 30: with the SCWC_Breach DamageDef's
-    x20 building factor a landing deals 600 to structures, enough for steel walls
-    (300), granite-block walls (about 510) and Odyssey's gravship hull (420);
-    plasteel (840) and uranium (750) need the shoulders' SCWC_BreachPower.
-    breachRadius 2 (down from 3 the same day): a 13-cell footprint instead of 29,
-    so a landing punches a door-sized hole through the wall it lands beside rather
-    than levelling a room; vanilla's explosion still damages wall cells adjacent to
-    the open cells it reaches. Pawn damage 30 is twice Aerial's 15, wearer
-    excluded. spaceFlightMaxSeconds 4 caps long space hops. requireLineOfSight is
-    ignored by the ability class and set false only to document the planet rule.
+    Tuning (2026-09-16, damage retuned 2026-09-17): fuelPerJump 20 of a 100-charge
+    chemfuel tank (Aerial's numbers; 5 jumps per tank). breachDamage 20 (was 30):
+    the pawn-facing number, split into 2 to 4 wounds by the SCWC_Breach def; Aerial's
+    jump does 15, a frag grenade 50. Wall and building damage come from that def's
+    factors (600 to a wall cell, 150 to a door or turret) and the shoulders'
+    SCWC_BreachPower, which its worker applies to buildings only. breachArmorPenetration
+    0.15 (Aerial's works out at 0.225, a grenade's 0.75): passed explicitly because
+    GenExplosion otherwise derives penetration as damage x 0.015, which at 30 damage
+    was 0.45 and negated marine armor outright. breachRadius 2 (down from 3 on
+    09-16): a 13-cell footprint instead of 29, so a landing punches a door-sized hole
+    through the wall it lands beside rather than levelling a room; vanilla's
+    explosion still damages wall cells adjacent to the open cells it reaches. Wearer
+    excluded; allies in the footprint are not, as with Aerial. spaceFlightMaxSeconds
+    4 caps long space hops. requireLineOfSight is ignored by the ability class and
+    set false only to document the planet rule.
     The blast radius is previewed at the hovered cell while targeting, and on a
     space map the reachable cells in view are outlined (see the ability class).
 
@@ -38,7 +42,8 @@
     <modExtensions>
       <li Class="ShipcrackerWarcasket.BreachJumpExtension">
         <fuelPerJump>20</fuelPerJump>
-        <breachDamage>30</breachDamage>
+        <breachDamage>20</breachDamage>
+        <breachArmorPenetration>0.15</breachArmorPenetration>
         <breachRadius>2</breachRadius>
         <spaceFlightMaxSeconds>4</spaceFlightMaxSeconds>
         <spaceIconPath>UI/Abilities/BlastOff</spaceIconPath>

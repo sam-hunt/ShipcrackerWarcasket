@@ -6,11 +6,12 @@ set's abilities (2026-09-16: Breach Jump on the armor, breach power and melee fa
 shoulders, respirator and aiming factor on the helmet, VGE1 oxygen / astrofuel / space-walking
 compat) have landed; everything below is still open.
 
-- test ModIcon resize
-- breach jump damage is too high to pawns
-- check helmet/shoulders drawData ordering
+- new modicon with accent
+- breach jump (space version) could use shock warcasket animation, constant speed (increased), and create small shockwave effect (similar to psycast but faster) at origin on blastoff
 - ability effect flame color swap with VGE1
 - gizmo swap to purple flame variant with VGE1
+- check whether aerial/shock warcasket abilities complement shipcracker
+- test with vge1/2
 - warming-up thruster overlay during cast with orange->purple color switch with VGE1
 - faster breach jump in space with fast shockwave overlay effect
 - **In-game test of the Breach Jump** (space unlimited range with sight and the reachable-cell outline, blast radius preview, fuel gizmo, gizmo icon swap in space, save/load mid-flight).

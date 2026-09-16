@@ -172,11 +172,13 @@ public class Ability_BreachJump : Ability
         GenSpawn.Spawn(flyer, destination, map);
     }
 
-    // Called by the flyer once the wearer is back on the map.
+    // Called by the flyer once the wearer is back on the map. Armor penetration is passed
+    // explicitly: GenExplosion reads the def's default only when no damage amount is handed
+    // in, and otherwise derives it as damage x 0.015. The wearer's SCWC_BreachPower is applied
+    // to buildings alone by DamageWorker_Breach, so it is deliberately absent here.
     public void DoBreach(IntVec3 center, Map map, Pawn wearer)
     {
-        var damage = Mathf.RoundToInt(Ext.breachDamage * wearer.GetStatValue(SCWC_DefOf.SCWC_BreachPower));
-        GenExplosion.DoExplosion(center, map, Ext.breachRadius, SCWC_DefOf.SCWC_Breach, wearer, damage,
-            ignoredThings: new List<Thing> { wearer });
+        GenExplosion.DoExplosion(center, map, Ext.breachRadius, SCWC_DefOf.SCWC_Breach, wearer, Ext.breachDamage,
+            Ext.breachArmorPenetration, ignoredThings: new List<Thing> { wearer });
     }
 }
