@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    The shockwave ring a space Breach Jump leaves at its launch cell: the same background
+    distortion as a psycast's area ring (Core's PsycastAreaEffect, parent FleckGlowDistortBackground,
+    which brings the MoteGlowDistortBackground shader and the PsycastDistortionMask ripple
+    texture; all Core, so no Royalty dependency) but a third the lifetime and five times the
+    growth, so it snaps outward with the thrusters instead of blooming. Timings (2026-09-17):
+    0.32 s on screen (psycast 0.74), growth 8 cells/s from a 1-cell disc (psycast 1.5 from
+    2.3), so it ends at about the same 3.5-cell size the psycast ring reaches, with a
+    stronger 0.08 distortion (psycast 0.05) to read in the short time it is up.
+  -->
+  <FleckDef ParentName="FleckGlowDistortBackground">
+    <defName>SCWC_BreachJumpShockwave</defName>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.05</solidTime>
+    <fadeOutTime>0.25</fadeOutTime>
+    <growthRate>8</growthRate>
+    <graphicData>
+      <texPath>Things/Mote/Black</texPath>
+      <shaderParameters>
+        <_distortionIntensity>0.08</_distortionIntensity>
+        <_brightnessMultiplier>1.15</_brightnessMultiplier>
+      </shaderParameters>
+      <drawSize>1</drawSize>
+    </graphicData>
+  </FleckDef>
+</Defs>

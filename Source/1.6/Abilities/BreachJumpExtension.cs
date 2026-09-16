@@ -19,8 +19,10 @@ public class BreachJumpExtension : DefModExtension
     public float breachArmorPenetration = 0.15f;
     public float breachRadius = 2f;
 
-    // Ceiling on flight time on space maps, where the jump has no range limit; the flyer
-    // speeds up rather than hang in the air for a long hop.
+    // Space flight speed as a multiple of the wearer's VFEP_FlightSpeed (base 12 cells/s), and
+    // a ceiling on flight time: the jump has no range limit in space, so past the cap the flyer
+    // speeds up again rather than hang for a map-length hop. Read by PawnFlyer_BreachJump.
+    public float spaceFlightSpeedFactor = 3f;
     public float spaceFlightMaxSeconds = 4f;
 
     // Gizmo icon shown while the wearer stands on a space map; null keeps the def's iconPath.

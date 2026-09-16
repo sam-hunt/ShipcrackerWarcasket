@@ -165,6 +165,13 @@ public class Ability_BreachJump : Ability
         for (var i = 0; i < Ext.fuelPerJump; i++)
             tank?.UsedOnce();
 
+        // Space takeoff: a one-shot distortion ring at the origin (the flyer's own effecter
+        // carries the launch sound and flash). Fired before MakeFlyer despawns the wearer,
+        // while pawn.Position is still the launch cell. No planet equivalent: there the jump
+        // has no takeoff effect beyond the flyer's flame, as on Aerial.
+        if (IsSpaceMap(map))
+            SCWC_DefOf.SCWC_BreachJumpBlastOff.Spawn(pawn.Position, map).Cleanup();
+
         var destination = targets[0].Cell;
         var flyer = (PawnFlyer_BreachJump)PawnFlyer.MakeFlyer(SCWC_DefOf.SCWC_BreachJumpFlyer, pawn, destination, null, null, true);
         flyer.ability = this;

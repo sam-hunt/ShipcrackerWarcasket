@@ -6,10 +6,24 @@ using VEF.Abilities;
 
 namespace ShipcrackerWarcasket;
 
-// Flight leg of the Breach Jump. Mirrors VFEP's PawnFlyer_PowerJump: flight time comes from
-// the wearer's VFEP_FlightSpeed instead of the def's fixed flightSpeed, and the Aerial
-// jump-flame effecter plays during flight. Differences: space hops are capped in duration,
-// and the landing detonation is the ability's breach rather than a Bomb.
+// Flight leg of the Breach Jump. Mirrors VFEP's PawnFlyer_PowerJump on a planet: flight time
+// comes from the wearer's VFEP_FlightSpeed instead of the def's fixed flightSpeed, and the
+// Aerial jump-flame effecter plays during flight. The landing detonation is the ability's
+// breach rather than a Bomb.
+//
+// Space maps get a different flight (2026-09-17):
+//  - Straight line at constant speed, no arc. Vanilla's RecomputePosition front-loads the trip
+//    (15% of the distance in the first 10% of the time, PawnFlyerBase's progressCurve) and
+//    lifts the pawn along an inverse parabola scaled by heightFactor; both read as a hop under
+//    gravity. In zero g the thrusters push one way the whole trip, so progress is linear and
+//    the pawn stays on the line. Done through VEF's CustomRecomputePosition hook, so the def's
+//    curve and heightFactor still apply on a planet.
+//  - Faster: the wearer's VFEP_FlightSpeed times the extension's spaceFlightSpeedFactor, still
+//    capped at spaceFlightMaxSeconds so a map-length hop does not drag.
+//  - Shock's VFEP_BlastOffEffect instead of Aerial's VFEP_PowerJumpPawnEffect. VFEP's two
+//    effecters are identical except for the flame sprayers' maxMoteCount (14 vs 1000): the
+//    Aerial exhaust cuts out 14 ticks into the flight, which suits a short hop but leaves a
+//    multi-second space run coasting silently. Blast Off's keeps burning to the landing.
 public class PawnFlyer_BreachJump : AbilityPawnFlyer
 {
     // PawnFlyer keeps the takeoff-to-landing distance private; vanilla's own SpawnSetup uses
@@ -19,27 +33,55 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
 
     private Effecter flightEffecter;
 
+    // Set from the map in SpawnSetup on both the fresh spawn and the reload path, so it is never
+    // scribed; the map cannot change mid-flight.
+    private bool inSpace;
+
     // ability is assigned between MakeFlyer and GenSpawn.Spawn, so it is set by the time this runs.
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
+        inSpace = Ability_BreachJump.IsSpaceMap(map);
         if (respawningAfterLoad)
             return;
 
         var seconds = Mathf.Max(FlightDistance(this), 1f) / FlyingPawn.GetStatValue(SCWC_DefOf.VFEP_FlightSpeed);
-        if (ability is Ability_BreachJump jump && Ability_BreachJump.IsSpaceMap(map))
+        if (inSpace && ability is Ability_BreachJump jump)
+        {
+            seconds /= Mathf.Max(jump.Ext.spaceFlightSpeedFactor, 0.01f);
             seconds = Mathf.Min(seconds, jump.Ext.spaceFlightMaxSeconds);
+        }
         seconds = Mathf.Max(seconds, def.pawnFlyer.flightDurationMin);
 
         ticksFlightTime = seconds.SecondsToTicks();
         ticksFlying = 0;
     }
 
+    // Replaces vanilla's RecomputePosition on space maps (VEF's prefix skips it when this
+    // returns true). Vanilla caches per tick behind a private field we cannot reach; the lerp
+    // is cheap enough to redo per call, and Thing.Position's setter is a no-op when unchanged.
+    // Height stays 0 (full-size shadow, no forward lift), but the draw position sits one
+    // altitude increment up, which is where vanilla's arc peaks, so the flyer is drawn over
+    // pawns it passes rather than z-fighting them at resting altitude.
+    protected override bool CustomRecomputePosition()
+    {
+        if (!inSpace)
+            return false;
+
+        var t = Mathf.Clamp01((float)ticksFlying / ticksFlightTime);
+        GroundPos = Vector3.Lerp(startVec, DestinationPos, t);
+        EffectiveHeight = 0f;
+        EffectivePos = GroundPos + Altitudes.AltIncVect;
+        Position = GroundPos.ToIntVec3();
+        return true;
+    }
+
     protected override void Tick()
     {
         if (flightEffecter == null)
         {
-            flightEffecter = SCWC_DefOf.VFEP_PowerJumpPawnEffect.Spawn();
+            var effecterDef = inSpace ? SCWC_DefOf.VFEP_BlastOffEffect : SCWC_DefOf.VFEP_PowerJumpPawnEffect;
+            flightEffecter = effecterDef.Spawn();
             flightEffecter.Trigger(this, TargetInfo.Invalid);
         }
         else

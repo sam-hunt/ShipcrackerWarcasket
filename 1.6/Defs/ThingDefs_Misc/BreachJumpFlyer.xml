@@ -3,8 +3,11 @@
   <!--
     Flyer thing spawned by Ability_BreachJump for the flight leg; templated from
     VFEP's VFEP_PowerJumpPawn. flightSpeed is unused: PawnFlyer_BreachJump derives
-    the flight time from the wearer's VFEP_FlightSpeed stat (base 12) and caps it
-    on space maps. flightDurationMin 0.5 s is the floor either way.
+    the flight time from the wearer's VFEP_FlightSpeed stat (base 12), multiplied
+    and capped on space maps by the ability's extension. flightDurationMin 0.5 s is
+    the floor either way. PawnFlyerBase's progressCurve and heightFactor shape the
+    planet arc only; the flyer class replaces the position math in space with a
+    flat straight line at constant speed.
   -->
   <ThingDef ParentName="PawnFlyerBase">
     <defName>SCWC_BreachJumpFlyer</defName>

@@ -20,11 +20,16 @@
     09-16): a 13-cell footprint instead of 29, so a landing punches a door-sized hole
     through the wall it lands beside rather than levelling a room; vanilla's
     explosion still damages wall cells adjacent to the open cells it reaches. Wearer
-    excluded; allies in the footprint are not, as with Aerial. spaceFlightMaxSeconds
-    4 caps long space hops. requireLineOfSight is ignored by the ability class and
-    set false only to document the planet rule.
+    excluded; allies in the footprint are not, as with Aerial. requireLineOfSight is
+    ignored by the ability class and set false only to document the planet rule.
     The blast radius is previewed at the hovered cell while targeting, and on a
     space map the reachable cells in view are outlined (see the ability class).
+
+    Space flight (2026-09-17): a straight constant-speed run at spaceFlightSpeedFactor 3
+    times the wearer's VFEP_FlightSpeed (36 cells/s at the base 12; Aerial's full set
+    reaches 27 on a planet), capped at spaceFlightMaxSeconds 4 so a hop past 144 cells
+    speeds up rather than drag. It uses Shock's Blast Off exhaust and fires
+    SCWC_BreachJumpBlastOff at the launch cell; the flyer class explains all three.
 
     Icons are placeholders borrowed from VFEP until the commissioned art lands:
     Aerial's Power Jump on a planet, Shock's Blast Off (spaceIconPath) in space.
@@ -45,6 +50,7 @@
         <breachDamage>20</breachDamage>
         <breachArmorPenetration>0.15</breachArmorPenetration>
         <breachRadius>2</breachRadius>
+        <spaceFlightSpeedFactor>3</spaceFlightSpeedFactor>
         <spaceFlightMaxSeconds>4</spaceFlightMaxSeconds>
         <spaceIconPath>UI/Abilities/BlastOff</spaceIconPath>
       </li>

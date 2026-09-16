@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    One-shot takeoff effect for a Breach Jump cast on a space map, spawned at the launch
+    cell by Ability_BreachJump.Cast. Visual only: the flyer's flight effecter (VFEP's
+    Blast Off exhaust in space) already carries the launch sound and shot flash, so this
+    adds just the distortion ring (SCWC_BreachJumpShockwave). Not used on a planet.
+  -->
+  <EffecterDef>
+    <defName>SCWC_BreachJumpBlastOff</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <spawnLocType>OnSource</spawnLocType>
+        <fleckDef>SCWC_BreachJumpShockwave</fleckDef>
+      </li>
+    </children>
+  </EffecterDef>
+</Defs>

@@ -1,20 +1,13 @@
 # TODOs
 
-Scoping notes for the feature work. Infrastructure, the three defs, the art, the first stat
-and cost tuning pass (2026-09-13), the SOS2/Universum parity patch, the l10n toolchain and the
-set's abilities (2026-09-16: Breach Jump on the armor, breach power and melee factors on the
-shoulders, respirator and aiming factor on the helmet, VGE1 oxygen / astrofuel / space-walking
-compat) have landed; everything below is still open.
-
 - new modicon with accent
-- breach jump (space version) could use shock warcasket animation, constant speed (increased), and create small shockwave effect (similar to psycast but faster) at origin on blastoff
 - ability effect flame color swap with VGE1
 - gizmo swap to purple flame variant with VGE1
 - check whether aerial/shock warcasket abilities complement shipcracker
+- apparel descriptions etc
 - test with vge1/2
 - warming-up thruster overlay during cast with orange->purple color switch with VGE1
-- faster breach jump in space with fast shockwave overlay effect
-- **In-game test of the Breach Jump** (space unlimited range with sight and the reachable-cell outline, blast radius preview, fuel gizmo, gizmo icon swap in space, save/load mid-flight).
+- **In-game test of the Breach Jump** (space unlimited range with sight and the reachable-cell outline, blast radius preview, fuel gizmo, gizmo icon swap in space, save/load mid-flight; the 2026-09-17 space flight: straight constant-speed run with no arc, Blast Off exhaust burning to the landing, distortion ring at the launch cell, and whether 3x speed / 4 s cap / the ring's 0.08 intensity and 0.32 s life look right).
 - Replace the placeholder ability icons (VFEP's Power Jump on a planet, Blast Off in space) with
   the artist's textures once the abilities are tested and locked in; both paths are in
   `1.6/Defs/AbilityDefs/BreachJump.xml`.
