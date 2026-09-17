@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using RimWorld;
 using RimWorld.Planet;
@@ -29,24 +30,39 @@ namespace ShipcrackerWarcasket;
 // return the breach radius from that so the ring is the landing blast footprint. On a planet
 // VEF's range ring stays as-is (Aerial parity). In space the range ring is meaningless, so we
 // outline every reachable cell in view instead, the way vanilla's Verb_Jump outlines its valid
-// cells: walkable and in sight, tested with the same predicate as CanHitTarget.
+// cells: walkable and in sight, tested with the same predicate as CanHitTarget. That sweep is
+// budgeted and cached per cell (see DrawSpaceValidCells): under Vanilla Gravship Expanded every
+// space cell is walkable, so the view can hold tens of thousands of candidates, each needing a
+// line-of-sight walk from the wearer, and a full sweep per camera move stalled the frame.
 public class Ability_BreachJump : Ability
 {
     // "Unlimited" as a finite number so VEF's range arithmetic and ring drawing stay sane
     // (DrawHighlight already skips the ring above GenRadial.MaxRadialPatternRadius).
     private const float SpaceRange = 10000f;
 
-    // The space preview recomputes when the camera, map or wearer moves, and at most this often
-    // otherwise, so a door opening or a wall dropping shows up without a per-frame LoS sweep.
+    // Cached preview cells are re-tested at most this often, so a door opening or a wall
+    // dropping shows up while the outline keeps drawing from the previous pass.
     private const int SpacePreviewRefreshTicks = 30;
+
+    // Main-thread time spent testing preview cells per frame. A zoomed-in view (a couple of
+    // thousand cells) completes within a frame or two; a whole orbit map fills in over a second
+    // or so instead of freezing the game for that long.
+    private const double SpacePreviewBudgetMs = 2.0;
 
     private readonly List<IntVec3> leanScratch = new();
     private readonly List<IntVec3> roofScratch = new();
     private readonly List<IntVec3> spacePreviewCells = new();
+    private static readonly Stopwatch spacePreviewWatch = new();
+
+    // Per-cell preview cache for spacePreviewMap, indexed by CellIndices: 0 = never tested;
+    // +g = landable, -g = not, tested in generation g. The generation bumps every
+    // SpacePreviewRefreshTicks, so cells from older generations still draw but are re-tested
+    // as budget allows; a change of map or origin invalidates everything.
+    private int[] spacePreviewState;
     private Map spacePreviewMap;
     private IntVec3 spacePreviewOrigin;
-    private CellRect spacePreviewRect;
-    private int spacePreviewTick = int.MinValue;
+    private int spacePreviewGeneration;
+    private int spacePreviewGenerationTick;
 
     public BreachJumpExtension Ext => def.GetModExtension<BreachJumpExtension>();
 
@@ -116,25 +132,71 @@ public class Ability_BreachJump : Ability
             DrawSpaceValidCells();
     }
 
-    // Outlines the reachable cells inside the camera view in the range-ring colour. Bounding
-    // the sweep to the view keeps the per-cell line-of-sight walk affordable on an orbit map,
-    // and the result is cached between camera moves.
+    // Outlines the reachable cells inside the camera view in the range-ring colour. Only cells
+    // in view are ever tested, results persist across frames and camera moves, and each frame
+    // tests at most SpacePreviewBudgetMs worth of cells: never-tested cells first, so a newly
+    // revealed strip fills in before older cells are re-checked, then stale ones. Whatever is
+    // known and landable is drawn, so the outline grows in over a few frames rather than
+    // arriving all at once after a stall.
     private void DrawSpaceValidCells()
     {
         var map = pawn.Map;
-        var rect = Find.CameraDriver.CurrentViewRect.ExpandedBy(1).ClipInsideMap(map);
+        var origin = pawn.Position;
         var tick = Find.TickManager.TicksGame;
-        if (map != spacePreviewMap || pawn.Position != spacePreviewOrigin || rect != spacePreviewRect
-            || tick - spacePreviewTick >= SpacePreviewRefreshTicks)
+        var cellCount = map.cellIndices.NumGridCells;
+        if (map != spacePreviewMap || origin != spacePreviewOrigin || spacePreviewState == null)
         {
+            if (spacePreviewState == null || spacePreviewState.Length != cellCount)
+                spacePreviewState = new int[cellCount];
+            else
+                System.Array.Clear(spacePreviewState, 0, cellCount);
             spacePreviewMap = map;
-            spacePreviewOrigin = pawn.Position;
-            spacePreviewRect = rect;
-            spacePreviewTick = tick;
-            spacePreviewCells.Clear();
-            foreach (var cell in rect)
-                if (CanLandOn(cell, map))
-                    spacePreviewCells.Add(cell);
+            spacePreviewOrigin = origin;
+            spacePreviewGeneration = 1;
+            spacePreviewGenerationTick = tick;
+        }
+        else if (tick - spacePreviewGenerationTick >= SpacePreviewRefreshTicks)
+        {
+            spacePreviewGeneration++;
+            spacePreviewGenerationTick = tick;
+        }
+
+        var rect = Find.CameraDriver.CurrentViewRect.ExpandedBy(1).ClipInsideMap(map);
+        var generation = spacePreviewGeneration;
+        var indices = map.cellIndices;
+        spacePreviewWatch.Restart();
+        var budgetLeft = true;
+
+        // Pass 1: cells never tested from this origin.
+        foreach (var cell in rect)
+        {
+            var i = indices.CellToIndex(cell);
+            if (spacePreviewState[i] != 0)
+                continue;
+            spacePreviewState[i] = CanLandOn(cell, map) ? generation : -generation;
+            if (spacePreviewWatch.Elapsed.TotalMilliseconds >= SpacePreviewBudgetMs)
+            {
+                budgetLeft = false;
+                break;
+            }
+        }
+
+        // Pass 2: re-test cells from an older generation while budget remains, and collect
+        // everything known to be landable, at whatever age.
+        spacePreviewCells.Clear();
+        foreach (var cell in rect)
+        {
+            var i = indices.CellToIndex(cell);
+            var state = spacePreviewState[i];
+            if (budgetLeft && state != 0 && System.Math.Abs(state) != generation)
+            {
+                state = CanLandOn(cell, map) ? generation : -generation;
+                spacePreviewState[i] = state;
+                if (spacePreviewWatch.Elapsed.TotalMilliseconds >= SpacePreviewBudgetMs)
+                    budgetLeft = false;
+            }
+            if (state > 0)
+                spacePreviewCells.Add(cell);
         }
 
         if (spacePreviewCells.Count > 0)
