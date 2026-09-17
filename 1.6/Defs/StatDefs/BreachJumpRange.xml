@@ -7,11 +7,15 @@
     Contributions (2026-09-16): armor +20. The shoulders and helmet add none, so the
     set's whole range sits on the piece that carries the thrusters; Aerial's full
     set reaches 40. Left visible on the pawn's stat sheet (VFEP hides its copies).
+    The description says nothing about space (2026-09-17): the stat sheet has no
+    runtime gate like the ability tooltip's, and a player without Odyssey should not
+    read about the breach burn; "under gravity" is the only hint, and the ability
+    tooltip carries the vacuum rule where it applies.
   -->
   <StatDef>
     <defName>SCWC_BreachJumpRange</defName>
     <label>breach jump range</label>
-    <description>The maximum distance of a breach jump on a planet. In space the jump has no range limit and needs only a clear line of sight.</description>
+    <description>The maximum distance of a breach jump under gravity.</description>
     <category>BasicsPawn</category>
     <toStringStyle>FloatOne</toStringStyle>
     <defaultBaseValue>0</defaultBaseValue>

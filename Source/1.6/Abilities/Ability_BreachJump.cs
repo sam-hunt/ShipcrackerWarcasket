@@ -159,24 +159,39 @@ public class Ability_BreachJump : Ability
         return true;
     }
 
-    // VEF's tooltip is label, description, then generated stat lines. The vacuum sentence goes
-    // straight after the description, and only when a space map can exist in this game.
+    // The label the gizmo and tooltip show right now: the def's on a planet, vacuumLabel in space.
+    private string CurrentLabelCap =>
+        InSpace && !Ext.vacuumLabel.NullOrEmpty() ? Ext.vacuumLabel.CapitalizeFirst() : def.LabelCap.ToString();
+
+    // VEF's tooltip is "LabelCap\n\ndescription\n\n" followed by generated stat lines. The head
+    // is rebuilt with the current label and, when a space map can exist in this game, the
+    // vacuum sentence after the description; the generated tail is kept as VEF wrote it.
     public override string GetDescriptionForPawn()
     {
         var text = base.GetDescriptionForPawn();
-        var extra = Ext.vacuumDescription;
-        if (!SpaceMapsPossible || extra.NullOrEmpty() || def.description.NullOrEmpty())
+        string head = def.LabelCap.Colorize(ColoredText.TipSectionTitleColor) + "\n\n" + def.description;
+        if (!text.StartsWith(head, System.StringComparison.Ordinal))
             return text;
 
-        var at = text.IndexOf(def.description, System.StringComparison.Ordinal);
-        return at < 0 ? text : text.Insert(at + def.description.Length, " " + extra);
+        var description = def.description;
+        if (SpaceMapsPossible && !Ext.vacuumDescription.NullOrEmpty())
+            description += " " + Ext.vacuumDescription;
+
+        return CurrentLabelCap.Colorize(ColoredText.TipSectionTitleColor) + "\n\n" + description + text.Substring(head.Length);
     }
 
+    // In space the button takes the space icon and label; VEF's Command_Ability copies both from
+    // the def in its constructor, so they are overwritten afterwards, as VFEP's Command_Grapple
+    // does for the hook's reload state. Its shrunk-mode tooltip still prefixes def.LabelCap.
     public override Gizmo GetGizmo()
     {
         var gizmo = base.GetGizmo();
-        if (InSpace && gizmo is Command command && Ext.SpaceIcon is Texture2D icon)
-            command.icon = icon;
+        if (InSpace && gizmo is Command command)
+        {
+            if (Ext.SpaceIcon is Texture2D icon)
+                command.icon = icon;
+            command.defaultLabel = CurrentLabelCap;
+        }
         return gizmo;
     }
 

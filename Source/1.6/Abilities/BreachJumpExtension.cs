@@ -36,6 +36,11 @@ public class BreachJumpExtension : DefModExtension
     // with the main-tree entry for the same field. Null or empty appends nothing.
     [MustTranslate] public string vacuumDescription;
 
+    // Gizmo label and tooltip title while the wearer stands on a space map, lowercase like a
+    // def label (the ability class capitalises it). Same one-def, two-state pattern as VFEP's
+    // grappling hook and its labelUnloaded. Null or empty keeps the def's label everywhere.
+    [MustTranslate] public string vacuumLabel;
+
     // Cached per def instance rather than in a static field: the game warns about static
     // Texture2D fields on types without [StaticConstructorOnStartup]. Loaded lazily from the
     // gizmo path, which is always the main thread.

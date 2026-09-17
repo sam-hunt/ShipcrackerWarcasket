@@ -31,15 +31,18 @@
     speeds up rather than drag. It uses Shock's Blast Off exhaust and fires
     SCWC_BreachJumpBlastOff at the launch cell; the flyer class explains all three.
 
-    Text (2026-09-17): one label on both maps. VFEP and vanilla swap a gizmo label
-    only when the click does something else (grappling hook vs reload, draft vs
-    undraft); here the click is the same on both maps and only the reach rules
-    change, so the icon and tooltip carry the mode. If playtesting shows confusion
-    the pair to use is "breach jump" / "breach burn" via a second extension string,
-    as VFEP's hook does with labelUnloaded. The description follows Power Jump's
-    register and length (no numbers: VEF appends range, radius and cast time itself,
-    and the range line drops out in space because SpaceRange is above its display
-    cap; no fuel line: the tank takes astrofuel at half the charges under VGE1).
+    Text (2026-09-17): "breach jump" on a planet, "breach burn" in space (vacuumLabel
+    on the extension, applied to the gizmo and tooltip title by the ability class).
+    VFEP and vanilla otherwise swap a gizmo label only when the click does something
+    else (grappling hook vs reload), and here only the reach rules change, but the
+    space mode is a different enough experience (straight, fast, map-length, launch
+    shockwave, its own icon) to advertise under its own name; "burn" is the
+    spaceflight word for a straight engine firing, and keeping "breach" in both
+    names ties them to the one fuel tank and landing. The description follows Power
+    Jump's register and length (no numbers: VEF appends range, radius and cast time
+    itself, and the range line drops out in space because SpaceRange is above its
+    display cap; no fuel line: the tank takes astrofuel at half the charges under
+    VGE1).
     The vacuum sentence lives on the extension (vacuumDescription) and the ability
     class appends it to the tooltip only when some loaded def can produce a space
     map, so players without Odyssey never read about a mode they cannot reach. A
@@ -71,6 +74,7 @@
         <spaceFlightMaxSeconds>4</spaceFlightMaxSeconds>
         <spaceIconPath>UI/Abilities/BlastOff</spaceIconPath>
         <vacuumDescription>In vacuum it has no range limit, but the way must be open.</vacuumDescription>
+        <vacuumLabel>breach burn</vacuumLabel>
       </li>
     </modExtensions>
   </VEF.Abilities.AbilityDef>
