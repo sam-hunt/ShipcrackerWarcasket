@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
@@ -48,6 +49,16 @@ public class Ability_BreachJump : Ability
 
     public static bool IsSpaceMap(Map map) =>
         map != null && (map.Biome?.inVacuum == true || map.Tile.LayerDef?.isSpace == true);
+
+    // Whether any loaded def can produce a map IsSpaceMap would accept: Odyssey's vacuum biome
+    // and Orbit layer, or another mod's equivalent. Same two fields as IsSpaceMap, so the
+    // tooltip's vacuum sentence appears exactly when the space rules can ever apply. Defs are
+    // immutable after load, so this is computed once.
+    private static bool? spaceMapsPossible;
+
+    public static bool SpaceMapsPossible => spaceMapsPossible ??=
+        DefDatabase<BiomeDef>.AllDefsListForReading.Any(b => b.inVacuum)
+        || DefDatabase<PlanetLayerDef>.AllDefsListForReading.Any(l => l.isSpace);
 
     public bool InSpace => IsSpaceMap(pawn?.Map);
 
@@ -146,6 +157,19 @@ public class Ability_BreachJump : Ability
         }
 
         return true;
+    }
+
+    // VEF's tooltip is label, description, then generated stat lines. The vacuum sentence goes
+    // straight after the description, and only when a space map can exist in this game.
+    public override string GetDescriptionForPawn()
+    {
+        var text = base.GetDescriptionForPawn();
+        var extra = Ext.vacuumDescription;
+        if (!SpaceMapsPossible || extra.NullOrEmpty() || def.description.NullOrEmpty())
+            return text;
+
+        var at = text.IndexOf(def.description, System.StringComparison.Ordinal);
+        return at < 0 ? text : text.Insert(at + def.description.Length, " " + extra);
     }
 
     public override Gizmo GetGizmo()

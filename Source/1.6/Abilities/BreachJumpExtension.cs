@@ -28,6 +28,14 @@ public class BreachJumpExtension : DefModExtension
     // Gizmo icon shown while the wearer stands on a space map; null keeps the def's iconPath.
     [NoTranslate] public string spaceIconPath;
 
+    // Sentence appended to the def's description in the gizmo tooltip, but only when a loaded
+    // def can produce a space map (see Ability_BreachJump.SpaceMapsPossible), so a game without
+    // Odyssey never describes a mode it cannot reach. An extension field rather than an XML
+    // patch from a compat root: the DefInjected walker reaches extension strings, so this
+    // translates as one more entry in the main tree instead of a gated file that would collide
+    // with the main-tree entry for the same field. Null or empty appends nothing.
+    [MustTranslate] public string vacuumDescription;
+
     // Cached per def instance rather than in a static field: the game warns about static
     // Texture2D fields on types without [StaticConstructorOnStartup]. Loaded lazily from the
     // gizmo path, which is always the main thread.
