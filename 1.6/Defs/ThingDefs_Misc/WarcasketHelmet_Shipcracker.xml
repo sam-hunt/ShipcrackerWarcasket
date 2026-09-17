@@ -103,6 +103,9 @@
     </apparel>
     <modExtensions>
       <li Class="VEF.Apparels.ApparelExtension">
+        <!-- priority: makes this entry the survivor when VEF merges it with the one
+             VFEP_WarcasketHelmetBase carries; see the armor def's header. -->
+        <priority>1</priority>
         <equippedStatFactors>
           <AimingDelayFactor>0.9</AimingDelayFactor>
         </equippedStatFactors>

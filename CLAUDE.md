@@ -116,6 +116,11 @@ TODOs.md         - Scoping notes for the feature work that has not landed yet
   (`VFEP_WarcasketArmorBase`, `VFEP_WarcasketShoulderPadBase`, `VFEP_WarcasketHelmetBase`), so
   the foundry, entombing flow and removal surgery pick them up without C#. Check VFEP's XML
   before reimplementing anything a base already provides.
+- Every VFEP warcasket base already carries a `VEF.Apparels.ApparelExtension`, and VEF merges
+  duplicate extensions at resolve time, keeping the highest `priority` and dropping fields its
+  `Merge` does not copy. Our extension entries carry `priority` 1 so ours survive; any new
+  `ApparelExtension` field, from any load root, must go on that entry (rationale in the armor
+  def's header).
 - **C#:** root namespace `ShipcrackerWarcasket`; patch classes use a `.Patches` suffix to avoid
   RimWorld type-name conflicts. Log with the `[Shipcracker Warcasket]` prefix.
 - **Patch timing is the load-bearing hazard of this mod.** `PatchAll()` runs from a

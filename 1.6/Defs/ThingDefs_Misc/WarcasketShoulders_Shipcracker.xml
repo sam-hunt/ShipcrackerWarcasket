@@ -129,6 +129,9 @@
     </apparel>
     <modExtensions>
       <li Class="VEF.Apparels.ApparelExtension">
+        <!-- priority: makes this entry the survivor when VEF merges it with the one
+             VFEP_WarcasketShoulderPadBase carries; see the armor def's header. -->
+        <priority>1</priority>
         <equippedStatFactors>
           <MeleeHitChance>1.2</MeleeHitChance>
           <MeleeDodgeChance>1.2</MeleeDodgeChance>
