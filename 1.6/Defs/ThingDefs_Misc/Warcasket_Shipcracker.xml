@@ -7,14 +7,26 @@
     "Tuning" below is still a verbatim Siegebreaker copy (placeholder, per
     TODOs.md), the VFEP_SpacerWarcaskets research prereq included.
 
-    Tuning (2026-09-13). VFEP reference numbers are the 10th-generation sets
-    (Siegebreaker, Guardian, Controller, Sarcophagus, Brute) at the commit above:
-    - EnergyShieldEnergyMax 2.0 (Siegebreaker 2.5; Guardian, Controller and
-      Sarcophagus 1.5; Brute 5.0). The Shipcracker is more specialised than the
-      Siegebreaker but less so than the three 1.5 sets, so it sits between them.
-      EnergyShieldRechargeRate stays at the shared 0.01.
-    - costList ComponentSpacer 8 / Plasteel 165 / Uranium 50 (Siegebreaker
-      6 / 145 / 50): a deliberate step up in cost for the whole set. The
+    Tuning (2026-09-13, retuned 2026-09-17). VFEP reference numbers are the
+    10th-generation sets (Siegebreaker, Guardian, Controller, Sarcophagus, Brute)
+    at the commit above. The set is a close-combat suit and is pitched at Brute and
+    Guardian effectiveness, priced a little under them:
+    - ArmorRating_Blunt 1.5 (Brute and Guardian; the other three 1.0): the
+      close-combat plating, carried by all three pieces so the set reads as one
+      tier, the Guardian pattern. Sharp 2 and Heat 1 are the shared spacer values.
+    - EnergyShieldEnergyMax 2.5 (Siegebreaker 2.5; Guardian, Controller and
+      Sarcophagus 1.5; Brute 5.0). The bubble blocks ranged fire only, which is
+      exactly what a melee suit needs while closing, so the 09-13 value of 2.0 was
+      undercutting the set's own role. EnergyShieldRechargeRate stays at the
+      shared 0.01.
+    - costList ComponentSpacer 6 / Plasteel 180 / Uranium 50 (Siegebreaker
+      6 / 145 / 50, Guardian 6 / 200 / 50). VFEP uses the spacer-component count
+      as a tech-complexity dial (Controller 12 for mech control, the utility sets
+      6, Brute 4); a fuel-burning drop thruster is Aerial-tier tech, so the
+      09-13 count of 8 came back down to 6 and the plating step went onto
+      plasteel instead. At vanilla market values (plasteel 9, spacer component
+      200, uranium 6) the full set welds for about 4690 silver without Odyssey:
+      Siegebreaker 4195, Sarcophagus 4785, Guardian 5164, Brute 5220. The
       shoulders and helmet scale with the armor at the ratios the 10th-gen sets
       use between their pieces; see their headers for the arithmetic.
 
@@ -43,10 +55,16 @@
     - Space walking and the astrofuel swap under Vanilla Gravship Expanded come
       from 1.6/Mods/VanillaGravshipExpanded/Patches/; stock Odyssey space terrain
       is impassable, so the main tree carries neither.
-    - costList GravlitePanel 20 under Odyssey (MayRequire on the cost item, as
+    - costList GravlitePanel 30 under Odyssey (MayRequire on the cost item, as
       Core's Buildings_Exotic.xml does for ShuttleEngine): the drop thrusters are
-      gravtech. The shoulders take 10 and the helmet 10, the VGE2 combat vacsuit's
-      20 / 10 split, market value 4 each.
+      gravtech. The shoulders take 10 and the helmet 10 (the VGE2 combat vacsuit's
+      20 / 10 split was the 09-16 starting point; the armor rose to 30 on 09-17
+      because the thrusters and the unlimited-range space flight are its). A panel
+      is market value 4 but costs 1 plasteel, 5 vacstone blocks and 1800 work
+      (Odyssey's Items_Resource_Misc.xml), and vacstone only comes from space, so
+      the 50-panel set total is the Odyssey premium: a been-to-orbit gate rather
+      than a silver one, which is why the extra space functionality is priced
+      here and not in the base costList.
 
     Not carried over from VFEP, on purpose: VFEP's 1.6/Patches/Odyssey.xml does
     not touch any warcasket apparel def by defName. It only adds a PawnKindDef
@@ -78,13 +96,13 @@
     <statBases>
       <Mass>50</Mass>
       <ArmorRating_Sharp>2</ArmorRating_Sharp>
-      <ArmorRating_Blunt>1</ArmorRating_Blunt>
+      <ArmorRating_Blunt>1.5</ArmorRating_Blunt>
       <ArmorRating_Heat>1</ArmorRating_Heat>
       <Insulation_Cold>80</Insulation_Cold>
       <Insulation_Heat>80</Insulation_Heat>
       <EquipDelay>1</EquipDelay>
       <EnergyShieldRechargeRate>0.01</EnergyShieldRechargeRate>
-      <EnergyShieldEnergyMax>2.0</EnergyShieldEnergyMax>
+      <EnergyShieldEnergyMax>2.5</EnergyShieldEnergyMax>
     </statBases>
     <equippedStatOffsets>
       <PsychicSensitivity>-0.5</PsychicSensitivity>
@@ -94,10 +112,10 @@
       <SCWC_BreachJumpRange>20</SCWC_BreachJumpRange>
     </equippedStatOffsets>
     <costList>
-      <ComponentSpacer>8</ComponentSpacer>
-      <Plasteel>165</Plasteel>
+      <ComponentSpacer>6</ComponentSpacer>
+      <Plasteel>180</Plasteel>
       <Uranium>50</Uranium>
-      <GravlitePanel MayRequire="Ludeon.RimWorld.Odyssey">20</GravlitePanel>
+      <GravlitePanel MayRequire="Ludeon.RimWorld.Odyssey">30</GravlitePanel>
     </costList>
     <researchPrerequisites>
       <li>VFEP_SpacerWarcaskets</li>
