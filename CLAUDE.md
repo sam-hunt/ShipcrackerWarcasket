@@ -179,7 +179,8 @@ to be final. The public language roster lives in CONTRIBUTING.md.
   `rimworld-l10n` repo, consumed as a git submodule pinned to a semver release tag (`git submodule
   status` names it; if `l10n/` is empty, run `git submodule update --init`). `Scripts/*.py` are
   thin per-repo config shims over its engines; each shim's comments carry this repo's rationale
-  (the VFEP dependency chain, why Odyssey is the only DLC pinned, why SOS2 is on the smoke list).
+  (the VFEP dependency chain, why Odyssey is the only DLC pinned, why SOS2 and VGE1 are on the
+  smoke list).
   Never edit `l10n/` in place here: mod-independent learnings go upstream in the canonical
   checkout; mod-specific ones go in the skill's glossary. The pin moves only at release, at the
   start of a translation pass, or when a new major lands (`l10n/tools/bump-consumer.sh`), never
@@ -188,9 +189,10 @@ to be final. The public language roster lives in CONTRIBUTING.md.
   own database, so the game dumps and injects them under `ThingDef`; the checker maps the element
   tag via `DEF_TYPE_ALIASES`. A DefInjected folder named `WarcasketDef` would never load.
 - **Startup smoke test (pre-release):** `python3 Scripts/integration-smoke-test.py` (game closed)
-  boots the deployed mod on a pinned list (VFEP chain + Odyssey + Save Our Ship 2 with Vehicle
-  Framework, the one optional integration, so `SOS2Patch.xml` actually runs), then classifies
-  logged errors by origin and fails on anything attributed to this mod or a VFEP/VEF/SOS2 seam.
+  boots the deployed mod on a pinned list (VFEP chain + Odyssey + the two optional integrations:
+  Save Our Ship 2 with Vehicle Framework so `SOS2Patch.xml` actually runs, and Vanilla Gravship
+  Expanded so the `1.6/Mods/VanillaGravshipExpanded` root opens), then classifies logged errors
+  by origin and fails on anything attributed to this mod or a VFEP/VEF/SOS2/VGE seam.
   Wired into the release skill. Sibling-mod "dump WILL fail" warnings at launch are expected: the
   probe is ticked for every family mod but each boot loads only its own list.
 - **`.steamworkshop/`** does not exist yet; adopt the toolkit's `Description/<Language>.txt`

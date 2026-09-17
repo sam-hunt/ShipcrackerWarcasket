@@ -53,11 +53,6 @@
   VFEP from the Workshop with SteamCMD (anonymous login) and injects them via `VEF_PATH` /
   `VFEP_PATH`, but anonymous download of these two items has never been exercised in CI; the
   first tagged release should confirm it succeeds.
-- **Vanilla Gravship Expanded is not installed locally** (neither Workshop nor `Mods/`), so the
-  `1.6/Mods/VanillaGravshipExpanded` compat root (vacuum parity, helmet oxygen comp, astrofuel
-  tank, space walking) is not on the smoke list and has never been booted. Install VGE1 and add
-  it to `Scripts/integration-smoke-test.py` before release; the oxygen comp's `chargeNoun` is
-  also a DefInjected point that must live in that root's `Languages/` when translations land.
 - Preview image (`About/Preview.png`) and mod icon (`About/ModIcon.png`) before publishing;
   `About/PublishedFileId.txt` is written by the Workshop uploader on first publish.
 - Consider `.steamworkshop/Description/English.txt` once there is a Workshop page; the
