@@ -33,8 +33,11 @@
     RoofCollapserImmediate, as Skyfaller.HitRoof does: punch-through sound, rubble
     filth, 15 to 30 Crush to anything in those cells. The wearer's own cell loses its
     roof silently so they are not crushed by their own hole (a drop pod shields its
-    occupants the same way; they leave it after the roof is gone). Allies beside the
-    wearer at takeoff are crushed, as Aerial's takeoff blast hits them. Skipped when
+    occupants the same way; they leave it after the roof is gone). The takeoff punch
+    is silent throughout: sound and open roof, but no crush and no rubble, so the
+    squadmates who stand beside a wearer at launch are spared (decision 2026-09-17;
+    Aerial's takeoff blast does hit them, but that is its firecracker, not a ceiling
+    falling on a formation). Skipped when
     the jump starts and ends in the same indoor Room (walls and doors bound a Room),
     since a hop across a floor does not go through the ceiling; the outdoor Room, any
     Room touching the map edge, is exempt from the skip so a hop under or out from a

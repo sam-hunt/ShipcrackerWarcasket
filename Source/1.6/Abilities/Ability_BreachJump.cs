@@ -221,7 +221,7 @@ public class Ability_BreachJump : Ability
         // flyer: Room objects are rebuilt whenever regions change, so the landing cannot re-ask.
         var punchRoof = ShouldPunchRoof(pawn.Position, destination, map);
         if (punchRoof)
-            PunchRoof(pawn.Position, map, pawn);
+            PunchRoof(pawn.Position, map, pawn, crush: false);
 
         var flyer = (PawnFlyer_BreachJump)PawnFlyer.MakeFlyer(SCWC_DefOf.SCWC_BreachJumpFlyer, pawn, destination, null, null, true);
         flyer.ability = this;
@@ -249,7 +249,7 @@ public class Ability_BreachJump : Ability
     public void DoBreach(IntVec3 center, Map map, Pawn wearer, bool punchRoof)
     {
         if (punchRoof)
-            PunchRoof(center, map, wearer);
+            PunchRoof(center, map, wearer, crush: true);
 
         GenExplosion.DoExplosion(center, map, Ext.breachRadius, SCWC_DefOf.SCWC_Breach, wearer, Ext.breachDamage,
             Ext.breachArmorPenetration, ignoredThings: new List<Thing> { wearer });
@@ -263,7 +263,10 @@ public class Ability_BreachJump : Ability
     // through the grid instead, so they go through the ceiling without being crushed by it; a
     // drop pod likewise shields its occupants, who leave the pod after the roof is already gone.
     // Called at takeoff with the wearer at the origin and at landing with them at the center.
-    private void PunchRoof(IntVec3 center, Map map, Pawn wearer)
+    // With crush false (takeoff) every cell goes the silent way: the sound plays and the roof
+    // opens, but nothing under it is hurt and no rubble falls, so squadmates standing beside
+    // the wearer at launch are spared. The landing keeps the full collapse.
+    private void PunchRoof(IntVec3 center, Map map, Pawn wearer, bool crush)
     {
         roofScratch.Clear();
         RoofDef punched = null;
@@ -276,7 +279,7 @@ public class Ability_BreachJump : Ability
                 continue;
 
             punched ??= roof;
-            if (cell == wearer.Position)
+            if (!crush || cell == wearer.Position)
                 map.roofGrid.SetRoof(cell, null);
             else
                 roofScratch.Add(cell);
