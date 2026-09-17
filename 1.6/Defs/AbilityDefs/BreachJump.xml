@@ -25,17 +25,23 @@
     The blast radius is previewed at the hovered cell while targeting, and on a
     space map the reachable cells in view are outlined (see the ability class).
 
-    Roof punch (2026-09-17): the landing drops every non-thick roof cell in the blast
-    footprint (constructed, thin rock, SOS2's hull roof, Odyssey gravships' constructed
-    roof; never overhead mountain, the same isThickRoof gate DropCellFinder uses for
-    drop pods) through vanilla's RoofCollapserImmediate, as Skyfaller.HitRoof does:
-    punch-through sound, rubble filth, 15 to 30 Crush to anything in those cells. The
-    wearer's own cell loses its roof silently so they are not crushed by their own
-    entry. Skipped when the jump starts and ends in the same Room (walls and doors
-    bound a Room; all connected outdoors is one), since a hop across a floor does not
-    go through the ceiling. Explosions never touch the roof grid and wall support
-    reaches 6.9 cells, so without this the landing would never open a roof. In space
-    this vents a gravship room the wearer breaches into, which is the point of the set.
+    Roof punch (2026-09-17): takeoff and landing each drop every non-thick roof cell
+    within roofPunchRadius 1 (5 cells, one below breachRadius so the hole in the
+    ceiling is tighter than the hole in the wall): constructed, thin rock, SOS2's hull
+    roof, Odyssey gravships' constructed roof; never overhead mountain, the same
+    isThickRoof gate DropCellFinder uses for drop pods. Done through vanilla's
+    RoofCollapserImmediate, as Skyfaller.HitRoof does: punch-through sound, rubble
+    filth, 15 to 30 Crush to anything in those cells. The wearer's own cell loses its
+    roof silently so they are not crushed by their own hole (a drop pod shields its
+    occupants the same way; they leave it after the roof is gone). Allies beside the
+    wearer at takeoff are crushed, as Aerial's takeoff blast hits them. Skipped when
+    the jump starts and ends in the same indoor Room (walls and doors bound a Room),
+    since a hop across a floor does not go through the ceiling; the outdoor Room, any
+    Room touching the map edge, is exempt from the skip so a hop under or out from a
+    thin rock overhang still smashes it. Explosions never touch the roof grid and wall
+    support reaches 6.9 cells, so without this the jump would never open a roof. In
+    space this vents a gravship room the wearer leaves or breaches into, which is the
+    point of the set.
 
     Space flight (2026-09-17): a straight constant-speed run at spaceFlightSpeedFactor 3
     times the wearer's VFEP_FlightSpeed (36 cells/s at the base 12; Aerial's full set
@@ -82,6 +88,7 @@
         <breachDamage>20</breachDamage>
         <breachArmorPenetration>0.15</breachArmorPenetration>
         <breachRadius>2</breachRadius>
+        <roofPunchRadius>1</roofPunchRadius>
         <spaceFlightSpeedFactor>3</spaceFlightSpeedFactor>
         <spaceFlightMaxSeconds>4</spaceFlightMaxSeconds>
         <spaceIconPath>UI/Abilities/BlastOff</spaceIconPath>

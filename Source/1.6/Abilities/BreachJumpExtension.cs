@@ -19,6 +19,10 @@ public class BreachJumpExtension : DefModExtension
     public float breachArmorPenetration = 0.15f;
     public float breachRadius = 2f;
 
+    // Radius of the roof punched through at takeoff and landing; kept one below breachRadius so
+    // the hole in the ceiling is tighter than the hole in the wall. 0 is the wearer's cell alone.
+    public float roofPunchRadius = 1f;
+
     // Space flight speed as a multiple of the wearer's VFEP_FlightSpeed (base 12 cells/s), and
     // a ceiling on flight time: the jump has no range limit in space, so past the cap the flyer
     // speeds up again rather than hang for a map-length hop. Read by PawnFlyer_BreachJump.

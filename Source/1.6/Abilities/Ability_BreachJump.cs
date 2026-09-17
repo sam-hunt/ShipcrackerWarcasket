@@ -18,9 +18,9 @@ namespace ShipcrackerWarcasket;
 //    target must be in line of sight. Both checks are vanilla fields, so no DLC gate.
 //  - No takeoff blast. The landing fires SCWC_Breach through PawnFlyer_BreachJump, scaled by
 //    the wearer's SCWC_BreachPower, so the shoulders can make it hit harder.
-//  - The landing also punches through any non-thick roof in the blast footprint (constructed,
-//    thin rock, SOS2 hull; never overhead mountain), unless the jump began and ended in the
-//    same room, which reads as a hop across the floor rather than through the ceiling.
+//  - Takeoff and landing both punch through any non-thick roof within roofPunchRadius
+//    (constructed, thin rock, SOS2 hull; never overhead mountain), unless the jump begins and
+//    ends in the same indoor room, which reads as a hop across the floor, not the ceiling.
 // Fuel comes from a CompApparelReloadable on the same apparel as the ability comp.
 //
 // Targeting previews: the vanilla Targeter hands DrawHighlight an invalid target whenever the
@@ -217,23 +217,29 @@ public class Ability_BreachJump : Ability
             SCWC_DefOf.SCWC_BreachJumpBlastOff.Spawn(pawn.Position, map).Cleanup();
 
         var destination = targets[0].Cell;
+        // Decided once at launch, while the wearer still stands at the origin, and carried by the
+        // flyer: Room objects are rebuilt whenever regions change, so the landing cannot re-ask.
+        var punchRoof = ShouldPunchRoof(pawn.Position, destination, map);
+        if (punchRoof)
+            PunchRoof(pawn.Position, map, pawn);
+
         var flyer = (PawnFlyer_BreachJump)PawnFlyer.MakeFlyer(SCWC_DefOf.SCWC_BreachJumpFlyer, pawn, destination, null, null, true);
         flyer.ability = this;
         flyer.DestinationCell = destination;
-        // Decided at launch, while the wearer still stands at the origin: Room objects are
-        // rebuilt whenever regions change, so the flyer carries the answer, not the rooms.
-        flyer.punchRoof = !SameRoom(pawn.Position, destination, map);
+        flyer.punchRoof = punchRoof;
         GenSpawn.Spawn(flyer, destination, map);
     }
 
     // Vanilla merges neighbouring districts into one Room except across doors
     // (RegionAndRoomUpdater.ShouldBeInTheSameRoom), so a Room is the space bounded by walls and
-    // doors, and all connected outdoors is one Room. Two cells in the same Room means the jump
-    // never crossed a wall, so there is no ceiling to come through.
-    private static bool SameRoom(IntVec3 a, IntVec3 b, Map map)
+    // doors, and all connected outdoors is one Room. A jump inside one indoor Room never crosses
+    // a wall, so there is no ceiling to come through. The outdoor Room (any Room touching the
+    // map edge, vanilla's own outdoors test) is exempt: a hop from open ground to a cell under a
+    // thin rock overhang, or from under one back out, still smashes the overhang.
+    private static bool ShouldPunchRoof(IntVec3 origin, IntVec3 destination, Map map)
     {
-        var roomA = RegionAndRoomQuery.RoomAt(a, map);
-        return roomA != null && roomA == RegionAndRoomQuery.RoomAt(b, map);
+        var room = RegionAndRoomQuery.RoomAt(origin, map);
+        return room == null || room != RegionAndRoomQuery.RoomAt(destination, map) || room.TouchesMapEdge;
     }
 
     // Called by the flyer once the wearer is back on the map. Armor penetration is passed
@@ -253,14 +259,15 @@ public class Ability_BreachJump : Ability
     // the roof through RoofCollapserImmediate, which clears it, spawns its rubble filth and
     // crushes whatever stands in the cell. The thickness gate is DropCellFinder's: thick roofs
     // (overhead mountain) are never punched. Explosions never touch the roof grid, so this is
-    // the only way the landing reaches a ceiling. The wearer's own cell loses its roof silently
-    // through the grid instead, so they come through the ceiling rather than under it; a drop
-    // pod likewise shields its occupants, who leave the pod after the roof is already gone.
+    // the only way the jump reaches a ceiling. The wearer's own cell loses its roof silently
+    // through the grid instead, so they go through the ceiling without being crushed by it; a
+    // drop pod likewise shields its occupants, who leave the pod after the roof is already gone.
+    // Called at takeoff with the wearer at the origin and at landing with them at the center.
     private void PunchRoof(IntVec3 center, Map map, Pawn wearer)
     {
         roofScratch.Clear();
         RoofDef punched = null;
-        foreach (var cell in GenRadial.RadialCellsAround(center, Ext.breachRadius, true))
+        foreach (var cell in GenRadial.RadialCellsAround(center, Ext.roofPunchRadius, true))
         {
             if (!cell.InBounds(map))
                 continue;
