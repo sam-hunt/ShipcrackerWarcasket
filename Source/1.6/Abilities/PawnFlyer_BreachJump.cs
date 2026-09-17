@@ -37,6 +37,11 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
     // scribed; the map cannot change mid-flight.
     private bool inSpace;
 
+    // Whether the landing punches through the roof, decided by the ability at launch (false for
+    // a jump that starts and ends in the same room). Scribed: the rooms may have changed by the
+    // time a reloaded flight lands.
+    public bool punchRoof = true;
+
     // ability is assigned between MakeFlyer and GenSpawn.Spawn, so it is set by the time this runs.
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
@@ -101,7 +106,13 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
         base.RespawnPawn();
 
         if (wearer != null && ability is Ability_BreachJump jump)
-            jump.DoBreach(cell, map, wearer);
+            jump.DoBreach(cell, map, wearer, punchRoof);
+    }
+
+    public override void ExposeData()
+    {
+        base.ExposeData();
+        Scribe_Values.Look(ref punchRoof, "punchRoof", true);
     }
 
     public override void Destroy(DestroyMode mode = DestroyMode.Vanish)

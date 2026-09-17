@@ -4,6 +4,7 @@ using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 using VEF.Abilities;
 using Ability = VEF.Abilities.Ability;
 
@@ -17,6 +18,9 @@ namespace ShipcrackerWarcasket;
 //    target must be in line of sight. Both checks are vanilla fields, so no DLC gate.
 //  - No takeoff blast. The landing fires SCWC_Breach through PawnFlyer_BreachJump, scaled by
 //    the wearer's SCWC_BreachPower, so the shoulders can make it hit harder.
+//  - The landing also punches through any non-thick roof in the blast footprint (constructed,
+//    thin rock, SOS2 hull; never overhead mountain), unless the jump began and ended in the
+//    same room, which reads as a hop across the floor rather than through the ceiling.
 // Fuel comes from a CompApparelReloadable on the same apparel as the ability comp.
 //
 // Targeting previews: the vanilla Targeter hands DrawHighlight an invalid target whenever the
@@ -37,6 +41,7 @@ public class Ability_BreachJump : Ability
     private const int SpacePreviewRefreshTicks = 30;
 
     private readonly List<IntVec3> leanScratch = new();
+    private readonly List<IntVec3> roofScratch = new();
     private readonly List<IntVec3> spacePreviewCells = new();
     private Map spacePreviewMap;
     private IntVec3 spacePreviewOrigin;
@@ -215,16 +220,66 @@ public class Ability_BreachJump : Ability
         var flyer = (PawnFlyer_BreachJump)PawnFlyer.MakeFlyer(SCWC_DefOf.SCWC_BreachJumpFlyer, pawn, destination, null, null, true);
         flyer.ability = this;
         flyer.DestinationCell = destination;
+        // Decided at launch, while the wearer still stands at the origin: Room objects are
+        // rebuilt whenever regions change, so the flyer carries the answer, not the rooms.
+        flyer.punchRoof = !SameRoom(pawn.Position, destination, map);
         GenSpawn.Spawn(flyer, destination, map);
+    }
+
+    // Vanilla merges neighbouring districts into one Room except across doors
+    // (RegionAndRoomUpdater.ShouldBeInTheSameRoom), so a Room is the space bounded by walls and
+    // doors, and all connected outdoors is one Room. Two cells in the same Room means the jump
+    // never crossed a wall, so there is no ceiling to come through.
+    private static bool SameRoom(IntVec3 a, IntVec3 b, Map map)
+    {
+        var roomA = RegionAndRoomQuery.RoomAt(a, map);
+        return roomA != null && roomA == RegionAndRoomQuery.RoomAt(b, map);
     }
 
     // Called by the flyer once the wearer is back on the map. Armor penetration is passed
     // explicitly: GenExplosion reads the def's default only when no damage amount is handed
     // in, and otherwise derives it as damage x 0.015. The wearer's SCWC_BreachPower is applied
     // to buildings alone by DamageWorker_Breach, so it is deliberately absent here.
-    public void DoBreach(IntVec3 center, Map map, Pawn wearer)
+    public void DoBreach(IntVec3 center, Map map, Pawn wearer, bool punchRoof)
     {
+        if (punchRoof)
+            PunchRoof(center, map, wearer);
+
         GenExplosion.DoExplosion(center, map, Ext.breachRadius, SCWC_DefOf.SCWC_Breach, wearer, Ext.breachDamage,
             Ext.breachArmorPenetration, ignoredThings: new List<Thing> { wearer });
+    }
+
+    // Vanilla's roof punch is Skyfaller.HitRoof: play the roof's punch-through sound, then drop
+    // the roof through RoofCollapserImmediate, which clears it, spawns its rubble filth and
+    // crushes whatever stands in the cell. The thickness gate is DropCellFinder's: thick roofs
+    // (overhead mountain) are never punched. Explosions never touch the roof grid, so this is
+    // the only way the landing reaches a ceiling. The wearer's own cell loses its roof silently
+    // through the grid instead, so they come through the ceiling rather than under it; a drop
+    // pod likewise shields its occupants, who leave the pod after the roof is already gone.
+    private void PunchRoof(IntVec3 center, Map map, Pawn wearer)
+    {
+        roofScratch.Clear();
+        RoofDef punched = null;
+        foreach (var cell in GenRadial.RadialCellsAround(center, Ext.breachRadius, true))
+        {
+            if (!cell.InBounds(map))
+                continue;
+            var roof = cell.GetRoof(map);
+            if (roof == null || roof.isThickRoof)
+                continue;
+
+            punched ??= roof;
+            if (cell == wearer.Position)
+                map.roofGrid.SetRoof(cell, null);
+            else
+                roofScratch.Add(cell);
+        }
+
+        if (punched == null)
+            return;
+        if (!punched.soundPunchThrough.NullOrUndefined())
+            punched.soundPunchThrough.PlayOneShot(new TargetInfo(center, map));
+        if (roofScratch.Count > 0)
+            RoofCollapserImmediate.DropRoofInCells(roofScratch, map);
     }
 }

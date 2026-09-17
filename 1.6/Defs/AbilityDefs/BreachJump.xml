@@ -25,6 +25,18 @@
     The blast radius is previewed at the hovered cell while targeting, and on a
     space map the reachable cells in view are outlined (see the ability class).
 
+    Roof punch (2026-09-17): the landing drops every non-thick roof cell in the blast
+    footprint (constructed, thin rock, SOS2's hull roof, Odyssey gravships' constructed
+    roof; never overhead mountain, the same isThickRoof gate DropCellFinder uses for
+    drop pods) through vanilla's RoofCollapserImmediate, as Skyfaller.HitRoof does:
+    punch-through sound, rubble filth, 15 to 30 Crush to anything in those cells. The
+    wearer's own cell loses its roof silently so they are not crushed by their own
+    entry. Skipped when the jump starts and ends in the same Room (walls and doors
+    bound a Room; all connected outdoors is one), since a hop across a floor does not
+    go through the ceiling. Explosions never touch the roof grid and wall support
+    reaches 6.9 cells, so without this the landing would never open a roof. In space
+    this vents a gravship room the wearer breaches into, which is the point of the set.
+
     Space flight (2026-09-17): a straight constant-speed run at spaceFlightSpeedFactor 3
     times the wearer's VFEP_FlightSpeed (36 cells/s at the base 12; Aerial's full set
     reaches 27 on a planet), capped at spaceFlightMaxSeconds 4 so a hop past 144 cells
