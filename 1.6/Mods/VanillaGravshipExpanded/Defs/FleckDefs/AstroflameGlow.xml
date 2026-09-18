@@ -8,8 +8,7 @@
     texture and sizing rationale.
 
     Also the parent of SCWC_AstroflameGlowNorth (AstroflameGlowNorth.xml), which inherits
-    everything here and only moves the altitude up to the Pawn layer for when the wearer
-    faces north.
+    everything here and only moves the altitude up to PawnState for when the wearer faces north.
   -->
   <FleckDef Name="SCWC_AstroflameGlow" ParentName="FleckBase_Thrown">
     <defName>SCWC_AstroflameGlow</defName>

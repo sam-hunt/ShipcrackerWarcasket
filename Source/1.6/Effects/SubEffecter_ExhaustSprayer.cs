@@ -11,10 +11,16 @@ namespace ShipcrackerWarcasket;
 // outlets the flecks leave from, faces the camera, and the flame should come out over the body.
 // A fleck's altitude is read from its FleckDef every draw (FleckStatic.Draw), so the only way
 // to move some flecks up is a second def, and the choice between the two has to be made where
-// the flecks are created. Vanilla's MakeMote reads def.fleckDef and cannot be overridden, so
-// this class keeps two defs per instance: the entry as written and a shallow copy with fleckDef
-// swapped for fleckDefNorth, and points the inherited def field at whichever applies before
-// each tick. Both are private to this instance; the shared def is never mutated.
+// the flecks are created. The raised copies sit on PawnState, the layer vanilla gives motes
+// held over a pawn: a first attempt at Pawn plus five increments was 0.09 above the top of the
+// wearer's render tree by every number the game reports (flyer draw y 8.47, tree at most one
+// increment above that) and still drew under the wearer in game, PawnState (9.15) draws over.
+// Whatever orders transparent draws that close together, it is not plain height.
+//
+// Vanilla's MakeMote reads def.fleckDef and cannot be overridden, so this class keeps two defs
+// per instance: the entry as written and a shallow copy with fleckDef swapped for fleckDefNorth,
+// and points the inherited def field at whichever applies before each tick. Both are private to
+// this instance; the shared def is never mutated.
 //
 // The facing read is the flying pawn's own Rotation, which is what the render tree draws the
 // pawn with: PawnFlyer.MakeFlyer copies it from the caster, whom the cast job's wait toil has
@@ -53,7 +59,9 @@ public class SubEffecter_ExhaustSprayer : SubEffecter_SprayerContinuous
     {
         if (!source.HasThing)
             return false;
-        var thing = source.Thing is PawnFlyer flyer ? flyer.FlyingPawn ?? (Thing)flyer : source.Thing;
+        var thing = source.Thing is PawnFlyer flyer
+            ? flyer.FlyingPawn ?? (Thing)flyer
+            : source.Thing;
         return thing.Rotation == Rot4.North;
     }
 }

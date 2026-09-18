@@ -2,15 +2,15 @@
 <Defs>
   <!--
     North-facing variant of SCWC_Astroflame (Astroflame.xml): inherits everything from the
-    parent and only raises the altitude to the Pawn layer, +5 sub-layers, so the purple
-    exhaust trail draws over the wearer instead of under when flying north and the mid-back
-    thruster outlets face the camera (see the main tree's JumpFlameNorth.xml for the layering
-    rationale). Sprayed via fleckDefNorth by ShipcrackerWarcasket.SubEffecter_ExhaustSprayer
-    while the flying wearer faces north (2026-09-18).
+    parent and only raises the altitude to PawnState, the layer vanilla gives motes held over
+    a pawn, so the purple exhaust draws over the wearer instead of under when flying north and
+    the mid-back thruster outlets face the camera (see the main tree's JumpFlameNorth.xml for
+    why this layer and not a small offset above Pawn). Sprayed via fleckDefNorth by
+    ShipcrackerWarcasket.SubEffecter_ExhaustSprayer while the flying wearer faces north
+    (2026-09-18).
   -->
   <FleckDef ParentName="SCWC_Astroflame">
     <defName>SCWC_AstroflameNorth</defName>
-    <altitudeLayer>Pawn</altitudeLayer>
-    <altitudeLayerIncOffset>5</altitudeLayerIncOffset>
+    <altitudeLayer>PawnState</altitudeLayer>
   </FleckDef>
 </Defs>

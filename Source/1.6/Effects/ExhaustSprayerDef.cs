@@ -8,8 +8,8 @@ namespace ShipcrackerWarcasket;
 // to spray instead of fleckDef while the flying wearer faces north. See the sub-effecter for why.
 public class ExhaustSprayerDef : SubEffecterDef
 {
-    // A copy of fleckDef raised to the Pawn altitude layer (the SCWC_*North fleck defs), so the
-    // trail draws over the wearer's back when the thruster outlets face the camera. Null keeps
+    // A copy of fleckDef raised to the PawnState altitude layer (the SCWC_*North fleck defs), so
+    // the trail draws over the wearer's back when the thruster outlets face the camera. Null keeps
     // fleckDef for every facing.
     public FleckDef fleckDefNorth;
 }

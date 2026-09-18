@@ -13,7 +13,7 @@
     flecks swapped for purple ones; keep the two in step.
 
     The three continuous sprayers below are ShipcrackerWarcasket.ExhaustSprayerDef, whose
-    SubEffecter_ExhaustSprayer sprays fleckDefNorth (a copy of fleckDef raised to the Pawn
+    SubEffecter_ExhaustSprayer sprays fleckDefNorth (a copy of fleckDef raised to the PawnState
     altitude layer) instead of fleckDef while the flying wearer faces north, so the exhaust
     trail draws over the wearer's back when the outlets face the camera and under them
     otherwise (2026-09-18).

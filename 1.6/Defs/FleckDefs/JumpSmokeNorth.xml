@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   <!--
-    Copy of VFEP's VFEP_JumpSmoke (Fleck_Visual.xml) with only the altitude changed: Pawn
-    layer, +5 sub-layers, instead of Projectile. Completes the north-facing exhaust trio so
-    the smoke draws over the wearer too when flying north and the thruster outlets face the
-    camera; see JumpFlameNorth.xml for why altitude alone moves and why this cannot use
-    ParentName against VFEP's def. Sprayed via fleckDefNorth by
-    ShipcrackerWarcasket.SubEffecter_ExhaustSprayer while the flying wearer faces north. Also
-    used by the Vanilla Gravship Expanded root's purple effecters, which have no smoke fleck
-    of their own. Keep in step with VFEP's VFEP_JumpSmoke.
+    Copy of VFEP's VFEP_JumpSmoke (Fleck_Visual.xml) with only the altitude changed: PawnState, the
+    layer vanilla gives motes held over a pawn, instead of Projectile. Flying north puts the
+    wearer's thruster outlets (mid-back) toward the camera, so the exhaust trail should draw
+    over the wearer instead of under; a fleck's altitude is fixed by its def, so this is a
+    second fleck rather than a runtime override. Pawn plus five increments was tried first and
+    still drew under the wearer in game although it sat above the render tree by every number
+    the game reports; PawnState draws over (2026-09-18, see SubEffecter_ExhaustSprayer).
+    Also used by the Vanilla Gravship Expanded root's purple effecters, which have no smoke
+    fleck of their own.
+    VFEP's def carries no Name attribute, so it cannot be a ParentName here; every other field
+    is copied by hand. Sprayed via fleckDefNorth by ShipcrackerWarcasket.SubEffecter_ExhaustSprayer
+    while the flying wearer faces north. Keep in step with VFEP's VFEP_JumpSmoke.
   -->
   <FleckDef ParentName="FleckBase_Thrown">
     <defName>SCWC_JumpSmokeNorth</defName>
     <graphicData>
       <texPath>Things/Mote/Smoke</texPath>
     </graphicData>
-    <altitudeLayer>Pawn</altitudeLayer>
-    <altitudeLayerIncOffset>5</altitudeLayerIncOffset>
+    <altitudeLayer>PawnState</altitudeLayer>
     <solidTime>0.2</solidTime>
     <fadeOutTime>0.2</fadeOutTime>
     <growthRate>1.2</growthRate>

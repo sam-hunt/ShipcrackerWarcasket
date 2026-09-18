@@ -27,7 +27,7 @@ namespace ShipcrackerWarcasket;
 //    from the ability extension (flightEffecter / spaceFlightEffecter) so a compat root can
 //    recolour the exhaust by patch; the DefOf entries are the fallback for a flyer whose
 //    ability reference did not survive a reload. Their flame, glow and smoke sprayers are
-//    SubEffecter_ExhaustSprayer entries, which spray a copy of each fleck raised to the Pawn
+//    SubEffecter_ExhaustSprayer entries, which spray a copy of each fleck raised to the PawnState
 //    layer while the wearer faces north, so the trail comes out over the wearer's back when the
 //    outlets face the camera and under the wearer otherwise. That only shows because the
 //    effecter is ticked after the flight advances (see Tick).
