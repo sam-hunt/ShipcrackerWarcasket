@@ -94,7 +94,10 @@
     progress and holds at full for the flight (Source/1.6/Rendering/, the ability's
     thrusterGlowCurve in AbilityDefs/BreachJump.xml); the worker copies the armor
     node's transform and layer so the two can never misalign. color is the tint the
-    grey art is multiplied by: chemfuel orange here, and the Vanilla Gravship Expanded
+    grey art is multiplied by: chemfuel orange here, brightened from (1, 0.55, 0.2) to
+    (1, 0.72, 0.38) after a first look in game so the outlets sit between the
+    yellow-white core and orange fringe of the VFEP_JumpFlame flecks they feed rather
+    than a deeper orange than either (2026-09-18); the Vanilla Gravship Expanded
     root's Patches/BreachJumpAstrofuel.xml swaps it to astrofuel purple, so the
     overlay must stay desaturated. shaderTypeDef TransparentPostLight is alpha
     blending drawn after the light pass, so the glow reads at night; MoteGlow
@@ -166,7 +169,7 @@
           <parentTagDef>ApparelBody</parentTagDef>
           <texPath>Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerThrusterGlow</texPath>
           <shaderTypeDef>TransparentPostLight</shaderTypeDef>
-          <color>(1, 0.55, 0.2)</color>
+          <color>(1, 0.72, 0.38)</color>
           <baseLayer>31</baseLayer>
         </li>
       </renderNodeProperties>
