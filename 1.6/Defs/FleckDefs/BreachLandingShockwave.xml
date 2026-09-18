@@ -2,33 +2,39 @@
 <Defs>
   <!--
     The shockwave ring a Breach Jump or Breach Burn leaves where it lands, on a planet and in
-    space alike. The launch ring's big sibling (FleckDefs/BreachJumpShockwave.xml explains the
-    Core psycast distortion it is built from) sized to the landing blast rather than the
-    thrusters: the ring has to clear the breach footprint (breachRadius 2 on the ability
+    space alike, fired by SCWC_BreachLanding as the SCWC_Breach explosion's centre effecter.
+    The launch ring's big sibling: same Core impact-wave recipe (see
+    BreachJumpShockwave.xml for the shader, the textures, the sizing formula and why this
+    replaced the psycast-style disc on 2026-09-18), sized to the landing blast rather than
+    the thrusters. The ring has to clear the breach footprint (breachRadius 2 on the ability
     extension, a 5-cell-wide disc) so it reads as the impact spreading past the rubble, not
-    lost under it. A fleck's width is drawSize x (1 + growthRate x age): growthRate
-    multiplies the spawn scale per second, it does not add cells (FleckStatic.TimeInterpolated
-    and Graphic_Fleck.DrawFleck, 2026-09-18 decompile). Timings (2026-09-18): 0.42 s on screen
-    (launch 0.32), drawSize 2 and growthRate 6, so it opens at 2 cells across and ends near
-    7 (2 x 3.52) against the launch ring's 3.6 (1 x 3.56) and the psycast ring's 4.9; 0.1
-    distortion (launch 0.08) so the wider, thinner-looking ring still shows through the
-    Bomb-style blast flecks and smoke drawn above it. If breachRadius changes, rescale
-    drawSize and growthRate with it.
+    lost under it: drawSize 4.5 over 0.40 s at growthRate 1.5 ends at 7.2 cells across
+    (launch 3.6). Timings follow Biotech's mech-band shockwave shape (fade in 0.04, hold,
+    fade out 0.10) at less than half its life. _distortionIntensity 0.066 is the mech-band
+    value, the one physical stun shockwave in the game and a harder hit than the launch's
+    0.05. MoteOverheadLow draws it over the wearer and whoever else stands in the blast,
+    while the Bomb-style cell flecks on MoteOverhead, one layer up, still burst over it. If
+    breachRadius changes, rescale drawSize with it.
   -->
-  <FleckDef ParentName="FleckGlowDistortBackground">
+  <FleckDef ParentName="FleckBase">
     <defName>SCWC_BreachLandingShockwave</defName>
-    <altitudeLayer>MoteLow</altitudeLayer>
-    <fadeInTime>0.02</fadeInTime>
-    <solidTime>0.08</solidTime>
-    <fadeOutTime>0.32</fadeOutTime>
-    <growthRate>6</growthRate>
+    <altitudeLayer>MoteOverheadLow</altitudeLayer>
+    <fadeInTime>0.04</fadeInTime>
+    <solidTime>0.26</solidTime>
+    <fadeOutTime>0.10</fadeOutTime>
+    <growthRate>1.5</growthRate>
+    <drawOffscreen>true</drawOffscreen>
     <graphicData>
+      <graphicClass>Graphic_FleckPulse</graphicClass>
       <texPath>Things/Mote/Black</texPath>
+      <shaderType>MoteLargeDistortionWave</shaderType>
       <shaderParameters>
-        <_distortionIntensity>0.1</_distortionIntensity>
+        <_DistortionTex>/Things/Mote/PsychicDistortionCurrents</_DistortionTex>
+        <_NoiseTex>/Things/Mote/PsycastNoise</_NoiseTex>
+        <_distortionIntensity>0.066</_distortionIntensity>
         <_brightnessMultiplier>1.15</_brightnessMultiplier>
       </shaderParameters>
-      <drawSize>2</drawSize>
+      <drawSize>4.5</drawSize>
     </graphicData>
   </FleckDef>
 </Defs>
