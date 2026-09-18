@@ -26,9 +26,11 @@ namespace ShipcrackerWarcasket;
 //    multi-second space run coasting silently; the burn keeps going to the landing. Both come
 //    from the ability extension (flightEffecter / spaceFlightEffecter) so a compat root can
 //    recolour the exhaust by patch; the DefOf entries are the fallback for a flyer whose
-//    ability reference did not survive a reload. Their flecks are our copies raised to the
-//    Pawn layer, so the trail draws over the flying wearer rather than under (see the fleck
-//    defs' headers).
+//    ability reference did not survive a reload. Their flame, glow and smoke sprayers are
+//    SubEffecter_ExhaustSprayer entries, which spray a copy of each fleck raised to the Pawn
+//    layer while the wearer faces north, so the trail comes out over the wearer's back when the
+//    outlets face the camera and under the wearer otherwise. That only shows because the
+//    effecter is ticked after the flight advances (see Tick).
 public class PawnFlyer_BreachJump : AbilityPawnFlyer
 {
     // PawnFlyer keeps the takeoff-to-landing distance private; vanilla's own SpawnSetup uses
@@ -87,8 +89,22 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
         return true;
     }
 
+    // The exhaust is ticked after the flight has advanced, not before as vanilla's own flight
+    // effecter is. The sprayers spawn each fleck at this thing's DrawPos, and the position is
+    // recomputed from ticksFlying, which base.Tick increments: ticked first, a fleck lands where
+    // the wearer was drawn last frame, and by this frame's draw the wearer has moved on by a
+    // whole tick of travel (0.6 cells at the space burn's 36 cells/s, 0.2 on a planet). The
+    // trail then never overlaps the wearer at all, and starts a body-length behind them (seen
+    // in game 2026-09-18, on both facings). Ticked after, this frame's flecks sit on the
+    // thruster outlets, which is where the north-facing raised flecks (see the effecter defs)
+    // have anything to draw over. base.Tick destroys the flyer on landing, and Destroy has
+    // already cleaned the effecter up by then; recreating it here would replay the launch.
     protected override void Tick()
     {
+        base.Tick();
+        if (Destroyed)
+            return;
+
         if (flightEffecter == null)
         {
             var ext = (ability as Ability_BreachJump)?.Ext;
@@ -102,8 +118,6 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
         {
             flightEffecter.EffectTick(this, TargetInfo.Invalid);
         }
-
-        base.Tick();
     }
 
     protected override void RespawnPawn()

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    Copy of VFEP's VFEP_JumpFlameGlow (Fleck_Visual.xml) with only the altitude changed: Pawn
+    layer, +5 sub-layers, instead of Projectile. Pairs with SCWC_JumpFlameNorth so the glow
+    draws over the wearer too when flying north and the thruster outlets face the camera; see
+    JumpFlameNorth.xml for why altitude alone moves and why this cannot use ParentName against
+    VFEP's def. Sprayed via fleckDefNorth by ShipcrackerWarcasket.SubEffecter_ExhaustSprayer
+    while the flying wearer faces north. Keep in step with VFEP's VFEP_JumpFlameGlow.
+  -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>SCWC_JumpFlameGlowNorth</defName>
+    <graphicData>
+      <texPath>Things/Mote/VFEP_JumpFlame</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <color>(1,0.6,0.6,0.3)</color>
+    </graphicData>
+    <altitudeLayer>Pawn</altitudeLayer>
+    <altitudeLayerIncOffset>5</altitudeLayerIncOffset>
+    <solidTime>0</solidTime>
+    <fadeOutTime>0.3</fadeOutTime>
+    <growthRate>-3</growthRate>
+  </FleckDef>
+</Defs>

@@ -7,10 +7,11 @@
     near white with a little extra blue and the same alpha. See Astroflame.xml for the
     texture and sizing rationale.
 
-    Pawn altitude layer plus five increments rather than VFEP's Projectile, like the main
-    tree's SCWC_JumpFlame pair, so the exhaust draws over the flying wearer (2026-09-18).
+    Also the parent of SCWC_AstroflameGlowNorth (AstroflameGlowNorth.xml), which inherits
+    everything here and only moves the altitude up to the Pawn layer for when the wearer
+    faces north.
   -->
-  <FleckDef ParentName="FleckBase_Thrown">
+  <FleckDef Name="SCWC_AstroflameGlow" ParentName="FleckBase_Thrown">
     <defName>SCWC_AstroflameGlow</defName>
     <graphicData>
       <texPath>Effects/Astrospark</texPath>
@@ -18,8 +19,7 @@
       <color>(0.9, 0.75, 1, 0.3)</color>
       <drawSize>(3, 3)</drawSize>
     </graphicData>
-    <altitudeLayer>Pawn</altitudeLayer>
-    <altitudeLayerIncOffset>5</altitudeLayerIncOffset>
+    <altitudeLayer>Projectile</altitudeLayer>
     <solidTime>0</solidTime>
     <fadeOutTime>0.3</fadeOutTime>
     <growthRate>-3</growthRate>
