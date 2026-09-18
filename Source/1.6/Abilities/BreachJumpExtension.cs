@@ -37,6 +37,13 @@ public class BreachJumpExtension : DefModExtension
     public EffecterDef flightEffecter;
     public EffecterDef spaceFlightEffecter;
 
+    // Opacity of the armor's thruster-outlet glow (PawnRenderNode_ThrusterGlow) over the cast,
+    // as a curve of cast progress 0..1 to alpha 0..1; the flight then holds alpha 1 and there
+    // is no fade-out. Null uses progress directly. Set in XML so it can be retuned without a
+    // rebuild; the tint lives on the render node entry in the armor def, where a compat root
+    // can recolour it.
+    public SimpleCurve thrusterGlowCurve;
+
     // Gizmo icon shown while the wearer stands on a space map; null keeps the def's iconPath.
     [NoTranslate] public string spaceIconPath;
 

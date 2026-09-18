@@ -5,6 +5,7 @@ using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 using Verse.Sound;
 using VEF.Abilities;
 using Ability = VEF.Abilities.Ability;
@@ -23,6 +24,12 @@ namespace ShipcrackerWarcasket;
 //    (constructed, thin rock, SOS2 hull; never overhead mountain), unless the jump begins and
 //    ends in the same indoor room, which reads as a hop across the floor, not the ceiling.
 // Fuel comes from a CompApparelReloadable on the same apparel as the ability comp.
+//
+// Thruster glow: the armor's PawnRenderNode_ThrusterGlow reads ThrusterGlowAlpha to fade the
+// outlet overlay in over the cast and hold it lit through the flight. The cast state comes from
+// VEF's WarmupToil hook on the cast job's wait toil (see WarmupToil below); the flight state is
+// simply whether the wearer is held by a PawnFlyer_BreachJump. Nothing fades out: an
+// interrupted cast or a landing drops the glow at once, by design (2026-09-18).
 //
 // Targeting previews: the vanilla Targeter hands DrawHighlight an invalid target whenever the
 // hovered cell fails CanHitTarget, so VEF's base draws the target highlight and a
@@ -76,6 +83,12 @@ public class Ability_BreachJump : Ability
 
     private const int PreviewWalkable = 1;
     private const int PreviewLandable = 2;
+
+    // Cast state for the thruster glow, written by the wait toil's actions (see WarmupToil) and
+    // never scribed: the toil's pre-tick action rewrites both every tick, so a game loaded
+    // mid-cast picks them back up within a tick of resuming.
+    private bool casting;
+    private float castProgress;
 
     private static int PreviewState(int generation, bool walkable, bool landable) =>
         (generation << 2) | (walkable ? PreviewWalkable : 0) | (landable ? PreviewLandable : 0);
@@ -349,6 +362,59 @@ public class Ability_BreachJump : Ability
             command.defaultLabel = CurrentLabelCap;
         }
         return gizmo;
+    }
+
+    // VEF builds the cast as a job whose first toil is a Toils_General.Wait of
+    // GetCastTimeForPawn() ticks and hands that toil here for the def's warmup sound and mote
+    // (JobDriver_CastAbilityOnce; there is no Stance_Warmup on this path, and
+    // CompAbilities.currentlyCasting is never cleared, so neither can tell a live cast from a
+    // finished one). The pre-tick action runs every tick the wearer stands in the warmup, the
+    // finish action runs however the toil ends, completion or interruption alike, so the flag
+    // is true exactly while the progress bar is filling. Progress is read off the driver's own
+    // countdown against the toil's duration, the same two numbers the progress bar uses.
+    public override void WarmupToil(Toil toil)
+    {
+        base.WarmupToil(toil);
+        toil.AddPreTickAction(() =>
+        {
+            var driver = toil.actor?.jobs?.curDriver;
+            if (driver == null)
+                return;
+            casting = true;
+            castProgress = toil.defaultDuration > 0
+                ? Mathf.Clamp01(1f - driver.ticksLeftThisToil / (float)toil.defaultDuration)
+                : 1f;
+        });
+        toil.AddFinishAction(() =>
+        {
+            casting = false;
+            castProgress = 0f;
+        });
+    }
+
+    // Opacity of the armor's thruster glow for this wearer: full for the whole flight, the
+    // extension's curve over the cast, otherwise off. The flight test is by holder type rather
+    // than flyer.ability so a flight reloaded without its ability reference still glows. jump
+    // may be null while the apparel's abilities are still resolving.
+    public static float ThrusterGlowAlpha(Pawn wearer, Ability_BreachJump jump)
+    {
+        if (wearer.ParentHolder is PawnFlyer_BreachJump)
+            return 1f;
+        if (jump == null || !jump.casting)
+            return 0f;
+        return Mathf.Clamp01(jump.Ext.thrusterGlowCurve?.Evaluate(jump.castProgress) ?? jump.castProgress);
+    }
+
+    // Whether the glow is showing on this pawn at all; the cheap form for the pawn-cache
+    // prefix, which asks for every humanlike pawn drawn each frame. An idle pawn fails on the
+    // holder test and the null job before any comp lookup.
+    public static bool ThrusterGlowLit(Pawn pawn)
+    {
+        if (pawn.ParentHolder is PawnFlyer_BreachJump)
+            return true;
+        if (pawn.jobs?.curJob == null)
+            return false;
+        return pawn.GetComp<CompAbilities>()?.currentlyCasting is Ability_BreachJump { casting: true };
     }
 
     public override void Cast(params GlobalTargetInfo[] targets)

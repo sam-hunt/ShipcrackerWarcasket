@@ -7,8 +7,8 @@ Guidance for Claude Code (claude.ai/code) when working in this repository.
 **Shipcracker Warcasket** is a RimWorld 1.6 mod adding a single new warcasket apparel set
 (armor, shoulder pads, helmet) for Vanilla Factions Expanded - Pirates (VFE Pirates), tuned for
 the Odyssey DLC's end-game content. VFE Pirates is a hard dependency; Odyssey is optional and
-Odyssey-only content must load only when the DLC is active. Requires Harmony (kept as a
-dependency for now; drop it before release if no patch ever lands).
+Odyssey-only content must load only when the DLC is active. Requires Harmony (one vanilla
+patch so far, the pawn-cache prefix in `Source/1.6/Patches/`).
 
 **Key technologies:** C# (.NET Framework 4.7.2), Harmony, RimWorld modding API, XML defs.
 
@@ -121,8 +121,14 @@ TODOs.md         - Scoping notes for the feature work that has not landed yet
   `Merge` does not copy. Our extension entries carry `priority` 1 so ours survive; any new
   `ApparelExtension` field, from any load root, must go on that entry (rationale in the armor
   def's header).
-- **C#:** root namespace `ShipcrackerWarcasket`; patch classes use a `.Patches` suffix to avoid
-  RimWorld type-name conflicts. Log with the `[Shipcracker Warcasket]` prefix.
+- **C#:** root namespace `ShipcrackerWarcasket`; patch classes live in `Source/1.6/Patches/`
+  under the `.Patches` namespace suffix to avoid RimWorld type-name conflicts. Log with the
+  `[Shipcracker Warcasket]` prefix.
+- **Drawing on the wearer goes through the pawn render tree, not draw hooks.** Extra worn
+  graphics are `apparel.renderNodeProperties` entries on the def (additive to the default
+  worn-graphic node; the armor's thruster glow is the model). Anything that changes per frame
+  must also keep the wearer out of the zoomed-out pawn cache, which bakes the tree once; the
+  glow's prefix in `Source/1.6/Patches/` is the precedent.
 - **Patch timing is the load-bearing hazard of this mod.** `PatchAll()` runs from a
   `[StaticConstructorOnStartup]` (`ModInit.cs`), *not* a `Mod` subclass constructor, on purpose:
   Mod constructors run before defs load, and applying a detour JIT-compiles the target and runs

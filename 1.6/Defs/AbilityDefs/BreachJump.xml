@@ -84,6 +84,13 @@
     Blast Off in space, whose flame burns to the landing; both moved up to the mid-back
     thruster outlets. The Vanilla Gravship Expanded root switches the tank to astrofuel and
     these two to the purple astroflame pair defined there.
+
+    Thruster glow (2026-09-18): thrusterGlowCurve maps cast progress (0 at the click, 1 as
+    the flyer launches) to the opacity of the armor's thruster-outlet overlay (the render
+    node declared in ThingDefs_Misc/Warcasket_Shipcracker.xml). Heat builds slowly and
+    then rushes: a quarter opacity at 60% of the cast, most of it in the last third. The
+    flight holds full opacity and there is no fade-out after landing or an interrupted
+    cast; the ability class explains the state tracking.
   -->
   <VEF.Abilities.AbilityDef>
     <defName>SCWC_BreachJump</defName>
@@ -106,6 +113,14 @@
         <spaceFlightMaxSeconds>4</spaceFlightMaxSeconds>
         <flightEffecter>SCWC_BreachJumpFlame</flightEffecter>
         <spaceFlightEffecter>SCWC_BreachBurnFlame</spaceFlightEffecter>
+        <thrusterGlowCurve>
+          <points>
+            <li>(0, 0)</li>
+            <li>(0.6, 0.25)</li>
+            <li>(0.85, 0.65)</li>
+            <li>(1, 1)</li>
+          </points>
+        </thrusterGlowCurve>
         <spaceIconPath>UI/Abilities/BlastOff</spaceIconPath>
         <vacuumDescription>In vacuum it has no range limit, but the way must be open.</vacuumDescription>
         <vacuumLabel>breach burn</vacuumLabel>

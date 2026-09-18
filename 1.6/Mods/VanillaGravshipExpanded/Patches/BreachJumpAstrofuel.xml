@@ -13,8 +13,11 @@
   Astrofuel burns purple in VGE (its astrofire and fuel art), so the flight exhaust
   follows the fuel: the extension's two effecters switch from the main tree's orange
   SCWC_BreachJumpFlame / SCWC_BreachBurnFlame to this root's SCWC_BreachJumpAstroflame / SCWC_BreachBurnAstroflame
-  (Defs/EffecterDefs/), which spray VGE's own Astrospark texture. The ability gizmo
-  icons are handled separately.
+  (Defs/EffecterDefs/), which spray VGE's own Astrospark texture, and the armor's
+  thruster-outlet glow (the render node in the armor def, drawn over the desaturated
+  ThrusterGlow art while the jump charges and flies) is tinted the same purple as
+  SCWC_AstroflameGlow instead of chemfuel orange. The ability gizmo icons are handled
+  separately.
 -->
 <Patch>
   <Operation Class="PatchOperationReplace">
@@ -39,6 +42,12 @@
     <xpath>Defs/VEF.Abilities.AbilityDef[defName="SCWC_BreachJump"]/modExtensions/li[@Class="ShipcrackerWarcasket.BreachJumpExtension"]/spaceFlightEffecter</xpath>
     <value>
       <spaceFlightEffecter>SCWC_BreachBurnAstroflame</spaceFlightEffecter>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/apparel/renderNodeProperties/li[debugLabel="SCWC_ThrusterGlow"]/color</xpath>
+    <value>
+      <color>(0.75, 0.5, 1)</color>
     </value>
   </Operation>
 </Patch>
