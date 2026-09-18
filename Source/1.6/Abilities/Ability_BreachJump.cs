@@ -12,36 +12,25 @@ using Ability = VEF.Abilities.Ability;
 
 namespace ShipcrackerWarcasket;
 
-// The Shipcracker armor's jump. Modelled on VFEP's Ability_PowerJump (Aerial set) but with
-// its own rules:
-//  - On a planet: any walkable cell within the wearer's SCWC_BreachJumpRange, no sight test
-//    (Aerial parity; every worn piece can add range through equippedStatOffsets).
-//  - In space (Odyssey's vacuum biome or the Orbit planet layer): no range limit, but the
-//    target must be in line of sight. Both checks are vanilla fields, so no DLC gate.
-//  - No takeoff blast. The landing fires SCWC_Breach through PawnFlyer_BreachJump, scaled by
-//    the wearer's SCWC_BreachPower, so the shoulders can make it hit harder.
-//  - Takeoff and landing both punch through any non-thick roof within roofPunchRadius
-//    (constructed, thin rock, SOS2 hull; never overhead mountain), unless the jump begins and
-//    ends in the same indoor room, which reads as a hop across the floor, not the ceiling.
-// Fuel comes from a CompApparelReloadable on the same apparel as the ability comp.
+// The Shipcracker armor's jump, modelled on VFEP's Ability_PowerJump (Aerial set):
+//  - Planet: any walkable cell within SCWC_BreachJumpRange, no sight test (Aerial parity).
+//  - Space (Map.Biome.inVacuum or Tile.LayerDef.isSpace, both vanilla fields, so no DLC gate):
+//    unlimited range, target must be in line of sight.
+//  - No takeoff blast; the landing fires SCWC_Breach from PawnFlyer_BreachJump.
+//  - Takeoff and landing punch through non-thick roofs within roofPunchRadius unless the jump
+//    starts and ends in the same indoor room.
+// Fuel is the CompApparelReloadable on the same apparel as the ability comp.
 //
-// Thruster glow: the armor's PawnRenderNode_ThrusterGlow reads ThrusterGlowAlpha to fade the
-// outlet overlay in over the cast and hold it lit through the flight. The cast state comes from
-// VEF's WarmupToil hook on the cast job's wait toil (see WarmupToil below); the flight state is
-// simply whether the wearer is held by a PawnFlyer_BreachJump. Nothing fades out: an
-// interrupted cast or a landing drops the glow at once, by design (2026-09-18).
+// The armor's PawnRenderNode_ThrusterGlow reads ThrusterGlowAlpha: cast progress comes from the
+// WarmupToil hook (see below), flight state is whether the wearer is held by a
+// PawnFlyer_BreachJump, and nothing fades out.
 //
-// Targeting previews: the vanilla Targeter hands DrawHighlight an invalid target whenever the
-// hovered cell fails CanHitTarget, so VEF's base draws the target highlight and a
-// radiusRingColor ring of GetRadiusForPawn() only over cells the jump can actually reach; we
-// return the breach radius from that so the ring is the landing blast footprint. On a planet
-// VEF's range ring stays as-is (Aerial parity). In space the range ring is meaningless, so we
-// outline every reachable cell in view instead, the way vanilla's Verb_Jump outlines its valid
-// cells: walkable and in sight, tested with the same predicate as CanHitTarget. That sweep is
-// budgeted, cached per cell and re-run only when the map reports a change (see
-// DrawSpaceValidCells): under Vanilla Gravship Expanded every space cell is walkable, so the
-// view can hold tens of thousands of candidates, each needing a line-of-sight walk from the
-// wearer, and a full sweep per camera move stalled the frame.
+// Targeting: the vanilla Targeter hands DrawHighlight an invalid target for cells failing
+// CanHitTarget, so VEF's base draws its ring only over reachable cells; GetRadiusForPawn returns
+// the breach radius so that ring is the blast footprint. In space the range ring is meaningless,
+// so every reachable cell in view is outlined instead, as Verb_Jump does. Under Vanilla Gravship
+// Expanded every space cell is walkable and each needs a line-of-sight walk, so that sweep is
+// budgeted per frame, cached per cell and re-run only on map change (see DrawSpaceValidCells).
 public class Ability_BreachJump : Ability
 {
     // "Unlimited" as a finite number so VEF's range arithmetic and ring drawing stay sane
@@ -61,23 +50,20 @@ public class Ability_BreachJump : Ability
     private static readonly Stopwatch spacePreviewWatch = new();
 
     // Per-cell preview cache for spacePreviewMap, indexed by CellIndices: 0 = never tested,
-    // otherwise the generation it was tested in shifted over two flag bits, walkable and
-    // landable (see PreviewState). Walkable is kept separately so the path-cost event handler
-    // can tell a real walkability flip from filth or a chunk landing in a cell that was already
-    // out of sight. Cells of the current generation are fresh; older ones keep drawing as they
-    // were but are re-tested by the sweep. The generation bumps only between sweeps, and only
-    // when the wearer has changed cell or a map event has set spacePreviewDirty, so a static
-    // scene costs no sight tests once the view is swept. It is never cleared for a wearer move,
-    // which used to wipe the outline and regrow it from the bottom of the view every step.
+    // otherwise the generation it was tested in shifted over two flag bits (see PreviewState).
+    // Walkable is kept apart from landable so the path-cost handler can tell a real walkability
+    // flip from filth landing in a cell that was already out of sight. Stale cells keep drawing
+    // until the sweep re-tests them; the generation bumps only between sweeps and only when the
+    // wearer moved or a map event set spacePreviewDirty, so a static scene costs nothing. Never
+    // cleared on a wearer move, which would wipe the outline and regrow it every step.
     private int[] spacePreviewState;
     private Map spacePreviewMap;
     private IntVec3 spacePreviewOrigin;
     private int spacePreviewGeneration;
     private bool spacePreviewDirty;
 
-    // The sweep: a cursor into the row-major enumeration of spacePreviewRect, carried across
-    // frames so a re-test covers the whole view before another begins. Restarting from the
-    // bottom row on every refresh starved the top of the view of re-tests entirely.
+    // Sweep cursor into the row-major enumeration of spacePreviewRect, carried across frames so
+    // a re-test covers the whole view before another begins.
     private CellRect spacePreviewRect;
     private int spacePreviewCursor;
 
@@ -427,9 +413,9 @@ public class Ability_BreachJump : Ability
             tank?.UsedOnce();
 
         // No takeoff effect beyond the flyer's own flame (launch sound and flash included), as
-        // on Aerial. A launch distortion ring was tried on space maps and dropped 2026-09-18:
-        // the landing ring (see DoBreach) is the effect that matters, and a second ring at the
-        // origin cluttered the shot and pulled the eye away from where the wearer comes down.
+        // on Aerial: not a launch distortion ring too, because the landing ring (see DoBreach)
+        // is the effect that matters and a second ring at the origin would pull the eye away
+        // from where the wearer comes down.
 
         var destination = targets[0].Cell;
         // Decided once at launch, while the wearer still stands at the origin, and carried by the

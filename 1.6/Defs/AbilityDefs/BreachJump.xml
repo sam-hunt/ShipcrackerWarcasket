@@ -2,95 +2,63 @@
 <Defs>
   <!--
     The Shipcracker armor's jump, granted through VEF's CompAbilitiesApparel on
-    SCWC_Warcasket_Shipcracker and fuelled by the CompApparelReloadable on the same
-    def. Templated from VFEP's VFEP_PowerJump (1.6/Defs/AbilityDefs/Abilities.xml);
-    the rules that differ live in ShipcrackerWarcasket.Ability_BreachJump (planet:
-    ranged, no sight test; space: unlimited range, sight required; landing-only
-    breach blast) and the numbers in the BreachJumpExtension below.
+    SCWC_Warcasket_Shipcracker and fuelled by the CompApparelReloadable on the same def.
+    Templated from VFEP's VFEP_PowerJump (1.6/Defs/AbilityDefs/Abilities.xml); the rules that
+    differ live in ShipcrackerWarcasket.Ability_BreachJump (planet: ranged, no sight test;
+    space: unlimited range, sight required; landing-only breach blast) and the numbers in the
+    BreachJumpExtension below.
 
-    Tuning (2026-09-16, damage retuned 2026-09-17): fuelPerJump 20 of a 100-charge
-    chemfuel tank (Aerial's numbers; 5 jumps per tank). breachDamage 20 (was 30):
-    the pawn-facing number, split into 2 to 4 wounds by the SCWC_Breach def; Aerial's
-    jump does 15, a frag grenade 50. Wall and building damage come from that def's
-    factors (600 to a wall cell, 150 to a door or turret) and the shoulders'
-    SCWC_BreachPower, which its worker applies to buildings only. breachArmorPenetration
-    0.15 (Aerial's works out at 0.225, a grenade's 0.75): passed explicitly because
-    GenExplosion otherwise derives penetration as damage x 0.015, which at 30 damage
-    was 0.45 and negated marine armor outright. breachRadius 2 (down from 3 on
-    09-16): a 13-cell footprint instead of 29, so a landing punches a door-sized hole
-    through the wall it lands beside rather than levelling a room; vanilla's
-    explosion still damages wall cells adjacent to the open cells it reaches. Wearer
-    excluded; allies in the footprint are not, as with Aerial. requireLineOfSight is
-    ignored by the ability class and set false only to document the planet rule.
-    The blast radius is previewed at the hovered cell while targeting, and on a
-    space map the reachable cells in view are outlined (see the ability class).
+    fuelPerJump 20 of a 100-charge chemfuel tank (Aerial's numbers; 5 jumps per tank).
+    breachDamage 20 is the pawn-facing number, split into 2 to 4 wounds by the SCWC_Breach def;
+    Aerial's jump does 15, a frag grenade 50. Wall and building damage come from that def's
+    factors (600 to a wall cell, 150 to a door or turret) and the shoulders' SCWC_BreachPower,
+    which its worker applies to buildings only. breachArmorPenetration 0.15 (Aerial's works out
+    at 0.225, a grenade's 0.75) is passed explicitly because GenExplosion otherwise derives
+    penetration as damage x 0.015. breachRadius 2 gives a 13-cell footprint, small enough that a
+    landing punches a door-sized hole through the wall it lands beside rather than levelling a
+    room; vanilla's explosion still damages wall cells adjacent to the open cells it reaches.
+    Wearer excluded; allies in the footprint are not, as with Aerial. requireLineOfSight is
+    ignored by the ability class and set false only to document the planet rule. The blast
+    radius is previewed at the hovered cell while targeting, and on a space map the reachable
+    cells in view are outlined (see the ability class).
 
-    Roof punch (2026-09-17): takeoff and landing each drop every non-thick roof cell
-    within roofPunchRadius 1 (5 cells, one below breachRadius so the hole in the
-    ceiling is tighter than the hole in the wall): constructed, thin rock, SOS2's hull
-    roof, Odyssey gravships' constructed roof; never overhead mountain, the same
-    isThickRoof gate DropCellFinder uses for drop pods. Done through vanilla's
-    RoofCollapserImmediate, as Skyfaller.HitRoof does: punch-through sound, rubble
-    filth, 15 to 30 Crush to anything in those cells. The wearer's own cell loses its
-    roof silently so they are not crushed by their own hole (a drop pod shields its
-    occupants the same way; they leave it after the roof is gone). The takeoff punch
-    is silent throughout: sound and open roof, but no crush and no rubble, so the
-    squadmates who stand beside a wearer at launch are spared (decision 2026-09-17;
-    Aerial's takeoff blast does hit them, but that is its firecracker, not a ceiling
-    falling on a formation). Skipped when
-    the jump starts and ends in the same indoor Room (walls and doors bound a Room),
-    since a hop across a floor does not go through the ceiling; the outdoor Room, any
-    Room touching the map edge, is exempt from the skip so a hop under or out from a
-    thin rock overhang still smashes it. Explosions never touch the roof grid and wall
-    support reaches 6.9 cells, so without this the jump would never open a roof. In
-    space this vents a gravship room the wearer leaves or breaches into, which is the
-    point of the set.
+    roofPunchRadius 1 is one below breachRadius so the hole in the ceiling is tighter than the
+    hole in the wall; the roof rules themselves live in the ability class. In space this vents
+    the gravship room the wearer leaves or breaches into, which is the point of the set.
 
-    Space flight (2026-09-17): a straight constant-speed run at spaceFlightSpeedFactor 3
-    times the wearer's VFEP_FlightSpeed (36 cells/s at the base 12; Aerial's full set
-    reaches 27 on a planet), capped at spaceFlightMaxSeconds 4 so a hop past 144 cells
-    speeds up rather than drag. It uses Shock's Blast Off exhaust; the flyer class
-    explains both. The landing blast's shockwave ring comes from the SCWC_Breach
-    DamageDef; a second ring at the launch cell was dropped on 2026-09-18 so the
-    landing keeps the player's eye.
+    Space flight runs at spaceFlightSpeedFactor 3 times the wearer's VFEP_FlightSpeed (36
+    cells/s at the base 12; Aerial's full set reaches 27 on a planet), capped at
+    spaceFlightMaxSeconds 4 so a hop past 144 cells speeds up rather than drags. The landing
+    shockwave ring is the SCWC_Breach DamageDef's centre effecter; the launch cell gets none.
 
-    Text (2026-09-17): "breach jump" on a planet, "breach burn" in space (vacuumLabel
-    on the extension, applied to the gizmo and tooltip title by the ability class).
-    VFEP and vanilla otherwise swap a gizmo label only when the click does something
-    else (grappling hook vs reload), and here only the reach rules change, but the
-    space mode is a different enough experience (straight, fast, map-length, its own
-    icon) to advertise under its own name; "burn" is the
-    spaceflight word for a straight engine firing, and keeping "breach" in both
-    names ties them to the one fuel tank and landing. The description follows Power
-    Jump's register and length (no numbers: VEF appends range, radius and cast time
-    itself, and the range line drops out in space because SpaceRange is above its
-    display cap; no fuel line: the tank takes astrofuel at half the charges under
-    VGE1).
-    The vacuum sentence lives on the extension (vacuumDescription) and the ability
-    class appends it to the tooltip only when some loaded def can produce a space
-    map, so players without Odyssey never read about a mode they cannot reach. A
-    Defs-level patch from an Odyssey compat root was rejected: the tooltip is the
-    description's only surface, and a patched description would drag its
-    DefInjected entry into the gated root, where it would collide with the
-    main-tree entry for the same field whenever the gate is open.
+    "breach jump" is the planet label, "breach burn" the space one (vacuumLabel, applied to
+    the gizmo and tooltip title by the ability class): space is a different enough experience
+    to advertise under its own name, and "breach" in both ties them to the one tank and
+    landing. The description carries no numbers (VEF appends range, radius and cast time; the
+    range line drops out in space because SpaceRange is above its display cap) and no fuel line
+    (the tank takes astrofuel at half the charges under VGE1). vacuumDescription is appended to
+    the tooltip only when a loaded def can produce a space map, so players without Odyssey
+    never read about a mode they cannot reach; an extension field rather than a patched
+    description, because a patch from the gated root would drag the DefInjected entry for the
+    same field into that root and collide with the main-tree entry whenever the gate is open.
 
-    Icons are placeholders borrowed from VFEP until the commissioned art lands:
-    Aerial's Power Jump on a planet, Shock's Blast Off (spaceIconPath) in space.
+    Icons are placeholders borrowed from VFEP until the commissioned art lands: Aerial's Power
+    Jump on a planet, Shock's Blast Off (spaceIconPath) in space.
 
-    Flight exhaust (2026-09-18): flightEffecter / spaceFlightEffecter name the effecter the
-    flyer plays for the whole flight, so a compat root can recolour it by patch. The main
-    tree burns chemfuel and uses our orange copies of VFEP's exhausts (EffecterDefs/): Aerial's
-    Power Jump effect on a planet, whose flame cuts out early to suit a short hop, and Shock's
-    Blast Off in space, whose flame burns to the landing; both moved up to the mid-back
-    thruster outlets. The Vanilla Gravship Expanded root switches the tank to astrofuel and
-    these two to the purple astroflame pair defined there.
+    flightEffecter / spaceFlightEffecter name the effecter the flyer plays for the whole flight,
+    so a compat root can recolour it by patch. The main tree burns chemfuel and uses our orange
+    copies of VFEP's exhausts (EffecterDefs/): Aerial's Power Jump effect on a planet, whose
+    flame cuts out early to suit a short hop, and Shock's Blast Off in space, whose flame burns
+    to the landing; both moved up to the mid-back thruster outlets. The Vanilla Gravship
+    Expanded root switches the tank to astrofuel and these two to the purple astroflame pair
+    defined there.
 
-    Thruster glow (2026-09-18): thrusterGlowCurve maps cast progress (0 at the click, 1 as
-    the flyer launches) to the opacity of the armor's thruster-outlet overlay (the render
-    node declared in ThingDefs_Misc/Warcasket_Shipcracker.xml). Heat builds slowly and
-    then rushes: a quarter opacity at 60% of the cast, most of it in the last third. The
-    flight holds full opacity and there is no fade-out after landing or an interrupted
-    cast; the ability class explains the state tracking.
+    thrusterGlowCurve maps cast progress (0 at the click, 1 as the flyer launches) to the
+    opacity of the armor's thruster-outlet overlay (the render node declared in
+    ThingDefs_Misc/Warcasket_Shipcracker.xml). Heat builds slowly and then rushes: a quarter
+    opacity at 60% of the cast, most of it in the last third. The flight holds full opacity and
+    there is no fade-out after landing or an interrupted cast; the ability class explains the
+    state tracking.
   -->
   <VEF.Abilities.AbilityDef>
     <defName>SCWC_BreachJump</defName>

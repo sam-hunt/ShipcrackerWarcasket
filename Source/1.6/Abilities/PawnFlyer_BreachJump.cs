@@ -6,31 +6,22 @@ using VEF.Abilities;
 
 namespace ShipcrackerWarcasket;
 
-// Flight leg of the Breach Jump. Mirrors VFEP's PawnFlyer_PowerJump on a planet: flight time
-// comes from the wearer's VFEP_FlightSpeed instead of the def's fixed flightSpeed, and a
-// jump-flame effecter plays during flight. The landing detonation is the ability's
-// breach rather than a Bomb.
+// Flight leg of the Breach Jump, after VFEP's PawnFlyer_PowerJump: flight time comes from the
+// wearer's VFEP_FlightSpeed rather than the def's flightSpeed, an exhaust effecter plays for
+// the flight, and the landing is the ability's breach rather than a Bomb.
 //
-// Space maps get a different flight (2026-09-17):
-//  - Straight line at constant speed, no arc. Vanilla's RecomputePosition front-loads the trip
-//    (15% of the distance in the first 10% of the time, PawnFlyerBase's progressCurve) and
-//    lifts the pawn along an inverse parabola scaled by heightFactor; both read as a hop under
-//    gravity. In zero g the thrusters push one way the whole trip, so progress is linear and
-//    the pawn stays on the line. Done through VEF's CustomRecomputePosition hook, so the def's
-//    curve and heightFactor still apply on a planet.
-//  - Faster: the wearer's VFEP_FlightSpeed times the extension's spaceFlightSpeedFactor, still
-//    capped at spaceFlightMaxSeconds so a map-length hop does not drag.
-//  - SCWC_BreachBurnFlame instead of SCWC_BreachJumpFlame (our copies of VFEP's Shock Blast
-//    Off and Aerial Power Jump effects). The two are identical except for the flame sprayers'
-//    maxMoteCount: the jump exhaust cuts out early, which suits a short hop but leaves a
-//    multi-second space run coasting silently; the burn keeps going to the landing. Both come
-//    from the ability extension (flightEffecter / spaceFlightEffecter) so a compat root can
-//    recolour the exhaust by patch; the DefOf entries are the fallback for a flyer whose
-//    ability reference did not survive a reload. Their flame, glow and smoke sprayers are
-//    SubEffecter_ExhaustSprayer entries, which spray a copy of each fleck raised to the PawnState
-//    layer while the wearer faces north, so the trail comes out over the wearer's back when the
-//    outlets face the camera and under the wearer otherwise. That only shows because the
-//    effecter is ticked after the flight advances (see Tick).
+// Space maps fly differently:
+//  - A straight line at constant speed through VEF's CustomRecomputePosition hook. Vanilla's
+//    RecomputePosition front-loads progress (PawnFlyerBase's progressCurve) and lifts the pawn
+//    along an inverse parabola scaled by heightFactor, which reads as a hop under gravity; the
+//    def's curve and heightFactor still apply on a planet.
+//  - Faster: VFEP_FlightSpeed times the extension's spaceFlightSpeedFactor, capped at
+//    spaceFlightMaxSeconds so a map-length hop does not drag.
+//  - The extension's spaceFlightEffecter instead of flightEffecter. The two differ only in the
+//    sprayers' maxMoteCount: the jump exhaust cuts out early to suit a short hop, the burn runs
+//    to the landing. Both live on the extension so a compat root can recolour them by patch;
+//    the DefOf entries are the fallback for a flyer whose ability reference did not survive a
+//    reload.
 public class PawnFlyer_BreachJump : AbilityPawnFlyer
 {
     // PawnFlyer keeps the takeoff-to-landing distance private; vanilla's own SpawnSetup uses
@@ -89,16 +80,12 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
         return true;
     }
 
-    // The exhaust is ticked after the flight has advanced, not before as vanilla's own flight
-    // effecter is. The sprayers spawn each fleck at this thing's DrawPos, and the position is
-    // recomputed from ticksFlying, which base.Tick increments: ticked first, a fleck lands where
-    // the wearer was drawn last frame, and by this frame's draw the wearer has moved on by a
-    // whole tick of travel (0.6 cells at the space burn's 36 cells/s, 0.2 on a planet). The
-    // trail then never overlaps the wearer at all, and starts a body-length behind them (seen
-    // in game 2026-09-18, on both facings). Ticked after, this frame's flecks sit on the
-    // thruster outlets, which is where the north-facing raised flecks (see the effecter defs)
-    // have anything to draw over. base.Tick destroys the flyer on landing, and Destroy has
-    // already cleaned the effecter up by then; recreating it here would replay the launch.
+    // The exhaust is ticked after base.Tick, which advances ticksFlying and so DrawPos, where
+    // the sprayers spawn their flecks. Ticked before, each fleck would spawn a whole tick of
+    // travel behind where the wearer is drawn this frame (0.6 cells at the space burn's speed)
+    // and the trail would never overlap the body, which the north-facing raised flecks rely on.
+    // base.Tick destroys the flyer on landing, and Destroy has already cleaned the effecter up;
+    // recreating it here would replay the launch.
     protected override void Tick()
     {
         base.Tick();

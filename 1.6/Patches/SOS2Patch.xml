@@ -3,8 +3,8 @@
   <!--
     Save Our Ship 2 / Universum parity for the Shipcracker set.
 
-    VFEP's own 1.6/Patches/SOS2Patch.xml (commit e237aba, 2026-08-29) makes its
-    warcasket armor and helmets space-worthy when either mod is active: it adds
+    VFEP's own 1.6/Patches/SOS2Patch.xml makes its warcasket armor and helmets
+    space-worthy when either mod is active: it adds
     the EVA apparel tag and overrides Insulation_Cold to a flat 100. It matches
     its defs by an explicit defName list, not by parent or tag, so a third-party
     warcasket parented on the same VFEP bases gets nothing. This file does the

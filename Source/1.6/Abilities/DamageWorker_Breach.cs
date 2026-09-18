@@ -7,7 +7,7 @@ namespace ShipcrackerWarcasket;
 // by the instigator's SCWC_BreachPower before the def's building factors apply, so the
 // shoulders' bonus makes a landing hit structures harder without touching pawn damage or
 // armor penetration. Scaling the explosion's damage amount instead would do both, since
-// GenExplosion derives armor penetration from the amount it is handed (2026-09-17 decompile).
+// GenExplosion derives armor penetration from the amount it is handed (decompile-verified).
 public class DamageWorker_Breach : DamageWorker_AddInjury
 {
     public override DamageResult Apply(DamageInfo dinfo, Thing thing)

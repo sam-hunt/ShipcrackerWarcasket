@@ -14,12 +14,10 @@
   meaningful, which is why this patch sits in the VGE1 root and the main tree
   carries nothing.
 
-  Factor 19 (2026-09-17; was 10, which the arithmetic below shows gave about a
-  quarter of walking speed, not the half the intent called for): for a wearer at
-  the 4.6 c/s baseline (13 ticks per move), (13 + 490) / 19 = 26.5 ticks per cell,
-  about half walking speed in open space and a clear step below the astrorig's
-  (13 + 490) / 27.5 = 18.3 (about 70 percent). Unaided, the same cell costs the
-  clamped 450 ticks.
+  Factor 19: for a wearer at the 4.6 c/s baseline (13 ticks per move),
+  (13 + 490) / 19 = 26.5 ticks per cell, about half walking speed in open space
+  and a clear step below the astrorig's (13 + 490) / 27.5 = 18.3 (about 70
+  percent). Unaided, the same cell costs the clamped 450 ticks.
 
   Appended to the armor's existing ApparelExtension (the one holding the trait swap
   and capacity floors). That entry carries priority 1 for a reason that decides

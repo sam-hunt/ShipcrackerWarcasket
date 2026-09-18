@@ -22,6 +22,12 @@ decompile-verified call paths live in the header comment of the file they descri
 or changing something, put the *why* there and only add a line here if it constrains work in
 other files. Do not restate def values or call paths here; they drift.
 
+**Comments describe the present, git describes the past.** A header or code comment explains the
+current state where the code does not make it obvious: engine facts it relies on, what a number is
+balanced against, cross-file coupling. It carries no dates, no previous values, no record of what
+was tried and dropped, and no "seen in game" notes; that history belongs in the commit message
+and diff. Def comments ship in the bundle, so keep them lean.
+
 ## Build Commands
 
 ```bash

@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   <!--
-    The Breach Jump's landing damage. A clone of Core's Bomb (Damages_Misc.xml)
-    with the building factors turned into the point of the set. DamageWorker.Apply
-    multiplies building damage by buildingDamageFactor and then by the passable or
-    impassable factor (Bomb is 1 / 2 / 4, and Core's Wall def adds its own x2 for
-    Bomb, so a grenade's 50 does 400 to a wall cell and 100 to a door or turret).
+    The Breach Jump's landing damage. A clone of Core's Bomb (Damages_Misc.xml) with the
+    building factors turned into the point of the set. DamageWorker.Apply multiplies building
+    damage by buildingDamageFactor and then by the passable or impassable factor (Bomb is 1 / 2
+    / 4, and Core's Wall def adds its own x2 for Bomb, so a grenade's 50 does 400 to a wall cell
+    and 100 to a door or turret).
 
-    Tuning (2026-09-17, retuned from 30 damage at x20 / 1 / 1 after the pawn damage
-    proved too lethal): defaultDamage 20 with x30 / 0.25 / 1 gives 600 to a wall
-    cell, the old figure (steel 300, hull 420, granite 510; plasteel 840 and uranium
-    750 need the shoulders), and 150 to passable buildings, the same 4:1 wall to
-    contents ratio vanilla's Bomb keeps, so a landing takes the door and light
-    turrets but leaves an 800 HP grav engine or a 500 HP thruster standing. The
-    worker is ours: DamageWorker_Breach scales building damage by the instigator's
-    SCWC_BreachPower before these factors, so the shoulders' bonus never reaches
-    pawns. Pawn damage 20 (Aerial's jump is 15, a grenade 50). minDamageToFragment
-    15 copies Bomb's: without it the whole hit lands as one wound on one random
-    part, organs included, and 30 to a heart or brain killed outright; with it a
-    hit splits into 2 to 4 wounds of 5 to 10. defaultArmorPenetration 0.15 mirrors
-    the value the ability passes; GenExplosion ignores this field whenever it is
-    handed a damage amount and would otherwise use damage x 0.015. Blunt armor
-    category rather than Bomb's Sharp: it is an impact, and end-game blunt ratings
-    run lower than sharp, so the pawn damage lands. Heat energy per cell dropped
-    (kinetic, not incendiary); the visual and sound reuse Bomb's, plus our
-    SCWC_BreachLanding shockwave ring at the centre (explosionCenterEffecter, fired
-    by DamageWorker.ExplosionStart on every breach explosion, so the landing ring
-    needs no C# and follows the blast onto planet and space maps alike).
+    defaultDamage 20 with x30 / 0.25 / 1 gives 600 to a wall cell (steel 300, hull 420, granite
+    510; plasteel 840 and uranium 750 need the shoulders) and 150 to passable buildings, the
+    same 4:1 wall-to-contents ratio vanilla's Bomb keeps, so a landing takes a door or light
+    turret but leaves an 800 HP grav engine or a 500 HP thruster standing. The worker is ours:
+    DamageWorker_Breach scales building damage by the instigator's SCWC_BreachPower before these
+    factors, so the shoulders' bonus never reaches pawns. Pawn damage 20 (Aerial's jump is 15, a
+    grenade 50). minDamageToFragment 15 copies Bomb's: without it the whole hit lands as one
+    wound on one random part, organs included, and 30 to a heart or brain kills outright; with
+    it a hit splits into 2 to 4 wounds of 5 to 10. defaultArmorPenetration 0.15 mirrors the
+    value the ability passes; GenExplosion ignores this field whenever it is handed a damage
+    amount and would otherwise use damage x 0.015. Blunt armor category rather than Bomb's
+    Sharp: it is an impact, and end-game blunt ratings run lower than sharp, so the pawn damage
+    lands. Heat energy per cell dropped (kinetic, not incendiary); the visual and sound reuse
+    Bomb's, plus our SCWC_BreachLanding shockwave ring at the centre (explosionCenterEffecter,
+    fired by DamageWorker.ExplosionStart on every breach explosion, so the landing ring needs no
+    C# and follows the blast onto planet and space maps alike).
   -->
   <DamageDef>
     <defName>SCWC_Breach</defName>

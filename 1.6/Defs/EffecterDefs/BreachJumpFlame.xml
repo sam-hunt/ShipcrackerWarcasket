@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   <!--
-    Planet-flight exhaust for the Breach Jump: the orange chemfuel flame, named by the
-    ability extension's flightEffecter. VFEP's VFEP_PowerJumpPawnEffect (Aerial's Power Jump)
-    child for child, on VFEP's own VFEP_JumpFlame / VFEP_JumpFlameGlow flecks, launch sound
-    and smoke, with two changes (2026-09-18, after a first look in game): the sprayers'
-    positionOffset is (0,0,-0.05) instead of VFEP's -0.5, so the flecks leave the thruster
-    outlets drawn at mid-back on our torso texture rather than the pawn's feet, and the flame
-    burns for 28 ticks instead of 14 (smoke 16 instead of 8, same span) so the hop reads
-    bigger. A copy rather than a patch of VFEP's def because Aerial's own jump must keep its
-    look. The Vanilla Gravship Expanded root's SCWC_BreachJumpAstroflame is this def with the
-    flecks swapped for purple ones; keep the two in step.
+    Planet-flight exhaust for the Breach Jump: the orange chemfuel flame, named by the ability
+    extension's flightEffecter. VFEP's VFEP_PowerJumpPawnEffect (Aerial's Power Jump) child for
+    child, on VFEP's own VFEP_JumpFlame / VFEP_JumpFlameGlow flecks, launch sound and smoke,
+    with two changes: the sprayers' positionOffset is (0,0,-0.05) instead of VFEP's -0.5, so the
+    flecks leave the thruster outlets drawn at mid-back on our torso texture rather than the
+    pawn's feet, and the flame burns for 28 ticks instead of 14 (smoke 16 instead of 8, same
+    span) so the hop reads bigger. A copy rather than a patch of VFEP's def because Aerial's own
+    jump must keep its look. The Vanilla Gravship Expanded root's SCWC_BreachJumpAstroflame is
+    this def with the flecks swapped for purple ones; keep the two in step.
 
     The three continuous sprayers below are ShipcrackerWarcasket.ExhaustSprayerDef, whose
     SubEffecter_ExhaustSprayer sprays fleckDefNorth (a copy of fleckDef raised to the PawnState
     altitude layer) instead of fleckDef while the flying wearer faces north, so the exhaust
     trail draws over the wearer's back when the outlets face the camera and under them
-    otherwise (2026-09-18).
+    otherwise.
   -->
   <EffecterDef>
     <defName>SCWC_BreachJumpFlame</defName>

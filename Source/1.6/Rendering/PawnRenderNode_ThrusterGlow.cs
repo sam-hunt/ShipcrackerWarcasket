@@ -4,21 +4,18 @@ using Verse;
 
 namespace ShipcrackerWarcasket;
 
-// The armor's thruster-outlet glow: a second render node declared in the armor def's
-// apparel.renderNodeProperties (see the def header), drawn over the worn armor texture with an
-// alpha that follows the Breach Jump's cast progress and holds at full through the flight.
+// The armor's thruster-outlet glow: a second render node from the armor def's
+// apparel.renderNodeProperties, drawn over the worn texture with an alpha that follows the
+// Breach Jump's cast and holds through the flight.
 //
-// A node, not a Harmony draw hook: DynamicPawnRenderNodeSetup_Apparel adds every
-// renderNodeProperties entry AND the default worn-graphic node for the same apparel, with
-// node.apparel set on both, so the game builds, parents and matrices this node exactly as it
-// does the armor's. The graphic comes from the base PawnRenderNode (props.texPath as a
-// Graphic_Multi through props.shaderTypeDef and props.color), so the overlay's _north/_east/
-// _south files are picked and west-flipped by the same code as the armor's, and the mesh is the
-// same humanlike body set. What differs is in the worker: transform and layer are delegated
-// to the armor's own node so the two can never drift apart, and the alpha is written into the
-// material property block every frame.
+// A node rather than a draw hook because DynamicPawnRenderNodeSetup_Apparel adds every
+// renderNodeProperties entry beside the default worn-graphic node with node.apparel set on
+// both, so the game parents and matrices this node exactly as the armor's, and the base
+// PawnRenderNode loads props.texPath as a Graphic_Multi, so the _north/_east/_south files are
+// picked and west-flipped by the same code. The worker delegates transform and layer to the
+// armor's node and writes the alpha into the property block.
 //
-// This class only holds the per-node caches the worker needs; workers are shared singletons.
+// Holds only the per-node caches the worker needs; workers are shared singletons.
 public class PawnRenderNode_ThrusterGlow : PawnRenderNode
 {
     private PawnRenderNode armorNode;

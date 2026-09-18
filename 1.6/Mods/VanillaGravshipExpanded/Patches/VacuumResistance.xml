@@ -8,9 +8,8 @@
   spacer warcasket sets by an explicit defName list: armor 0.2 to 0.22, helmet
   0.7 to 0.65, shoulders left at 0.1, so a full set totals 0.97. That list never
   reaches this mod's defs, so with VGE1 active the Shipcracker set would be the
-  only warcasket at a full 1.0. This patch applies the same two numbers to our
-  armor and helmet (decision 2026-09-16: mirror the nerf; the shoulders stay at
-  0.1 exactly as VGE1 leaves VFEP's).
+  only warcasket at a full 1.0. This patch mirrors the same two numbers onto our
+  armor and helmet; the shoulders stay at 0.1, exactly as VGE1 leaves VFEP's.
 
   Loaded only from the IfModActive="vanillaexpanded.gravship" root in
   LoadFolders.xml (package-id gate; VGE1 hard-requires Odyssey, so the

@@ -2,73 +2,68 @@
 <Defs>
   <!--
     Templated from VFEP's VFEP_WarcasketShoulders_Siegebreaker (VFEPirates.WarcasketDef,
-    ParentName="VFEP_WarcasketShoulderPadBase") at VFEP commit e237aba (2026-08-29),
-    1.6/Defs/ThingDefs_Misc/Apparel_Various.xml. Everything not listed under
-    "Tuning" below is still a verbatim Siegebreaker copy (placeholder, per
-    TODOs.md). See Warcasket_Shipcracker.xml's header for the Odyssey patch
-    findings and the WarcasketVeteran/WarcasketAll tag research; the same
-    conclusion applies here.
+    ParentName="VFEP_WarcasketShoulderPadBase") at VFEP commit e237aba,
+    1.6/Defs/ThingDefs_Misc/Apparel_Various.xml. Everything not listed under "Tuning" below is
+    still a verbatim Siegebreaker copy (placeholder, per TODOs.md). The apparel tags
+    follow the armor's header.
 
-    Tuning (2026-09-13, retuned 2026-09-17): costList Plasteel 70 (Siegebreaker
-    60). Follows the armor's Plasteel rise to 180 at the shoulder-to-armor ratio
-    the 10th-gen sets use, roughly 0.4 (Siegebreaker 60/145, Guardian 80/200,
-    Controller 60/150, Sarcophagus 60/145, Brute 60/160): 0.4 x 180 = 72, rounded
-    to the 10-plasteel steps VFEP's costLists use. No spacer components, like the
-    Siegebreaker, Guardian and Sarcophagus shoulders. ArmorRating_Blunt 1.5, the
-    Brute and Guardian shoulders' value; see the armor's header for the set-wide
-    close-combat plating rationale.
+    Tuning: costList Plasteel 70 (Siegebreaker 60) follows the armor's Plasteel rise to 180 at
+    the shoulder-to-armor ratio the 10th-gen sets use, roughly 0.4 (Siegebreaker 60/145,
+    Guardian 80/200, Controller 60/150, Sarcophagus 60/145, Brute 60/160): 0.4 x 180 = 72,
+    rounded to the 10-plasteel steps VFEP's costLists use. No spacer components, like the
+    Siegebreaker, Guardian and Sarcophagus shoulders. ArmorRating_Blunt 1.5 is the Brute and
+    Guardian shoulders' value; see the armor's header for the set-wide close-combat plating
+    rationale.
 
-    Abilities (2026-09-16, design approved that day): the breaching arms.
-    - SCWC_BreachPower +0.5: the armor's Breach Jump landing deals 900 to a wall
-      cell with these on (600 without), enough for plasteel and uranium walls.
-      Structures only; pawn damage is unchanged (2026-09-17). See
-      1.6/Defs/StatDefs/BreachPower.xml.
-    - equippedStatFactors MeleeHitChance x1.2 and MeleeDodgeChance x1.2 through
-      VEF's ApparelExtension, Shock's shoulders' numbers and the only VFEP
-      precedent for the pair (a first pass used x1.15; raised to parity on
-      2026-09-17 with the rest of the close-combat retune), merged with the
-      base's extension the way VFEP's own sets do it.
-    - No jump-range contribution: a space-centric piece, and the range lives on
-      the armor. The Siegebreaker's EnergyShieldRechargeRate +1 was dropped: VEF's
-      CompShieldBubble reads that stat off the apparel, never the pawn, so the
-      offset never reached the shield (dead XML in VFEP too).
+    Abilities, the breaching arms:
+    - SCWC_BreachPower +0.5: the armor's Breach Jump landing deals 900 to a wall cell with these
+      on (600 without), enough for plasteel and uranium walls. Structures only; pawn damage is
+      unchanged. See 1.6/Defs/StatDefs/BreachPower.xml.
+    - equippedStatFactors MeleeHitChance x1.2 and MeleeDodgeChance x1.2 through VEF's
+      ApparelExtension: Shock's shoulders' numbers, the only VFEP precedent for the pair, merged
+      with the base's extension the way VFEP's own sets do it.
+    - No jump-range contribution: a space-centric piece, and the range lives on the armor. No
+      EnergyShieldRechargeRate offset either (Siegebreaker's is +1): VEF's CompShieldBubble
+      reads that stat off the apparel, never the pawn, so the offset would never reach the
+      shield (dead XML in VFEP too).
     - costList GravlitePanel 10 under Odyssey; see the armor's header for the split.
 
-    SOS2/Universum: our 1.6/Patches/SOS2Patch.xml deliberately leaves shoulder
-    pads alone, mirroring VFEP's own patch, which only touches armor and helmets.
-    Vanilla Gravship Expanded: our VGE1 vacuum patch (see the armor's header)
-    leaves the shoulders' 0.1 alone, exactly as VGE1 leaves VFEP's.
-    Art: Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerShoulders
-    (+ _north/_east/_south), 256x256 RGBA under the root Textures/ folder, mirroring
-    VFEP's own warcasket layout.
+    SOS2/Universum: our 1.6/Patches/SOS2Patch.xml deliberately leaves shoulder pads alone,
+    mirroring VFEP's own patch, which only touches armor and helmets.
 
-    Draw order (2026-09-16): dataNorth offset y 0.05 (base 0.2) and dataSouth
-    offset y 0.014 (base 0.02). A worn apparel node's altitude is its drawData
-    offset's y (added verbatim by PawnRenderTree.TryGetMatrix) plus
-    PawnRenderUtility.AltitudeForLayer(layer), 0.000366 per layer unit, where the
-    layer is the parent node's base (ApparelBody 20, ApparelHead 70) plus the
-    piece's index among that parent's apparel; the y offsets VFEP's bases carry
-    are what actually order the pieces. Both changes only ever move this piece,
-    so every helmet and armor, ours or VFEP's, keeps its VFEP altitude and the
-    foundry's mix-and-match stays consistent (a first pass lifted our helmet
-    instead and it then sat over other sets' pauldrons in game).
-    - North: the base's 0.2 puts the pauldrons over the shell (0.107). This art
-      wants the shell's back frame over the pauldron inner edges, so 0.05 lands
-      them at about 0.058: under the shell, still above the bodysuit (VEF's
-      secondaryApparelGraphics feeds VFEP_Warcasket_Bodysuit through vanilla
-      ProcessApparel with that def's own null drawData, so it stays near 0.008 in
-      every facing and never moves with the shell), the helmet (0.026, the head
-      chain adds no y of its own) and pack-layer apparel (layer 93, 0.034).
-    - South: the base's 0.02 lands at 0.027 to 0.028 (index 0 to 3), just over
-      the helmets at 0.001 + 70 x 0.000366 = 0.027. The art wants the helmet over
-      the pauldron inner edges, so 0.014 lands them at 0.021 to 0.022: at least
-      0.004 under any helmet and 0.003 over the shell's 0.017 to 0.018, above
-      post-apparel wounds (layer 30, 0.011) and firefoam (40, 0.015). Hair and
-      beard (62 and 60, about 0.022) would draw over them if a wearer had no
+    Vanilla Gravship Expanded: our VGE1 vacuum patch (see the armor's header) leaves the
+    shoulders' 0.1 alone, exactly as VGE1 leaves VFEP's.
+
+    Art: Things/Pawn/Warcasketlike/WarcasketShipcracker/WarcasketShipcrackerShoulders (+
+    _north/_east/_south), 256x256 RGBA under the root Textures/ folder, mirroring VFEP's own
+    warcasket layout.
+
+    Draw order: dataNorth offset y 0.05 (base 0.2) and dataSouth offset y 0.014 (base 0.02). A
+    worn apparel node's altitude is its drawData offset's y (added verbatim by
+    PawnRenderTree.TryGetMatrix) plus PawnRenderUtility.AltitudeForLayer(layer), 0.000366 per
+    layer unit, where the layer is the parent node's base (ApparelBody 20, ApparelHead 70) plus
+    the piece's index among that parent's apparel; the y offsets VFEP's bases carry are what
+    actually order the pieces. Both changes only ever move this piece, so every helmet and
+    armor, ours or VFEP's, keeps its VFEP altitude and the foundry's mix-and-match stays
+    consistent; not by lifting our helmet instead, since that then sat over other sets'
+    pauldrons in game.
+
+    - North: the base's 0.2 puts the pauldrons over the shell (0.107). This art wants the
+      shell's back frame over the pauldron inner edges, so 0.05 lands them at about 0.058: under
+      the shell, still above the bodysuit (VEF's secondaryApparelGraphics feeds
+      VFEP_Warcasket_Bodysuit through vanilla ProcessApparel with that def's own null drawData,
+      so it stays near 0.008 in every facing and never moves with the shell), the helmet (0.026,
+      the head chain adds no y of its own) and pack-layer apparel (layer 93, 0.034).
+    - South: the base's 0.02 lands at 0.027 to 0.028 (index 0 to 3), just over the helmets at
+      0.001 + 70 x 0.000366 = 0.027. The art wants the helmet over the pauldron inner edges, so
+      0.014 lands them at 0.021 to 0.022: at least 0.004 under any helmet and 0.003 over the
+      shell's 0.017 to 0.018, above post-apparel wounds (layer 30, 0.011) and firefoam (40,
+      0.015). Hair and beard (62 and 60, about 0.022) would draw over them if a wearer had no
       helmet hiding the head, which is what hair does over shoulders anyway.
-    East/west inherit the base's 0.02. Only the facings that change are listed:
-    XmlInheritance merges same-named elements recursively, so the other
-    RotationalData entries come through from VFEP_WarcasketShoulderPadBase.
+
+    East/west inherit the base's 0.02. Only the facings that change are listed: XmlInheritance
+    merges same-named elements recursively, so the other RotationalData entries come through
+    from VFEP_WarcasketShoulderPadBase.
   -->
   <VFEPirates.WarcasketDef ParentName="VFEP_WarcasketShoulderPadBase">
     <defName>SCWC_WarcasketShoulders_Shipcracker</defName>

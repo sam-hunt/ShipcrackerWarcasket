@@ -6,18 +6,16 @@
   (VGE_Astrofuel, refined 70 chemfuel to 35 at the biofuel refinery, so one unit
   is worth two chemfuel plus the work). With VGE1 active the tank takes astrofuel
   instead and a jump burns 10 charges rather than 20: the same chemfuel-equivalent
-  per jump, so the refining step is never a penalty (decision 2026-09-16: the
-  astrofuel cost per jump must match or undercut chemfuel's). The tank still holds
-  100 units, so it now carries 10 jumps.
+  per jump, so the refining step is never a penalty. The tank still holds 100
+  units, so it carries 10 jumps.
 
   Astrofuel burns purple in VGE (its astrofire and fuel art), so the flight exhaust
   follows the fuel: the extension's two effecters switch from the main tree's orange
-  SCWC_BreachJumpFlame / SCWC_BreachBurnFlame to this root's SCWC_BreachJumpAstroflame / SCWC_BreachBurnAstroflame
-  (Defs/EffecterDefs/), which spray VGE's own Astrospark texture, and the armor's
-  thruster-outlet glow (the render node in the armor def, drawn over the desaturated
-  ThrusterGlow art while the jump charges and flies) is tinted the same purple as
-  SCWC_AstroflameGlow instead of chemfuel orange. The ability gizmo icons are handled
-  separately.
+  SCWC_BreachJumpFlame / SCWC_BreachBurnFlame to this root's SCWC_BreachJumpAstroflame /
+  SCWC_BreachBurnAstroflame (Defs/EffecterDefs/), which spray VGE's own Astrospark
+  texture, and the armor's thruster-outlet glow (the render node in the armor def) is
+  tinted the same purple as SCWC_AstroflameGlow instead of chemfuel orange. The ability
+  gizmo icons are handled separately.
 -->
 <Patch>
   <Operation Class="PatchOperationReplace">

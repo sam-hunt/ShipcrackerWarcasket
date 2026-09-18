@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   <!--
-    Copy of VFEP's VFEP_JumpSmoke (Fleck_Visual.xml) with only the altitude changed: PawnState, the
-    layer vanilla gives motes held over a pawn, instead of Projectile. Flying north puts the
-    wearer's thruster outlets (mid-back) toward the camera, so the exhaust trail should draw
-    over the wearer instead of under; a fleck's altitude is fixed by its def, so this is a
-    second fleck rather than a runtime override. Pawn plus five increments was tried first and
-    still drew under the wearer in game although it sat above the render tree by every number
-    the game reports; PawnState draws over (2026-09-18, see SubEffecter_ExhaustSprayer).
-    Also used by the Vanilla Gravship Expanded root's purple effecters, which have no smoke
-    fleck of their own.
-    VFEP's def carries no Name attribute, so it cannot be a ParentName here; every other field
-    is copied by hand. Sprayed via fleckDefNorth by ShipcrackerWarcasket.SubEffecter_ExhaustSprayer
-    while the flying wearer faces north. Keep in step with VFEP's VFEP_JumpSmoke.
+    VFEP's VFEP_JumpSmoke raised to PawnState (the layer vanilla uses for motes held over a
+    pawn) so the exhaust draws over the wearer's back while they fly facing north; a fleck's
+    altitude comes only from its def, so a separate def is needed. Sprayed as fleckDefNorth by
+    SubEffecter_ExhaustSprayer. A full copy because VFEP's def has no Name attribute to inherit
+    from; keep in step with it. Also used by the Vanilla Gravship Expanded root's purple
+    effecters, which have no smoke fleck of their own.
   -->
   <FleckDef ParentName="FleckBase_Thrown">
     <defName>SCWC_JumpSmokeNorth</defName>

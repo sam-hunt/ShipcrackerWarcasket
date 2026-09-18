@@ -4,34 +4,26 @@ using Verse;
 namespace ShipcrackerWarcasket;
 
 // Vanilla's continuous sprayer, spraying ExhaustSprayerDef.fleckDefNorth instead of fleckDef
-// while the effecter's source faces north (2026-09-18).
+// while the effecter's source faces north.
 //
-// The exhaust flecks sit on the Projectile layer, one full altitude layer under Pawn, so the
-// trail always drew under the flying wearer. Facing north the wearer's back, and so the thruster
-// outlets the flecks leave from, faces the camera, and the flame should come out over the body.
-// A fleck's altitude is read from its FleckDef every draw (FleckStatic.Draw), so the only way
-// to move some flecks up is a second def, and the choice between the two has to be made where
-// the flecks are created. The raised copies sit on PawnState, the layer vanilla gives motes
-// held over a pawn: a first attempt at Pawn plus five increments was 0.09 above the top of the
-// wearer's render tree by every number the game reports (flyer draw y 8.47, tree at most one
-// increment above that) and still drew under the wearer in game, PawnState (9.15) draws over.
-// Whatever orders transparent draws that close together, it is not plain height.
+// The exhaust flecks sit on Projectile, a layer under Pawn, so the trail draws under the flying
+// wearer. Facing north the thruster outlets on the wearer's back face the camera and the flame
+// should come out over the body. A fleck's altitude is read from its def every draw
+// (FleckStatic.Draw), so raising some flecks means a second def chosen where the flecks are
+// created. The raised copies sit on PawnState, the layer vanilla uses for motes held over a
+// pawn; a fraction of a layer above Pawn still renders under the wearer, transparent draw order
+// that close together is not plain height.
 //
-// Vanilla's MakeMote reads def.fleckDef and cannot be overridden, so this class keeps two defs
-// per instance: the entry as written and a shallow copy with fleckDef swapped for fleckDefNorth,
-// and points the inherited def field at whichever applies before each tick. Both are private to
-// this instance; the shared def is never mutated.
+// MakeMote reads def.fleckDef and is not virtual, so each instance keeps the def as written and
+// a shallow copy with fleckDef swapped, and points the inherited def field at one or the other
+// before each tick. The shared def is never mutated.
 //
-// The facing read is the flying pawn's own Rotation, which is what the render tree draws the
-// pawn with: PawnFlyer.MakeFlyer copies it from the caster, whom the cast job's wait toil has
-// turned to face the target cell, so for a jump it is the flight direction rounded to a
-// cardinal. It does not change in flight. Other facings keep the Projectile flecks: south
-// hides the outlets behind the body, and side-on either order reads fine.
-//
-// Whether any fleck overlaps the wearer at all is the flyer's business: PawnFlyer_BreachJump
-// ticks the effecter after the flight position advances so this frame's flecks sit on the
-// outlets. Ticked before, as vanilla does, the fastest flight leaves every fleck a body-length
-// behind the wearer and this swap has nothing to draw over (the first in-game check, 2026-09-18).
+// The facing read is the flying pawn's Rotation, which is what the render tree draws with:
+// PawnFlyer.MakeFlyer copies it from the caster, whom the cast job's wait toil has turned to
+// face the target, so it is the flight direction rounded to a cardinal and fixed for the flight.
+// Other facings keep the low flecks: south hides the outlets behind the body, and side-on either
+// order reads fine. PawnFlyer_BreachJump ticks the effecter after the position advances so this
+// frame's flecks sit on the outlets at all (see its Tick).
 public class SubEffecter_ExhaustSprayer : SubEffecter_SprayerContinuous
 {
     private readonly SubEffecterDef sideDef;

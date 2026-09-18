@@ -2,12 +2,10 @@
 <Defs>
   <!--
     Pawn-level multiplier on the structural damage of a Breach Jump landing, read by
-    DamageWorker_Breach for buildings only (2026-09-17; until then it scaled the whole
-    explosion, so it also raised pawn damage and, through GenExplosion's damage-derived
-    penetration, armor penetration). Base 1. Contributions (2026-09-16): shoulders
-    +0.5, so with them on a landing deals 900 to a wall cell, enough for plasteel
-    (840) and uranium (750), and 225 to passable buildings; pawns take the same 20
-    either way. See DamageDefs/Breach.xml for the base numbers.
+    DamageWorker_Breach for buildings only. Base 1. Contributions: shoulders +0.5, so with them
+    on a landing deals 900 to a wall cell, enough for plasteel (840) and uranium (750), and 225
+    to passable buildings; pawns take the same 20 either way. See DamageDefs/Breach.xml for the
+    base numbers.
   -->
   <StatDef>
     <defName>SCWC_BreachPower</defName>

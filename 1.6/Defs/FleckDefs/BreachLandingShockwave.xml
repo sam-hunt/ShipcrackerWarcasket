@@ -2,43 +2,41 @@
 <Defs>
   <!--
     The shockwave ring a Breach Jump or Breach Burn leaves where it lands, on a planet and in
-    space alike, fired by SCWC_BreachLanding as the SCWC_Breach explosion's centre effecter.
-    The jump's one distortion effect: a matching ring at the space launch cell was tried and
-    dropped on 2026-09-18 so nothing competes with the landing for the player's eye.
+    space alike, fired by SCWC_BreachLanding as the SCWC_Breach explosion's centre effecter. The
+    jump's one distortion effect; the launch cell gets no ring, keeping the player's eye on the
+    landing.
 
     Recipe: Core's impact wave (ShockwaveFast, the Anomaly pit gate's emergence ring; Biotech's
     mech-band stun shockwave is the same at pawn scale): a black quad on the
     MoteLargeDistortionWave shader, which sweeps a ring of background distortion outward over
-    the fleck's age (Graphic_FleckPulse feeds it AgeSecs). Chosen 2026-09-18 over the first
-    version, a FleckGlowDistortBackground disc on the PsycastDistortionMask ripple texture
-    (Core's psycast area ring, scaled fast): that read as a psycast, this reads as an impact.
-    Everything referenced here is Core-owned, so no DLC is needed: the shaderType, the
-    textures and FleckBase; Core's own ShockwaveFast and Fleck_HeatWaveDistortion use them.
+    the fleck's age (Graphic_FleckPulse feeds it AgeSecs), not a FleckGlowDistortBackground disc
+    on the PsycastDistortionMask ripple texture (Core's psycast area ring), because that reads
+    as a psycast rather than an impact. Everything referenced here is Core-owned, so no DLC is
+    needed: the shaderType, the textures and FleckBase; Core's own ShockwaveFast and
+    Fleck_HeatWaveDistortion use them.
 
     Two departures from the vanilla wave rings, both because in play the ring showed a
-    rotational, spiral-like component that the greyscale masks cannot produce (decoded: R, G
-    and B identical on every lit pixel, so no displacement vectors) and the sprayer does not
-    add (rotationRate defaults to 0). _noiseIntensity 0 (shader default 2, with
-    _ageToNoiseRatio 100 scrolling the 128x1 PsycastNoise strip by age): the one animated
-    non-radial input; zeroing it softened the twist. _DistortionTex is
-    MoteHellfireCannon_HeatWaveDistortion (one ragged spoke-free band) instead of the
-    PsychicDistortionCurrents torus, whose radial spokes gave the sweep something to appear to
-    turn; that removed it. Vanilla's rings keep both defaults and the twist.
+    rotational, spiral-like component that the greyscale masks cannot produce (decoded: R, G and
+    B identical on every lit pixel, so no displacement vectors) and the sprayer does not add
+    (rotationRate defaults to 0). _noiseIntensity 0 (shader default 2, with _ageToNoiseRatio 100
+    scrolling the 128x1 PsycastNoise strip by age) is the one animated non-radial input; zeroing
+    it softened the twist. _DistortionTex is MoteHellfireCannon_HeatWaveDistortion (one ragged
+    spoke-free band) instead of the PsychicDistortionCurrents torus, whose radial spokes gave
+    the sweep something to appear to turn. Vanilla's rings keep both defaults and the twist.
 
     Sizing: a fleck's width is drawSize x (1 + growthRate x age), and the shader's ring runs
-    within that quad (its sweep timing is compiled in and was tuned by eye). growthRate 1.5 is
-    the value every vanilla instance of this recipe uses, so drawSize sets the size: 4.5 over
-    0.40 s ends at 7.2 cells across, clearing the breach footprint (breachRadius 2 on the
-    ability extension, a 5-cell-wide disc) so it reads as the impact spreading past the
-    rubble, not lost under it. Timings follow the mech-band shockwave's shape (fade in 0.04,
-    hold, fade out 0.10) at less than half its life. _distortionIntensity 0.066 is the
-    mech-band value, the one physical stun shockwave in the game; the range shipped for THIS
-    shader runs 0.05 to 0.2 (ShockwaveFast, a screen-filling map event), and the number means
-    something else under other shaders. MoteOverheadLow, as the mech-band ring: draws over the
-    wearer and whoever else stands in the blast, while the Bomb-style cell flecks on
-    MoteOverhead, one layer up, still burst over it. drawOffscreen true so the sprayer still
-    spawns it with the camera elsewhere; a one-shot fleck, so it costs nothing. If
-    breachRadius changes, rescale drawSize with it.
+    within that quad (its sweep timing is compiled in and tuned by eye). growthRate 1.5 is the
+    value every vanilla instance of this recipe uses, so drawSize sets the size: 4.5 over 0.40 s
+    ends at 7.2 cells across, clearing the breach footprint (breachRadius 2 on the ability
+    extension, a 5-cell-wide disc) so it reads as the impact spreading past the rubble, not lost
+    under it. Timings follow the mech-band shockwave's shape (fade in 0.04, hold, fade out 0.10)
+    at less than half its life. _distortionIntensity 0.066 is the mech-band value, the one
+    physical stun shockwave in the game; the range shipped for THIS shader runs 0.05 to 0.2
+    (ShockwaveFast, a screen-filling map event), and the number means something else under other
+    shaders. MoteOverheadLow, as the mech-band ring, draws over the wearer and whoever else
+    stands in the blast, while the Bomb-style cell flecks on MoteOverhead, one layer up, still
+    burst over it. drawOffscreen true so the sprayer still spawns it with the camera elsewhere;
+    a one-shot fleck, so it costs nothing. If breachRadius changes, rescale drawSize with it.
   -->
   <FleckDef ParentName="FleckBase">
     <defName>SCWC_BreachLandingShockwave</defName>

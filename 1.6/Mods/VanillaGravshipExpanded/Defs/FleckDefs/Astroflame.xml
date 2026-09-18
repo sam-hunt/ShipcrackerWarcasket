@@ -12,10 +12,9 @@
     Astrospark is a 128 px sheet whose opaque blob fills about a third of it (VFEP's fills
     its 64 px), so drawSize 3 brings it to the same on-screen size at the effecters' VFEP
     sprayer scales. The blob is hard-edged and irregular; the sprayer's default 0-360 random
-    rotation varies it per fleck. Not yet seen in game (2026-09-18): drawSize and the tints
-    in SCWC_AstroflameGlow are the knobs. Core's grey Things/Mote/BlastExtinguisher (the
-    orange BlastFlame's mask with the colour removed, tintable through color) is the reserve
-    route if this reads too much like a sticker.
+    rotation varies it per fleck. drawSize and the tints in SCWC_AstroflameGlow are the knobs
+    if this needs adjusting; Core's grey Things/Mote/BlastExtinguisher (the orange BlastFlame's
+    mask with the colour removed, tintable through color) is an alternative texture.
 
     Also the parent of SCWC_AstroflameNorth (AstroflameNorth.xml), which inherits everything
     here and only moves the altitude up to PawnState for when the wearer faces north.
