@@ -23,7 +23,8 @@ namespace ShipcrackerWarcasket;
 //
 // The armor's PawnRenderNode_ThrusterGlow reads ThrusterGlowAlpha: cast progress comes from the
 // WarmupToil hook (see below), flight state is whether the wearer is held by a
-// PawnFlyer_BreachJump, and nothing fades out.
+// PawnFlyer_BreachJump, and nothing fades out. Each lit/unlit transition (cast start, cast end,
+// launch, landing) goes through NotifyThrusterGlowChanged so the zoomed-out pawn cache rebakes.
 //
 // Targeting: the vanilla Targeter hands DrawHighlight an invalid target for cells failing
 // CanHitTarget, so VEF's base draws its ring only over reachable cells; GetRadiusForPawn returns
@@ -366,13 +367,19 @@ public class Ability_BreachJump : Ability
             var driver = toil.actor?.jobs?.curDriver;
             if (driver == null)
                 return;
-            casting = true;
+            if (!casting)
+            {
+                casting = true;
+                NotifyThrusterGlowChanged(toil.actor);
+            }
             castProgress = toil.defaultDuration > 0
                 ? Mathf.Clamp01(1f - driver.ticksLeftThisToil / (float)toil.defaultDuration)
                 : 1f;
         });
         toil.AddFinishAction(() =>
         {
+            if (casting)
+                NotifyThrusterGlowChanged(toil.actor);
             casting = false;
             castProgress = 0f;
         });
@@ -391,16 +398,22 @@ public class Ability_BreachJump : Ability
         return Mathf.Clamp01(jump.Ext.thrusterGlowCurve?.Evaluate(jump.castProgress) ?? jump.castProgress);
     }
 
-    // Whether the glow is showing on this pawn at all; the cheap form for the pawn-cache
-    // prefix, which asks for every humanlike pawn drawn each frame. An idle pawn fails on the
-    // holder test and the null job before any comp lookup.
-    public static bool ThrusterGlowLit(Pawn pawn)
+    // Whether the glow is showing on this wearer at all, ignoring the cast curve: the state the
+    // zoomed-out pawn cache bakes, since that bake cannot carry an alpha.
+    public static bool ThrusterGlowLit(Pawn wearer, Ability_BreachJump jump) =>
+        wearer.ParentHolder is PawnFlyer_BreachJump || jump?.casting == true;
+
+    // Past CameraDriver.ZoomRootSize 18 the game draws humanlike pawns from an atlas frame baked
+    // once from the render tree and rebaked only when marked dirty, so the glow node's lit state
+    // is fixed in that frame until someone marks it. Called on every ThrusterGlowLit transition;
+    // the mark is a flag per frame, the rebake happens on the pawn's next zoomed-out draw, and
+    // a pawn with no frame set yet (never drawn zoomed out, or freshly loaded) bakes fresh
+    // anyway. Between transitions the cast curve is not shown at that zoom; the glow is simply
+    // on or off.
+    public static void NotifyThrusterGlowChanged(Pawn wearer)
     {
-        if (pawn.ParentHolder is PawnFlyer_BreachJump)
-            return true;
-        if (pawn.jobs?.curJob == null)
-            return false;
-        return pawn.GetComp<CompAbilities>()?.currentlyCasting is Ability_BreachJump { casting: true };
+        if (wearer != null)
+            GlobalTextureAtlasManager.TryMarkPawnFrameSetDirty(wearer);
     }
 
     public override void Cast(params GlobalTargetInfo[] targets)

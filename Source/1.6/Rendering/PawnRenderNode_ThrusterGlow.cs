@@ -57,4 +57,7 @@ public class PawnRenderNode_ThrusterGlow : PawnRenderNode
 
     // 0 when idle, the cast curve while warming up, 1 for the whole flight.
     public float Alpha => tree?.pawn is Pawn wearer ? Ability_BreachJump.ThrusterGlowAlpha(wearer, Jump) : 0f;
+
+    // Casting or flying, the on/off state the pawn cache bakes.
+    public bool Lit => tree?.pawn is Pawn wearer && Ability_BreachJump.ThrusterGlowLit(wearer, Jump);
 }

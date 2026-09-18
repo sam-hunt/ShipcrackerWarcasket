@@ -42,10 +42,13 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
     public bool punchRoof = true;
 
     // ability is assigned between MakeFlyer and GenSpawn.Spawn, so it is set by the time this runs.
+    // The wearer is lit for the whole flight (Ability_BreachJump.ThrusterGlowLit), so the takeoff
+    // and the landing in RespawnPawn are the glow's two flight transitions.
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
         inSpace = Ability_BreachJump.IsSpaceMap(map);
+        Ability_BreachJump.NotifyThrusterGlowChanged(FlyingPawn);
         if (respawningAfterLoad)
             return;
 
@@ -115,6 +118,7 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
 
         base.RespawnPawn();
 
+        Ability_BreachJump.NotifyThrusterGlowChanged(wearer);
         if (wearer != null && ability is Ability_BreachJump jump)
             jump.DoBreach(cell, map, wearer, punchRoof);
     }
