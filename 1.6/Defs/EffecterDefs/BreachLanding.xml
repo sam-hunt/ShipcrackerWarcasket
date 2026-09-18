@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    One-shot landing effect for the Breach Jump, planet and space. Wired as the
+    explosionCenterEffecter of the SCWC_Breach DamageDef, so vanilla's DamageWorker fires it at
+    the blast centre alongside the Bomb-style flash, smoke and cell flecks that def already
+    carries (Biotech's mech-band stun uses the same slot for its shockwave). Visual only, the
+    sound is the explosion's; it adds just the distortion ring (SCWC_BreachLandingShockwave),
+    the landing counterpart of SCWC_BreachJumpBlastOff at the launch cell.
+  -->
+  <EffecterDef>
+    <defName>SCWC_BreachLanding</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <spawnLocType>OnSource</spawnLocType>
+        <fleckDef>SCWC_BreachLandingShockwave</fleckDef>
+      </li>
+    </children>
+  </EffecterDef>
+</Defs>

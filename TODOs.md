@@ -9,7 +9,7 @@
 - apparel descriptions etc
 - test with vge1/2
 - warming-up thruster overlay during cast with orange->purple color switch with VGE1
-- **In-game test of the Breach Jump** (fuel gizmo, save/load mid-flight; distortion ring at the launch cell).
+- **In-game test of the Breach Jump** (fuel gizmo, save/load mid-flight; distortion rings at the launch cell in space and, bigger, at every landing).
 - Replace the placeholder ability icons (VFEP's Power Jump on a planet, Blast Off in space) with
   the artist's textures once the abilities are tested and locked in; both paths are in
   `1.6/Defs/AbilityDefs/BreachJump.xml`.

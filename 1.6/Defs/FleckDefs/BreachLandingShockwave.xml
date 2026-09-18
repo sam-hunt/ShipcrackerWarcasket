@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    The shockwave ring a Breach Jump or Breach Burn leaves where it lands, on a planet and in
+    space alike. The launch ring's big sibling (FleckDefs/BreachJumpShockwave.xml explains the
+    Core psycast distortion it is built from) sized to the landing blast rather than the
+    thrusters: the ring has to clear the breach footprint (breachRadius 2 on the ability
+    extension, a 5-cell-wide disc) so it reads as the impact spreading past the rubble, not
+    lost under it. A fleck's width is drawSize x (1 + growthRate x age): growthRate
+    multiplies the spawn scale per second, it does not add cells (FleckStatic.TimeInterpolated
+    and Graphic_Fleck.DrawFleck, 2026-09-18 decompile). Timings (2026-09-18): 0.42 s on screen
+    (launch 0.32), drawSize 2 and growthRate 6, so it opens at 2 cells across and ends near
+    7 (2 x 3.52) against the launch ring's 3.6 (1 x 3.56) and the psycast ring's 4.9; 0.1
+    distortion (launch 0.08) so the wider, thinner-looking ring still shows through the
+    Bomb-style blast flecks and smoke drawn above it. If breachRadius changes, rescale
+    drawSize and growthRate with it.
+  -->
+  <FleckDef ParentName="FleckGlowDistortBackground">
+    <defName>SCWC_BreachLandingShockwave</defName>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.08</solidTime>
+    <fadeOutTime>0.32</fadeOutTime>
+    <growthRate>6</growthRate>
+    <graphicData>
+      <texPath>Things/Mote/Black</texPath>
+      <shaderParameters>
+        <_distortionIntensity>0.1</_distortionIntensity>
+        <_brightnessMultiplier>1.15</_brightnessMultiplier>
+      </shaderParameters>
+      <drawSize>2</drawSize>
+    </graphicData>
+  </FleckDef>
+</Defs>

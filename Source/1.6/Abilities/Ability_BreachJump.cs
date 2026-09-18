@@ -393,7 +393,9 @@ public class Ability_BreachJump : Ability
         return room == null || room != RegionAndRoomQuery.RoomAt(destination, map) || room.TouchesMapEdge;
     }
 
-    // Called by the flyer once the wearer is back on the map. Armor penetration is passed
+    // Called by the flyer once the wearer is back on the map. The landing shockwave ring is
+    // not spawned here: it is the SCWC_Breach def's explosionCenterEffecter, so vanilla's
+    // DamageWorker fires it with the rest of the explosion visuals. Armor penetration is passed
     // explicitly: GenExplosion reads the def's default only when no damage amount is handed
     // in, and otherwise derives it as damage x 0.015. The wearer's SCWC_BreachPower is applied
     // to buildings alone by DamageWorker_Breach, so it is deliberately absent here.

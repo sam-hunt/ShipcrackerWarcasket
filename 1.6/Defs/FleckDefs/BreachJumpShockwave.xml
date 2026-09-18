@@ -6,9 +6,11 @@
     which brings the MoteGlowDistortBackground shader and the PsycastDistortionMask ripple
     texture; all Core, so no Royalty dependency) but a third the lifetime and five times the
     growth, so it snaps outward with the thrusters instead of blooming. Timings (2026-09-17):
-    0.32 s on screen (psycast 0.74), growth 8 cells/s from a 1-cell disc (psycast 1.5 from
-    2.3), so it ends at about the same 3.5-cell size the psycast ring reaches, with a
-    stronger 0.08 distortion (psycast 0.05) to read in the short time it is up.
+    0.32 s on screen (psycast 0.74), growthRate 8 on a 1-cell drawSize (psycast 1.5 on 2.3);
+    a fleck's width is drawSize x (1 + growthRate x age), so this ends at 3.6 cells across
+    where the psycast ring reaches 4.9, snapping out faster but not further, with a
+    stronger 0.08 distortion (psycast 0.05) to read in the short time it is up. The landing
+    ring (BreachLandingShockwave.xml) is the same fleck scaled up to the breach footprint.
   -->
   <FleckDef ParentName="FleckGlowDistortBackground">
     <defName>SCWC_BreachJumpShockwave</defName>
