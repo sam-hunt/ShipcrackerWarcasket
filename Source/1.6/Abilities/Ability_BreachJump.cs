@@ -360,12 +360,10 @@ public class Ability_BreachJump : Ability
         for (var i = 0; i < Ext.fuelPerJump; i++)
             tank?.UsedOnce();
 
-        // Space takeoff: a one-shot distortion ring at the origin (the flyer's own effecter
-        // carries the launch sound and flash). Fired before MakeFlyer despawns the wearer,
-        // while pawn.Position is still the launch cell. No planet equivalent: there the jump
-        // has no takeoff effect beyond the flyer's flame, as on Aerial.
-        if (IsSpaceMap(map))
-            SCWC_DefOf.SCWC_BreachJumpBlastOff.Spawn(pawn.Position, map).Cleanup();
+        // No takeoff effect beyond the flyer's own flame (launch sound and flash included), as
+        // on Aerial. A launch distortion ring was tried on space maps and dropped 2026-09-18:
+        // the landing ring (see DoBreach) is the effect that matters, and a second ring at the
+        // origin cluttered the shot and pulled the eye away from where the wearer comes down.
 
         var destination = targets[0].Cell;
         // Decided once at launch, while the wearer still stands at the origin, and carried by the

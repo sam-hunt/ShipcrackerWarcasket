@@ -5,8 +5,8 @@
     explosionCenterEffecter of the SCWC_Breach DamageDef, so vanilla's DamageWorker fires it at
     the blast centre alongside the Bomb-style flash, smoke and cell flecks that def already
     carries (Biotech's mech-band stun uses the same slot for its shockwave). Visual only, the
-    sound is the explosion's; it adds just the distortion ring (SCWC_BreachLandingShockwave),
-    the landing counterpart of SCWC_BreachJumpBlastOff at the launch cell.
+    sound is the explosion's; it adds just the distortion ring (SCWC_BreachLandingShockwave).
+    The jump's only distortion effect: the launch cell has none (see the fleck's header).
   -->
   <EffecterDef>
     <defName>SCWC_BreachLanding</defName>

@@ -10,7 +10,6 @@ public static class SCWC_DefOf
     public static StatDef SCWC_BreachPower;
     public static DamageDef SCWC_Breach;
     public static ThingDef SCWC_BreachJumpFlyer;
-    public static EffecterDef SCWC_BreachJumpBlastOff;
     // Fallback flight exhausts for a flyer whose ability reference cannot be read; the ability
     // extension's flightEffecter / spaceFlightEffecter normally name these same two.
     public static EffecterDef SCWC_BreachJumpFlame;

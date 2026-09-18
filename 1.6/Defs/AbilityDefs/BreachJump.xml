@@ -49,15 +49,17 @@
     Space flight (2026-09-17): a straight constant-speed run at spaceFlightSpeedFactor 3
     times the wearer's VFEP_FlightSpeed (36 cells/s at the base 12; Aerial's full set
     reaches 27 on a planet), capped at spaceFlightMaxSeconds 4 so a hop past 144 cells
-    speeds up rather than drag. It uses Shock's Blast Off exhaust and fires
-    SCWC_BreachJumpBlastOff at the launch cell; the flyer class explains all three.
+    speeds up rather than drag. It uses Shock's Blast Off exhaust; the flyer class
+    explains both. The landing blast's shockwave ring comes from the SCWC_Breach
+    DamageDef; a second ring at the launch cell was dropped on 2026-09-18 so the
+    landing keeps the player's eye.
 
     Text (2026-09-17): "breach jump" on a planet, "breach burn" in space (vacuumLabel
     on the extension, applied to the gizmo and tooltip title by the ability class).
     VFEP and vanilla otherwise swap a gizmo label only when the click does something
     else (grappling hook vs reload), and here only the reach rules change, but the
-    space mode is a different enough experience (straight, fast, map-length, launch
-    shockwave, its own icon) to advertise under its own name; "burn" is the
+    space mode is a different enough experience (straight, fast, map-length, its own
+    icon) to advertise under its own name; "burn" is the
     spaceflight word for a straight engine firing, and keeping "breach" in both
     names ties them to the one fuel tank and landing. The description follows Power
     Jump's register and length (no numbers: VEF appends range, radius and cast time
