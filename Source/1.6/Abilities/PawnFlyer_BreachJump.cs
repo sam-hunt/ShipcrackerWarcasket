@@ -26,10 +26,9 @@ namespace ShipcrackerWarcasket;
 //    multi-second space run coasting silently; the burn keeps going to the landing. Both come
 //    from the ability extension (flightEffecter / spaceFlightEffecter) so a compat root can
 //    recolour the exhaust by patch; the DefOf entries are the fallback for a flyer whose
-//    ability reference did not survive a reload. Their flame, glow and smoke sprayers are
-//    SubEffecter_ExhaustSprayer entries, which spray a copy of each fleck raised to the Pawn
-//    layer while the wearer faces north, so the trail comes out over the wearer's back when the
-//    outlets face the camera and under the wearer otherwise.
+//    ability reference did not survive a reload. Their flecks are our copies raised to the
+//    Pawn layer, so the trail draws over the flying wearer rather than under (see the fleck
+//    defs' headers).
 public class PawnFlyer_BreachJump : AbilityPawnFlyer
 {
     // PawnFlyer keeps the takeoff-to-landing distance private; vanilla's own SpawnSetup uses

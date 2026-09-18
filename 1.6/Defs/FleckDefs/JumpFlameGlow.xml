@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    Copy of VFEP's VFEP_JumpFlameGlow (1.6/Defs/Effects/Fleck_Visual.xml) with one change: it
+    sits on the Pawn altitude layer plus five increments instead of Projectile, one full
+    layer under Pawn, so the Breach Jump's exhaust draws over the flying wearer rather than under
+    (2026-09-18). Five increments clear the pawn render tree (at most one increment above the
+    flyer's draw position, itself at most one above the layer) and stay under Blueprint.
+    VFEP's def keeps Projectile so Aerial's hop keeps its look, and carries no Name attribute
+    so cannot be a parent; every other field is copied. Sprayed by all four flight effecters
+    (EffecterDefs/, and the Vanilla Gravship Expanded root's purple pair for the smoke).
+    Keep in step with VFEP's VFEP_JumpFlameGlow.
+  -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>SCWC_JumpFlameGlow</defName>
+    <graphicData>
+      <texPath>Things/Mote/VFEP_JumpFlame</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <color>(1,0.6,0.6,0.3)</color>
+    </graphicData>
+    <altitudeLayer>Pawn</altitudeLayer>
+    <altitudeLayerIncOffset>5</altitudeLayerIncOffset>
+    <solidTime>0</solidTime>
+    <fadeOutTime>0.3</fadeOutTime>
+    <growthRate>-3</growthRate>
+  </FleckDef>
+</Defs>

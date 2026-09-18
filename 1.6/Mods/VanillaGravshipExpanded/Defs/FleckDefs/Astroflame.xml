@@ -17,10 +17,10 @@
     orange BlastFlame's mask with the colour removed, tintable through color) is the reserve
     route if this reads too much like a sticker.
 
-    Also the parent of SCWC_AstroflameNorth (AstroflameNorth.xml), which inherits everything
-    here and only moves the altitude up to the Pawn layer for when the wearer faces north.
+    Pawn altitude layer plus five increments rather than VFEP's Projectile, like the main
+    tree's SCWC_JumpFlame pair, so the exhaust draws over the flying wearer (2026-09-18).
   -->
-  <FleckDef Name="SCWC_Astroflame" ParentName="FleckBase_Thrown">
+  <FleckDef ParentName="FleckBase_Thrown">
     <defName>SCWC_Astroflame</defName>
     <graphicData>
       <texPath>Effects/Astrospark</texPath>
@@ -28,7 +28,8 @@
       <renderInstanced>true</renderInstanced>
       <drawSize>(3, 3)</drawSize>
     </graphicData>
-    <altitudeLayer>Projectile</altitudeLayer>
+    <altitudeLayer>Pawn</altitudeLayer>
+    <altitudeLayerIncOffset>5</altitudeLayerIncOffset>
     <solidTime>0.2</solidTime>
     <fadeOutTime>0.05</fadeOutTime>
     <growthRate>-4</growthRate>
