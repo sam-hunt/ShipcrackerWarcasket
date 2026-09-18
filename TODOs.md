@@ -1,13 +1,15 @@
 # TODOs
 
 - new modicon with accent
-- ability effect flame color swap with VGE1
+- tune the VGE1 purple flight exhaust in game (landed 2026-09-18 on VGE's Astrospark texture:
+  `1.6/Mods/VanillaGravshipExpanded/Defs/`; knobs are the flecks' drawSize 3 and the glow/flash
+  tints; Core's grey `BlastExtinguisher` tinted purple is the reserve if the sticker edge shows)
 - gizmo swap to purple flame variant with VGE1
 - check whether aerial/shock warcasket abilities complement shipcracker
 - apparel descriptions etc
 - test with vge1/2
 - warming-up thruster overlay during cast with orange->purple color switch with VGE1
-- **In-game test of the Breach Jump** (space unlimited range with sight and the reachable-cell outline, blast radius preview, fuel gizmo, gizmo icon swap in space, save/load mid-flight; the 2026-09-17 space flight: straight constant-speed run with no arc, Blast Off exhaust burning to the landing, distortion ring at the launch cell, and whether 3x speed / 4 s cap / the ring's 0.08 intensity and 0.32 s life look right).
+- **In-game test of the Breach Jump** (fuel gizmo, save/load mid-flight; distortion ring at the launch cell).
 - Replace the placeholder ability icons (VFEP's Power Jump on a planet, Blast Off in space) with
   the artist's textures once the abilities are tested and locked in; both paths are in
   `1.6/Defs/AbilityDefs/BreachJump.xml`.
@@ -36,16 +38,6 @@
   parts `WarcasketVeteran` for pawnkind generation; check `PawnKinds_Junkers.xml` before reusing
   the tag, since reusing it puts our set on every Junker veteran.
 - Research gating: which VFEP research project(s) to parent on (`ResearchProjects_Various.xml`).
-- Textures: the commissioned art landed 2026-09-10 under
-  `Textures/Things/Pawn/Warcasketlike/WarcasketShipcracker/` (root `Textures/`, like every mod in
-  the family; there is no `Common/` root) and all three defs point at it. Still open: whether the
-  set should be colourable (`CompColorable` mask conventions), and whether any part ends up
-  Odyssey-gated, in which case its art moves to `Mods/Odyssey/Textures/`. Verify in-game that
-  the worn graphics line up with VFEP's pawn offsets.
-- C# is now load-bearing (`Source/1.6/Abilities/`), but it still applies no Harmony patch. The
-  Harmony dependency stays anyway: `PawnFlyer_BreachJump` reads the vanilla flyer's private
-  flight distance through `AccessTools.FieldRefAccess`, so `0Harmony.dll` must be present at
-  runtime even with zero patches.
 
 ## Infrastructure follow-ups
 

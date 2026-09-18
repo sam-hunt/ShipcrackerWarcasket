@@ -34,7 +34,8 @@
     <!-- Vanilla Gravship Expanded (chapter 1): mirrors its vacuum-resistance nerf
          onto our armor and helmet, gives the helmet VGE1's oxygen-provider comp,
          lets the armor walk on VGE1's walkable space terrain and switches the jump
-         tank to astrofuel (see that root's Patches/). Patches only, so no
+         tank to astrofuel and its flight exhaust to purple (see that root's
+         Patches/ and Defs/). The purple flame uses VGE's own art by path, so no
          version-independent Mods/ root is needed. -->
     <li IfModActive="vanillaexpanded.gravship">1.6/Mods/VanillaGravshipExpanded</li>
   </v1.6>

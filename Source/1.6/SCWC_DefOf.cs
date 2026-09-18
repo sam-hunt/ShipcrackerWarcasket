@@ -11,15 +11,15 @@ public static class SCWC_DefOf
     public static DamageDef SCWC_Breach;
     public static ThingDef SCWC_BreachJumpFlyer;
     public static EffecterDef SCWC_BreachJumpBlastOff;
+    // Fallback flight exhausts for a flyer whose ability reference cannot be read; the ability
+    // extension's flightEffecter / spaceFlightEffecter normally name these same two.
+    public static EffecterDef SCWC_BreachJumpFlame;
+    public static EffecterDef SCWC_BreachBurnFlame;
 
-    // VFE Pirates defs reused by name only (VFEP is a hard dependency, so they always exist):
-    // the Aerial set's jump flight-speed stat, its jump-flame effecter (planet flights) and the
-    // Shock set's Blast Off exhaust (space flights; see PawnFlyer_BreachJump for why). Reusing
-    // the stat means Aerial pieces' x1.5 flight-speed factors also speed up a Breach Jump;
-    // harmless.
+    // VFE Pirates def reused by name only (VFEP is a hard dependency, so it always exists): the
+    // Aerial set's jump flight-speed stat. Reusing it means Aerial pieces' x1.5 flight-speed
+    // factors also speed up a Breach Jump; harmless.
     public static StatDef VFEP_FlightSpeed;
-    public static EffecterDef VFEP_PowerJumpPawnEffect;
-    public static EffecterDef VFEP_BlastOffEffect;
 
     static SCWC_DefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(SCWC_DefOf));
 }

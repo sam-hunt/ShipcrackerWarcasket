@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    Space-flight exhaust (the "breach burn") for the Breach Jump under Vanilla Gravship
+    Expanded: the main tree's SCWC_BreachBurnFlame (1.6/Defs/EffecterDefs/, VFEP's Shock
+    Blast Off effect with the mid-back origin) child for child, with the flame sprayers
+    pointed at the purple SCWC_Astroflame pair and the launch ShotFlash tinted to match.
+    Differs from SCWC_BreachJumpAstroflame only in the sprayers' maxMoteCount (1000 vs 28
+    and 16), so the flame burns to the landing (see PawnFlyer_BreachJump). Wired in by the
+    root's BreachJumpAstrofuel.xml patch as the extension's spaceFlightEffecter. Keep in
+    step with the orange def.
+  -->
+  <EffecterDef>
+    <defName>SCWC_BreachBurnAstroflame</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SoundTriggered</subEffecterClass>
+        <spawnLocType>OnSource</spawnLocType>
+        <soundDef>VFEP_JumpLaunch</soundDef>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <spawnLocType>OnSource</spawnLocType>
+        <fleckDef>ShotFlash</fleckDef>
+        <color>(0.75, 0.5, 1)</color>
+        <scale>6</scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+        <scale>0.5~0.6</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <positionOffset>(0,0,-0.05)</positionOffset>
+        <fleckDef>SCWC_Astroflame</fleckDef>
+        <ticksBetweenMotes>1</ticksBetweenMotes>
+        <maxMoteCount>1000</maxMoteCount>
+        <speed>4~5</speed>
+        <angle>170~190</angle>
+        <absoluteAngle>true</absoluteAngle>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+        <scale>0.9~0.7</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <positionOffset>(0,0,-0.05)</positionOffset>
+        <fleckDef>SCWC_AstroflameGlow</fleckDef>
+        <ticksBetweenMotes>1</ticksBetweenMotes>
+        <maxMoteCount>1000</maxMoteCount>
+        <speed>4~5</speed>
+        <angle>160~200</angle>
+        <absoluteAngle>true</absoluteAngle>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+        <scale>0.8~1.2</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <positionOffset>(0,0,-0.05)</positionOffset>
+        <fleckDef>VFEP_JumpSmoke</fleckDef>
+        <ticksBetweenMotes>2</ticksBetweenMotes>
+        <maxMoteCount>1000</maxMoteCount>
+        <speed>5~6</speed>
+        <angle>170~190</angle>
+        <absoluteAngle>true</absoluteAngle>
+      </li>
+    </children>
+  </EffecterDef>
+</Defs>

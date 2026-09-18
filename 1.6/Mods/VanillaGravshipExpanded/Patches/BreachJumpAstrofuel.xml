@@ -9,6 +9,12 @@
   per jump, so the refining step is never a penalty (decision 2026-09-16: the
   astrofuel cost per jump must match or undercut chemfuel's). The tank still holds
   100 units, so it now carries 10 jumps.
+
+  Astrofuel burns purple in VGE (its astrofire and fuel art), so the flight exhaust
+  follows the fuel: the extension's two effecters switch from the main tree's orange
+  SCWC_BreachJumpFlame / SCWC_BreachBurnFlame to this root's SCWC_BreachJumpAstroflame / SCWC_BreachBurnAstroflame
+  (Defs/EffecterDefs/), which spray VGE's own Astrospark texture. The ability gizmo
+  icons are handled separately.
 -->
 <Patch>
   <Operation Class="PatchOperationReplace">
@@ -21,6 +27,18 @@
     <xpath>Defs/VEF.Abilities.AbilityDef[defName="SCWC_BreachJump"]/modExtensions/li[@Class="ShipcrackerWarcasket.BreachJumpExtension"]/fuelPerJump</xpath>
     <value>
       <fuelPerJump>10</fuelPerJump>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VEF.Abilities.AbilityDef[defName="SCWC_BreachJump"]/modExtensions/li[@Class="ShipcrackerWarcasket.BreachJumpExtension"]/flightEffecter</xpath>
+    <value>
+      <flightEffecter>SCWC_BreachJumpAstroflame</flightEffecter>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VEF.Abilities.AbilityDef[defName="SCWC_BreachJump"]/modExtensions/li[@Class="ShipcrackerWarcasket.BreachJumpExtension"]/spaceFlightEffecter</xpath>
+    <value>
+      <spaceFlightEffecter>SCWC_BreachBurnAstroflame</spaceFlightEffecter>
     </value>
   </Operation>
 </Patch>

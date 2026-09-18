@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    Purple exhaust flame for the Breach Jump under Vanilla Gravship Expanded, where the tank
+    burns astrofuel (VGE's astrofire and astrofuel art are purple). Mirrors VFEP's
+    VFEP_JumpFlame (Royalty's JumpFlame re-exported: TransparentPostLight, solid 0.2 s, fade
+    0.05 s, shrinking at -4) on VGE's own Effects/Astrospark texture, referenced by path so
+    nothing is shipped or derived; this root only loads when VGE, and so that file, is present.
+    Tint cannot do this on the orange texture (both mote shaders multiply, and orange has no
+    blue to keep), hence the texture swap.
+
+    Astrospark is a 128 px sheet whose opaque blob fills about a third of it (VFEP's fills
+    its 64 px), so drawSize 3 brings it to the same on-screen size at the effecters' VFEP
+    sprayer scales. The blob is hard-edged and irregular; the sprayer's default 0-360 random
+    rotation varies it per fleck. Not yet seen in game (2026-09-18): drawSize and the tints
+    in SCWC_AstroflameGlow are the knobs. Core's grey Things/Mote/BlastExtinguisher (the
+    orange BlastFlame's mask with the colour removed, tintable through color) is the reserve
+    route if this reads too much like a sticker.
+  -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>SCWC_Astroflame</defName>
+    <graphicData>
+      <texPath>Effects/Astrospark</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <renderInstanced>true</renderInstanced>
+      <drawSize>(3, 3)</drawSize>
+    </graphicData>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <solidTime>0.2</solidTime>
+    <fadeOutTime>0.05</fadeOutTime>
+    <growthRate>-4</growthRate>
+  </FleckDef>
+</Defs>

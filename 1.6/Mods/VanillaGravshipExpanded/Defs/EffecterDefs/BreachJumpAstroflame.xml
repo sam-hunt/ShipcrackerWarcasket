@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    Planet-flight exhaust for the Breach Jump under Vanilla Gravship Expanded, where the tank
+    burns astrofuel: the main tree's SCWC_BreachJumpFlame (1.6/Defs/EffecterDefs/, itself
+    VFEP's Aerial Power Jump effect with the mid-back origin and the 28-tick flame) child for
+    child, with the two flame sprayers pointed at the purple SCWC_Astroflame pair and the
+    launch ShotFlash tinted to match. Wired in by the root's BreachJumpAstrofuel.xml patch,
+    which sets the ability extension's flightEffecter. Keep in step with the orange def.
+  -->
+  <EffecterDef>
+    <defName>SCWC_BreachJumpAstroflame</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SoundTriggered</subEffecterClass>
+        <spawnLocType>OnSource</spawnLocType>
+        <soundDef>VFEP_JumpLaunch</soundDef>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <spawnLocType>OnSource</spawnLocType>
+        <fleckDef>ShotFlash</fleckDef>
+        <color>(0.75, 0.5, 1)</color>
+        <scale>6</scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+        <scale>0.5~0.6</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <positionOffset>(0,0,-0.05)</positionOffset>
+        <fleckDef>SCWC_Astroflame</fleckDef>
+        <ticksBetweenMotes>1</ticksBetweenMotes>
+        <maxMoteCount>28</maxMoteCount>
+        <speed>4~5</speed>
+        <angle>170~190</angle>
+        <absoluteAngle>true</absoluteAngle>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+        <scale>0.9~0.7</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <positionOffset>(0,0,-0.05)</positionOffset>
+        <fleckDef>SCWC_AstroflameGlow</fleckDef>
+        <ticksBetweenMotes>1</ticksBetweenMotes>
+        <maxMoteCount>28</maxMoteCount>
+        <speed>4~5</speed>
+        <angle>160~200</angle>
+        <absoluteAngle>true</absoluteAngle>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+        <scale>0.8~1.2</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <positionOffset>(0,0,-0.05)</positionOffset>
+        <fleckDef>VFEP_JumpSmoke</fleckDef>
+        <ticksBetweenMotes>2</ticksBetweenMotes>
+        <maxMoteCount>16</maxMoteCount>
+        <speed>5~6</speed>
+        <angle>170~190</angle>
+        <absoluteAngle>true</absoluteAngle>
+      </li>
+    </children>
+  </EffecterDef>
+</Defs>

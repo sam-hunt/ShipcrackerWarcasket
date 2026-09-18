@@ -74,6 +74,14 @@
 
     Icons are placeholders borrowed from VFEP until the commissioned art lands:
     Aerial's Power Jump on a planet, Shock's Blast Off (spaceIconPath) in space.
+
+    Flight exhaust (2026-09-18): flightEffecter / spaceFlightEffecter name the effecter the
+    flyer plays for the whole flight, so a compat root can recolour it by patch. The main
+    tree burns chemfuel and uses our orange copies of VFEP's exhausts (EffecterDefs/): Aerial's
+    Power Jump effect on a planet, whose flame cuts out early to suit a short hop, and Shock's
+    Blast Off in space, whose flame burns to the landing; both moved up to the mid-back
+    thruster outlets. The Vanilla Gravship Expanded root switches the tank to astrofuel and
+    these two to the purple astroflame pair defined there.
   -->
   <VEF.Abilities.AbilityDef>
     <defName>SCWC_BreachJump</defName>
@@ -94,6 +102,8 @@
         <roofPunchRadius>1</roofPunchRadius>
         <spaceFlightSpeedFactor>3</spaceFlightSpeedFactor>
         <spaceFlightMaxSeconds>4</spaceFlightMaxSeconds>
+        <flightEffecter>SCWC_BreachJumpFlame</flightEffecter>
+        <spaceFlightEffecter>SCWC_BreachBurnFlame</spaceFlightEffecter>
         <spaceIconPath>UI/Abilities/BlastOff</spaceIconPath>
         <vacuumDescription>In vacuum it has no range limit, but the way must be open.</vacuumDescription>
         <vacuumLabel>breach burn</vacuumLabel>

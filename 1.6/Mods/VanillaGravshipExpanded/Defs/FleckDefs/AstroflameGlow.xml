@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    Additive glow layered under SCWC_Astroflame, as VFEP_JumpFlameGlow is under its flame:
+    same texture through MoteGlow, no solid time, 0.3 s fade, shrinking at -3. VFEP tints the
+    orange texture pink at 0.3 alpha; here the texture is already purple, so the tint stays
+    near white with a little extra blue and the same alpha. See Astroflame.xml for the
+    texture and sizing rationale.
+  -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>SCWC_AstroflameGlow</defName>
+    <graphicData>
+      <texPath>Effects/Astrospark</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <color>(0.9, 0.75, 1, 0.3)</color>
+      <drawSize>(3, 3)</drawSize>
+    </graphicData>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <solidTime>0</solidTime>
+    <fadeOutTime>0.3</fadeOutTime>
+    <growthRate>-3</growthRate>
+  </FleckDef>
+</Defs>

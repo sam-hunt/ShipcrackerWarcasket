@@ -7,8 +7,8 @@ using VEF.Abilities;
 namespace ShipcrackerWarcasket;
 
 // Flight leg of the Breach Jump. Mirrors VFEP's PawnFlyer_PowerJump on a planet: flight time
-// comes from the wearer's VFEP_FlightSpeed instead of the def's fixed flightSpeed, and the
-// Aerial jump-flame effecter plays during flight. The landing detonation is the ability's
+// comes from the wearer's VFEP_FlightSpeed instead of the def's fixed flightSpeed, and a
+// jump-flame effecter plays during flight. The landing detonation is the ability's
 // breach rather than a Bomb.
 //
 // Space maps get a different flight (2026-09-17):
@@ -20,10 +20,13 @@ namespace ShipcrackerWarcasket;
 //    curve and heightFactor still apply on a planet.
 //  - Faster: the wearer's VFEP_FlightSpeed times the extension's spaceFlightSpeedFactor, still
 //    capped at spaceFlightMaxSeconds so a map-length hop does not drag.
-//  - Shock's VFEP_BlastOffEffect instead of Aerial's VFEP_PowerJumpPawnEffect. VFEP's two
-//    effecters are identical except for the flame sprayers' maxMoteCount (14 vs 1000): the
-//    Aerial exhaust cuts out 14 ticks into the flight, which suits a short hop but leaves a
-//    multi-second space run coasting silently. Blast Off's keeps burning to the landing.
+//  - SCWC_BreachBurnFlame instead of SCWC_BreachJumpFlame (our copies of VFEP's Shock Blast
+//    Off and Aerial Power Jump effects). The two are identical except for the flame sprayers'
+//    maxMoteCount: the jump exhaust cuts out early, which suits a short hop but leaves a
+//    multi-second space run coasting silently; the burn keeps going to the landing. Both come
+//    from the ability extension (flightEffecter / spaceFlightEffecter) so a compat root can
+//    recolour the exhaust by patch; the DefOf entries are the fallback for a flyer whose
+//    ability reference did not survive a reload.
 public class PawnFlyer_BreachJump : AbilityPawnFlyer
 {
     // PawnFlyer keeps the takeoff-to-landing distance private; vanilla's own SpawnSetup uses
@@ -86,7 +89,10 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
     {
         if (flightEffecter == null)
         {
-            var effecterDef = inSpace ? SCWC_DefOf.VFEP_BlastOffEffect : SCWC_DefOf.VFEP_PowerJumpPawnEffect;
+            var ext = (ability as Ability_BreachJump)?.Ext;
+            var effecterDef = inSpace
+                ? ext?.spaceFlightEffecter ?? SCWC_DefOf.SCWC_BreachBurnFlame
+                : ext?.flightEffecter ?? SCWC_DefOf.SCWC_BreachJumpFlame;
             flightEffecter = effecterDef.Spawn();
             flightEffecter.Trigger(this, TargetInfo.Invalid);
         }

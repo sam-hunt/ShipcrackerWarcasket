@@ -29,6 +29,14 @@ public class BreachJumpExtension : DefModExtension
     public float spaceFlightSpeedFactor = 3f;
     public float spaceFlightMaxSeconds = 4f;
 
+    // Effecters the flyer plays for the whole flight: flightEffecter on a planet,
+    // spaceFlightEffecter on a space map (see PawnFlyer_BreachJump for why they differ). The
+    // main tree names our orange copies of VFEP's Aerial and Shock exhausts; the Vanilla
+    // Gravship Expanded root swaps in the purple astroflame pair beside its astrofuel patch,
+    // since that is the fuel the tank burns there. Null falls back to the orange pair.
+    public EffecterDef flightEffecter;
+    public EffecterDef spaceFlightEffecter;
+
     // Gizmo icon shown while the wearer stands on a space map; null keeps the def's iconPath.
     [NoTranslate] public string spaceIconPath;
 

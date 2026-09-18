@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    Space-flight exhaust (the "breach burn") for the Breach Jump: the orange chemfuel flame,
+    named by the ability extension's spaceFlightEffecter. VFEP's VFEP_BlastOffEffect (Shock's
+    Blast Off) child for child, on VFEP's own flecks, sound and smoke, with the sprayers'
+    positionOffset raised from VFEP's -0.5 to -0.05 so the flecks leave the thruster outlets
+    at mid-back (see BreachJumpFlame.xml). Differs from SCWC_BreachJumpFlame only in the
+    sprayers' maxMoteCount (1000 vs 28 and 16), so the flame burns to the landing of a
+    multi-second space run instead of cutting out (see PawnFlyer_BreachJump). The Vanilla
+    Gravship Expanded root's SCWC_BreachBurnAstroflame is this def with purple flecks; keep
+    the two in step.
+  -->
+  <EffecterDef>
+    <defName>SCWC_BreachBurnFlame</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SoundTriggered</subEffecterClass>
+        <spawnLocType>OnSource</spawnLocType>
+        <soundDef>VFEP_JumpLaunch</soundDef>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <spawnLocType>OnSource</spawnLocType>
+        <fleckDef>ShotFlash</fleckDef>
+        <scale>6</scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+        <scale>0.5~0.6</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <positionOffset>(0,0,-0.05)</positionOffset>
+        <fleckDef>VFEP_JumpFlame</fleckDef>
+        <ticksBetweenMotes>1</ticksBetweenMotes>
+        <maxMoteCount>1000</maxMoteCount>
+        <speed>4~5</speed>
+        <angle>170~190</angle>
+        <absoluteAngle>true</absoluteAngle>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+        <scale>0.9~0.7</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <positionOffset>(0,0,-0.05)</positionOffset>
+        <fleckDef>VFEP_JumpFlameGlow</fleckDef>
+        <ticksBetweenMotes>1</ticksBetweenMotes>
+        <maxMoteCount>1000</maxMoteCount>
+        <speed>4~5</speed>
+        <angle>160~200</angle>
+        <absoluteAngle>true</absoluteAngle>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+        <scale>0.8~1.2</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <positionOffset>(0,0,-0.05)</positionOffset>
+        <fleckDef>VFEP_JumpSmoke</fleckDef>
+        <ticksBetweenMotes>2</ticksBetweenMotes>
+        <maxMoteCount>1000</maxMoteCount>
+        <speed>5~6</speed>
+        <angle>170~190</angle>
+        <absoluteAngle>true</absoluteAngle>
+      </li>
+    </children>
+  </EffecterDef>
+</Defs>
