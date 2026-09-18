@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!--
+    Copy of VFEP's VFEP_JumpSmoke (Fleck_Visual.xml) with only the altitude changed: Pawn
+    layer, +5 sub-layers, instead of Projectile. Completes the north-facing exhaust trio so
+    the smoke draws over the wearer too when flying north and the thruster outlets face the
+    camera; see JumpFlameNorth.xml for why altitude alone moves and why this cannot use
+    ParentName against VFEP's def. Sprayed via fleckDefNorth by
+    ShipcrackerWarcasket.SubEffecter_ExhaustSprayer while the flying wearer faces north. Also
+    used by the Vanilla Gravship Expanded root's purple effecters, which have no smoke fleck
+    of their own. Keep in step with VFEP's VFEP_JumpSmoke.
+  -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>SCWC_JumpSmokeNorth</defName>
+    <graphicData>
+      <texPath>Things/Mote/Smoke</texPath>
+    </graphicData>
+    <altitudeLayer>Pawn</altitudeLayer>
+    <altitudeLayerIncOffset>5</altitudeLayerIncOffset>
+    <solidTime>0.2</solidTime>
+    <fadeOutTime>0.2</fadeOutTime>
+    <growthRate>1.2</growthRate>
+  </FleckDef>
+</Defs>

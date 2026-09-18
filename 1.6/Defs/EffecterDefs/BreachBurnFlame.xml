@@ -10,6 +10,12 @@
     multi-second space run instead of cutting out (see PawnFlyer_BreachJump). The Vanilla
     Gravship Expanded root's SCWC_BreachBurnAstroflame is this def with purple flecks; keep
     the two in step.
+
+    The three continuous sprayers below are ShipcrackerWarcasket.ExhaustSprayerDef, whose
+    SubEffecter_ExhaustSprayer sprays fleckDefNorth (a copy of fleckDef raised to the Pawn
+    altitude layer) instead of fleckDef while the flying wearer faces north, so the exhaust
+    trail draws over the wearer's back when the outlets face the camera and under them
+    otherwise (2026-09-18).
   -->
   <EffecterDef>
     <defName>SCWC_BreachBurnFlame</defName>
@@ -25,36 +31,39 @@
         <fleckDef>ShotFlash</fleckDef>
         <scale>6</scale>
       </li>
-      <li>
-        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+      <li Class="ShipcrackerWarcasket.ExhaustSprayerDef">
+        <subEffecterClass>ShipcrackerWarcasket.SubEffecter_ExhaustSprayer</subEffecterClass>
         <scale>0.5~0.6</scale>
         <spawnLocType>OnSource</spawnLocType>
         <positionOffset>(0,0,-0.05)</positionOffset>
         <fleckDef>VFEP_JumpFlame</fleckDef>
+        <fleckDefNorth>SCWC_JumpFlameNorth</fleckDefNorth>
         <ticksBetweenMotes>1</ticksBetweenMotes>
         <maxMoteCount>1000</maxMoteCount>
         <speed>4~5</speed>
         <angle>170~190</angle>
         <absoluteAngle>true</absoluteAngle>
       </li>
-      <li>
-        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+      <li Class="ShipcrackerWarcasket.ExhaustSprayerDef">
+        <subEffecterClass>ShipcrackerWarcasket.SubEffecter_ExhaustSprayer</subEffecterClass>
         <scale>0.9~0.7</scale>
         <spawnLocType>OnSource</spawnLocType>
         <positionOffset>(0,0,-0.05)</positionOffset>
         <fleckDef>VFEP_JumpFlameGlow</fleckDef>
+        <fleckDefNorth>SCWC_JumpFlameGlowNorth</fleckDefNorth>
         <ticksBetweenMotes>1</ticksBetweenMotes>
         <maxMoteCount>1000</maxMoteCount>
         <speed>4~5</speed>
         <angle>160~200</angle>
         <absoluteAngle>true</absoluteAngle>
       </li>
-      <li>
-        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+      <li Class="ShipcrackerWarcasket.ExhaustSprayerDef">
+        <subEffecterClass>ShipcrackerWarcasket.SubEffecter_ExhaustSprayer</subEffecterClass>
         <scale>0.8~1.2</scale>
         <spawnLocType>OnSource</spawnLocType>
         <positionOffset>(0,0,-0.05)</positionOffset>
         <fleckDef>VFEP_JumpSmoke</fleckDef>
+        <fleckDefNorth>SCWC_JumpSmokeNorth</fleckDefNorth>
         <ticksBetweenMotes>2</ticksBetweenMotes>
         <maxMoteCount>1000</maxMoteCount>
         <speed>5~6</speed>

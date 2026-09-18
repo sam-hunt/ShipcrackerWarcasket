@@ -16,8 +16,11 @@
     in SCWC_AstroflameGlow are the knobs. Core's grey Things/Mote/BlastExtinguisher (the
     orange BlastFlame's mask with the colour removed, tintable through color) is the reserve
     route if this reads too much like a sticker.
+
+    Also the parent of SCWC_AstroflameNorth (AstroflameNorth.xml), which inherits everything
+    here and only moves the altitude up to the Pawn layer for when the wearer faces north.
   -->
-  <FleckDef ParentName="FleckBase_Thrown">
+  <FleckDef Name="SCWC_Astroflame" ParentName="FleckBase_Thrown">
     <defName>SCWC_Astroflame</defName>
     <graphicData>
       <texPath>Effects/Astrospark</texPath>
