@@ -32,6 +32,10 @@ namespace ShipcrackerWarcasket;
 // so every reachable cell in view is outlined instead, as Verb_Jump does. Under Vanilla Gravship
 // Expanded every space cell is walkable and each needs a line-of-sight walk, so that sweep is
 // budgeted per frame, cached per cell and re-run only on map change (see DrawSpaceValidCells).
+//
+// Gizmo: VEF's base builds a new Command_Ability, tooltip and all, every time gizmos are
+// requested, which is every frame for a selected wearer. Vanilla's Ability instead keeps one
+// Command and refreshes only what moves, so GetGizmo does the same here (see there).
 public class Ability_BreachJump : Ability
 {
     // "Unlimited" as a finite number so VEF's range arithmetic and ring drawing stay sane
@@ -71,6 +75,25 @@ public class Ability_BreachJump : Ability
     private const int PreviewWalkable = 1;
     private const int PreviewLandable = 2;
 
+    // Ticks the planet range stat may be served from StatWorker's per-thing cache. The stat is
+    // read every frame from the gizmo, the range ring and the planet hit test, and changes only
+    // when apparel or hediffs do; vanilla reads VacuumResistance, the same kind of apparel-fed
+    // stat, with this window. Ignored unless the StatDef is marked cacheable.
+    private const int RangeStatStaleTicks = 60;
+
+    // Def-constant lookups, resolved once per instance (def and holder never change).
+    private BreachJumpExtension ext;
+    private CompApparelReloadable tank;
+
+    // The one Command handed out by GetGizmo, and the tooltip string it shows, with the inputs
+    // that string was built from. Both are dropped by Init, which VEF runs again when the
+    // apparel changes wearer.
+    private Command gizmo;
+    private string description;
+    private bool descriptionInSpace;
+    private bool descriptionAutoCast;
+    private float descriptionRange;
+
     // Cast state for the thruster glow, written by the wait toil's actions (see WarmupToil) and
     // never scribed: the toil's pre-tick action rewrites both every tick, so a game loaded
     // mid-cast picks them back up within a tick of resuming.
@@ -80,9 +103,16 @@ public class Ability_BreachJump : Ability
     private static int PreviewState(int generation, bool walkable, bool landable) =>
         (generation << 2) | (walkable ? PreviewWalkable : 0) | (landable ? PreviewLandable : 0);
 
-    public BreachJumpExtension Ext => def.GetModExtension<BreachJumpExtension>();
+    public BreachJumpExtension Ext => ext ??= def.GetModExtension<BreachJumpExtension>();
 
-    public CompApparelReloadable Tank => holder?.TryGetComp<CompApparelReloadable>();
+    public CompApparelReloadable Tank => tank ??= holder?.TryGetComp<CompApparelReloadable>();
+
+    public override void Init()
+    {
+        base.Init();
+        gizmo = null;
+        description = null;
+    }
 
     public static bool IsSpaceMap(Map map) =>
         map != null && (map.Biome?.inVacuum == true || map.Tile.LayerDef?.isSpace == true);
@@ -99,7 +129,7 @@ public class Ability_BreachJump : Ability
 
     public bool InSpace => IsSpaceMap(pawn?.Map);
 
-    public float PlanetRange => pawn.GetStatValue(SCWC_DefOf.SCWC_BreachJumpRange);
+    public float PlanetRange => pawn.GetStatValue(SCWC_DefOf.SCWC_BreachJumpRange, applyPostProcess: true, RangeStatStaleTicks);
 
     public override float GetRangeForPawn() => InSpace ? SpaceRange : PlanetRange;
 
@@ -315,39 +345,66 @@ public class Ability_BreachJump : Ability
         return true;
     }
 
-    // The label the gizmo and tooltip show right now: the def's on a planet, vacuumLabel in space.
-    private string CurrentLabelCap =>
-        InSpace && !Ext.vacuumLabel.NullOrEmpty() ? Ext.vacuumLabel.CapitalizeFirst() : def.LabelCap.ToString();
+    // The label the gizmo and tooltip show: the def's on a planet, vacuumLabel in space.
+    private string LabelCapFor(bool inSpace) =>
+        inSpace && !Ext.vacuumLabel.NullOrEmpty() ? Ext.vacuumLabel.CapitalizeFirst() : def.LabelCap.ToString();
 
     // VEF's tooltip is "LabelCap\n\ndescription\n\n" followed by generated stat lines. The head
     // is rebuilt with the current label and, when a space map can exist in this game, the
     // vacuum sentence after the description; the generated tail is kept as VEF wrote it.
+    //
+    // The result is cached against everything in it that can change for this def: the map kind
+    // (label, range line), the planet range stat and the auto-cast line. Cast time, cooldown,
+    // radius and power come straight off the def since it declares no stat factors or offsets,
+    // and it carries no AbilityExtension_AbilityMod to append lines of its own.
     public override string GetDescriptionForPawn()
+    {
+        var inSpace = InSpace;
+        var range = PlanetRange;
+        var autoCast = AutoCast;
+        if (description != null && inSpace == descriptionInSpace && range == descriptionRange && autoCast == descriptionAutoCast)
+            return description;
+
+        descriptionInSpace = inSpace;
+        descriptionRange = range;
+        descriptionAutoCast = autoCast;
+        return description = BuildDescription(inSpace);
+    }
+
+    private string BuildDescription(bool inSpace)
     {
         var text = base.GetDescriptionForPawn();
         string head = def.LabelCap.Colorize(ColoredText.TipSectionTitleColor) + "\n\n" + def.description;
         if (!text.StartsWith(head, System.StringComparison.Ordinal))
             return text;
 
-        var description = def.description;
+        var body = def.description;
         if (SpaceMapsPossible && !Ext.vacuumDescription.NullOrEmpty())
-            description += " " + Ext.vacuumDescription;
+            body += " " + Ext.vacuumDescription;
 
-        return CurrentLabelCap.Colorize(ColoredText.TipSectionTitleColor) + "\n\n" + description + text.Substring(head.Length);
+        return LabelCapFor(inSpace).Colorize(ColoredText.TipSectionTitleColor) + "\n\n" + body + text.Substring(head.Length);
     }
 
-    // In space the button takes the space icon and label; VEF's Command_Ability copies both from
-    // the def in its constructor, so they are overwritten afterwards, as VFEP's Command_Grapple
-    // does for the hook's reload state. Its shrunk-mode tooltip still prefixes def.LabelCap.
+    // The Command is built once (VEF's constructor runs the tooltip and enable check) and then
+    // refreshed: the enable check every call, since fuel and cooldown move; the tooltip from
+    // GetDescriptionForPawn's cache every call too, because VEF's shrunk-mode draw prepends the
+    // label to defaultDesc in place, so a kept instance must have it reset before each draw.
+    // In space the button takes the space icon and label, as VFEP's Command_Grapple swaps the
+    // hook's reload state; the shrunk-mode tooltip still prefixes def.LabelCap.
     public override Gizmo GetGizmo()
     {
-        var gizmo = base.GetGizmo();
-        if (InSpace && gizmo is Command command)
+        if (gizmo == null)
+            gizmo = (Command)base.GetGizmo();
+        else
         {
-            if (Ext.SpaceIcon is Texture2D icon)
-                command.icon = icon;
-            command.defaultLabel = CurrentLabelCap;
+            gizmo.Disabled = !IsEnabledForPawn(out var reason);
+            gizmo.disabledReason = reason.Colorize(ColorLibrary.RedReadable);
+            gizmo.defaultDesc = GetDescriptionForPawn();
         }
+
+        var inSpace = InSpace;
+        gizmo.icon = inSpace && Ext.SpaceIcon is Texture2D icon ? icon : def.icon;
+        gizmo.defaultLabel = LabelCapFor(inSpace);
         return gizmo;
     }
 

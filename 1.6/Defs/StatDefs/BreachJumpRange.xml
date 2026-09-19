@@ -9,7 +9,8 @@
     The description says nothing about space: the stat sheet has no runtime gate like the
     ability tooltip's, and a player without Odyssey should not read about the breach burn;
     "under gravity" is the only hint, and the ability tooltip carries the vacuum rule where it
-    applies.
+    applies. cacheable lets Ability_BreachJump read it through StatWorker's per-pawn cache with a
+    stale window, since the gizmo, range ring and hit test all read it every frame.
   -->
   <StatDef>
     <defName>SCWC_BreachJumpRange</defName>
@@ -21,6 +22,7 @@
     <minValue>0</minValue>
     <hideAtValue>0</hideAtValue>
     <showIfUndefined>false</showIfUndefined>
+    <cacheable>true</cacheable>
     <displayPriorityInCategory>1010</displayPriorityInCategory>
   </StatDef>
 </Defs>
