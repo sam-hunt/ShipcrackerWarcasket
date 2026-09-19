@@ -14,8 +14,10 @@ namespace ShipcrackerWarcasket;
 //  - never draws into portraits, and draws into the zoomed-out pawn cache only while lit: both
 //    bake with DrawMeshNow, which ignores property blocks, so the cache gets the overlay at full
 //    opacity or not at all, and Ability_BreachJump.NotifyThrusterGlowChanged rebakes it at each
-//    transition. In the live tree the node stays in the cached request list at alpha 0 while
-//    idle rather than toggling CanDrawNow, which would rebuild the requests on every cast.
+//    transition. That bake draws in request order, so the node must follow the armor's node
+//    among their parent's children (PawnRenderNode_ThrusterGlow.OrderAfterArmor). In the live
+//    tree the node stays in the cached request list at alpha 0 while idle rather than toggling
+//    CanDrawNow, which would rebuild the requests on every cast.
 public class PawnRenderNodeWorker_ThrusterGlow : PawnRenderNodeWorker_Apparel_Body
 {
     private const float LayerAboveArmor = 0.5f;

@@ -60,4 +60,33 @@ public class PawnRenderNode_ThrusterGlow : PawnRenderNode
 
     // Casting or flying, the on/off state the pawn cache bakes.
     public bool Lit => tree?.pawn is Pawn wearer && Ability_BreachJump.ThrusterGlowLit(wearer, Jump);
+
+    // Moves every glow node among parent's children behind the worn-graphic node of the same
+    // apparel. DynamicPawnRenderNodeSetup_Apparel yields a def's renderNodeProperties nodes
+    // before the apparel's own node, and the pawn cache bakes the tree with DrawMeshNow in
+    // request order: a transparent overlay drawn before the opaque sprite it sits on is simply
+    // painted over, because it writes no depth for the sprite to fail against. The live path is
+    // indifferent, Unity queues transparent materials after cutout ones. Called from
+    // PawnRenderNode_AddChildren_Patch right after the tree attaches the children.
+    public static void OrderAfterArmor(PawnRenderNode parent)
+    {
+        var children = parent.children;
+        if (children == null)
+            return;
+
+        for (var g = 0; g < children.Length; g++)
+        {
+            if (children[g] is not PawnRenderNode_ThrusterGlow glow)
+                continue;
+            for (var a = g + 1; a < children.Length; a++)
+            {
+                if (children[a] is PawnRenderNode_Apparel armor && armor.apparel == glow.apparel)
+                {
+                    children[g] = armor;
+                    children[a] = glow;
+                    break;
+                }
+            }
+        }
+    }
 }

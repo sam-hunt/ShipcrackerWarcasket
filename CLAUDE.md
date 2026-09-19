@@ -8,7 +8,7 @@ Guidance for Claude Code (claude.ai/code) when working in this repository.
 (armor, shoulder pads, helmet) for Vanilla Factions Expanded - Pirates (VFE Pirates), tuned for
 the Odyssey DLC's end-game content. VFE Pirates is a hard dependency; Odyssey is optional and
 Odyssey-only content must load only when the DLC is active. Requires Harmony (bootstrapped in
-`ModInit.cs`; no patch classes yet, and `AccessTools` is used for private-field access).
+`ModInit.cs`; the patch classes live in `Source/1.6/Patches/`).
 
 **Key technologies:** C# (.NET Framework 4.7.2), Harmony, RimWorld modding API, XML defs.
 
@@ -136,8 +136,10 @@ TODOs.md         - Scoping notes for the feature work that has not landed yet
   the tree once with DrawMeshNow, which ignores property blocks: anything that changes per frame
   must skip the cache bake or bake a fixed state and mark the wearer's frames dirty at each
   transition (`GlobalTextureAtlasManager.TryMarkPawnFrameSetDirty`); the glow's on/off bake is
-  the precedent. Do not force a live render instead (a `disableCache` prefix on
-  `PawnRenderer`): that check runs for every humanlike pawn drawn, every frame.
+  the precedent. That bake also draws in request order with no render-queue sorting, so a
+  transparent node must sit after the opaque node it overlays in the tree (the glow's
+  `AddChildren` postfix reorders it). Do not force a live render instead (a `disableCache`
+  prefix on `PawnRenderer`): that check runs for every humanlike pawn drawn, every frame.
 - **Patch timing is the load-bearing hazard of this mod.** `PatchAll()` runs from a
   `[StaticConstructorOnStartup]` (`ModInit.cs`), *not* a `Mod` subclass constructor, on purpose:
   Mod constructors run before defs load, and applying a detour JIT-compiles the target and runs
