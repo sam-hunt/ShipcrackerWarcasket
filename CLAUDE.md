@@ -161,7 +161,10 @@ TODOs.md         - Scoping notes for the feature work that has not landed yet
   Two flavours, mirroring the ungated roots: `1.6/Mods/<Mod Name>/` for version-specific content
   (Defs, and the DefInjected targeting them) and root-level `Mods/<Mod Name>/` for
   version-independent content (art). The def's `MayRequire` becomes redundant and should be
-  dropped when it moves. Gate on the package id (`ludeon.rimworld.odyssey`), never
+  dropped when it moves. A compat art variant (VGE's purple Breach Jump icons) goes at the
+  main tree's exact texture path in the `Mods/<Mod Name>/` root, not under a new name behind
+  a patch: a load folder listed later wins a shared relative path, so the gated root must stay
+  below `/` in `LoadFolders.xml`. Gate on the package id (`ludeon.rimworld.odyssey`), never
   `PatchOperationFindMod` (matches by display name). The one deliberate exception is a patch
   that mirrors a VFEP patch: `1.6/Patches/SOS2Patch.xml` copies VFEP's own display-name gate so
   the Shipcracker and VFEP's sets flip to EVA-rated under exactly the same condition.

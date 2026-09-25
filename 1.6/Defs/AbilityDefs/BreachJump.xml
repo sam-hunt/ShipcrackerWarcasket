@@ -42,8 +42,12 @@
     description, because a patch from the gated root would drag the DefInjected entry for the
     same field into that root and collide with the main-tree entry whenever the gate is open.
 
-    Icons are placeholders borrowed from VFEP until the commissioned art lands: Aerial's Power
-    Jump on a planet, Shock's Blast Off (spaceIconPath) in space.
+    Icons live under the mod-scoped UI/Abilities/WarcasketShipcracker/ so they cannot collide with
+    another mod's path: BreachJump on a planet, BreachBurn (spaceIconPath) in space, both drawn
+    with the orange chemfuel flame. The Vanilla Gravship Expanded art root
+    (Mods/VanillaGravshipExpanded/Textures/) ships purple-flame copies at the same two paths,
+    which shadow these when its gate is open, since a later load folder wins a texture path. Keep
+    the filenames in step across both roots.
 
     flightEffecter / spaceFlightEffecter name the effecter the flyer plays for the whole flight,
     so a compat root can recolour it by patch. The main tree burns chemfuel and uses our orange
@@ -66,7 +70,7 @@
     <description>Use the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short but needs no clear path.</description>
     <abilityClass>ShipcrackerWarcasket.Ability_BreachJump</abilityClass>
     <targetMode>Location</targetMode>
-    <iconPath>UI/Abilities/PowerJump</iconPath>
+    <iconPath>UI/Abilities/WarcasketShipcracker/BreachJump</iconPath>
     <castTime>60</castTime>
     <requireLineOfSight>false</requireLineOfSight>
     <keepCarryingThing>true</keepCarryingThing>
@@ -89,7 +93,7 @@
             <li>(1, 1)</li>
           </points>
         </thrusterGlowCurve>
-        <spaceIconPath>UI/Abilities/BlastOff</spaceIconPath>
+        <spaceIconPath>UI/Abilities/WarcasketShipcracker/BreachBurn</spaceIconPath>
         <vacuumDescription>In vacuum it has no range limit, but the way must be open.</vacuumDescription>
         <vacuumLabel>breach burn</vacuumLabel>
       </li>

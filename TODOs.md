@@ -4,7 +4,7 @@
 - check whether aerial/shock warcasket abilities complement shipcracker
 - apparel descriptions etc
 - check the thruster glow in game (landed 2026-09-18: opacity curve in `1.6/Defs/AbilityDefs/BreachJump.xml`, tint and shader on the render node in the armor def, purple tint in the VGE root's astrofuel patch; MoteGlow is the additive alternative if it should brighten rather than overlay), at both close and Middle zoom and in the flight
-- Replace the placeholder ability icons (VFEP's Power Jump on a planet, Blast Off in space) with the artist's textures once the abilities are tested and locked in; both paths are in `1.6/Defs/AbilityDefs/BreachJump.xml`. include the vge purple variant swaps
+- check the breach jump / breach burn gizmo icons in game, with and without VGE (purple variants shadow the orange ones from `Mods/VanillaGravshipExpanded/Textures/`)
 - Real descriptions and `shortDescription` lore text; translation passes wait for the release gate and for this text to be final. The Royalty "shipcracker" backstory is the brief (see `Docs/Research/WARCASKET_ABILITIES.md`).
 
 ## Scope

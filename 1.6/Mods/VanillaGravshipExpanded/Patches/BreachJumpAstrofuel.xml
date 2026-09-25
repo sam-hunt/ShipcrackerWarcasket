@@ -14,8 +14,9 @@
   SCWC_BreachJumpFlame / SCWC_BreachBurnFlame to this root's SCWC_BreachJumpAstroflame /
   SCWC_BreachBurnAstroflame (Defs/EffecterDefs/), which spray VGE's own Astrospark
   texture, and the armor's thruster-outlet glow (the render node in the armor def) is
-  tinted the same purple as SCWC_AstroflameGlow instead of chemfuel orange. The ability
-  gizmo icons are handled separately.
+  tinted the same purple as SCWC_AstroflameGlow instead of chemfuel orange. The purple
+  gizmo icons need no patch: the version-independent Mods/VanillaGravshipExpanded/ root
+  shadows the main tree's icon textures by path.
 -->
 <Patch>
   <Operation Class="PatchOperationReplace">

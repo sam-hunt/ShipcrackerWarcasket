@@ -35,8 +35,14 @@
          onto our armor and helmet, gives the helmet VGE1's oxygen-provider comp,
          lets the armor walk on VGE1's walkable space terrain and switches the jump
          tank to astrofuel and its flight exhaust to purple (see that root's
-         Patches/ and Defs/). The purple flame uses VGE's own art by path, so no
-         version-independent Mods/ root is needed. -->
+         Patches/ and Defs/). The purple exhaust flecks use VGE's own art by path.
+
+         The Mods/ root carries purple-flame copies of the Breach Jump gizmo icons
+         at the main tree's texture paths. The game lists load folders last-first
+         and keeps the first file it finds per relative path, so an entry listed
+         after "/" replaces a same-path texture there without a patch (the same
+         rule that lets 1.6 override "/"). It must stay below the "/" entry. -->
+    <li IfModActive="vanillaexpanded.gravship">Mods/VanillaGravshipExpanded</li>
     <li IfModActive="vanillaexpanded.gravship">1.6/Mods/VanillaGravshipExpanded</li>
   </v1.6>
 </loadFolders>
