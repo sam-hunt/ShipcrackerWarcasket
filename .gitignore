@@ -55,6 +55,3 @@ test_*.exe
 # Python bytecode (translation-checker tooling, once adopted)
 __pycache__/
 *.py[cod]
-
-# Research documentation (kept locally, not tracked)
-Docs/
