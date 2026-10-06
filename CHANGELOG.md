@@ -15,6 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
      changes land in the stable version's section at promotion. The /release skill
      walks through all of this. -->
 
+## [1.0.1] - 2026-10-06
+
+### Changed
+
+- Updated mod icon.
+- Mod description split into paragraphs.
+
 ## [1.0.0] - 2026-10-06
 
 First release.
@@ -30,4 +37,5 @@ First release.
 - Save Our Ship 2 and Vanilla Gravship Expanded support.
 - Translated into 9 languages.
 
+[1.0.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.0.1
 [1.0.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.0.0
