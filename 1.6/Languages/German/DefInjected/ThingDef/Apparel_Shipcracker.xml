@@ -24,8 +24,8 @@
 
   <!-- EN: flying -->
   <SCWC_BreachJumpFlyer.label>fliegt</SCWC_BreachJumpFlyer.label>
-  <!-- EN: jump -->
-  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>Sprung</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
+  <!-- EN: fuel unit -->
+  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>Treibstoffeinheit</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
   <!-- EN: on cooldown -->
   <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>klingt gerade ab</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>
 

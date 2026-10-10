@@ -48,6 +48,7 @@ this mod copies both patterns so the set reads like one of VFEP's own.
 | astrofuel (VGE, Workshop only) | 아스트로연료 | Coined transliteration; no VGE Korean source checked. |
 | deathMessage | `{0}(이)가 돌파 충격에 압사했습니다.` | Mirrors Core `Crush.deathMessage` = `{0}(이)가 압사했습니다.`; bare `{0}` with the `(이)가` marker. |
 | Workshop title | 함선 침투 워캐스킷 | The armor label; contains `워캐스킷`. |
+| fuel unit (`chargeNoun`, the tank's charge word) | 연료 | Plain mass noun reads naturally in every slot (잔여 연료, 연료당 재장전 비용); generic, covering 화학연료 and 아스트로연료. No plural change, no lookup file. |
 
 ## Pending native review
 

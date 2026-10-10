@@ -1,0 +1,3 @@
+// Shipcracker Warcasket: chargeNoun case forms (nominative;genitive;dative;accusative;instrumental;prepositional)
+единица топлива;единицы топлива;единице топлива;единицу топлива;единицей топлива;единице топлива
+единицы топлива;единиц топлива;единицам топлива;единицы топлива;единицами топлива;единицах топлива

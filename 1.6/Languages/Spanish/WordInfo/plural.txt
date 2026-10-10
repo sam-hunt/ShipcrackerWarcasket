@@ -1,0 +1,2 @@
+// Shipcracker Warcasket: chargeNoun plural
+unidad de combustible;unidades de combustible

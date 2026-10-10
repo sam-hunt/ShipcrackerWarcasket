@@ -30,8 +30,8 @@
   <!-- EN: flying -->
   <SCWC_BreachJumpFlyer.label>飛行</SCWC_BreachJumpFlyer.label>
 
-  <!-- EN: jump -->
-  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>跳躍</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
+  <!-- EN: fuel unit -->
+  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>燃料</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
 
   <!-- EN: on cooldown -->
   <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>冷卻</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>

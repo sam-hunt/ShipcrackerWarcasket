@@ -24,8 +24,8 @@
 
   <!-- EN: flying -->
   <SCWC_BreachJumpFlyer.label>비행</SCWC_BreachJumpFlyer.label>
-  <!-- EN: jump -->
-  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>도약</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
+  <!-- EN: fuel unit -->
+  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>연료</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
   <!-- EN: on cooldown -->
   <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>재사용 대기 중</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>
 

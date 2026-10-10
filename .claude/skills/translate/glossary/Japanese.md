@@ -52,6 +52,7 @@ different mod (Vanilla Armour Expanded) renders "siegebreaker" as
 | spacewalking | 船外活動 | Plain standard term. |
 | astrofuel (VGE) | アストロ燃料 | Coined; VGE has no Japanese translation found. |
 | Workshop title | シップクラッカー・ウォーキャスケット | Equals the armor label. |
+| fuel unit (`chargeNoun`, the tank's charge word) | 燃料 | Plain mass noun reads naturally in every slot (燃料残数, 燃料回復コスト); 燃料ユニット would be a calque. No plural change, no lookup file. |
 
 ## Pending native review
 

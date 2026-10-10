@@ -42,6 +42,7 @@ and `casco <set> de ataúd de guerra` for the other parts; this mod follows it.
 | plasteel / uranium / chemfuel / gravlite panel / vacuum / orbit | plastiacero / uranio / biocombustible / panel de gravilita / vacío / órbita | Core and Odyssey labels. |
 | astrofuel (VGE) | astrocombustible | Coined, parallel to Core `biocombustible`; VGE's own Spanish, if any, was not checked. |
 | purple | púrpura | Per `l10n/languages/Spanish.md` (Odyssey over Core `morado`). |
+| fuel unit (`chargeNoun`, the tank's charge word) | unidad de combustible | Generic `combustible`, not `biocombustible`, since VGE swaps in astrofuel. The fallback pluralizes only the last word, so `1.6/Languages/Spanish/WordInfo/plural.txt` maps it to `unidades de combustible`. |
 
 ## Pending native review
 

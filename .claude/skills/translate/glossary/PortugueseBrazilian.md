@@ -41,7 +41,7 @@ Workshop 3643091941), confirmed from its ThingDef and Keyed files.
 
 Lore paragraph 3 mirrors Royalty's `Shipcracker37.description` ("lançar-se através do vácuo do espaço, aterrissar no casco da nave inimiga ... e conquistá-la em combate de sala em sala") in verb choice and order, but not its "fazer furos no interior", which misreads "punch holes to the interior".
 
-| jump (`chargeNoun`, the tank's charge word) | salto | Royalty's own `Apparel_PackJump` charge noun is the verb `saltar`, a slip; `salto` is the noun the same pack uses everywhere else (`Alcance do salto`) and what `{CHARGENOUN_plural} restantes` needs. |
+| fuel unit (`chargeNoun`, the tank's charge word) | unidade de combustível | Generic `combustível`, not `combustível químico`, since VGE swaps in astrofuel. The fallback pluralizes only the last word, so `1.6/Languages/PortugueseBrazilian/WordInfo/plural.txt` maps it to `unidades de combustível`. |
 ## Pending native review
 
 - "quebra-naves" as the set name and agent noun, versus reusing the official "Rastreador de nave".

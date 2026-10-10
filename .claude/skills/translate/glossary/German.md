@@ -45,7 +45,7 @@ up, re-ground against them and prefer its renderings.
 | wall / roof | Wand / Dach | Core `Wall.label`, `Wall.description`. |
 | backstory (Workshop) | Vorgeschichte | Core Keyed `Backstory`. |
 | Workshop title | Schiffsknacker-Kriegssarg | Byte-identical to the body label; contains Kriegssarg. The mod has no settings key to match. |
-| jump (`chargeNoun`, the tank's charge word) | Sprung | Verbatim Royalty `Apparel_PackJump.comps.CompApparelReloadable.chargeNoun`. The game shows this word only through `{CHARGENOUN_plural}`, which `LanguageWorker_German.Pluralize` resolves from `WordInfo/plural.txt`; mirroring vanilla's own charge noun keeps that lookup identical to the jump pack's. |
+| fuel unit (`chargeNoun`, the tank's charge word) | Treibstoffeinheit | Generic Treibstoff, matching the `treibstoffbetrieben` row (chemfuel or astrofuel). Core's `WordInfo/plural.txt` has no entry for it and the fallback would append `s`, so `1.6/Languages/German/WordInfo/plural.txt` maps it to `Treibstoffeinheiten`; `plural_decline` misses and returns that plural unchanged, giving `Keine Treibstoffeinheiten mehr.` |
 
 ## Pending native review
 

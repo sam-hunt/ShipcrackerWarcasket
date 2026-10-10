@@ -42,6 +42,7 @@ This mod follows that pattern so the set reads like one of VFEP's own.
 | Siegebreaker / Brute / Guardian (Workshop page) | прорывная / беспощадная / охранная броня | Community pack set adjectives. |
 | spacer warcaskets (research, Workshop FAQ) | «Космическая броня мертвеца» | Coined; the pack's research label was not available to check. Quoted as a project label because the English FAQ names the project. |
 | Workshop title | Абордажная броня мертвеца | Contains `броня мертвеца`; sentence case. |
+| fuel unit (`chargeNoun`, the tank's charge word) | единица топлива | Generic `топливо`, covering химтопливо and астротопливо. The ending fallback would mangle the last character, so `1.6/Languages/Russian/WordInfo/plural.txt` maps it to `единицы топлива` and `WordInfo/case.txt` carries both numbers' six cases for the genitive lookups (`Осталось единиц топлива`, `Стоимость 1 единицы топлива`). |
 
 ## Pending native review
 

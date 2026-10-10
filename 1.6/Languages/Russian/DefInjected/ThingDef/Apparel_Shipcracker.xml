@@ -23,8 +23,8 @@
 
   <!-- EN: flying -->
   <SCWC_BreachJumpFlyer.label>в полёте</SCWC_BreachJumpFlyer.label>
-  <!-- EN: jump -->
-  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>прыжок</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
+  <!-- EN: fuel unit -->
+  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>единица топлива</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
   <!-- EN: on cooldown -->
   <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>перезаряжается</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>
 </LanguageData>

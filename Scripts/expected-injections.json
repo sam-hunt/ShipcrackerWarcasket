@@ -131,7 +131,7 @@
         "english": "SCWC_ThrusterGlow"
       },
       "SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun": {
-        "english": "jump",
+        "english": "fuel unit",
         "required": true,
         "normalized": "SCWC_Warcasket_Shipcracker.comps.2.chargeNoun"
       },

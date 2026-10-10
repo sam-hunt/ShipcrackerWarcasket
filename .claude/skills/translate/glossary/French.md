@@ -62,6 +62,7 @@ Workshop page is never post-processed at all.
 | plasteel / uranium / chemfuel / gravlite panel / vacuum / orbit | plastacier / uranium / chemfuel / panneau de gravlite / vide / orbite | Core and Odyssey labels. |
 | astrofuel (VGE) | astrofuel | Kept as-is, parallel to vanilla keeping `chemfuel`; VGE's own French, if any, was not checked. |
 | EVA rated (SOS2) | apte aux sorties extravéhiculaires | Plain French. |
+| fuel unit (`chargeNoun`, the tank's charge word) | point de carburant | Masculine so it agrees with Core `{CHARGENOUN_plural} restants`; `unité` (feminine) would read `unités ... restants`. Generic fuel, not `chemfuel`, since VGE swaps in astrofuel. The fallback would pluralize the last word (`point de carburants`), so `1.6/Languages/French/WordInfo/plural.txt` maps it to `points de carburant`. |
 
 ## Pending native review
 

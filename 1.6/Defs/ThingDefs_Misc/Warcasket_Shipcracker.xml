@@ -31,6 +31,10 @@
     fueled by the CompApparelReloadable beside it (Aerial's 100-charge chemfuel tank). The
     ability reads the tank off the apparel that grants it, so both comps must sit on this one
     def, which is why the engine is here and not on the shoulders as on Aerial.
+    chargeNoun "fuel unit", not Aerial's "jump": the stats pane and reload text count the
+    tank's charges under that noun, and a jump burns fuelPerJump of them, so "jump" reads as
+    100 jumps per tank instead of 5. "Fuel" alone pluralizes badly, and it is not "chemfuel"
+    because the VGE root switches the tank to astrofuel.
     SCWC_BreachJumpRange +20 is the set's whole planet-side range (StatDefs/BreachJumpRange.xml).
 
     apparel tags: WarcasketVeteran (VFEP's 10th-gen tag) puts the set on the veteran raid
@@ -127,7 +131,7 @@
         <baseReloadTicks>60</baseReloadTicks>
         <soundReload>Standard_Reload</soundReload>
         <hotKey>Misc4</hotKey>
-        <chargeNoun>jump</chargeNoun>
+        <chargeNoun>fuel unit</chargeNoun>
         <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
       </li>
       <li Class="VEF.Abilities.CompProperties_AbilitiesApparel">

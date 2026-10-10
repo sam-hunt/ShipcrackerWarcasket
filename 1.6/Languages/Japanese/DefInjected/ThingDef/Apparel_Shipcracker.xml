@@ -21,8 +21,8 @@
   <SCWC_WarcasketHelmet_Shipcracker.description>宇宙技術を用いた特殊なウォーキャスケットヘルメットで,衝撃分散性能が向上しています.気密構造で,呼吸装置と照準補助装置を内蔵しています.\n\n海賊ではなく,帝国の設計です.帝国の移乗攻撃部隊が,二隻の船の間を渡って敵船の船体を外からこじ開けるため,第10世代の宇宙技術シャーシを土台に開発しました.その後,残骸の回収や脱走兵を通じて流出し,今では帝国のドックから遠く離れた鋳造台でも作られています.\n\n船の破壊工作員は真空の宇宙を渡って敵船の船体に着陸し,内部へ穴を開け,部屋から部屋へと戦いながら船を制圧します.重力下でも,同じ噴射で壁や屋根を一跳びに越えられます.シールドは銃弾を防いでも,刃は防ぎません.パイロットに選ばれるのは,接近戦を好む者たちです.</SCWC_WarcasketHelmet_Shipcracker.description>
   <!-- EN: flying -->
   <SCWC_BreachJumpFlyer.label>飛行中</SCWC_BreachJumpFlyer.label>
-  <!-- EN: jump -->
-  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>ジャンプ</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
+  <!-- EN: fuel unit -->
+  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>燃料</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
   <!-- EN: on cooldown -->
   <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>クールダウン中</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>
 

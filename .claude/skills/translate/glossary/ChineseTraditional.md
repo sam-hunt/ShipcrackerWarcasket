@@ -45,6 +45,7 @@ checked character by character against the zh-Hant Core/Royalty/Odyssey tars
 | gravlite panel / chemfuel / vacuum / line of sight | 重力板 / 化合燃料 / 真空 / 視線 | Odyssey and Core labels, `AbilityRequiresLOS` 所需視線. |
 | astrofuel (VGE, Workshop only) | 太空燃料 | Coined; the VGE zh-Hant term was not checked. |
 | Workshop title | 破艦型戰棺 | Contains 戰棺. No settings, so no Keyed title coupling. |
+| fuel unit (`chargeNoun`, the tank's charge word) | 燃料 | Plain mass noun (燃料剩餘, 沒有燃料。), matching zh-Hans; generic, covering 化合燃料 and 太空燃料. No plural change, no lookup file. |
 
 ## Pending native review
 
