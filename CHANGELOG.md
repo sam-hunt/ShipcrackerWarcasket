@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-10-11
+
 ### Changed
 
 - The armor's fuel tank now counts fuel units instead of "jumps", so the number shown matches what a Breach Jump burns (thanks [@Joedox](https://github.com/Joedox), [#2](https://github.com/sam-hunt/ShipcrackerWarcasket/pull/2)).
@@ -45,6 +47,7 @@ First release.
 - Save Our Ship 2 and Vanilla Gravship Expanded support.
 - Translated into 9 languages.
 
-[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.0.2
 [1.0.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.0.1
 [1.0.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.0.0

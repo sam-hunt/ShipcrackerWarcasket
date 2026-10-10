@@ -3,7 +3,7 @@
   <name>Shipcracker Warcasket</name>
   <author>Sam Hunt</author>
   <packageId>shunter.shipcrackerwarcasket</packageId>
-  <modVersion>1.0.1</modVersion>
+  <modVersion>1.0.2</modVersion>
   <description>Adds the Shipcracker, a late-game boarding warcasket for VFE Pirates, welded at the warcasket foundry like any other set.
 
 Its drop thrusters power the Breach Jump, which punches through roofs and walls on landing. In space (Odyssey), they power the Breach Burn: unlimited range, anywhere in line of sight.
