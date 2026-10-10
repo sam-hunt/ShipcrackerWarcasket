@@ -1,15 +1,18 @@
 # French glossary — Shipcracker Warcasket
 
-Initial generation, 2026-09-26 (machine-assisted, pending native review). Only
+Machine-assisted generation, revised by a native speaker (Joedox, PR #1). Only
 mod-specific coinages and grounding decisions; family-wide mechanics/style
 live in `l10n/languages/French.md`. Folder `French`, grounded against the
 Core, Royalty, Biotech and Odyssey `French (Français).tar`s.
 
-VFEP grounding: no community French VFE Pirates translation files were found.
-The only sighting is the Workshop page of "Vanilla Factions Expanded - Pirates
-[Fr]" (id 2725064005), whose description says the Junkers "se soudent à
-l'intérieur de puissants sarcophages". "sarcophage" is taken from there; every
-other VFEP term below (foundry, set names, parts, research) is coined.
+VFEP grounding: VFEP ships English only and no community French translation
+survives (the "Vanilla Factions Expanded - Pirates [Fr]" Workshop item,
+id 2725064005, has been removed), so a French player sees "brute warcasket",
+"warcasket foundry" and "spacer warcaskets" in English in-game. "warcasket"
+is therefore kept untranslated, as vanilla keeps "chemfuel": a native-speaker
+PR (#1) replaced the earlier "sarcophage", which had come from that removed
+item's page and matched nothing the player sees. Every other VFEP term below
+(foundry, set names, parts, research) is coined.
 
 **Contractions are written by hand.** DefInjected values are never passed
 through `LanguageWorker_French.PostProcessed`: `DefInjectionPackage` only
@@ -23,16 +26,16 @@ Workshop page is never post-processed at all.
 
 | English | French | Grounding |
 |---|---|---|
-| warcasket | sarcophage (m., pl. sarcophages) | Community VFEP Workshop page (see above). Adopted despite VFEP's own Sarcophagus set: none of our text names that set, it is the only attested word, and a single noun keeps labels short. Also the Workshop title anchor. |
+| warcasket | warcasket (m., pl. warcaskets; invariable as a modifier: `coque warcasket`) | Untranslated, matching VFEP's English labels in a French game (see above); native PR #1. Also the Workshop title anchor. |
 | shipcracker (set name, also the trooper in lore paragraph 3) | brise-coque | **Coined.** Royalty's `Shipcracker37.title`/`titleShort` in the French tar is `pirate`, unusable here: VFEP is the pirates mod and lore paragraph 2 opens "un modèle impérial, et non pirate". `brise-coque` follows the `brise-glace` compound pattern, is invariable after a noun, doubles as a person noun ("Un brise-coque se lance...") and pairs with the coined `brise-siège`. `coque` is Odyssey's hull word (`GravshipHull` = `coque de vaisseau`). The Workshop page cites the backstory by its in-game title, `"pirate"`, with "(Shipcracker en anglais)". |
-| shipcracker warcasket / shoulders / helmet | sarcophage brise-coque / épaulières de sarcophage brise-coque / casque de sarcophage brise-coque | Core/Royalty apparel pattern `casque de cataphracte`, `armure de commando` (part `de` material/class noun). |
-| Workshop title | Sarcophage brise-coque | Sentence case, contains the VFEP term. No settings key to match. |
-| warcasket shell (torso) | carapace | **Coined.** `coque` was avoided because it is the hull (Odyssey) and sits inside the set name. |
+| shipcracker warcasket / shoulders / helmet | warcasket brise-coque / épaulières de warcasket brise-coque / casque de warcasket brise-coque | Core/Royalty apparel pattern `casque de cataphracte`, `armure de commando` (part `de` material/class noun); `brise-coque` stays invariable after the noun. |
+| Workshop title | Warcasket brise-coque | Sentence case, contains the VFEP term. No settings key to match. |
+| warcasket shell (torso) | coque warcasket | Native PR #1 (replaced the coined `carapace`); the `warcasket` modifier keeps it apart from the hull `coque` used two sentences later. |
 | pauldrons / shoulders | épaulières | **Coined** (no vanilla shoulder apparel; Core only has `épaule` body parts). Ordinary French armor term. Plural label: `[X_definite]` agreement may default masculine singular in vanilla keyed strings. |
 | helmet / sealed helm (Workshop) | casque / heaume étanche | Core `casque de commando`; `heaume` has an aspirated h (`le heaume`). |
-| spacer / spacer-tech / spacer warcasket | spatial / de sarcophage spatial | Core `TechLevel_Spacer` = `spatial`. |
-| warcasket foundry | fonderie de sarcophages | **Coined.** |
-| spacer warcaskets (research) | « sarcophages spatiaux » | **Coined** VFEP research label, cited in guillemets as a clickable project (LocalMineralScanner French precedent). A player running VFEP untranslated sees the English label. |
+| spacer / spacer-tech / spacer warcasket | spatial / de technologie spatiale / warcasket spatial | Core `TechLevel_Spacer` = `spatial`; `de technologie spatiale` for the attributive "spacer-tech" (native PR #1). |
+| warcasket foundry | fonderie de warcaskets | **Coined.** |
+| spacer warcaskets (research) | « spacer warcaskets » (warcaskets spatiaux) | The English label in guillemets, because that is the clickable project every French player sees (VFEP is untranslated), with the French gloss in parentheses. |
 | weld into / welded (entomb) | souder / soudé dans | Community VFEP Workshop page ("se soudent à l'intérieur"). |
 | VFEP set names in prose | Brise-siège, Brute, Gardien; "ensemble" for set | **Coined.** Capitalized as proper names on the Workshop page only. |
 | improved impact dispersion | qui disperse(nt) mieux les impacts | **Coined**; a finite relative clause rather than a noun chain. |
@@ -42,11 +45,12 @@ Workshop page is never post-processed at all.
 | sealed | étanche | Odyssey `GravshipHull.description` (`paroi étanche`). |
 | drop thrusters | propulseurs de largage | Odyssey `LargeThruster` = `propulseur`; Core `capsule de largage` for drop. |
 | breach (attributive) | de brèche | Core `MeleeWeapon_BreachAxe` = `hache de brèche`; `ImmediateAttackBreaching` = `faire une brèche dans vos murs`. |
-| breach jump | saut de brèche | As above; description mirrors Biotech `Longjump.description` (infinitive: `Sauter vers un endroit éloigné...`). |
+| breach jump | saut de brèche | As above; description opens in third-person present (`Allume les propulseurs...`), the majority vanilla form (Royalty 23 third-person vs 8 infinitive; Biotech's infinitive `Longjump` is the outlier). Native PR #1. |
 | breach burn (vacuum label) / burn | poussée de brèche / poussée | **Coined.** `poussée` is used for every "burn" (lore paragraph 3, `vacuumDescription`, Workshop) so the label and its sentence read as one family. |
 | breaching arms | bras de brèche | **Coined**, same attributive pattern. |
 | breach jump range / breach power | portée du saut de brèche / puissance de brèche | Royalty `JumpRange` = `portée de saut`; BreachPower description mirrors Core `MeleeDamageFactor.description` (`Un multiplicateur sur la quantité de dégâts...`). |
 | breach (DamageDef label) | impact de brèche | Core DamageDef labels are action nouns (`écrasement`, `explosion`); bare `brèche` names the gap, not the blow. |
+| jobReportString | utilise la capacité : {0}. | Third-person present like vanilla `JobDef.reportString`s, French-spaced colon, trailing period kept. |
 | deathMessage | {0} s'est fait écraser par un impact de brèche. | Core `Crush.deathMessage` = `{0} s'est fait écraser.` verbatim plus the agent; the construction needs no gender agreement, `{0}` stays bare. |
 | Imperial | impérial | Royalty `Empire.pawnSingular`. |
 | backstory | histoire | Core Keyed `Backstory` = `Histoire :`. |
@@ -61,12 +65,11 @@ Workshop page is never post-processed at all.
 
 ## Pending native review
 
-- `sarcophage` as the warcasket noun (versus a calque such as `cercueil de
-  guerre`), given VFEP's separate Sarcophagus set.
-- `brise-coque` as the set name, and the decision not to reuse Royalty's
-  `pirate`.
-- The coined VFEP terms: `fonderie de sarcophages`, `épaulières`, `carapace`,
-  `sarcophages spatiaux`, and the set names `Brise-siège`, `Brute`, `Gardien`.
+Reviewed by a native speaker in PR #1: the warcasket noun, the three part
+labels and descriptions, and the Breach Jump ability text. Still open:
+
+- The coined VFEP terms: `fonderie de warcaskets`, `épaulières`, and the set
+  names `Brise-siège`, `Brute`, `Gardien`.
 - `saut de brèche` / `poussée de brèche` / `puissance de brèche` /
   `impact de brèche` / `bras de brèche`: whether `de brèche` reads naturally
   as a modifier this often.

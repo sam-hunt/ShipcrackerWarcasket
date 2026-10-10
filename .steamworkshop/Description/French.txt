@@ -1,6 +1,6 @@
-Sarcophage brise-coque
+Warcasket brise-coque
 
-Un nouveau sarcophage de niveau spatial pour [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2723801948]Vanilla Factions Expanded - Pirates[/url].
+Un nouveau warcasket de niveau spatial pour [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2723801948]Vanilla Factions Expanded - Pirates[/url].
 
 [h1]À propos[/h1]
 
@@ -23,7 +23,7 @@ Avec Odyssey : l'ensemble complet résiste au vide, et ses fonctions spatiales s
 [*]Ne peut pas être retiré sans risque tant qu'un colon est soudé dans l'ensemble.
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2723801948]Vanilla Factions Expanded - Pirates[/url] : requis.
 [*]Save Our Ship 2 : apte aux sorties extravéhiculaires, selon les mêmes règles que les ensembles de VFE Pirates.
-[*]Vanilla Gravship Expanded : suit ses règles de vide pour les sarcophages, et le casque emporte sa propre réserve d'oxygène rechargeable. Le porteur se déplace plus vite dans l'espace, et le saut brûle de l'astrofuel au lieu du chemfuel (violet !).
+[*]Vanilla Gravship Expanded : suit ses règles de vide pour les warcaskets, et le casque emporte sa propre réserve d'oxygène rechargeable. Le porteur se déplace plus vite dans l'espace, et le saut brûle de l'astrofuel au lieu du chemfuel (violet !).
 [*]Non testé avec Combat Extended (vos retours sont les bienvenus).
 [/list]
 
@@ -36,7 +36,7 @@ R : Non. Sans Odyssey, vous obtenez l'ensemble et le saut de brèche. La poussé
 R : Non, même si le mod a clairement été pensé pour les combats entre vaisseaux de VGE2, et que la flamme violette a nettement plus d'allure.
 
 [b]Q : Comment l'obtenir ?[/b]
-R : Recherchez le projet « sarcophages spatiaux » de VFE Pirates, puis soudez-le sur un colon à la fonderie de sarcophages, comme tout autre ensemble. Combinez librement ses pièces avec celles des ensembles de VFE Pirates.
+R : Recherchez le projet « spacer warcaskets » (warcaskets spatiaux) de VFE Pirates, puis soudez-le sur un colon à la fonderie de warcaskets, comme tout autre ensemble. Combinez librement ses pièces avec celles des ensembles de VFE Pirates.
 
 [b]Q : Est-ce que ça a été fait avec l'aide d'une IA ?[/b]
 R : Une partie du code répétitif, et la plupart des localisations. Je suis ingénieur logiciel de métier, et j'écris du code depuis 25 ans. Tout le code est relu et testé manuellement. Tous les rapports de bugs et les conflits entre mods sont suivis personnellement, selon le temps et les détails disponibles. Tous les visuels sont soit commandés à des artistes humains, soit réalisés à la main dans Krita, soit les deux.

@@ -16,18 +16,18 @@ The mod targets the languages below, chosen by RimWorld's per-language
 audience size. Contributions for any other language RimWorld supports are
 welcome too.
 
-| Language             | Status           | Credit    |
-| -------------------- | ---------------- | --------- |
-| English              | Source           | -         |
-| Simplified Chinese   | Machine-assisted | Fable 5.1 |
-| Russian              | Machine-assisted | Fable 5.1 |
-| Korean               | Machine-assisted | Fable 5.1 |
-| German               | Machine-assisted | Fable 5.1 |
-| Spanish              | Machine-assisted | Fable 5.1 |
-| French               | Machine-assisted | Fable 5.1 |
-| Brazilian Portuguese | Machine-assisted | Fable 5.1 |
-| Japanese             | Machine-assisted | Fable 5.1 |
-| Traditional Chinese  | Machine-assisted | Fable 5.1 |
+| Language             | Status           | Credit                                          |
+| -------------------- | ---------------- | ----------------------------------------------- |
+| English              | Source           | -                                              |
+| Simplified Chinese   | Machine-assisted | Fable 5.1                                      |
+| Russian              | Machine-assisted | Fable 5.1                                      |
+| Korean               | Machine-assisted | Fable 5.1                                      |
+| German               | Machine-assisted | Fable 5.1                                      |
+| Spanish              | Machine-assisted | Fable 5.1                                      |
+| French               | Native           | Fable 5.1, [Joedox](https://github.com/Joedox) |
+| Brazilian Portuguese | Machine-assisted | Fable 5.1                                      |
+| Japanese             | Machine-assisted | Fable 5.1                                      |
+| Traditional Chinese  | Machine-assisted | Fable 5.1                                      |
 
 Statuses: **Source** (the authoritative English strings), **Machine-assisted**
 (generated with terminology grounded against the official RimWorld

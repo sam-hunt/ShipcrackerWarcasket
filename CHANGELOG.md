@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- French translation revised by a native speaker: the set keeps VFE Pirates' "warcasket" name instead of "sarcophage" (thanks [@Joedox](https://github.com/Joedox), [#1](https://github.com/sam-hunt/ShipcrackerWarcasket/pull/1)).
+
 ## [1.0.1] - 2026-10-06
 
 ### Changed

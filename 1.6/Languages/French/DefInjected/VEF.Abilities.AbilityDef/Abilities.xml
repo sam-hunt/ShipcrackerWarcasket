@@ -11,7 +11,7 @@
   <SCWC_BreachJump.modExtensions.0.vacuumLabel>poussée de brèche</SCWC_BreachJump.modExtensions.0.vacuumLabel>
 
   <!-- EN: Using ability: {0} -->
-  <SCWC_BreachJump.jobReportString>utilise la capacité : {0}</SCWC_BreachJump.jobReportString>
+  <SCWC_BreachJump.jobReportString>utilise la capacité : {0}.</SCWC_BreachJump.jobReportString>
   <!-- EN: breach jump -->
   <SCWC_BreachJump.verbProperties.label>saut de brèche</SCWC_BreachJump.verbProperties.label>
 
