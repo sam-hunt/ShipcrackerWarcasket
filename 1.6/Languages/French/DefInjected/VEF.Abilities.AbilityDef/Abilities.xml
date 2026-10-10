@@ -4,14 +4,14 @@
   <!-- EN: breach jump -->
   <SCWC_BreachJump.label>saut de brèche</SCWC_BreachJump.label>
   <!-- EN: Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short but needs no clear path. -->
-  <SCWC_BreachJump.description>Allumer les propulseurs de largage de l'armure pour sauter vers un endroit, avec un atterrissage assez violent pour percer les murs et les coques de vaisseau. Le saut est court, mais n'a besoin d'aucun passage dégagé.</SCWC_BreachJump.description>
+  <SCWC_BreachJump.description>Allume les propulseurs de largage de l'armure pour sauter vers un endroit, avec un atterrissage assez violent pour percer les murs et les coques de vaisseau. Le saut est court, mais n'a besoin d'aucun passage dégagé.</SCWC_BreachJump.description>
   <!-- EN: In vacuum the burn has no range limit, but needs a clear line to the target. -->
   <SCWC_BreachJump.modExtensions.0.vacuumDescription>Dans le vide, la poussée n'a aucune limite de portée, mais il lui faut une ligne de vue dégagée jusqu'à la cible.</SCWC_BreachJump.modExtensions.0.vacuumDescription>
   <!-- EN: breach burn -->
   <SCWC_BreachJump.modExtensions.0.vacuumLabel>poussée de brèche</SCWC_BreachJump.modExtensions.0.vacuumLabel>
 
   <!-- EN: Using ability: {0} -->
-  <SCWC_BreachJump.jobReportString>utilise la capacité "{0}".</SCWC_BreachJump.jobReportString>
+  <SCWC_BreachJump.jobReportString>utilise la capacité : {0}</SCWC_BreachJump.jobReportString>
   <!-- EN: breach jump -->
   <SCWC_BreachJump.verbProperties.label>saut de brèche</SCWC_BreachJump.verbProperties.label>
 
