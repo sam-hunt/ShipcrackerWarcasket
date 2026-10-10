@@ -86,8 +86,9 @@ notes for the shim or flow edit this repo owes before continuing.
   (`singular;plural`, and `case.txt` for Russian's genitive lookups): the
   game assembles each lookup table from every language folder, mods
   included, and resolves the file name lowercased, so keep the file names
-  lowercase. The checker ignores these files; the glossary row for the
-  noun names the one it relies on.
+  lowercase. French's worker never reads the table, so French takes a
+  single-word noun instead. The checker ignores these files; the glossary
+  row for the noun names the one it relies on.
 - **One compat root carries strings: Vanilla Gravship Expanded.** Its
   `HelmetOxygen.xml` patch adds an oxygen comp to the main-tree helmet, and
   the comp's `chargeNoun` ("oxygen u³") is a key that exists only while VGE
