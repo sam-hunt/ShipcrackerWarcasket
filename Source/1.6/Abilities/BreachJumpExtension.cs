@@ -29,6 +29,16 @@ public class BreachJumpExtension : DefModExtension
     public float spaceFlightSpeedFactor = 3f;
     public float spaceFlightMaxSeconds = 4f;
 
+    // The gizmo's top-right count, "jumps / max" in whole jumps the tank holds, in the "N / M"
+    // shape vanilla's charged commands use. A partial refuel floors: a tank at 37 of 100 is
+    // "1 / 5", matching where the reload reason kicks in. Null when there is nothing to count.
+    public static string JumpsLabel(int remainingCharges, int maxCharges, int fuelPerJump)
+    {
+        if (fuelPerJump <= 0 || maxCharges <= 0)
+            return null;
+        return $"{remainingCharges / fuelPerJump} / {maxCharges / fuelPerJump}";
+    }
+
     // Flight time for a jump of distance cells at flightSpeed cells/s. spaceBurn is the jump's
     // extension on a space map and null on a planet; minSeconds (the flyer def's
     // flightDurationMin) floors both, so it outranks the space cap.

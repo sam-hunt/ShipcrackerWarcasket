@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- The Breach Jump button now shows how many jumps the tank holds in its top-right corner, like the jump pack.
+
 ## [1.0.2] - 2026-10-11
 
 ### Changed

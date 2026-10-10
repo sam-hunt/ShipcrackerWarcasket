@@ -33,9 +33,10 @@ namespace ShipcrackerWarcasket;
 // Expanded every space cell is walkable and each needs a line-of-sight walk, so that sweep is
 // budgeted per frame, cached per cell and re-run only on map change (see DrawSpaceValidCells).
 //
-// Gizmo: VEF's base builds a new Command_Ability, tooltip and all, every time gizmos are
-// requested, which is every frame for a selected wearer. Vanilla's Ability instead keeps one
-// Command and refreshes only what moves, so GetGizmo does the same here (see there).
+// Gizmo: VEF's base builds a new Command (the def's gizmoClass, Command_BreachJump), tooltip
+// and all, every time gizmos are requested, which is every frame for a selected wearer.
+// Vanilla's Ability instead keeps one Command and refreshes only what moves, so GetGizmo does
+// the same here (see there).
 public class Ability_BreachJump : Ability, ISpacePreviewTester
 {
     // "Unlimited" as a finite number so VEF's range arithmetic and ring drawing stay sane
@@ -85,6 +86,10 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     public BreachJumpExtension Ext => ext ??= def.GetModExtension<BreachJumpExtension>();
 
     public CompApparelReloadable Tank => tank ??= holder?.TryGetComp<CompApparelReloadable>();
+
+    // Jumps the tank holds, for Command_BreachJump's top-right count.
+    public string JumpsLabel =>
+        Tank is CompApparelReloadable tank ? BreachJumpExtension.JumpsLabel(tank.RemainingCharges, tank.MaxCharges, Ext.fuelPerJump) : null;
 
     public override void Init()
     {

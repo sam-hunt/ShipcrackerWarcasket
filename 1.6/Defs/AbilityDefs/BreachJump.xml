@@ -5,7 +5,8 @@
     Abilities.xml). The rules live in ShipcrackerWarcasket.Ability_BreachJump (planet: ranged,
     no sight test; space: unlimited range, sight required; landing-only blast), the numbers in
     the BreachJumpExtension below. requireLineOfSight is ignored by the
-    ability class and set false only to document the planet rule.
+    ability class and set false only to document the planet rule. gizmoClass adds the
+    "jumps / max" count in the button's top-right corner, where vanilla's jump pack shows its own.
 
     fuelPerJump 20 of the armor's 100-charge chemfuel tank: Aerial's numbers, 5 jumps.
     breachDamage 20 is the pawn-facing number (Aerial's jump 15, a frag grenade 50); building
@@ -45,6 +46,7 @@
     <label>breach jump</label>
     <description>Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short but needs no clear path.</description>
     <abilityClass>ShipcrackerWarcasket.Ability_BreachJump</abilityClass>
+    <gizmoClass>ShipcrackerWarcasket.Command_BreachJump</gizmoClass>
     <targetMode>Location</targetMode>
     <iconPath>UI/Abilities/WarcasketShipcracker/BreachJump</iconPath>
     <castTime>60</castTime>
