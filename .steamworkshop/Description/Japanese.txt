@@ -21,10 +21,9 @@ Odysseyがある場合は,セット全体が真空に対応し,宇宙用機能�
 [list]
 [*]既存のセーブデータに追加しても安全です.
 [*]ポーンがセットに溶接されている間は,MODを削除しないでください.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2723801948]Vanilla Factions Expanded - Pirates[/url]: 必須です.
 [*]Save Our Ship 2: VFE Pirates本体のセットと同じ条件でEVA対応になります.
 [*]Vanilla Gravship Expanded: ウォーキャスケット向けの真空ルールに従い,ヘルメットには補充できる専用の酸素供給が付きます.船外活動の速度が上がり,ジャンプはバイオ液化燃料の代わりにアストロ燃料を消費します(紫色!).
-[*]Combat Extendedでは未検証です(報告歓迎).
+[*]Combat Extendedでも動作すると報告されています.
 [/list]
 
 [hr][/hr]

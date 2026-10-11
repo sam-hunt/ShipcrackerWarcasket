@@ -21,10 +21,9 @@
 [list]
 [*]可安全加入現有的存檔。
 [*]有殖民者封在這套戰棺內時，請勿移除本模組。
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2723801948]Vanilla Factions Expanded - Pirates[/url]：必要。
 [*]Save Our Ship 2：與VFE Pirates原有的套裝採用相同規則，具備EVA能力。
 [*]Vanilla Gravship Expanded：遵循其戰棺的真空規則，頭盔另有可補充的氧氣供應。太空漫步速度提升，跳躍改燒太空燃料而非化合燃料(紫色的！)。
-[*]未與Combat Extended一同測試(歡迎回報)。
+[*]據玩家回報可與Combat Extended一同使用。
 [/list]
 
 [hr][/hr]

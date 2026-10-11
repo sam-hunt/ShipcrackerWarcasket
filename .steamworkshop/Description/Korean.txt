@@ -21,10 +21,9 @@ Odyssey가 있으면 세트 전체가 진공을 견디며, 우주용 기능의 �
 [list]
 [*]기존 세이브에 추가해도 안전합니다.
 [*]정착민이 세트에 안치된 동안에는 제거하면 안 됩니다.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2723801948]Vanilla Factions Expanded - Pirates[/url]: 필수.
 [*]Save Our Ship 2: VFE Pirates의 기본 세트와 같은 규칙으로 선외활동(EVA) 등급을 받습니다.
 [*]Vanilla Gravship Expanded: 워캐스킷용 진공 규칙을 따르며, 헬멧에 재충전할 수 있는 자체 산소 공급 장치가 달려 있습니다. 선외활동 속도가 빨라지고, 도약에 화학연료 대신 아스트로연료를 씁니다(보라색!).
-[*]Combat Extended와 함께 테스트하지 않았습니다 (제보 환영).
+[*]Combat Extended와 함께 작동한다는 제보가 있습니다.
 [/list]
 
 [hr][/hr]

@@ -21,10 +21,9 @@ Com a Odyssey: o conjunto inteiro resiste ao vácuo, e os recursos espaciais cus
 [list]
 [*]Seguro para adicionar a jogos salvos existentes.
 [*]Não é seguro remover enquanto houver um colono integrado ao conjunto.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2723801948]Vanilla Factions Expanded - Pirates[/url]: obrigatório.
 [*]Save Our Ship 2: vale como traje de EVA pelas mesmas regras dos conjuntos do próprio VFE Pirates.
 [*]Vanilla Gravship Expanded: segue as regras de vácuo dele para carcaças de guerra, e o capacete leva o próprio suprimento de oxigênio recarregável. A caminhada espacial fica mais rápida, e o salto queima astrocombustível em vez de combustível químico (roxo!).
-[*]Não testado com o Combat Extended (relatos são bem-vindos).
+[*]Relatos indicam que funciona com o Combat Extended.
 [/list]
 
 [hr][/hr]

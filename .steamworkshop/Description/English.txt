@@ -21,10 +21,9 @@ With Odyssey: the full set is vacuum rated, and the space features are paid for 
 [list]
 [*]Safe to add to existing saves.
 [*]Not safe to remove while a pawn is welded into the set.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2723801948]Vanilla Factions Expanded - Pirates[/url]: required.
 [*]Save Our Ship 2: EVA rated under the same rules as VFE Pirates' own sets.
 [*]Vanilla Gravship Expanded: follows its vacuum rules for warcaskets, and the helmet carries its own refillable oxygen supply. Improves spacewalking speed, and the jump burns astrofuel instead of chemfuel (purple!).
-[*]Not tested with Combat Extended (reports welcome).
+[*]Reported working with Combat Extended.
 [/list]
 
 [hr][/hr]

@@ -21,10 +21,9 @@ Mit Odyssey ist das ganze Set vakuumtauglich, und die Weltraumfunktionen bezahlt
 [list]
 [*]Kann gefahrlos zu bestehenden Spielständen hinzugefügt werden.
 [*]Kann nicht gefahrlos entfernt werden, solange jemand in das Set eingeschweißt ist.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2723801948]Vanilla Factions Expanded - Pirates[/url]: erforderlich.
 [*]Save Our Ship 2: EVA-tauglich nach denselben Regeln wie die Sets aus VFE Pirates.
 [*]Vanilla Gravship Expanded: Es gelten dessen Vakuumregeln für Kriegssärge, und der Helm hat einen eigenen, nachfüllbaren Sauerstoffvorrat. Der Träger bewegt sich schneller im Weltraum, und der Sprung verbrennt Astrosprit statt Sprit (lila!).
-[*]Nicht mit Combat Extended getestet (Rückmeldungen willkommen).
+[*]Laut Rückmeldungen mit Combat Extended kompatibel.
 [/list]
 
 [hr][/hr]
