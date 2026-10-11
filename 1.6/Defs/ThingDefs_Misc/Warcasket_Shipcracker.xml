@@ -30,7 +30,10 @@
     Abilities: VEF CompAbilitiesApparel grants SCWC_BreachJump (AbilityDefs/BreachJump.xml),
     fueled by the CompApparelReloadable beside it (Aerial's 100-charge chemfuel tank). The
     ability reads the tank off the apparel that grants it, so both comps must sit on this one
-    def, which is why the engine is here and not on the shoulders as on Aerial.
+    def, which is why the engine is here and not on the shoulders as on Aerial. compClass
+    CompBreachTank (Source/1.6/Abilities/) is vanilla's comp plus a trim of a tank saved above
+    a maximum that has since dropped; its DefInjected keys read comps.CompBreachTank, since
+    the handle is the comp class.
     chargeNoun "fuel unit", not Aerial's "jump": the stats pane and reload text count the
     tank's charges under that noun, and a jump burns fuelPerJump of them, so "jump" reads as
     100 jumps per tank instead of 5. "Fuel" alone pluralizes badly, and it is not "chemfuel"
@@ -125,6 +128,7 @@
     </apparel>
     <comps>
       <li Class="CompProperties_ApparelReloadable">
+        <compClass>ShipcrackerWarcasket.CompBreachTank</compClass>
         <maxCharges>100</maxCharges>
         <ammoDef>Chemfuel</ammoDef>
         <ammoCountPerCharge>1</ammoCountPerCharge>

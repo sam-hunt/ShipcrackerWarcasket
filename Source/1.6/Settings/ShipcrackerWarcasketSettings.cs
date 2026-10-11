@@ -152,6 +152,24 @@ public class ShipcrackerWarcasketSettings : ModSettings
             creatureDamage.IntValue, defs.breach.buildingDamageFactor);
         defs.power.value = shouldersBonus.Value / 100f;
         Generation++;
+        TrimWornTanks();
+    }
+
+    // A lowered tank size leaves worn tanks above it, which vanilla's reload accounting cannot
+    // take (CompBreachTank); a stored armor is trimmed when equipped, and a tank saved above
+    // the size on load. Every live pawn, since a caravan or transporter pawn spawns with no
+    // hook of its own.
+    private static void TrimWornTanks()
+    {
+        if (Current.ProgramState != ProgramState.Playing)
+            return;
+        foreach (Pawn pawn in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive)
+        {
+            if (pawn.apparel == null)
+                continue;
+            foreach (Apparel apparel in pawn.apparel.WornApparel)
+                apparel.TryGetComp<CompBreachTank>()?.Trim();
+        }
     }
 
     // One row per tunable under a header per section: the jump, the burn's toggle, then the

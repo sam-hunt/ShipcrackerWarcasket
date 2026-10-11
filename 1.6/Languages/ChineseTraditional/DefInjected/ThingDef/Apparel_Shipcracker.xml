@@ -31,8 +31,8 @@
   <SCWC_BreachJumpFlyer.label>飛行</SCWC_BreachJumpFlyer.label>
 
   <!-- EN: fuel unit -->
-  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>燃料</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
+  <SCWC_Warcasket_Shipcracker.comps.CompBreachTank.chargeNoun>燃料</SCWC_Warcasket_Shipcracker.comps.CompBreachTank.chargeNoun>
 
   <!-- EN: on cooldown -->
-  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>冷卻</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>
+  <SCWC_Warcasket_Shipcracker.comps.CompBreachTank.cooldownGerund>冷卻</SCWC_Warcasket_Shipcracker.comps.CompBreachTank.cooldownGerund>
 </LanguageData>

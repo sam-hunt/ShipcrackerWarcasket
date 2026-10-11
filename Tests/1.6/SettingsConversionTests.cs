@@ -69,9 +69,10 @@ public class SettingsConversionTests
     }
 
     // The VGE root states astrofuel's chemfuel value rather than a pre-halved cost, so the main
-    // def's cost and the root's rate must still come to the 10 astrofuel a jump it was tuned to.
+    // def's cost and the root's rate must still come to the 10 astrofuel a jump it was tuned to,
+    // and its smaller tank to the same 5 jumps as the main tree's.
     [Fact]
-    public void VgeRoot_KeepsTenAstrofuelPerJump()
+    public void VgeRoot_KeepsTenAstrofuelPerJumpAndFiveJumps()
     {
         var root = RepoRoot();
         var ext = XDocument.Load(Path.Combine(root, "1.6/Defs/AbilityDefs/BreachJump.xml")).Descendants("li")
@@ -82,7 +83,13 @@ public class SettingsConversionTests
         Assert.DoesNotContain(patch.Descendants("xpath"), x => x.Value.EndsWith("/fuelPerJump", StringComparison.Ordinal));
         var rate = float.Parse(patch.Descendants("chemfuelPerAmmo").Single().Value, CultureInfo.InvariantCulture);
 
-        Assert.Equal(10, BreachJumpExtension.ChargesPerJump(fuelPerJump, rate, 1));
+        var chargesPerJump = BreachJumpExtension.ChargesPerJump(fuelPerJump, rate, 1);
+        Assert.Equal(10, chargesPerJump);
+
+        var maxCharges = int.Parse(patch.Descendants("maxCharges").Single().Value, CultureInfo.InvariantCulture);
+        var armor = XDocument.Load(Path.Combine(root, "1.6/Defs/ThingDefs_Misc/Warcasket_Shipcracker.xml"));
+        var mainMaxCharges = int.Parse(armor.Descendants("maxCharges").Single().Value, CultureInfo.InvariantCulture);
+        Assert.Equal(mainMaxCharges / fuelPerJump, maxCharges / chargesPerJump);
     }
 
     private static string RepoRoot()

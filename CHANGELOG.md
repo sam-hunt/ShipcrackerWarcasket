@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Mod settings for the landing: blast and roof punch radius (either can be turned off), damage to creatures, walls and other structures, armor penetration, and the shoulders' bonus to structures.
 - A mod setting to turn off the Breach Burn's unlimited range, so jumps in space follow the same rules as on a planet.
 
+### Changed
+
+- With Vanilla Gravship Expanded the tank now holds 50 astrofuel, the same 5 jumps as the chemfuel tank, instead of 100. A tank saved above 50 drops to 50 the next time the game loads; the tank capacity setting can raise it again.
+
 ## [1.0.2] - 2026-10-11
 
 ### Changed

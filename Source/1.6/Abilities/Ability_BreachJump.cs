@@ -364,19 +364,18 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     }
 
     // Brings this instance in line with the settings once per settings write (and once per
-    // load). The settings live on the defs, but three things an earlier write left on the
+    // load). The settings live on the defs, but two things an earlier write left on the
     // instance do not follow them by themselves:
     //  - The tooltip cache, which may quote a radius or cooldown the def no longer has.
     //  - A running cooldown, which VEF stores as an end tick, so a lowered cooldown setting
     //    would not shorten it, and VEF's cooldown overlay draws its remaining share of the new
     //    cooldown, overflowing the button (and dividing by zero at 0). Capped at the new length.
-    //  - Fuel above a lowered tank capacity, which vanilla never trims: the gizmo would count
-    //    "7 / 5". The excess is dropped, through UsedOnce since remainingCharges is protected;
-    //    on this tank UsedOnce only decrements.
     // Run from GetGizmo rather than by sweeping the game on a settings write, since the
     // ability lives on the armor wherever it is (worn, stored, in a caravan or a transporter)
     // and settings can change before a save is loaded. Nothing else reads these before the
-    // gizmo does: the cast goes through it, and AI pawns never cast apparel abilities.
+    // gizmo does: the cast goes through it, and AI pawns never cast apparel abilities. Fuel
+    // above a lowered tank capacity is the tank's own business (CompBreachTank), since
+    // vanilla's reload path reads it with no gizmo involved.
     private void ReconcileSettings()
     {
         settingsGeneration = ShipcrackerWarcasketSettings.Generation;
@@ -385,10 +384,6 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
         var ceiling = Find.TickManager.TicksGame + GetCooldownForPawn();
         if (cooldown > ceiling)
             cooldown = ceiling;
-
-        if (Tank is CompApparelReloadable tank)
-            while (tank.RemainingCharges > tank.MaxCharges)
-                tank.UsedOnce();
     }
 
     // VEF builds the cast as a job whose first toil is a Toils_General.Wait of

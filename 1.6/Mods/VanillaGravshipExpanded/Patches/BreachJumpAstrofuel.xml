@@ -2,9 +2,12 @@
 <!--
   Astrofuel for the Breach Jump under Vanilla Gravship Expanded. VGE_Astrofuel refines 70
   chemfuel to 35, so one unit is worth two chemfuel plus the work: the tank takes astrofuel,
-  chemfuelPerAmmo 2 makes the jump's 20-chemfuel cost burn 10 of it, and the 100-unit tank
-  carries 10 jumps. The cost stays in chemfuel so a mod-settings override of it means the
-  same with or without this root. Astrofuel burns purple in VGE, so the flight effecters
+  chemfuelPerAmmo 2 makes the jump's 20-chemfuel cost burn 10 of it, and maxCharges 50 keeps
+  the tank at the same 5 jumps and the same chemfuel worth as the main tree's 100, so the
+  premium fuel packs tighter rather than doubling the range per tank. The cost stays in
+  chemfuel so a mod-settings override of it means the same with or without this root; the
+  tank size is in the tank's own fuel, and CompBreachTank drops what a saved tank holds above
+  it. Astrofuel burns purple in VGE, so the flight effecters
   switch to this root's astroflame pair and the thruster glow takes SCWC_AstroflameGlow's
   purple. The purple gizmo icons need no patch: the Mods/VanillaGravshipExpanded/ art root
   shadows the main tree's by path.
@@ -14,6 +17,12 @@
     <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/comps/li[@Class="CompProperties_ApparelReloadable"]/ammoDef</xpath>
     <value>
       <ammoDef>VGE_Astrofuel</ammoDef>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/comps/li[@Class="CompProperties_ApparelReloadable"]/maxCharges</xpath>
+    <value>
+      <maxCharges>50</maxCharges>
     </value>
   </Operation>
   <Operation Class="PatchOperationAdd">

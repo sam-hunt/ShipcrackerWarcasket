@@ -25,8 +25,8 @@
   <!-- EN: flying -->
   <SCWC_BreachJumpFlyer.label>en vol</SCWC_BreachJumpFlyer.label>
   <!-- EN: fuel unit -->
-  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>unité</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun>
+  <SCWC_Warcasket_Shipcracker.comps.CompBreachTank.chargeNoun>unité</SCWC_Warcasket_Shipcracker.comps.CompBreachTank.chargeNoun>
   <!-- EN: on cooldown -->
-  <SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>rechargement</SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund>
+  <SCWC_Warcasket_Shipcracker.comps.CompBreachTank.cooldownGerund>rechargement</SCWC_Warcasket_Shipcracker.comps.CompBreachTank.cooldownGerund>
 
 </LanguageData>
