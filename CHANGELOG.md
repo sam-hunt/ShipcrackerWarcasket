@@ -18,16 +18,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-11
+
 ### Added
 
-- The Breach Jump button now shows how many jumps the tank holds in its top-right corner, like the jump pack.
-- Mod settings for the Breach Jump: fuel per jump, tank size, range and an optional cooldown.
-- Mod settings for the landing: blast and roof punch radius (either can be turned off), damage to creatures, walls and other structures, armor penetration, and the shoulders' bonus to structures.
-- A mod setting to turn off the Breach Burn's unlimited range, so jumps in space follow the same rules as on a planet.
+- The Breach Jump button shows jumps left, like the jump pack.
+- Mod settings for the jump: fuel cost, tank size, range and cooldown.
+- Mod settings for the landing: blast and roof punch radius, damage, armor penetration and the shoulders' bonus.
+- Mod setting to make the Breach Burn follow normal jump range in space.
+- Mod settings translated into all 9 languages.
 
 ### Changed
 
-- With Vanilla Gravship Expanded the tank now holds 50 astrofuel, the same 5 jumps as the chemfuel tank, instead of 100. A tank saved above 50 drops to 50 the next time the game loads; the tank capacity setting can raise it again.
+- With Vanilla Gravship Expanded the tank holds 50 astrofuel instead of 100, the same 5 jumps as chemfuel.
 
 ## [1.0.2] - 2026-10-11
 
@@ -58,7 +61,8 @@ First release.
 - Save Our Ship 2 and Vanilla Gravship Expanded support.
 - Translated into 9 languages.
 
-[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.1.0
 [1.0.2]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.0.2
 [1.0.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.0.1
 [1.0.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.0.0
