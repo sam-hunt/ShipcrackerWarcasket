@@ -38,6 +38,9 @@ A: Nein, auch wenn das Set ganz klar für die Gefechte zwischen Schiffen in VGE2
 [b]F: Wie bekomme ich es?[/b]
 A: Erforsche das VFE-Pirates-Projekt 'Raumfahrt-Kriegssärge' und schweiße dann einen Kolonisten wie bei jedem anderen Set in der Kriegssarg-Gießerei ein. Die Teile lassen sich nach Belieben mit den Sets aus VFE Pirates kombinieren.
 
+[b]F: Ist das Set unausgewogen?[/b]
+A: Das entscheidest du. Die Standardwerte sind auf die anderen späten Raumfahrt-Sets aus VFE Pirates abgestimmt. Wenn du es leichter oder schwerer willst, passe in den Mod-Einstellungen Treibstoffverbrauch, Abklingzeit, Reichweite, Schaden usw. an. Deine Kolonie, deine Regeln.
+
 [b]F: Wurde das mithilfe von LLMs erstellt?[/b]
 A: Ein Teil der Fleißarbeit im Code, und die meisten Lokalisierungen. Ich bin von Beruf Softwareentwickler und schreibe seit 25 Jahren Code. Aller Code wird manuell überprüft und getestet; alle Fehlermeldungen und Mod-Konflikte werden persönlich nachverfolgt, soweit Zeit und Details es zulassen. Alle Grafiken sind entweder bei Menschen in Auftrag gegeben, von Hand in Krita erstellt, oder beides.
 

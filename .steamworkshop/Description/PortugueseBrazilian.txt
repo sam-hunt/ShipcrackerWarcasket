@@ -38,6 +38,9 @@ R: Não, mas o mod foi pensado para o combate entre naves do VGE2, e a chama rox
 [b]P: Como consigo?[/b]
 R: Pesquise o projeto "carcaças de guerra espaciais" do VFE Pirates e depois integre o colono na fundição de carcaças de guerra, como em qualquer outro conjunto. Combine as peças com os conjuntos do próprio VFE Pirates como quiser.
 
+[b]P: Isso não está desbalanceado?[/b]
+R: Quem decide é você. Equilibrei os valores padrão com base nos outros conjuntos espaciais de fim de jogo do VFE Pirates. Se quiser mais fácil ou mais difícil, ajuste o custo de combustível, o tempo de recarga, o alcance, o dano e o que mais quiser nas configurações do mod. Sua colônia, suas regras.
+
 [b]P: Isso foi feito com assistência de LLMs?[/b]
 R: Parte do código mais repetitivo, e a maioria das localizações. Sou engenheiro de software de profissão e escrevo código há 25 anos. Todo o código é revisado e testado manualmente. Todos os relatos de bugs e conflitos de mods são acompanhados pessoalmente, conforme o tempo e os detalhes permitirem. Toda a arte é encomendada de humanos, feita à mão no Krita, ou ambos.
 

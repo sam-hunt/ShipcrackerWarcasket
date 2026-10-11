@@ -38,6 +38,9 @@ R: No, aunque está pensado sin duda para el combate entre naves de VGE2, y la l
 [b]P: ¿Cómo lo consigo?[/b]
 R: Investiga el proyecto "ataúdes de guerra de la era espacial" de VFE Pirates y móntalo en la forja de ataúd de guerra como cualquier otro conjunto. Combina las piezas con las series de VFE Pirates como quieras.
 
+[b]P: ¿Está desequilibrado?[/b]
+R: Eso lo decides tú. Los valores por defecto están equilibrados frente a las demás series avanzadas de la era espacial de VFE Pirates. Si lo quieres más fácil o más difícil, ajusta el coste de combustible, el enfriamiento, el alcance, el daño y demás en las opciones del mod. Tu colonia, tus reglas.
+
 [b]P: ¿Esto se hizo con ayuda de un LLM?[/b]
 R: Parte del código más mecánico, y la mayoría de las localizaciones. Soy ingeniero de software de profesión y llevo 25 años escribiendo código. Todo el código se revisa y se prueba manualmente; todos los informes de errores y conflictos entre mods se atienden personalmente según el tiempo y el detalle lo permitan. Todo el arte está encargado a personas, hecho a mano en Krita, o ambas cosas.
 
