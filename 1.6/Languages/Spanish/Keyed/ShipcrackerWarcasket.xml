@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: Shipcracker Warcasket -->
+  <SCWC_SettingsCategory>Ataúd de guerra rompenaves</SCWC_SettingsCategory>
+  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket's definitions, so the set keeps its built-in values. -->
+  <SCWC_SettingsUnavailable>Estos ajustes no están disponibles. Otro mod ha modificado las definiciones del ataúd de guerra rompenaves, así que el conjunto conserva sus valores originales.</SCWC_SettingsUnavailable>
+
+  <!-- EN: Breach jump -->
+  <SCWC_SectionJump>Salto de brecha</SCWC_SectionJump>
+  <!-- EN: Breach burn -->
+  <SCWC_SectionBurn>Impulso de brecha</SCWC_SectionBurn>
+  <!-- EN: Landing -->
+  <SCWC_SectionLanding>Aterrizaje</SCWC_SectionLanding>
+
+  <!-- EN: Fuel per jump ({0}) -->
+  <SCWC_FuelPerJump>Combustible por salto ({0})</SCWC_FuelPerJump>
+  <!-- EN: The amount of fuel each breach jump burns. At 0, jumps burn no fuel. Default: {0}. -->
+  <SCWC_FuelPerJumpDesc>Cantidad de combustible que consume cada salto de brecha. Con 0, los saltos no consumen combustible. Por defecto: {0}.</SCWC_FuelPerJumpDesc>
+
+  <!-- EN: Tank capacity ({0}) -->
+  <SCWC_TankCapacity>Capacidad del depósito ({0})</SCWC_TankCapacity>
+  <!-- EN: The amount of fuel the armor's tank holds when full. A tank already holding more than this loses the excess. Default: {0}. -->
+  <SCWC_TankCapacityDesc>Cantidad de combustible que cabe en el depósito de la armadura. Si un depósito ya contiene más, pierde el exceso. Por defecto: {0}.</SCWC_TankCapacityDesc>
+
+  <!-- EN: Range (cells) -->
+  <SCWC_JumpRange>Alcance (casillas)</SCWC_JumpRange>
+  <!-- EN: The maximum distance a breach jump can carry the pilot. Aerial warcasket parts add their own jump range on top. Default: {0}. -->
+  <SCWC_JumpRangeDesc>Distancia máxima a la que un salto de brecha puede llevar al piloto. Las piezas aéreas de ataúd de guerra suman además su propio alcance de salto. Por defecto: {0}.</SCWC_JumpRangeDesc>
+
+  <!-- EN: Cooldown (hours) -->
+  <SCWC_Cooldown>Enfriamiento (horas)</SCWC_Cooldown>
+  <!-- EN: The time the pilot must wait after a jump before jumping again. Default: {0}. -->
+  <SCWC_CooldownDesc>Tiempo que el piloto debe esperar tras un salto para volver a saltar. Por defecto: {0}.</SCWC_CooldownDesc>
+
+  <!-- EN: A full tank holds {0} {1}, enough for {2} jumps at {3} {1} each. -->
+  <SCWC_JumpSummary>Un depósito lleno contiene {0} de {1}, suficiente para {2} saltos con {3} de {1} por salto.</SCWC_JumpSummary>
+  <!-- EN: Jumps burn no fuel. -->
+  <SCWC_JumpSummaryFree>Los saltos no consumen combustible.</SCWC_JumpSummaryFree>
+
+  <!-- EN: Blast radius (cells) -->
+  <SCWC_BlastRadius>Radio de la explosión (casillas)</SCWC_BlastRadius>
+  <!-- EN: The radius of the blast when the pilot lands. At 0, landings cause no blast. Default: {0}. -->
+  <SCWC_BlastRadiusDesc>Radio de la explosión que provoca el piloto al aterrizar. Con 0, los aterrizajes no provocan ninguna explosión. Por defecto: {0}.</SCWC_BlastRadiusDesc>
+
+  <!-- EN: Roof punch radius (cells) -->
+  <SCWC_RoofRadius>Radio de perforación del techo (casillas)</SCWC_RoofRadius>
+  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Below 1, only the roof over the pilot's own cell opens; at 0, roofs are left intact. A jump within a single room never breaks the roof, and overhead mountain always holds. Default: {0}. -->
+  <SCWC_RoofRadiusDesc>Radio en el que el piloto arranca el techo a su alrededor al despegar y al aterrizar. Por debajo de 1, solo se abre el techo de la casilla del piloto; con 0, los techos quedan intactos. Un salto dentro de una misma habitación nunca rompe el techo, y bajo tierra el techo siempre resiste. Por defecto: {0}.</SCWC_RoofRadiusDesc>
+
+  <!-- EN: Damage to creatures -->
+  <SCWC_CreatureDamage>Daño a criaturas</SCWC_CreatureDamage>
+  <!-- EN: The damage the landing blast deals to each person, animal or mechanoid caught in it. The pilot is never harmed. Default: {0}. -->
+  <SCWC_CreatureDamageDesc>Daño que la explosión del aterrizaje inflige a cada persona, animal o mecanoide que alcanza. El piloto nunca sufre daño. Por defecto: {0}.</SCWC_CreatureDamageDesc>
+
+  <!-- EN: Armor penetration (%) -->
+  <SCWC_ArmorPenetration>Penetración de armadura (%)</SCWC_ArmorPenetration>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
+  <SCWC_ArmorPenetrationDesc>Penetración de armadura del daño que la explosión del aterrizaje inflige a las criaturas. Por defecto: {0}.</SCWC_ArmorPenetrationDesc>
+
+  <!-- EN: Damage to walls -->
+  <SCWC_WallDamage>Daño a muros</SCWC_WallDamage>
+  <!-- EN: The damage the landing blast deals to walls and other structures that block movement. For comparison, a steel wall has {1} hit points and a plasteel wall {2}. Default: {0}. -->
+  <SCWC_WallDamageDesc>Daño que la explosión del aterrizaje inflige a los muros y demás estructuras que bloquean el paso. Como referencia, un muro de acero tiene {1} puntos de impacto y uno de plastiacero, {2}. Por defecto: {0}.</SCWC_WallDamageDesc>
+
+  <!-- EN: Damage to other structures -->
+  <SCWC_StructureDamage>Daño a otras estructuras</SCWC_StructureDamage>
+  <!-- EN: The damage the landing blast deals to doors, turrets, furniture and other structures that do not block movement. Default: {0}. -->
+  <SCWC_StructureDamageDesc>Daño que la explosión del aterrizaje inflige a puertas, torretas, muebles y demás estructuras que no bloquean el paso. Por defecto: {0}.</SCWC_StructureDamageDesc>
+
+  <!-- EN: Bonus from shoulders (%) -->
+  <SCWC_ShouldersBonus>Bonificación de las hombreras (%)</SCWC_ShouldersBonus>
+  <!-- EN: The extra damage a landing deals to walls and other structures while the pilot wears the shipcracker warcasket shoulders. Creatures take no extra damage. Default: {0}. -->
+  <SCWC_ShouldersBonusDesc>Daño adicional que inflige un aterrizaje a muros y otras estructuras cuando el piloto lleva las hombreras rompenaves de ataúd de guerra. Las criaturas no reciben daño adicional. Por defecto: {0}.</SCWC_ShouldersBonusDesc>
+
+  <!-- EN: Without the shoulders: {0} to a wall, {1} to other structures, across {2} cells.\nWith the shoulders: {3} to a wall, {4} to other structures. -->
+  <SCWC_LandingSummary>Sin las hombreras: {0} a un muro, {1} a otras estructuras, en {2} casillas.\nCon las hombreras: {3} a un muro, {4} a otras estructuras.</SCWC_LandingSummary>
+  <!-- EN: No landing blast. -->
+  <SCWC_LandingSummaryOff>El aterrizaje no provoca explosión.</SCWC_LandingSummaryOff>
+
+  <!-- EN: Unlimited range in vacuum -->
+  <SCWC_VacuumBurn>Alcance ilimitado en el vacío</SCWC_VacuumBurn>
+  <!-- EN: When enabled, the jump becomes the breach burn in vacuum: unlimited range, but only to a target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
+  <SCWC_VacuumBurnDesc>Si está activado, en el vacío el salto se convierte en el impulso de brecha: alcance ilimitado, pero solo hacia un objetivo en línea de visión. Si está desactivado, los saltos en el vacío siguen las mismas reglas que con gravedad. Por defecto: activado.</SCWC_VacuumBurnDesc>
+  <!-- EN:  (requires Odyssey) -->
+  <SCWC_RequiresOdysseySuffix> (requiere Odyssey)</SCWC_RequiresOdysseySuffix>
+
+  <!-- EN: Off -->
+  <SCWC_Off>Desactivado</SCWC_Off>
+  <!-- EN:  (default) -->
+  <SCWC_DefaultSuffix> (por defecto)</SCWC_DefaultSuffix>
+
+</LanguageData>

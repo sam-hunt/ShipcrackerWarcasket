@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: Shipcracker Warcasket -->
+  <SCWC_SettingsCategory>함선 침투 워캐스킷</SCWC_SettingsCategory>
+  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket's definitions, so the set keeps its built-in values. -->
+  <SCWC_SettingsUnavailable>이 설정은 사용할 수 없습니다. 다른 모드가 함선 침투 워캐스킷의 정의를 변경했기 때문에, 세트는 내장된 값을 그대로 사용합니다.</SCWC_SettingsUnavailable>
+
+  <!-- EN: Breach jump -->
+  <SCWC_SectionJump>돌파 도약</SCWC_SectionJump>
+  <!-- EN: Breach burn -->
+  <SCWC_SectionBurn>돌파 분사</SCWC_SectionBurn>
+  <!-- EN: Landing -->
+  <SCWC_SectionLanding>착지</SCWC_SectionLanding>
+
+  <!-- EN: Fuel per jump ({0}) -->
+  <SCWC_FuelPerJump>도약당 연료 ({0})</SCWC_FuelPerJump>
+  <!-- EN: The amount of fuel each breach jump burns. At 0, jumps burn no fuel. Default: {0}. -->
+  <SCWC_FuelPerJumpDesc>돌파 도약 1회에 소모하는 연료의 양입니다. 0으로 설정하면 도약에 연료를 소모하지 않습니다. 기본값: {0}.</SCWC_FuelPerJumpDesc>
+
+  <!-- EN: Tank capacity ({0}) -->
+  <SCWC_TankCapacity>탱크 용량 ({0})</SCWC_TankCapacity>
+  <!-- EN: The amount of fuel the armor's tank holds when full. A tank already holding more than this loses the excess. Default: {0}. -->
+  <SCWC_TankCapacityDesc>갑옷의 연료 탱크를 가득 채웠을 때 들어가는 연료의 양입니다. 탱크에 이미 이보다 많은 연료가 들어 있으면 초과분은 사라집니다. 기본값: {0}.</SCWC_TankCapacityDesc>
+
+  <!-- EN: Range (cells) -->
+  <SCWC_JumpRange>도약 거리 (칸)</SCWC_JumpRange>
+  <!-- EN: The maximum distance a breach jump can carry the pilot. Aerial warcasket parts add their own jump range on top. Default: {0}. -->
+  <SCWC_JumpRangeDesc>조종사가 돌파 도약으로 이동할 수 있는 최대 거리입니다. 도약 거리를 늘려 주는 다른 워캐스킷 부품을 함께 착용하면 그 거리가 여기에 더해집니다. 기본값: {0}.</SCWC_JumpRangeDesc>
+
+  <!-- EN: Cooldown (hours) -->
+  <SCWC_Cooldown>재사용 대기 (시간)</SCWC_Cooldown>
+  <!-- EN: The time the pilot must wait after a jump before jumping again. Default: {0}. -->
+  <SCWC_CooldownDesc>조종사가 도약한 뒤 다시 도약하기까지 기다려야 하는 시간입니다. 기본값: {0}.</SCWC_CooldownDesc>
+
+  <!-- EN: A full tank holds {0} {1}, enough for {2} jumps at {3} {1} each. -->
+  <SCWC_JumpSummary>가득 찬 탱크에는 {1} {0}개가 들어갑니다. 도약 1회에 {1} {3}개를 쓰므로 {2}회 도약할 수 있습니다.</SCWC_JumpSummary>
+  <!-- EN: Jumps burn no fuel. -->
+  <SCWC_JumpSummaryFree>도약에 연료를 소모하지 않습니다.</SCWC_JumpSummaryFree>
+
+  <!-- EN: Blast radius (cells) -->
+  <SCWC_BlastRadius>폭발 범위 (칸)</SCWC_BlastRadius>
+  <!-- EN: The radius of the blast when the pilot lands. At 0, landings cause no blast. Default: {0}. -->
+  <SCWC_BlastRadiusDesc>조종사가 착지할 때 일어나는 폭발의 범위입니다. 0으로 설정하면 착지해도 폭발이 일어나지 않습니다. 기본값: {0}.</SCWC_BlastRadiusDesc>
+
+  <!-- EN: Roof punch radius (cells) -->
+  <SCWC_RoofRadius>지붕 파괴 범위 (칸)</SCWC_RoofRadius>
+  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Below 1, only the roof over the pilot's own cell opens; at 0, roofs are left intact. A jump within a single room never breaks the roof, and overhead mountain always holds. Default: {0}. -->
+  <SCWC_RoofRadiusDesc>이륙하거나 착지할 때 조종사 주위에서 지붕이 뜯겨 나가는 범위입니다. 1 미만이면 조종사가 선 칸의 지붕만 열리고, 0이면 지붕이 그대로 남습니다. 한 방 안에서 도약할 때는 지붕이 부서지지 않으며, 두꺼운 지붕(산)은 언제나 버팁니다. 기본값: {0}.</SCWC_RoofRadiusDesc>
+
+  <!-- EN: Damage to creatures -->
+  <SCWC_CreatureDamage>생물 피해</SCWC_CreatureDamage>
+  <!-- EN: The damage the landing blast deals to each person, animal or mechanoid caught in it. The pilot is never harmed. Default: {0}. -->
+  <SCWC_CreatureDamageDesc>착지 폭발에 휘말린 사람, 동물, 메카노이드가 각각 받는 피해입니다. 조종사는 피해를 입지 않습니다. 기본값: {0}.</SCWC_CreatureDamageDesc>
+
+  <!-- EN: Armor penetration (%) -->
+  <SCWC_ArmorPenetration>관통력 (%)</SCWC_ArmorPenetration>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
+  <SCWC_ArmorPenetrationDesc>착지 폭발이 생물에게 입히는 피해의 관통력입니다. 기본값: {0}.</SCWC_ArmorPenetrationDesc>
+
+  <!-- EN: Damage to walls -->
+  <SCWC_WallDamage>벽 피해</SCWC_WallDamage>
+  <!-- EN: The damage the landing blast deals to walls and other structures that block movement. For comparison, a steel wall has {1} hit points and a plasteel wall {2}. Default: {0}. -->
+  <SCWC_WallDamageDesc>착지 폭발이 벽처럼 이동을 막는 구조물에 입히는 피해입니다. 참고로 강철 벽의 내구도는 {1}, 플라스틸 벽의 내구도는 {2}입니다. 기본값: {0}.</SCWC_WallDamageDesc>
+
+  <!-- EN: Damage to other structures -->
+  <SCWC_StructureDamage>기타 구조물 피해</SCWC_StructureDamage>
+  <!-- EN: The damage the landing blast deals to doors, turrets, furniture and other structures that do not block movement. Default: {0}. -->
+  <SCWC_StructureDamageDesc>착지 폭발이 문, 포탑, 가구처럼 이동을 막지 않는 구조물에 입히는 피해입니다. 기본값: {0}.</SCWC_StructureDamageDesc>
+
+  <!-- EN: Bonus from shoulders (%) -->
+  <SCWC_ShouldersBonus>어깨 보너스 (%)</SCWC_ShouldersBonus>
+  <!-- EN: The extra damage a landing deals to walls and other structures while the pilot wears the shipcracker warcasket shoulders. Creatures take no extra damage. Default: {0}. -->
+  <SCWC_ShouldersBonusDesc>조종사가 함선 침투 워캐스킷 어깨를 착용하고 있을 때, 착지가 벽과 기타 구조물에 추가로 입히는 피해입니다. 생물이 받는 피해는 늘어나지 않습니다. 기본값: {0}.</SCWC_ShouldersBonusDesc>
+
+  <!-- EN: Without the shoulders: {0} to a wall, {1} to other structures, across {2} cells.\nWith the shoulders: {3} to a wall, {4} to other structures. -->
+  <SCWC_LandingSummary>어깨 미착용: 벽 {0}, 기타 구조물 {1}, {2}칸에 영향.\n어깨 착용: 벽 {3}, 기타 구조물 {4}.</SCWC_LandingSummary>
+  <!-- EN: No landing blast. -->
+  <SCWC_LandingSummaryOff>착지해도 폭발이 일어나지 않습니다.</SCWC_LandingSummaryOff>
+
+  <!-- EN: Unlimited range in vacuum -->
+  <SCWC_VacuumBurn>진공에서 거리 제한 없음</SCWC_VacuumBurn>
+  <!-- EN: When enabled, the jump becomes the breach burn in vacuum: unlimited range, but only to a target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
+  <SCWC_VacuumBurnDesc>켜면 진공에서 도약이 돌파 분사로 바뀝니다. 거리 제한은 없지만, 시야가 확보된 대상에게만 날아갈 수 있습니다. 끄면 진공에서도 중력 아래와 같은 규칙으로 도약합니다. 기본값: 켜짐.</SCWC_VacuumBurnDesc>
+  <!-- EN:  (requires Odyssey) -->
+  <SCWC_RequiresOdysseySuffix> (오디세이 필요)</SCWC_RequiresOdysseySuffix>
+
+  <!-- EN: Off -->
+  <SCWC_Off>없음</SCWC_Off>
+  <!-- EN:  (default) -->
+  <SCWC_DefaultSuffix> (기본값)</SCWC_DefaultSuffix>
+
+</LanguageData>

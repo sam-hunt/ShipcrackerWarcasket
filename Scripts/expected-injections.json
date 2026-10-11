@@ -130,12 +130,12 @@
       "SCWC_Warcasket_Shipcracker.apparel.renderNodeProperties.0.debugLabel": {
         "english": "SCWC_ThrusterGlow"
       },
-      "SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.chargeNoun": {
+      "SCWC_Warcasket_Shipcracker.comps.CompBreachTank.chargeNoun": {
         "english": "fuel unit",
         "required": true,
         "normalized": "SCWC_Warcasket_Shipcracker.comps.2.chargeNoun"
       },
-      "SCWC_Warcasket_Shipcracker.comps.CompApparelReloadable.cooldownGerund": {
+      "SCWC_Warcasket_Shipcracker.comps.CompBreachTank.cooldownGerund": {
         "english": "on cooldown",
         "required": true,
         "normalized": "SCWC_Warcasket_Shipcracker.comps.2.cooldownGerund"

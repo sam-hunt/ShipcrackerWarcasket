@@ -46,6 +46,15 @@ up, re-ground against them and prefer its renderings.
 | backstory (Workshop) | Vorgeschichte | Core Keyed `Backstory`. |
 | Workshop title | Schiffsknacker-Kriegssarg | Byte-identical to the body label; contains Kriegssarg. Also the `SCWC_SettingsCategory` value (title coupling). |
 | fuel unit (`chargeNoun`, the tank's charge word) | Treibstoffeinheit | Generic Treibstoff, matching the `treibstoffbetrieben` row (chemfuel or astrofuel). Core's `WordInfo/plural.txt` has no entry for it and the fallback would append `s`, so `1.6/Languages/German/WordInfo/plural.txt` maps it to `Treibstoffeinheiten`; `plural_decline` misses and returns that plural unchanged, giving `Keine Treibstoffeinheiten mehr.` |
+| landing blast (settings) | Landeexplosion; "blast radius" = Explosionsradius | Lande- as in Landekapsel / Landeschubdüsen; vanilla has no Druckwelle and no Explosionsradius label (Core `AbilityEffectRadius` = Wirkungsradius). |
+| structures that (do not) block movement (settings) | (un)passierbare Strukturen | Core Keyed `BuildingDamageFactorImpassable` / `Passable` = Bauwerkschaden-Faktor (unpassierbar / passierbar); kept Strukturen, not vanilla's Bauwerke, to match this mod's `SCWC_BreachPower.description`. |
+| overhead mountain | massive Höhlendecke | Core `RoofRockThick.label` = Höhlendecke (massiv). |
+| steel wall / plasteel wall | Wand aus Stahl / Wand aus Plastahl | Core Keyed `ThingMadeOfStuffLabel` = `{1} aus {0}`; `Wall`, `Steel`, `Plasteel` labels. |
+| cooldown / hit points / armor penetration / cells | Abklingzeit / Trefferpunkte / Rüstungsdurchdringung / Zellen | Core Keyed `CooldownTime`, `HitPoints`, `ArmorPenetration`, `MapSizeDesc`. |
+| Off / On / default (settings) | Aus / an / Standard | Core Keyed `Off`, `On`, `Default`; "When enabled/disabled" = Wenn aktiviert / Wenn deaktiviert after Core `CommandAllowCutDesc`. |
+| Odyssey (DLC) | Odyssey | Core `ExpansionDef` `Odyssey.label` keeps the English name. |
+| aerial warcasket (VFEP set, coined) | Luft-Kriegssarg | Plain rendering of the set adjective, hyphenated per the Kriegssarg compound rule; pending native review. |
+| mod (noun) | die Mod | Core Keyed `ModLoadFolder...` "About.xml der Mod". |
 
 ## Pending native review
 

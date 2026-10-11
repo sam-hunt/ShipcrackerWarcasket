@@ -50,6 +50,13 @@ grounded against the Core, Royalty and Odyssey `ChineseSimplified (简体中文)
 | astrofuel (VGE) | 天体燃料 | Coined: VGE ships English only and the community pack has no VGE translation. |
 | Workshop title | 飞船突袭型战棺 | Set name + 战棺 (the README's anchor term). Also the `SCWC_SettingsCategory` value (title coupling). |
 | fuel unit (`chargeNoun`, the tank's charge word) | 燃料 | Plain mass noun (燃料剩余, 没有燃料。), matching zh-Hant; generic, covering 化合燃料 and 天体燃料. Not 燃料罐, which names a container rather than one unit. No plural change, no lookup file. |
+| aerial (VFEP set, settings) | 突击型 | Community `VFEP_Warcasket_Aerial.label` = 突击型战棺装甲 (the pack's own rendering, not a literal "aerial"). |
+| landing blast / blast radius | 着陆冲击波 / 冲击波半径 | Coined on the description's 着陆的冲击力 and the landing shockwave; keeps it apart from the 破墙冲击 damage label. |
+| overhead mountain | 厚山岩顶 | Core `RoofRockThick.label` = 山岩顶（厚）, recomposed for prose. |
+| steel wall / plasteel wall / hit points | 钢铁墙 / 玻璃钢墙 / 耐久度 | Core `Steel`/`Plasteel`/`Wall` labels via `ThingMadeOfStuffLabel` = {0}{1}; Keyed `HitPointsBasic`. |
+| cooldown / armor penetration / range | 冷却时间 / 护甲穿透 / 跳跃距离 | Core Keyed `CooldownTime`, `ArmorPenetration`; Royalty `JumpRange.label`. |
+| Off / default / Default: on | 关 / 默认 / 默认：启用 | Core Keyed `Off`, `Default`, `Enabled`. |
+| settings suffixes | （需要奥德赛） / （默认） | Full-width parens with no leading space, as vanilla 锻造台（燃料）. |
 
 Lore paragraph 3's first sentence mirrors Royalty's `Shipcracker37.description`
 (降落在敌舰的船体上，打孔到舰内) but renders "room by room" as 逐个舱室, not the

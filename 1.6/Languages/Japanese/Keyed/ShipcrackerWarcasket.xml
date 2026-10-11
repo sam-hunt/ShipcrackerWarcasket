@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: Shipcracker Warcasket -->
+  <SCWC_SettingsCategory>シップクラッカー・ウォーキャスケット</SCWC_SettingsCategory>
+  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket's definitions, so the set keeps its built-in values. -->
+  <SCWC_SettingsUnavailable>これらの設定は使用できません.別のMODがシップクラッカー・ウォーキャスケットの定義を変更しているため,セットは本来の値のまま動作します.</SCWC_SettingsUnavailable>
+
+  <!-- EN: Breach jump -->
+  <SCWC_SectionJump>ブリーチジャンプ</SCWC_SectionJump>
+  <!-- EN: Breach burn -->
+  <SCWC_SectionBurn>ブリーチ噴射</SCWC_SectionBurn>
+  <!-- EN: Landing -->
+  <SCWC_SectionLanding>着地</SCWC_SectionLanding>
+
+  <!-- EN: Fuel per jump ({0}) -->
+  <SCWC_FuelPerJump>ジャンプ1回あたりの燃料 ({0})</SCWC_FuelPerJump>
+  <!-- EN: The amount of fuel each breach jump burns. At 0, jumps burn no fuel. Default: {0}. -->
+  <SCWC_FuelPerJumpDesc>ブリーチジャンプ1回で消費する燃料の量です.0にすると,ジャンプで燃料を消費しなくなります.デフォルト: {0}.</SCWC_FuelPerJumpDesc>
+
+  <!-- EN: Tank capacity ({0}) -->
+  <SCWC_TankCapacity>タンク容量 ({0})</SCWC_TankCapacity>
+  <!-- EN: The amount of fuel the armor's tank holds when full. A tank already holding more than this loses the excess. Default: {0}. -->
+  <SCWC_TankCapacityDesc>満タン時にアーマーのタンクに入る燃料の量です.すでにこの値を超える燃料が入っているタンクでは,超過分が失われます.デフォルト: {0}.</SCWC_TankCapacityDesc>
+
+  <!-- EN: Range (cells) -->
+  <SCWC_JumpRange>範囲 (タイル)</SCWC_JumpRange>
+  <!-- EN: The maximum distance a breach jump can carry the pilot. Aerial warcasket parts add their own jump range on top. Default: {0}. -->
+  <SCWC_JumpRangeDesc>ブリーチジャンプでパイロットが移動できる最大距離です.エアリアル系のウォーキャスケットパーツを装着すると,そのパーツのジャンプ範囲がさらに上乗せされます.デフォルト: {0}.</SCWC_JumpRangeDesc>
+
+  <!-- EN: Cooldown (hours) -->
+  <SCWC_Cooldown>クールダウン (時間)</SCWC_Cooldown>
+  <!-- EN: The time the pilot must wait after a jump before jumping again. Default: {0}. -->
+  <SCWC_CooldownDesc>ジャンプした後,パイロットが次にジャンプできるようになるまでの待ち時間です.デフォルト: {0}.</SCWC_CooldownDesc>
+
+  <!-- EN: A full tank holds {0} {1}, enough for {2} jumps at {3} {1} each. -->
+  <SCWC_JumpSummary>満タンのタンクには{1}が{0}入ります.1回のジャンプで{3}消費するので,{2}回ジャンプできます.</SCWC_JumpSummary>
+  <!-- EN: Jumps burn no fuel. -->
+  <SCWC_JumpSummaryFree>ジャンプで燃料を消費しません.</SCWC_JumpSummaryFree>
+
+  <!-- EN: Blast radius (cells) -->
+  <SCWC_BlastRadius>爆風半径 (タイル)</SCWC_BlastRadius>
+  <!-- EN: The radius of the blast when the pilot lands. At 0, landings cause no blast. Default: {0}. -->
+  <SCWC_BlastRadiusDesc>パイロットが着地したときに起こる爆風の半径です.0にすると,着地しても爆風は起こりません.デフォルト: {0}.</SCWC_BlastRadiusDesc>
+
+  <!-- EN: Roof punch radius (cells) -->
+  <SCWC_RoofRadius>屋根破壊半径 (タイル)</SCWC_RoofRadius>
+  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Below 1, only the roof over the pilot's own cell opens; at 0, roofs are left intact. A jump within a single room never breaks the roof, and overhead mountain always holds. Default: {0}. -->
+  <SCWC_RoofRadiusDesc>離陸時と着地時に,パイロットの周囲で屋根を突き破る範囲の半径です.1未満ではパイロットのいるタイルの屋根だけが開き,0では屋根は壊れません.同じ部屋の中でのジャンプでは屋根は壊れず,岩天井(岩盤)は常に残ります.デフォルト: {0}.</SCWC_RoofRadiusDesc>
+
+  <!-- EN: Damage to creatures -->
+  <SCWC_CreatureDamage>生物へのダメージ</SCWC_CreatureDamage>
+  <!-- EN: The damage the landing blast deals to each person, animal or mechanoid caught in it. The pilot is never harmed. Default: {0}. -->
+  <SCWC_CreatureDamageDesc>着地の爆風に巻き込まれた人,動物,メカノイドがそれぞれ受けるダメージです.パイロット自身は傷つきません.デフォルト: {0}.</SCWC_CreatureDamageDesc>
+
+  <!-- EN: Armor penetration (%) -->
+  <SCWC_ArmorPenetration>アーマー貫通力 (%)</SCWC_ArmorPenetration>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
+  <SCWC_ArmorPenetrationDesc>着地の爆風が生物に与えるダメージのアーマー貫通力です.デフォルト: {0}.</SCWC_ArmorPenetrationDesc>
+
+  <!-- EN: Damage to walls -->
+  <SCWC_WallDamage>壁へのダメージ</SCWC_WallDamage>
+  <!-- EN: The damage the landing blast deals to walls and other structures that block movement. For comparison, a steel wall has {1} hit points and a plasteel wall {2}. Default: {0}. -->
+  <SCWC_WallDamageDesc>着地の爆風が,壁など移動を妨げる建造物に与えるダメージです.参考までに,スチール壁のHPは{1},プラスチール壁のHPは{2}です.デフォルト: {0}.</SCWC_WallDamageDesc>
+
+  <!-- EN: Damage to other structures -->
+  <SCWC_StructureDamage>その他の建造物へのダメージ</SCWC_StructureDamage>
+  <!-- EN: The damage the landing blast deals to doors, turrets, furniture and other structures that do not block movement. Default: {0}. -->
+  <SCWC_StructureDamageDesc>着地の爆風が,ドア,タレット,家具など移動を妨げない建造物に与えるダメージです.デフォルト: {0}.</SCWC_StructureDamageDesc>
+
+  <!-- EN: Bonus from shoulders (%) -->
+  <SCWC_ShouldersBonus>ショルダーアーマーのボーナス (%)</SCWC_ShouldersBonus>
+  <!-- EN: The extra damage a landing deals to walls and other structures while the pilot wears the shipcracker warcasket shoulders. Creatures take no extra damage. Default: {0}. -->
+  <SCWC_ShouldersBonusDesc>パイロットがシップクラッカー・ウォーキャスケットショルダーアーマーを装着しているとき,着地で壁などの建造物に与えるダメージがこの割合だけ増えます.生物へのダメージは増えません.デフォルト: {0}.</SCWC_ShouldersBonusDesc>
+
+  <!-- EN: Without the shoulders: {0} to a wall, {1} to other structures, across {2} cells.\nWith the shoulders: {3} to a wall, {4} to other structures. -->
+  <SCWC_LandingSummary>ショルダーアーマーなし: 壁に{0},その他の建造物に{1}のダメージ ({2}タイルに及ぶ).\nショルダーアーマーあり: 壁に{3},その他の建造物に{4}のダメージ.</SCWC_LandingSummary>
+  <!-- EN: No landing blast. -->
+  <SCWC_LandingSummaryOff>着地時の爆風はありません.</SCWC_LandingSummaryOff>
+
+  <!-- EN: Unlimited range in vacuum -->
+  <SCWC_VacuumBurn>真空中は距離無制限</SCWC_VacuumBurn>
+  <!-- EN: When enabled, the jump becomes the breach burn in vacuum: unlimited range, but only to a target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
+  <SCWC_VacuumBurnDesc>有効にすると,真空中ではジャンプがブリーチ噴射になります.距離の制限はなくなりますが,視線が通るターゲットにしか向かえません.無効にすると,真空中のジャンプも重力下と同じルールに従います.デフォルト: On.</SCWC_VacuumBurnDesc>
+  <!-- EN:  (requires Odyssey) -->
+  <SCWC_RequiresOdysseySuffix> (Odysseyが必要)</SCWC_RequiresOdysseySuffix>
+
+  <!-- EN: Off -->
+  <SCWC_Off>Off</SCWC_Off>
+  <!-- EN:  (default) -->
+  <SCWC_DefaultSuffix> (デフォルト)</SCWC_DefaultSuffix>
+
+</LanguageData>

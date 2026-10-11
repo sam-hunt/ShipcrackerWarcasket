@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: Shipcracker Warcasket -->
+  <SCWC_SettingsCategory>Абордажная броня мертвеца</SCWC_SettingsCategory>
+  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket's definitions, so the set keeps its built-in values. -->
+  <SCWC_SettingsUnavailable>Эти настройки недоступны. Другой мод изменил параметры абордажной брони мертвеца, поэтому у комплекта остаются исходные значения.</SCWC_SettingsUnavailable>
+
+  <!-- EN: Breach jump -->
+  <SCWC_SectionJump>Пробивной прыжок</SCWC_SectionJump>
+  <!-- EN: Breach burn -->
+  <SCWC_SectionBurn>Пробивной рывок</SCWC_SectionBurn>
+  <!-- EN: Landing -->
+  <SCWC_SectionLanding>Приземление</SCWC_SectionLanding>
+
+  <!-- EN: Fuel per jump ({0}) -->
+  <SCWC_FuelPerJump>Расход на прыжок ({0})</SCWC_FuelPerJump>
+  <!-- EN: The amount of fuel each breach jump burns. At 0, jumps burn no fuel. Default: {0}. -->
+  <SCWC_FuelPerJumpDesc>Сколько топлива сжигает каждый пробивной прыжок. При значении 0 прыжки не расходуют топливо. По умолчанию: {0}.</SCWC_FuelPerJumpDesc>
+
+  <!-- EN: Tank capacity ({0}) -->
+  <SCWC_TankCapacity>Ёмкость бака ({0})</SCWC_TankCapacity>
+  <!-- EN: The amount of fuel the armor's tank holds when full. A tank already holding more than this loses the excess. Default: {0}. -->
+  <SCWC_TankCapacityDesc>Сколько топлива вмещает полный бак брони. Если в баке уже больше топлива, излишек пропадает. По умолчанию: {0}.</SCWC_TankCapacityDesc>
+
+  <!-- EN: Range (cells) -->
+  <SCWC_JumpRange>Дальность (в клетках)</SCWC_JumpRange>
+  <!-- EN: The maximum distance a breach jump can carry the pilot. Aerial warcasket parts add their own jump range on top. Default: {0}. -->
+  <SCWC_JumpRangeDesc>Максимальная дальность пробивного прыжка. Детали воздушной брони мертвеца прибавляют к ней собственную дальность прыжка. По умолчанию: {0}.</SCWC_JumpRangeDesc>
+
+  <!-- EN: Cooldown (hours) -->
+  <SCWC_Cooldown>Перезарядка (в часах)</SCWC_Cooldown>
+  <!-- EN: The time the pilot must wait after a jump before jumping again. Default: {0}. -->
+  <SCWC_CooldownDesc>Сколько пилоту ждать после прыжка, прежде чем прыгнуть снова. По умолчанию: {0}.</SCWC_CooldownDesc>
+
+  <!-- EN: A full tank holds {0} {1}, enough for {2} jumps at {3} {1} each. -->
+  <SCWC_JumpSummary>Полный бак: {0} ед. ({1}). Расход на прыжок: {3} ед., всего прыжков: {2}.</SCWC_JumpSummary>
+  <!-- EN: Jumps burn no fuel. -->
+  <SCWC_JumpSummaryFree>Прыжки не расходуют топливо.</SCWC_JumpSummaryFree>
+
+  <!-- EN: Blast radius (cells) -->
+  <SCWC_BlastRadius>Радиус взрыва (в клетках)</SCWC_BlastRadius>
+  <!-- EN: The radius of the blast when the pilot lands. At 0, landings cause no blast. Default: {0}. -->
+  <SCWC_BlastRadiusDesc>Радиус взрыва при приземлении пилота. При значении 0 приземление обходится без взрыва. По умолчанию: {0}.</SCWC_BlastRadiusDesc>
+
+  <!-- EN: Roof punch radius (cells) -->
+  <SCWC_RoofRadius>Радиус пролома крыши (в клетках)</SCWC_RoofRadius>
+  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Below 1, only the roof over the pilot's own cell opens; at 0, roofs are left intact. A jump within a single room never breaks the roof, and overhead mountain always holds. Default: {0}. -->
+  <SCWC_RoofRadiusDesc>Радиус, в котором пилот проламывает крышу при взлёте и приземлении. Если значение меньше 1, пролом появляется только прямо над пилотом; при 0 крыша остаётся целой. Прыжок в пределах одной комнаты крышу не ломает, а толщу горной породы не пробить никогда. По умолчанию: {0}.</SCWC_RoofRadiusDesc>
+
+  <!-- EN: Damage to creatures -->
+  <SCWC_CreatureDamage>Урон существам</SCWC_CreatureDamage>
+  <!-- EN: The damage the landing blast deals to each person, animal or mechanoid caught in it. The pilot is never harmed. Default: {0}. -->
+  <SCWC_CreatureDamageDesc>Сколько урона взрыв при приземлении наносит каждому человеку, животному или механоиду рядом. Самого пилота взрыв не задевает. По умолчанию: {0}.</SCWC_CreatureDamageDesc>
+
+  <!-- EN: Armor penetration (%) -->
+  <SCWC_ArmorPenetration>Бронепробитие (%)</SCWC_ArmorPenetration>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
+  <SCWC_ArmorPenetrationDesc>Насколько хорошо взрыв при приземлении пробивает броню существ. По умолчанию: {0}.</SCWC_ArmorPenetrationDesc>
+
+  <!-- EN: Damage to walls -->
+  <SCWC_WallDamage>Урон стенам</SCWC_WallDamage>
+  <!-- EN: The damage the landing blast deals to walls and other structures that block movement. For comparison, a steel wall has {1} hit points and a plasteel wall {2}. Default: {0}. -->
+  <SCWC_WallDamageDesc>Сколько урона взрыв при приземлении наносит стенам и другим непроходимым постройкам. Для сравнения: у стены из стали прочность {1}, у стены из пластали {2}. По умолчанию: {0}.</SCWC_WallDamageDesc>
+
+  <!-- EN: Damage to other structures -->
+  <SCWC_StructureDamage>Урон другим постройкам</SCWC_StructureDamage>
+  <!-- EN: The damage the landing blast deals to doors, turrets, furniture and other structures that do not block movement. Default: {0}. -->
+  <SCWC_StructureDamageDesc>Сколько урона взрыв при приземлении наносит дверям, турелям, мебели и другим проходимым постройкам. По умолчанию: {0}.</SCWC_StructureDamageDesc>
+
+  <!-- EN: Bonus from shoulders (%) -->
+  <SCWC_ShouldersBonus>Бонус от наплечников (%)</SCWC_ShouldersBonus>
+  <!-- EN: The extra damage a landing deals to walls and other structures while the pilot wears the shipcracker warcasket shoulders. Creatures take no extra damage. Default: {0}. -->
+  <SCWC_ShouldersBonusDesc>На сколько больше урона приземление наносит стенам и другим постройкам, если на пилоте наплечники абордажной брони. Урон существам при этом не растёт. По умолчанию: {0}.</SCWC_ShouldersBonusDesc>
+
+  <!-- EN: Without the shoulders: {0} to a wall, {1} to other structures, across {2} cells.\nWith the shoulders: {3} to a wall, {4} to other structures. -->
+  <SCWC_LandingSummary>Без наплечников: урон стене {0}, другим постройкам {1}. Клеток в зоне взрыва: {2}.\nС наплечниками: урон стене {3}, другим постройкам {4}.</SCWC_LandingSummary>
+  <!-- EN: No landing blast. -->
+  <SCWC_LandingSummaryOff>Взрыва при приземлении нет.</SCWC_LandingSummaryOff>
+
+  <!-- EN: Unlimited range in vacuum -->
+  <SCWC_VacuumBurn>Неограниченная дальность в вакууме</SCWC_VacuumBurn>
+  <!-- EN: When enabled, the jump becomes the breach burn in vacuum: unlimited range, but only to a target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
+  <SCWC_VacuumBurnDesc>Если включено, в вакууме прыжок превращается в пробивной рывок: дальность не ограничена, но цель должна быть в прямой видимости. Если отключено, в вакууме действуют те же правила, что и при гравитации. По умолчанию: включено.</SCWC_VacuumBurnDesc>
+  <!-- EN:  (requires Odyssey) -->
+  <SCWC_RequiresOdysseySuffix> (требуется Odyssey)</SCWC_RequiresOdysseySuffix>
+
+  <!-- EN: Off -->
+  <SCWC_Off>Выкл</SCWC_Off>
+  <!-- EN:  (default) -->
+  <SCWC_DefaultSuffix> (по умолчанию)</SCWC_DefaultSuffix>
+
+</LanguageData>

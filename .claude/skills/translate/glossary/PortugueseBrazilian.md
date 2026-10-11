@@ -42,6 +42,14 @@ Workshop 3643091941), confirmed from its ThingDef and Keyed files.
 Lore paragraph 3 mirrors Royalty's `Shipcracker37.description` ("lançar-se através do vácuo do espaço, aterrissar no casco da nave inimiga ... e conquistá-la em combate de sala em sala") in verb choice and order, but not its "fazer furos no interior", which misreads "punch holes to the interior".
 
 | fuel unit (`chargeNoun`, the tank's charge word) | unidade de combustível | Generic `combustível`, not `combustível químico`, since VGE swaps in astrofuel. The fallback pluralizes only the last word, so `1.6/Languages/PortugueseBrazilian/WordInfo/plural.txt` maps it to `unidades de combustível`. |
+| cooldown (settings) | tempo de recarga | Royalty Keyed `Cooldown`. Core's `CooldownTime` "Esfriamento" is the weapon sense, not an ability's. |
+| cells (unit) / radius / room | células / raio / cômodo | Core Keyed `MapSizeDesc` "Células", `AbilityEffectRadius` "Raio do efeito", room stats "cômodo". |
+| overhead mountain | a montanha | Core `RoofRockThick.label` = "montanha". |
+| armor penetration / hit points | penetração de armadura / pontos de vida | Core Keyed `ArmorPenetration`, `HitPointsBasic`. |
+| steel wall / plasteel wall | parede de aço / (uma) de plastiaço | Core `ThingMadeOfStuffLabel` = "{1} de {0}". |
+| Off / default / Odyssey | Desligado / padrão / Odyssey | Core Keyed `Off`, `Default`; Core `ExpansionDef` `Odyssey.label` keeps the English name. |
+| Aerial (VFEP set, settings) | carcaça de guerra aérea | **Coined** on the pack's label pattern; the pack's own Aerial rendering not checked. |
+| landing blast / roof punch | explosão da aterrissagem / abertura do telhado | Coined from "aterrissagem" (DefInjected) and Core "explosão". |
 ## Pending native review
 
 - "quebra-naves" as the set name and agent noun, versus reusing the official "Rastreador de nave".

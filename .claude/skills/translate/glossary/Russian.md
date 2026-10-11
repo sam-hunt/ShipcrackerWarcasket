@@ -43,6 +43,15 @@ This mod follows that pattern so the set reads like one of VFEP's own.
 | spacer warcaskets (research, Workshop FAQ) | «Космическая броня мертвеца» | Coined; the pack's research label was not available to check. Quoted as a project label because the English FAQ names the project. |
 | Workshop title | Абордажная броня мертвеца | Contains `броня мертвеца`; sentence case. Also the `SCWC_SettingsCategory` value (title coupling). |
 | fuel unit (`chargeNoun`, the tank's charge word) | единица топлива | Generic `топливо`, covering химтопливо and астротопливо. The ending fallback would mangle the last character, so `1.6/Languages/Russian/WordInfo/plural.txt` maps it to `единицы топлива` and `WordInfo/case.txt` carries both numbers' six cases for the genitive lookups (`Осталось единиц топлива`, `Стоимость 1 единицы топлива`). |
+| Settings: "Default: {0}." / " (default)" / Off | По умолчанию: {0}. / (по умолчанию) / Выкл | Core Keyed `Default`, `default`, `Off`. |
+| Settings: cooldown / armor penetration / range | перезарядка / бронепробитие / дальность | Core Keyed `CooldownTime`, `ArmorPenetration`, `Range`. Slider units read `(в клетках)`, `(в часах)`, `(%)`. |
+| Settings: fuel quantities with the fuel name | `{0} ед. ({1})`, `Ёмкость бака ({0})` | Core uses `{0} ед.` for mass quantities (`LowMedicineDesc`, `StatsReport_ReloadMarketValue`); the fuel name stays nominative in parentheses, so no numeral or case agreement is needed. |
+| Damage to walls / other structures; structures that (do not) block movement | урон стенам / урон другим постройкам; непроходимые / проходимые постройки | Core storyteller Keyed `BuildingDamageFactorImpassable`/`Passable` (`Урон непроходимым сооружениям`), with this mod's `постройки`. |
+| steel wall / plasteel wall, hit points | стена из стали / стена из пластали, прочность | Core `ThingMadeOfStuffLabel` = `{1} из {0}`; `HitPointsBasic` = `Прочность`. Phrased `у стены из стали прочность {1}` so the number needs no agreement. |
+| overhead mountain | толща горной породы | Core `RoofRockThick.label`. |
+| roof punch radius | радиус пролома крыши | **Coined.** |
+| (requires Odyssey) | (требуется Odyssey) | Core `ExpansionDef` keeps `Odyssey` in Latin; `требуется` as in Core `SkillNeededForConstructing`. |
+| Aerial warcasket parts | детали воздушной брони мертвеца | **Coined**; the community pack's Aerial set adjective was not available to check. |
 
 ## Pending native review
 

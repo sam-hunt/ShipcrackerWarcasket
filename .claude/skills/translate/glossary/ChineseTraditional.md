@@ -46,6 +46,12 @@ checked character by character against the zh-Hant Core/Royalty/Odyssey tars
 | astrofuel (VGE, Workshop only) | 太空燃料 | Coined; the VGE zh-Hant term was not checked. |
 | Workshop title | 破艦型戰棺 | Contains 戰棺. Also the `SCWC_SettingsCategory` value (title coupling). |
 | fuel unit (`chargeNoun`, the tank's charge word) | 燃料 | Plain mass noun (燃料剩餘, 沒有燃料。), matching zh-Hans; generic, covering 化合燃料 and 太空燃料. No plural change, no lookup file. |
+| tank (the armor's fuel tank, settings) | 燃料箱 | Odyssey `FuelStorage.label` 燃料箱 (Core Keyed 燃料槽 is the fueling port). |
+| Aerial (VFEP set, settings) | 空襲型 | **Coined**, unverified against the community pack; follows the 破襲型 verb-object `<set>型` shape. |
+| landing blast / roof punch radius | 著陸爆炸 / 屋頂撞破半徑 | 爆炸半徑 is Core `ScenPart_OnPawnDeathExplode`; overhead mountain is Core `RoofRockThick` 山岩頂. |
+| steel wall / plasteel wall / hit points | 鋼鐵牆 / 塑鋼牆 / 耐久值 | Core `ThingMadeOfStuffLabel` {0}{1} + `Wall` 牆; `HitPointsBasic` 耐久值. |
+| Default: {0}. / (default) / Off | 預設值：{0}。 / (預設) / 關閉 | Core Keyed `Default` 預設, `Off` 關閉; 預設值 per the Taiwan register list. |
+| requires Odyssey (suffix) | (需要「漫遊」DLC) | Core `SimulateNotOwning*` 「漫遊」DLC. ASCII parens set solid, so the suffix drops the English leading space. |
 
 ## Pending native review
 

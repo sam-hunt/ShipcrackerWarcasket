@@ -43,6 +43,13 @@ and `casco <set> de ataúd de guerra` for the other parts; this mod follows it.
 | astrofuel (VGE) | astrocombustible | Coined, parallel to Core `biocombustible`; VGE's own Spanish, if any, was not checked. |
 | purple | púrpura | Per `l10n/languages/Spanish.md` (Odyssey over Core `morado`). |
 | fuel unit (`chargeNoun`, the tank's charge word) | unidad de combustible | Generic `combustible`, not `biocombustible`, since VGE swaps in astrofuel. The fallback pluralizes only the last word, so `1.6/Languages/Spanish/WordInfo/plural.txt` maps it to `unidades de combustible`. |
+| settings: tank / cells / cooldown | depósito / casillas / enfriamiento | `depósito` is plain Castilian for a fuel tank (no vanilla item). Core Keyed `{0} casillas`, `CooldownTime` = `Enfriamiento`. |
+| settings: overhead mountain (prose) | bajo tierra (`...y bajo tierra el techo siempre resiste`) | Core `RoofRockThick.label` = `bajo tierra`, so prose reuses the label the player sees on hover. |
+| settings: armor penetration | penetración de armadura | Core `ArmorPenetrationExplanation` and `MeleeWeapon_AverageArmorPenetration.label`; Keyed `ArmorPenetration` says `Penetración de blindaje`, minority form. |
+| settings: hit points / steel wall / plasteel wall | puntos de impacto / muro de acero / muro de plastiacero | Core `MaxHitPoints.label`; `ThingMadeOfStuffLabel` = `{1} de {0}`. |
+| settings: Off (radius at 0) / default / Default: on | Desactivado / (por defecto) / Por defecto: activado | Core `Off` = `Apagado` is a power state; the value replaces a radius (`radio`, m.), so `Desactivado` mirrors `Enabled` = `Activado`. Core `default` = `por defecto`. |
+| settings: Odyssey | Odyssey | Core `ExpansionDef` keeps DLC names in English. |
+| settings: fuel-name slot `{1}` | `{0} de {1}` | Core `CommandReload_NoAmmo` (`{COUNT} de {AMMO_label}`); no article, so no gender agreement. |
 
 ## Pending native review
 

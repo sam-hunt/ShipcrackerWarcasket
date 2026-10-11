@@ -63,6 +63,14 @@ Workshop page is never post-processed at all.
 | astrofuel (VGE) | astrofuel | Kept as-is, parallel to vanilla keeping `chemfuel`; VGE's own French, if any, was not checked. |
 | EVA rated (SOS2) | apte aux sorties extravéhiculaires | Plain French. |
 | fuel unit (`chargeNoun`, the tank's charge word) | unité | A single word on purpose: `LanguageWorker_French.Pluralize` is rule-only and never reads a `WordInfo/plural.txt`, so any multi-word noun gets its `s` on the last word (`unité de carburant` would show as `unité de carburants`). The fuel is named by the reload-cost line beside it. Feminine against Core's masculine `{CHARGENOUN_plural} restants` is vanilla's own shape (`charge`, `grenade`); `Il ne reste plus de unités` elides to `d'unités` in `PostProcessed`. |
+| settings window (Keyed) | Par défaut : {0}. / (par défaut) / Désactivé / (nécessite Odyssey) | Core Keyed `Default` = `Par défaut`, `Off` = `Désactivé(e)` (our value only labels a radius, so masculine `Désactivé`); the DLC keeps its English name (Odyssey `ExpansionDef` label `Odyssey`). |
+| cooldown / range / cells / hours | temps de recharge / portée / cases / heures | Core `FlightCooldown` = `temps de recharge du vol`, Keyed `Range` = `Portée`, `HoursLower` = `heures`; `case` is vanilla's map-tile word (`inspecter les détails d'une case`). |
+| blast radius / landing blast | rayon de l'explosion / l'explosion, lors de l'atterrissage | Core `AbilityEffectRadius` = `Rayon d'effet`; Descs open `Lors de l'atterrissage, l'explosion inflige ces dégâts...` rather than a noun pile. |
+| armor penetration / hit points | pénétration d'armure / points de vie | Core Keyed `ArmorPenetration`, `HitPointsBasic`. |
+| steel wall / plasteel wall | mur en acier / mur en plastacier | Core Keyed `ThingMadeOfStuffLabel` = `{1} en {0}`. |
+| overhead mountain | plafond rocheux épais | Core `RoofRockThick.label` = `plafond rocheux (épais)`, in prose without the parentheses. |
+| Aerial warcasket parts (VFEP) | pièces de warcasket aériennes | **Coined**, lowercase descriptive like the other VFEP set names in prose. |
+| fuel amount with an injected fuel name | {0} unités de carburant ({1}) | Parenthetical keeps the injected def label in its dictionary form; `unité` matches the `chargeNoun`. |
 
 ## Pending native review
 

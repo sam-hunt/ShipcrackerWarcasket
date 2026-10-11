@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: Shipcracker Warcasket -->
+  <SCWC_SettingsCategory>破艦型戰棺</SCWC_SettingsCategory>
+  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket's definitions, so the set keeps its built-in values. -->
+  <SCWC_SettingsUnavailable>這些設定目前無法使用。另一個模組修改了破艦型戰棺的定義，因此這套戰棺維持內建數值。</SCWC_SettingsUnavailable>
+
+  <!-- EN: Breach jump -->
+  <SCWC_SectionJump>破壁跳躍</SCWC_SectionJump>
+  <!-- EN: Breach burn -->
+  <SCWC_SectionBurn>破壁推進</SCWC_SectionBurn>
+  <!-- EN: Landing -->
+  <SCWC_SectionLanding>著陸</SCWC_SectionLanding>
+
+  <!-- EN: Fuel per jump ({0}) -->
+  <SCWC_FuelPerJump>每次跳躍耗用量({0})</SCWC_FuelPerJump>
+  <!-- EN: The amount of fuel each breach jump burns. At 0, jumps burn no fuel. Default: {0}. -->
+  <SCWC_FuelPerJumpDesc>每次破壁跳躍消耗的燃料量。設為0時，跳躍不消耗燃料。預設值：{0}。</SCWC_FuelPerJumpDesc>
+
+  <!-- EN: Tank capacity ({0}) -->
+  <SCWC_TankCapacity>燃料箱容量({0})</SCWC_TankCapacity>
+  <!-- EN: The amount of fuel the armor's tank holds when full. A tank already holding more than this loses the excess. Default: {0}. -->
+  <SCWC_TankCapacityDesc>裝甲的燃料箱加滿時可容納的燃料量。若燃料箱內已有的燃料超過此值，多出的部分會被捨棄。預設值：{0}。</SCWC_TankCapacityDesc>
+
+  <!-- EN: Range (cells) -->
+  <SCWC_JumpRange>距離(格)</SCWC_JumpRange>
+  <!-- EN: The maximum distance a breach jump can carry the pilot. Aerial warcasket parts add their own jump range on top. Default: {0}. -->
+  <SCWC_JumpRangeDesc>破壁跳躍最遠能將駕駛員帶到多遠。空襲型戰棺部件會在此之上再加上各自的跳躍距離。預設值：{0}。</SCWC_JumpRangeDesc>
+
+  <!-- EN: Cooldown (hours) -->
+  <SCWC_Cooldown>冷卻時間(小時)</SCWC_Cooldown>
+  <!-- EN: The time the pilot must wait after a jump before jumping again. Default: {0}. -->
+  <SCWC_CooldownDesc>駕駛員跳躍後，必須等待這段時間才能再次跳躍。預設值：{0}。</SCWC_CooldownDesc>
+
+  <!-- EN: A full tank holds {0} {1}, enough for {2} jumps at {3} {1} each. -->
+  <SCWC_JumpSummary>燃料箱加滿可容納{0}單位{1}，每次跳躍消耗{3}單位，共可跳躍{2}次。</SCWC_JumpSummary>
+  <!-- EN: Jumps burn no fuel. -->
+  <SCWC_JumpSummaryFree>跳躍不消耗燃料。</SCWC_JumpSummaryFree>
+
+  <!-- EN: Blast radius (cells) -->
+  <SCWC_BlastRadius>爆炸半徑(格)</SCWC_BlastRadius>
+  <!-- EN: The radius of the blast when the pilot lands. At 0, landings cause no blast. Default: {0}. -->
+  <SCWC_BlastRadiusDesc>駕駛員著陸時引發的爆炸半徑。設為0時，著陸不會引發爆炸。預設值：{0}。</SCWC_BlastRadiusDesc>
+
+  <!-- EN: Roof punch radius (cells) -->
+  <SCWC_RoofRadius>屋頂撞破半徑(格)</SCWC_RoofRadius>
+  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Below 1, only the roof over the pilot's own cell opens; at 0, roofs are left intact. A jump within a single room never breaks the roof, and overhead mountain always holds. Default: {0}. -->
+  <SCWC_RoofRadiusDesc>駕駛員起飛和著陸時，會撞開周圍此半徑內的屋頂。數值低於1時，只會撞開駕駛員正上方那一格的屋頂；設為0時，不會破壞任何屋頂。在同一個房間內跳躍永遠不會撞破屋頂，山岩頂也始終不受影響。預設值：{0}。</SCWC_RoofRadiusDesc>
+
+  <!-- EN: Damage to creatures -->
+  <SCWC_CreatureDamage>對生物的傷害</SCWC_CreatureDamage>
+  <!-- EN: The damage the landing blast deals to each person, animal or mechanoid caught in it. The pilot is never harmed. Default: {0}. -->
+  <SCWC_CreatureDamageDesc>著陸爆炸對每個被波及的人、動物或機械族造成的傷害。駕駛員自己永遠不會受傷。預設值：{0}。</SCWC_CreatureDamageDesc>
+
+  <!-- EN: Armor penetration (%) -->
+  <SCWC_ArmorPenetration>護甲穿透值(%)</SCWC_ArmorPenetration>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
+  <SCWC_ArmorPenetrationDesc>著陸爆炸傷害生物時的護甲穿透值。預設值：{0}。</SCWC_ArmorPenetrationDesc>
+
+  <!-- EN: Damage to walls -->
+  <SCWC_WallDamage>對牆壁的傷害</SCWC_WallDamage>
+  <!-- EN: The damage the landing blast deals to walls and other structures that block movement. For comparison, a steel wall has {1} hit points and a plasteel wall {2}. Default: {0}. -->
+  <SCWC_WallDamageDesc>著陸爆炸對牆壁及其他會阻擋通行的結構造成的傷害。作為參考，鋼鐵牆的耐久值為{1}，塑鋼牆為{2}。預設值：{0}。</SCWC_WallDamageDesc>
+
+  <!-- EN: Damage to other structures -->
+  <SCWC_StructureDamage>對其他結構的傷害</SCWC_StructureDamage>
+  <!-- EN: The damage the landing blast deals to doors, turrets, furniture and other structures that do not block movement. Default: {0}. -->
+  <SCWC_StructureDamageDesc>著陸爆炸對門、砲塔、家具及其他不會阻擋通行的結構造成的傷害。預設值：{0}。</SCWC_StructureDamageDesc>
+
+  <!-- EN: Bonus from shoulders (%) -->
+  <SCWC_ShouldersBonus>護肩加成(%)</SCWC_ShouldersBonus>
+  <!-- EN: The extra damage a landing deals to walls and other structures while the pilot wears the shipcracker warcasket shoulders. Creatures take no extra damage. Default: {0}. -->
+  <SCWC_ShouldersBonusDesc>駕駛員穿戴破艦型戰棺護肩時，著陸會對牆壁及其他結構造成額外傷害。生物不會受到額外傷害。預設值：{0}。</SCWC_ShouldersBonusDesc>
+
+  <!-- EN: Without the shoulders: {0} to a wall, {1} to other structures, across {2} cells.\nWith the shoulders: {3} to a wall, {4} to other structures. -->
+  <SCWC_LandingSummary>未穿戴護肩：對牆壁造成{0}點傷害，對其他結構造成{1}點傷害，覆蓋{2}格。\n穿戴護肩：對牆壁造成{3}點傷害，對其他結構造成{4}點傷害。</SCWC_LandingSummary>
+  <!-- EN: No landing blast. -->
+  <SCWC_LandingSummaryOff>著陸不會引發爆炸。</SCWC_LandingSummaryOff>
+
+  <!-- EN: Unlimited range in vacuum -->
+  <SCWC_VacuumBurn>真空中無距離限制</SCWC_VacuumBurn>
+  <!-- EN: When enabled, the jump becomes the breach burn in vacuum: unlimited range, but only to a target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
+  <SCWC_VacuumBurnDesc>啟用時，跳躍在真空中會變成破壁推進，沒有距離限制，但只能飛向視線內的目標。停用時，真空中的跳躍與有重力時規則相同。預設值：開啟。</SCWC_VacuumBurnDesc>
+  <!-- EN:  (requires Odyssey) -->
+  <SCWC_RequiresOdysseySuffix>(需要「漫遊」DLC)</SCWC_RequiresOdysseySuffix>
+
+  <!-- EN: Off -->
+  <SCWC_Off>關閉</SCWC_Off>
+  <!-- EN:  (default) -->
+  <SCWC_DefaultSuffix>(預設)</SCWC_DefaultSuffix>
+
+</LanguageData>

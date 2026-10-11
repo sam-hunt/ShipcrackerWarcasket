@@ -53,6 +53,16 @@ different mod (Vanilla Armour Expanded) renders "siegebreaker" as
 | astrofuel (VGE) | アストロ燃料 | Coined; VGE has no Japanese translation found. |
 | Workshop title | シップクラッカー・ウォーキャスケット | Equals the armor label. Also the `SCWC_SettingsCategory` value (title coupling). |
 | fuel unit (`chargeNoun`, the tank's charge word) | 燃料 | Plain mass noun reads naturally in every slot (燃料残数, 燃料回復コスト); 燃料ユニット would be a calque. No plural change, no lookup file. |
+| cells (settings slider unit) | タイル | Core Keyed `RoomRequirementArea` ({0}タイル) counts map cells as タイル; no space before the unit. |
+| overhead mountain | 岩天井(岩盤) | Core `RoofRockThick.label`, verbatim. |
+| hit points | HP | Core `MaxHitPoints.label` 最大HP, Keyed `HitPoints` (HP : {0}). |
+| armor penetration | アーマー貫通力 | Core Keyed `ArmorPenetration` アーマー貫通力(AP). |
+| steel wall / plasteel wall | スチール壁 / プラスチール壁 | Core Keyed `ThingMadeOfStuffLabel` {0}{1} with `Steel.label` スチール, `Plasteel.label` プラスチール, `Wall.label` 壁. |
+| cooldown | クールダウン | Core Keyed `StatsReport_Cooldown`, `AbilityOnCooldown`. |
+| Default / Off / On | デフォルト / Off / On | Core Keyed `Default`, `Off`, `On` (vanilla keeps On/Off in Latin script). |
+| (requires Odyssey) / (default) suffixes | ` (Odysseyが必要)` / ` (デフォルト)` | ASCII parens with a leading space, as in vanilla Keyed (`使用できない (太陽フレア)`, `{1_label} (死亡)`); が必要 from Core Alerts (`医者が必要`). Odyssey stays Latin (`ExpansionDef` Odyssey.label). |
+| Aerial (VFEP warcasket parts) | エアリアル系 | Coined katakana, matching the set-name habit. |
+| turret / furniture / mechanoid / animal | タレット / 家具 / メカノイド / 動物 | Core (`RearmCostExplanation`, `AnimalsSection`); メカノイド as in this mod's `SCWC_BreachPower`. |
 
 ## Pending native review
 
@@ -62,6 +72,8 @@ different mod (Vanilla Armour Expanded) renders "siegebreaker" as
 - ショルダーアーマー for the shoulder piece, and the resulting label length
   (シップクラッカー・ウォーキャスケットショルダーアーマー).
 - ブリーチ噴射 for "breach burn"; ブリーチバーン was the alternative.
+- タイル for the settings' cell unit (vanilla also uses セル in one Keyed string), and
+  クールダウン (時間) as the hours caption, where (時間) could read as "(time)".
 - 突破 as the damage label, and 移乗攻撃部隊 for "boarding corps".
 - ウォーキャスケット鋳造台 (foundry) and 封入 (entomb), both unattested. If
   the community VFEP translation surfaces, align these and the set names to it.

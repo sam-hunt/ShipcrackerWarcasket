@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: Shipcracker Warcasket -->
+  <SCWC_SettingsCategory>飞船突袭型战棺</SCWC_SettingsCategory>
+  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket's definitions, so the set keeps its built-in values. -->
+  <SCWC_SettingsUnavailable>这些设置不可用。另一个模组修改了飞船突袭型战棺的定义，因此这套装备保留其内置数值。</SCWC_SettingsUnavailable>
+
+  <!-- EN: Breach jump -->
+  <SCWC_SectionJump>破墙跳跃</SCWC_SectionJump>
+  <!-- EN: Breach burn -->
+  <SCWC_SectionBurn>破墙推进</SCWC_SectionBurn>
+  <!-- EN: Landing -->
+  <SCWC_SectionLanding>着陆</SCWC_SectionLanding>
+
+  <!-- EN: Fuel per jump ({0}) -->
+  <SCWC_FuelPerJump>每次跳跃燃料消耗（{0}）</SCWC_FuelPerJump>
+  <!-- EN: The amount of fuel each breach jump burns. At 0, jumps burn no fuel. Default: {0}. -->
+  <SCWC_FuelPerJumpDesc>每次破墙跳跃消耗的燃料量。设为0时，跳跃不消耗燃料。默认：{0}。</SCWC_FuelPerJumpDesc>
+
+  <!-- EN: Tank capacity ({0}) -->
+  <SCWC_TankCapacity>燃料罐容量（{0}）</SCWC_TankCapacity>
+  <!-- EN: The amount of fuel the armor's tank holds when full. A tank already holding more than this loses the excess. Default: {0}. -->
+  <SCWC_TankCapacityDesc>装甲的燃料罐装满时容纳的燃料量。如果燃料罐中现有的燃料超过此值，超出部分会被清除。默认：{0}。</SCWC_TankCapacityDesc>
+
+  <!-- EN: Range (cells) -->
+  <SCWC_JumpRange>跳跃距离（格）</SCWC_JumpRange>
+  <!-- EN: The maximum distance a breach jump can carry the pilot. Aerial warcasket parts add their own jump range on top. Default: {0}. -->
+  <SCWC_JumpRangeDesc>破墙跳跃能把驾驶员送出的最远距离。突击型战棺部件还会在此基础上增加各自的跳跃距离。默认：{0}。</SCWC_JumpRangeDesc>
+
+  <!-- EN: Cooldown (hours) -->
+  <SCWC_Cooldown>冷却时间（小时）</SCWC_Cooldown>
+  <!-- EN: The time the pilot must wait after a jump before jumping again. Default: {0}. -->
+  <SCWC_CooldownDesc>驾驶员跳跃一次后，需要等待这么长时间才能再次跳跃。默认：{0}。</SCWC_CooldownDesc>
+
+  <!-- EN: A full tank holds {0} {1}, enough for {2} jumps at {3} {1} each. -->
+  <SCWC_JumpSummary>燃料罐装满时可容纳{0}{1}，每次跳跃消耗{3}{1}，足够跳跃{2}次。</SCWC_JumpSummary>
+  <!-- EN: Jumps burn no fuel. -->
+  <SCWC_JumpSummaryFree>跳跃不消耗燃料。</SCWC_JumpSummaryFree>
+
+  <!-- EN: Blast radius (cells) -->
+  <SCWC_BlastRadius>冲击波半径（格）</SCWC_BlastRadius>
+  <!-- EN: The radius of the blast when the pilot lands. At 0, landings cause no blast. Default: {0}. -->
+  <SCWC_BlastRadiusDesc>驾驶员着陆时产生的冲击波半径。设为0时，着陆不会产生冲击波。默认：{0}。</SCWC_BlastRadiusDesc>
+
+  <!-- EN: Roof punch radius (cells) -->
+  <SCWC_RoofRadius>屋顶破开半径（格）</SCWC_RoofRadius>
+  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Below 1, only the roof over the pilot's own cell opens; at 0, roofs are left intact. A jump within a single room never breaks the roof, and overhead mountain always holds. Default: {0}. -->
+  <SCWC_RoofRadiusDesc>起飞和着陆时，驾驶员会撕开周围此半径内的屋顶。小于1时，只破开驾驶员头顶那一格的屋顶；设为0时，不破坏任何屋顶。在同一个房间内跳跃不会破坏屋顶，厚山岩顶也始终不会被破开。默认：{0}。</SCWC_RoofRadiusDesc>
+
+  <!-- EN: Damage to creatures -->
+  <SCWC_CreatureDamage>对生物的伤害</SCWC_CreatureDamage>
+  <!-- EN: The damage the landing blast deals to each person, animal or mechanoid caught in it. The pilot is never harmed. Default: {0}. -->
+  <SCWC_CreatureDamageDesc>着陆冲击波对波及范围内每个人、动物或机械族造成的伤害。驾驶员自身不会受伤。默认：{0}。</SCWC_CreatureDamageDesc>
+
+  <!-- EN: Armor penetration (%) -->
+  <SCWC_ArmorPenetration>护甲穿透（%）</SCWC_ArmorPenetration>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
+  <SCWC_ArmorPenetrationDesc>着陆冲击波伤害生物时的护甲穿透率。默认：{0}。</SCWC_ArmorPenetrationDesc>
+
+  <!-- EN: Damage to walls -->
+  <SCWC_WallDamage>对墙体的伤害</SCWC_WallDamage>
+  <!-- EN: The damage the landing blast deals to walls and other structures that block movement. For comparison, a steel wall has {1} hit points and a plasteel wall {2}. Default: {0}. -->
+  <SCWC_WallDamageDesc>着陆冲击波对墙体及其他阻挡通行的建筑造成的伤害。作为参考，钢铁墙的耐久度为{1}，玻璃钢墙为{2}。默认：{0}。</SCWC_WallDamageDesc>
+
+  <!-- EN: Damage to other structures -->
+  <SCWC_StructureDamage>对其他建筑的伤害</SCWC_StructureDamage>
+  <!-- EN: The damage the landing blast deals to doors, turrets, furniture and other structures that do not block movement. Default: {0}. -->
+  <SCWC_StructureDamageDesc>着陆冲击波对门、炮塔、家具及其他不阻挡通行的建筑造成的伤害。默认：{0}。</SCWC_StructureDamageDesc>
+
+  <!-- EN: Bonus from shoulders (%) -->
+  <SCWC_ShouldersBonus>护肩加成（%）</SCWC_ShouldersBonus>
+  <!-- EN: The extra damage a landing deals to walls and other structures while the pilot wears the shipcracker warcasket shoulders. Creatures take no extra damage. Default: {0}. -->
+  <SCWC_ShouldersBonusDesc>驾驶员穿戴飞船突袭型战棺护肩时，着陆对墙体及其他建筑额外造成的伤害。生物不会受到额外伤害。默认：{0}。</SCWC_ShouldersBonusDesc>
+
+  <!-- EN: Without the shoulders: {0} to a wall, {1} to other structures, across {2} cells.\nWith the shoulders: {3} to a wall, {4} to other structures. -->
+  <SCWC_LandingSummary>未穿戴护肩：对墙体造成{0}伤害，对其他建筑造成{1}伤害，覆盖{2}格。\n穿戴护肩：对墙体造成{3}伤害，对其他建筑造成{4}伤害。</SCWC_LandingSummary>
+  <!-- EN: No landing blast. -->
+  <SCWC_LandingSummaryOff>着陆不产生冲击波。</SCWC_LandingSummaryOff>
+
+  <!-- EN: Unlimited range in vacuum -->
+  <SCWC_VacuumBurn>真空中距离无限</SCWC_VacuumBurn>
+  <!-- EN: When enabled, the jump becomes the breach burn in vacuum: unlimited range, but only to a target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
+  <SCWC_VacuumBurnDesc>启用后，在真空中跳跃会变为破墙推进：距离不受限制，但目标必须处于视线之内。禁用后，真空中的跳跃与有重力时遵循相同的规则。默认：启用。</SCWC_VacuumBurnDesc>
+  <!-- EN:  (requires Odyssey) -->
+  <SCWC_RequiresOdysseySuffix>（需要奥德赛）</SCWC_RequiresOdysseySuffix>
+
+  <!-- EN: Off -->
+  <SCWC_Off>关</SCWC_Off>
+  <!-- EN:  (default) -->
+  <SCWC_DefaultSuffix>（默认）</SCWC_DefaultSuffix>
+
+</LanguageData>

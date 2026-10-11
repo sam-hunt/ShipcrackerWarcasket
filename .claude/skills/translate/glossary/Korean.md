@@ -49,6 +49,16 @@ this mod copies both patterns so the set reads like one of VFEP's own.
 | deathMessage | `{0}(이)가 돌파 충격에 압사했습니다.` | Mirrors Core `Crush.deathMessage` = `{0}(이)가 압사했습니다.`; bare `{0}` with the `(이)가` marker. |
 | Workshop title | 함선 침투 워캐스킷 | The armor label; contains `워캐스킷`. Also the `SCWC_SettingsCategory` value (title coupling). |
 | fuel unit (`chargeNoun`, the tank's charge word) | 연료 | Plain mass noun reads naturally in every slot (잔여 연료, 연료당 재장전 비용); generic, covering 화학연료 and 아스트로연료. No plural change, no lookup file. |
+| landing (settings section) | 착지 | Matches this mod's DefInjected (`착지 충격`, `돌파 도약의 착지`). |
+| overhead mountain | 두꺼운 지붕(산) | Core `RoofRockThick.label` = `산`; Core Keyed `MessageNothingCanRemoveThickRoofs` / `MustPlaceUnderThickRoof` say `두꺼운 지붕`. |
+| armor penetration | 관통력 | Core Keyed `ArmorPenetration`. |
+| hit points | 내구도 | Core Keyed `HitPointsBasic`; StatDef `MaxHitPoints` = `최대 내구도`. |
+| steel wall / plasteel wall | 강철 벽 / 플라스틸 벽 | Core `Steel`, `Plasteel`, `Wall` labels; Keyed `ThingMadeOfStuffLabel` = `{0} {1}`. |
+| cooldown (slider caption) | 재사용 대기 | Core Keyed `StatsReport_Cooldown` = `재사용 대기시간`, `ShieldOnCooldown` = `재사용 대기 중`; `시간` dropped from the caption so it does not repeat the `(시간)` unit. |
+| radius (blast / roof punch) | 범위 (폭발 범위, 지붕 파괴 범위) | Core Keyed `AbilityEffectRadius` = `효과 범위`, `MissRadius` = `명중 오차 범위`. |
+| Off (slider value at 0) | 없음 | Core Keyed `None` = `없음`; Core `Off` = `끄기` is a toggle verb and reads wrong as a value. The VacuumBurn toggle's "on" is `켜짐`. |
+| default / (requires Odyssey) | 기본값 / (오디세이 필요) | Core Keyed `Default`; ExpansionDef `Odyssey.label` = `오디세이`; shape after Core `BlockedByTerrain` (`({0_label} 필요)`). |
+| fuel tank (settings) | 탱크 / 연료 탱크 | Workshop description (`연료 탱크`). |
 
 ## Pending native review
 
