@@ -48,7 +48,7 @@ grounded against the Core, Royalty and Odyssey `ChineseSimplified (简体中文)
 | Royalty / Odyssey | 皇权 / 奥德赛 | Core `ExpansionDefs`. |
 | EVA rated (SOS2) | 具备舱外活动（EVA）能力 | Plain term, EVA kept for SOS2 players. |
 | astrofuel (VGE) | 天体燃料 | Coined: VGE ships English only and the community pack has no VGE translation. |
-| Workshop title | 飞船突袭型战棺 | Set name + 战棺 (the README's anchor term). |
+| Workshop title | 飞船突袭型战棺 | Set name + 战棺 (the README's anchor term). Also the `SCWC_SettingsCategory` value (title coupling). |
 | fuel unit (`chargeNoun`, the tank's charge word) | 燃料 | Plain mass noun (燃料剩余, 没有燃料。), matching zh-Hant; generic, covering 化合燃料 and 天体燃料. Not 燃料罐, which names a container rather than one unit. No plural change, no lookup file. |
 
 Lore paragraph 3's first sentence mirrors Royalty's `Shipcracker37.description`

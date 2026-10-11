@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <SCWC_SettingsCategory>Shipcracker Warcasket</SCWC_SettingsCategory>
+  <SCWC_SettingsUnavailable>These settings are unavailable. Another mod has changed the shipcracker warcasket's definitions, so the set keeps its built-in values.</SCWC_SettingsUnavailable>
+
+  <SCWC_SectionJump>Breach jump</SCWC_SectionJump>
+  <SCWC_SectionBurn>Breach burn</SCWC_SectionBurn>
+  <SCWC_SectionLanding>Landing</SCWC_SectionLanding>
+
+  <SCWC_FuelPerJump>Fuel per jump ({0})</SCWC_FuelPerJump>
+  <SCWC_FuelPerJumpDesc>The amount of fuel each breach jump burns. At 0, jumps burn no fuel. Default: {0}.</SCWC_FuelPerJumpDesc>
+
+  <SCWC_TankCapacity>Tank capacity ({0})</SCWC_TankCapacity>
+  <SCWC_TankCapacityDesc>The amount of fuel the armor's tank holds when full. A tank already holding more than this loses the excess. Default: {0}.</SCWC_TankCapacityDesc>
+
+  <SCWC_JumpRange>Range (cells)</SCWC_JumpRange>
+  <SCWC_JumpRangeDesc>The maximum distance a breach jump can carry the pilot. Aerial warcasket parts add their own jump range on top. Default: {0}.</SCWC_JumpRangeDesc>
+
+  <SCWC_Cooldown>Cooldown (hours)</SCWC_Cooldown>
+  <SCWC_CooldownDesc>The time the pilot must wait after a jump before jumping again. Default: {0}.</SCWC_CooldownDesc>
+
+  <SCWC_JumpSummary>A full tank holds {0} {1}, enough for {2} jumps at {3} {1} each.</SCWC_JumpSummary>
+  <SCWC_JumpSummaryFree>Jumps burn no fuel.</SCWC_JumpSummaryFree>
+
+  <SCWC_BlastRadius>Blast radius (cells)</SCWC_BlastRadius>
+  <SCWC_BlastRadiusDesc>The radius of the blast when the pilot lands. At 0, landings cause no blast. Default: {0}.</SCWC_BlastRadiusDesc>
+
+  <SCWC_RoofRadius>Roof punch radius (cells)</SCWC_RoofRadius>
+  <SCWC_RoofRadiusDesc>The radius of roof torn open around the pilot at takeoff and landing. Below 1, only the roof over the pilot's own cell opens; at 0, roofs are left intact. A jump within a single room never breaks the roof, and overhead mountain always holds. Default: {0}.</SCWC_RoofRadiusDesc>
+
+  <SCWC_CreatureDamage>Damage to creatures</SCWC_CreatureDamage>
+  <SCWC_CreatureDamageDesc>The damage the landing blast deals to each person, animal or mechanoid caught in it. The pilot is never harmed. Default: {0}.</SCWC_CreatureDamageDesc>
+
+  <SCWC_ArmorPenetration>Armor penetration (%)</SCWC_ArmorPenetration>
+  <SCWC_ArmorPenetrationDesc>The armor penetration of the landing blast's damage to creatures. Default: {0}.</SCWC_ArmorPenetrationDesc>
+
+  <SCWC_WallDamage>Damage to walls</SCWC_WallDamage>
+  <SCWC_WallDamageDesc>The damage the landing blast deals to walls and other structures that block movement. For comparison, a steel wall has {1} hit points and a plasteel wall {2}. Default: {0}.</SCWC_WallDamageDesc>
+
+  <SCWC_StructureDamage>Damage to other structures</SCWC_StructureDamage>
+  <SCWC_StructureDamageDesc>The damage the landing blast deals to doors, turrets, furniture and other structures that do not block movement. Default: {0}.</SCWC_StructureDamageDesc>
+
+  <SCWC_ShouldersBonus>Bonus from shoulders (%)</SCWC_ShouldersBonus>
+  <SCWC_ShouldersBonusDesc>The extra damage a landing deals to walls and other structures while the pilot wears the shipcracker warcasket shoulders. Creatures take no extra damage. Default: {0}.</SCWC_ShouldersBonusDesc>
+
+  <SCWC_LandingSummary>Without the shoulders: {0} to a wall, {1} to other structures, across {2} cells.\nWith the shoulders: {3} to a wall, {4} to other structures.</SCWC_LandingSummary>
+  <SCWC_LandingSummaryOff>No landing blast.</SCWC_LandingSummaryOff>
+
+  <SCWC_VacuumBurn>Unlimited range in vacuum</SCWC_VacuumBurn>
+  <SCWC_VacuumBurnDesc>When enabled, the jump becomes the breach burn in vacuum: unlimited range, but only to a target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on.</SCWC_VacuumBurnDesc>
+  <SCWC_RequiresOdysseySuffix> (requires Odyssey)</SCWC_RequiresOdysseySuffix>
+
+  <SCWC_Off>Off</SCWC_Off>
+  <SCWC_DefaultSuffix> (default)</SCWC_DefaultSuffix>
+
+</LanguageData>

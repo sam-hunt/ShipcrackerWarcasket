@@ -10,7 +10,9 @@
     510; plasteel 840 and uranium 750 need the shoulders) and 150 to passable buildings, Bomb's
     4:1 ratio: a landing takes a door or light turret but leaves an 800 HP grav engine or a
     500 HP thruster standing. DamageWorker_Breach scales building damage by the instigator's
-    SCWC_BreachPower first, so the shoulders' bonus never reaches pawns.
+    SCWC_BreachPower first, so the shoulders' bonus never reaches pawns. The mod settings
+    rewrite the impassable and passable factors from their wall and structure damage rows
+    (Source/1.6/Settings/BreachTuning.cs); buildingDamageFactor stays as set here.
 
     minDamageToFragment 15 is Bomb's: without it the hit lands as one wound on one random part,
     and 20 to a heart or brain kills outright; with it the hit splits into 2 to 4 wounds of 5

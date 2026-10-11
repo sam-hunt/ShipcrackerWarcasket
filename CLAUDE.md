@@ -174,7 +174,14 @@ TODOs.md         - Scoping notes for the feature work that has not landed yet
   its declaring type's static ctor. Our targets will often be VFEP's own methods, and a VFEP type
   whose cctor resolves defs would be permanently broken by an early patch (the BetterTradersGuild
   v1.1.0 CWTL incident). Static ctors on startup run after defs load, so foreign targets are safe
-  there. If a `Mod` subclass is added for settings, leave `PatchAll` where it is.
+  there. `ShipcrackerWarcasketMod` (the settings) leaves `PatchAll` there for that reason.
+- **Mod settings override def fields in place** (`Source/1.6/Settings/`). Defaults are read
+  from the defs after every patch has applied, so a def's header stays the record of the shipped
+  tuning and a compat root's patch moves the default too. Settings never reach a save: per-instance
+  state a write leaves stale (a running cooldown, a tooltip cache, overfilled fuel) is reconciled
+  lazily against the settings' `Generation` (`Ability_BreachJump.ReconcileSettings`). A setting
+  must mean the same with every optional root loaded or not, which is why the jump's cost is in
+  chemfuel and the VGE root sets an exchange rate (`chemfuelPerAmmo`) instead of a cost.
 - **No em dashes in player-facing text** (def labels/descriptions, `Keyed/`, `About.xml`);
   reflow the sentence instead. This file, code comments and def comments are unaffected.
 
@@ -211,9 +218,9 @@ TODOs.md         - Scoping notes for the feature work that has not landed yet
 
 ## Localization Toolchain
 
-English (the def XML's `label`, `description` and VFEP's `shortDescription`) is the source of
-truth; there is no Keyed surface and no English `Languages/` tree. Other languages derive from it
-via the `/translate` skill (`.claude/skills/translate/SKILL.md`: this mod's surface, grounding
+English (the def XML's `label`, `description` and VFEP's `shortDescription`, plus the settings
+window's `1.6/Languages/English/Keyed/ShipcrackerWarcasket.xml`, the only English `Languages/`
+file) is the source of truth. Other languages derive from it via the `/translate` skill (`.claude/skills/translate/SKILL.md`: this mod's surface, grounding
 domain and per-language glossary; the family-wide process lives in the `l10n/` submodule) and
 are validated deterministically by `python3 Scripts/check-translations.py` (also a CI release
 gate). The DefInjected expected set is the checked-in sidecar `Scripts/expected-injections.json`:

@@ -10,7 +10,7 @@ namespace ShipcrackerWarcasket;
 // wearer's VFEP_FlightSpeed rather than the def's flightSpeed, an exhaust effecter plays for
 // the flight, and the landing is the ability's breach rather than a Bomb.
 //
-// Space maps fly differently:
+// The breach burn (Ability_BreachJump.UsesBurn) flies differently:
 //  - A straight line at constant speed through VEF's CustomRecomputePosition hook. Vanilla's
 //    RecomputePosition front-loads progress (PawnFlyerBase's progressCurve) and lifts the pawn
 //    along an inverse parabola scaled by heightFactor, which reads as a hop under gravity; the
@@ -31,9 +31,11 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
 
     private Effecter flightEffecter;
 
-    // Set from the map in SpawnSetup on both the fresh spawn and the reload path, so it is never
-    // scribed; the map cannot change mid-flight.
-    private bool inSpace;
+    // Whether this flight is the breach burn, set in SpawnSetup on both the fresh spawn and the
+    // reload path, so it is never scribed: the map cannot change mid-flight. A save reloaded
+    // after the vacuum burn setting flipped finishes its flight on the other path, which is
+    // cosmetic only.
+    private bool burn;
 
     // Whether the landing punches through the roof, decided by the ability at launch (false for
     // a jump that starts and ends in the same indoor room; the takeoff punch already happened
@@ -49,21 +51,21 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
-        inSpace = Ability_BreachJump.IsSpaceMap(map);
+        burn = Ability_BreachJump.UsesBurn(map);
         Ability_BreachJump.NotifyThrusterGlowChanged(FlyingPawn);
         if (respawningAfterLoad || BeingTransportedOnGravship)
             return;
 
         var seconds = BreachJumpExtension.FlightSeconds(FlightDistance(this),
             FlyingPawn.GetStatValue(SCWC_DefOf.VFEP_FlightSpeed),
-            inSpace ? (ability as Ability_BreachJump)?.Ext : null,
+            burn ? (ability as Ability_BreachJump)?.Ext : null,
             def.pawnFlyer.flightDurationMin);
 
         ticksFlightTime = seconds.SecondsToTicks();
         ticksFlying = 0;
     }
 
-    // Replaces vanilla's RecomputePosition on space maps (VEF's prefix skips it when this
+    // Replaces vanilla's RecomputePosition for the burn (VEF's prefix skips it when this
     // returns true). Vanilla caches per tick behind a private field we cannot reach; the lerp
     // is cheap enough to redo per call, and Thing.Position's setter is a no-op when unchanged.
     // Height stays 0 (full-size shadow, no forward lift), but the draw position sits one
@@ -71,7 +73,7 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
     // pawns it passes rather than z-fighting them at resting altitude.
     protected override bool CustomRecomputePosition()
     {
-        if (!inSpace)
+        if (!burn)
             return false;
 
         var t = Mathf.Clamp01((float)ticksFlying / ticksFlightTime);
@@ -98,7 +100,7 @@ public class PawnFlyer_BreachJump : AbilityPawnFlyer
         if (flightEffecter == null)
         {
             var ext = (ability as Ability_BreachJump)?.Ext;
-            var effecterDef = inSpace
+            var effecterDef = burn
                 ? ext?.spaceFlightEffecter ?? SCWC_DefOf.SCWC_BreachBurnFlame
                 : ext?.flightEffecter ?? SCWC_DefOf.SCWC_BreachJumpFlame;
             flightEffecter = effecterDef.Spawn();

@@ -15,11 +15,16 @@ namespace ShipcrackerWarcasket;
 // The Shipcracker armor's jump, modeled on VFEP's Ability_PowerJump (Aerial set):
 //  - Planet: any walkable cell within SCWC_BreachJumpRange, no sight test (Aerial parity).
 //  - Space (Map.Biome.inVacuum or Tile.LayerDef.isSpace, both vanilla fields, so no DLC gate):
-//    unlimited range, target must be in line of sight.
+//    the breach burn, unlimited range, target must be in line of sight. The vacuumBurn setting
+//    turns the burn off, and space maps then follow the planet rules in every respect (BurnMode).
 //  - No takeoff blast; the landing fires SCWC_Breach from PawnFlyer_BreachJump.
 //  - Takeoff and landing punch through non-thick roofs within roofPunchRadius unless the jump
 //    starts and ends in the same indoor room.
 // Fuel is the CompApparelReloadable on the same apparel as the ability comp.
+//
+// The mod settings write onto the defs (ShipcrackerWarcasketSettings), which this class reads
+// live, so most settings need nothing here. What a settings write leaves behind on an ability
+// instance is reconciled the next time its gizmo is requested: see ReconcileSettings.
 //
 // The armor's PawnRenderNode_ThrusterGlow reads ThrusterGlowAlpha: cast progress comes from the
 // WarmupToil hook (see below), flight state is whether the wearer is held by a
@@ -74,8 +79,13 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     // apparel changes wearer.
     private Command gizmo;
     private string description;
-    private bool descriptionInSpace;
+    private bool descriptionBurnMode;
     private float descriptionRange;
+
+    // The ShipcrackerWarcasketSettings.Generation this instance last reconciled with. Never
+    // scribed, so every instance reconciles once after a load too, catching settings changed
+    // from the main menu.
+    private int settingsGeneration = -1;
 
     // Cast state for the thruster glow, written by the wait toil's actions (see WarmupToil) and
     // never scribed: the toil's pre-tick action rewrites both every tick, so a game loaded
@@ -87,9 +97,15 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
 
     public CompApparelReloadable Tank => tank ??= holder?.TryGetComp<CompApparelReloadable>();
 
+    // Tank charges one jump burns (BreachJumpExtension.ChargesPerJump); 0 without a tank.
+    public int ChargesPerJump =>
+        Tank is CompApparelReloadable tank
+            ? BreachJumpExtension.ChargesPerJump(Ext.fuelPerJump, Ext.chemfuelPerAmmo, tank.Props.ammoCountPerCharge)
+            : 0;
+
     // Jumps the tank holds, for Command_BreachJump's top-right count.
     public string JumpsLabel =>
-        Tank is CompApparelReloadable tank ? BreachJumpExtension.JumpsLabel(tank.RemainingCharges, tank.MaxCharges, Ext.fuelPerJump) : null;
+        Tank is CompApparelReloadable tank ? BreachJumpExtension.JumpsLabel(tank.RemainingCharges, tank.MaxCharges, ChargesPerJump) : null;
 
     public override void Init()
     {
@@ -101,6 +117,11 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     public static bool IsSpaceMap(Map map) =>
         map != null && (map.Biome?.inVacuum == true || map.Tile.LayerDef?.isSpace == true);
 
+    // Whether a jump on this map is the breach burn: a space map with the burn left on in the
+    // settings. Everything that differs between the jump and the burn (range, sight, label,
+    // icon, flight speed, exhaust, the space preview) keys off this, never off IsSpaceMap.
+    public static bool UsesBurn(Map map) => ShipcrackerWarcasketMod.Settings.vacuumBurn && IsSpaceMap(map);
+
     // Whether any loaded def can produce a map IsSpaceMap would accept: Odyssey's vacuum biome
     // and Orbit layer, or another mod's equivalent. Same two fields as IsSpaceMap, so the
     // tooltip's vacuum sentence appears exactly when the space rules can ever apply. Defs are
@@ -111,11 +132,11 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
         DefDatabase<BiomeDef>.AllDefsListForReading.Any(b => b.inVacuum)
         || DefDatabase<PlanetLayerDef>.AllDefsListForReading.Any(l => l.isSpace);
 
-    public bool InSpace => IsSpaceMap(pawn?.Map);
+    public bool BurnMode => UsesBurn(pawn?.Map);
 
     public float PlanetRange => pawn.GetStatValue(SCWC_DefOf.SCWC_BreachJumpRange, applyPostProcess: true, RangeStatStaleTicks);
 
-    public override float GetRangeForPawn() => InSpace ? SpaceRange : PlanetRange;
+    public override float GetRangeForPawn() => BurnMode ? SpaceRange : PlanetRange;
 
     // VEF's only auto-cast consumer (its Pawn.TryGetAttackVerb postfix) reads
     // CompAbilities.LearnedAbilities, never CompAbilitiesApparel.GivenAbilities, so an apparel
@@ -146,7 +167,7 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     // The range or sight half of CanLandOn, for a cell already known to be walkable.
     private bool CanReach(IntVec3 cell, Map map)
     {
-        if (!IsSpaceMap(map))
+        if (!UsesBurn(map))
             return cell.DistanceTo(pawn.Position) <= PlanetRange;
 
         if (GenSight.LineOfSight(pawn.Position, cell, map))
@@ -166,7 +187,7 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     {
         base.DrawHighlight(target);
         // DrawFieldEdges sizes its grid from Find.CurrentMap, so only outline the map on screen.
-        if (InSpace && pawn.Map == Find.CurrentMap)
+        if (BurnMode && pawn.Map == Find.CurrentMap)
             DrawSpaceValidCells();
     }
 
@@ -263,7 +284,7 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
         if (tank == null)
             return false;
 
-        var shortfall = Ext.fuelPerJump - tank.RemainingCharges;
+        var shortfall = ChargesPerJump - tank.RemainingCharges;
         if (shortfall > 0)
         {
             // Vanilla's own "needs to be reloaded with N <ammo>" text, so it names whatever
@@ -277,31 +298,32 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
         return true;
     }
 
-    // The label the gizmo and tooltip show: the def's on a planet, vacuumLabel in space.
-    private string LabelCapFor(bool inSpace) =>
-        inSpace && !Ext.vacuumLabel.NullOrEmpty() ? Ext.vacuumLabel.CapitalizeFirst() : def.LabelCap.ToString();
+    // The label the gizmo and tooltip show: the def's for the jump, vacuumLabel for the burn.
+    private string LabelCapFor(bool burnMode) =>
+        burnMode && !Ext.vacuumLabel.NullOrEmpty() ? Ext.vacuumLabel.CapitalizeFirst() : def.LabelCap.ToString();
 
     // VEF's tooltip is "LabelCap\n\ndescription\n\n" followed by generated stat lines. The head
-    // is rebuilt with the current label and, when a space map can exist in this game, the
+    // is rebuilt with the current label and, when the burn can happen in this game, the
     // vacuum sentence after the description; the generated tail is kept as VEF wrote it.
     //
-    // The result is cached against everything in it that can change for this def: the map kind
-    // (label, range line) and the planet range stat. Cast time, cooldown, radius and power come
-    // straight off the def since it declares no stat factors or offsets, and it carries no
-    // AbilityExtension_AbilityMod to append lines of its own.
+    // The result is cached against everything in it that can change for this def in play: the
+    // jump or burn (label, range line) and the planet range stat. Cast time, cooldown, radius
+    // and power come straight off the def since it declares no stat factors or offsets, and it
+    // carries no AbilityExtension_AbilityMod to append lines of its own; the settings rewrite
+    // the def, and ReconcileSettings drops the cache when they do.
     public override string GetDescriptionForPawn()
     {
-        var inSpace = InSpace;
+        var burnMode = BurnMode;
         var range = PlanetRange;
-        if (description != null && inSpace == descriptionInSpace && range == descriptionRange)
+        if (description != null && burnMode == descriptionBurnMode && range == descriptionRange)
             return description;
 
-        descriptionInSpace = inSpace;
+        descriptionBurnMode = burnMode;
         descriptionRange = range;
-        return description = BuildDescription(inSpace);
+        return description = BuildDescription(burnMode);
     }
 
-    private string BuildDescription(bool inSpace)
+    private string BuildDescription(bool burnMode)
     {
         var text = base.GetDescriptionForPawn();
         string head = def.LabelCap.Colorize(ColoredText.TipSectionTitleColor) + "\n\n" + def.description;
@@ -309,20 +331,23 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
             return text;
 
         var body = def.description;
-        if (SpaceMapsPossible && !Ext.vacuumDescription.NullOrEmpty())
+        if (SpaceMapsPossible && ShipcrackerWarcasketMod.Settings.vacuumBurn && !Ext.vacuumDescription.NullOrEmpty())
             body += " " + Ext.vacuumDescription;
 
-        return LabelCapFor(inSpace).Colorize(ColoredText.TipSectionTitleColor) + "\n\n" + body + text.Substring(head.Length);
+        return LabelCapFor(burnMode).Colorize(ColoredText.TipSectionTitleColor) + "\n\n" + body + text.Substring(head.Length);
     }
 
     // The Command is built once (VEF's constructor runs the tooltip and enable check) and then
     // refreshed: the enable check every call, since fuel and cooldown move; the tooltip from
     // GetDescriptionForPawn's cache every call too, because VEF's shrunk-mode draw prepends the
     // label to defaultDesc in place, so a kept instance must have it reset before each draw.
-    // In space the button takes the space icon and label, as VFEP's Command_Grapple swaps the
-    // hook's reload state; the shrunk-mode tooltip still prefixes def.LabelCap.
+    // As the burn the button takes the space icon and label, as VFEP's Command_Grapple swaps
+    // the hook's reload state; the shrunk-mode tooltip still prefixes def.LabelCap.
     public override Gizmo GetGizmo()
     {
+        if (settingsGeneration != ShipcrackerWarcasketSettings.Generation)
+            ReconcileSettings();
+
         if (gizmo == null)
             gizmo = (Command)base.GetGizmo();
         else
@@ -332,10 +357,38 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
             gizmo.defaultDesc = GetDescriptionForPawn();
         }
 
-        var inSpace = InSpace;
-        gizmo.icon = inSpace && Ext.SpaceIcon is Texture2D icon ? icon : def.icon;
-        gizmo.defaultLabel = LabelCapFor(inSpace);
+        var burnMode = BurnMode;
+        gizmo.icon = burnMode && Ext.SpaceIcon is Texture2D icon ? icon : def.icon;
+        gizmo.defaultLabel = LabelCapFor(burnMode);
         return gizmo;
+    }
+
+    // Brings this instance in line with the settings once per settings write (and once per
+    // load). The settings live on the defs, but three things an earlier write left on the
+    // instance do not follow them by themselves:
+    //  - The tooltip cache, which may quote a radius or cooldown the def no longer has.
+    //  - A running cooldown, which VEF stores as an end tick, so a lowered cooldown setting
+    //    would not shorten it, and VEF's cooldown overlay draws its remaining share of the new
+    //    cooldown, overflowing the button (and dividing by zero at 0). Capped at the new length.
+    //  - Fuel above a lowered tank capacity, which vanilla never trims: the gizmo would count
+    //    "7 / 5". The excess is dropped, through UsedOnce since remainingCharges is protected;
+    //    on this tank UsedOnce only decrements.
+    // Run from GetGizmo rather than by sweeping the game on a settings write, since the
+    // ability lives on the armor wherever it is (worn, stored, in a caravan or a transporter)
+    // and settings can change before a save is loaded. Nothing else reads these before the
+    // gizmo does: the cast goes through it, and AI pawns never cast apparel abilities.
+    private void ReconcileSettings()
+    {
+        settingsGeneration = ShipcrackerWarcasketSettings.Generation;
+        description = null;
+
+        var ceiling = Find.TickManager.TicksGame + GetCooldownForPawn();
+        if (cooldown > ceiling)
+            cooldown = ceiling;
+
+        if (Tank is CompApparelReloadable tank)
+            while (tank.RemainingCharges > tank.MaxCharges)
+                tank.UsedOnce();
     }
 
     // VEF builds the cast as a job whose first toil is a Toils_General.Wait of
@@ -409,7 +462,7 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
 
         var map = pawn.Map;
         var tank = Tank;
-        for (var i = 0; i < Ext.fuelPerJump; i++)
+        for (var i = ChargesPerJump; i > 0; i--)
             tank?.UsedOnce();
 
         // No takeoff effect beyond the flyer's own flame (launch sound and flash included), as
@@ -448,12 +501,16 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     // DamageWorker fires it with the rest of the explosion visuals. Armor penetration is passed
     // explicitly: GenExplosion reads the def's default only when no damage amount is handed
     // in, and otherwise derives it as damage x 0.015. The wearer's SCWC_BreachPower is applied
-    // to buildings alone by DamageWorker_Breach, so it is deliberately absent here.
+    // to buildings alone by DamageWorker_Breach, so it is deliberately absent here. A radius
+    // of 0 is the blast turned off, ring and sound included; GenExplosion would still hit the
+    // center cell.
     public void DoBreach(IntVec3 center, Map map, Pawn wearer, bool punchRoof)
     {
         if (punchRoof)
             PunchRoof(center, map, wearer, crush: true);
 
+        if (Ext.breachRadius <= 0f)
+            return;
         GenExplosion.DoExplosion(center, map, Ext.breachRadius, SCWC_DefOf.SCWC_Breach, wearer, Ext.breachDamage,
             Ext.breachArmorPenetration, ignoredThings: new List<Thing> { wearer });
     }
@@ -468,9 +525,12 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     // Called at takeoff with the wearer at the origin and at landing with them at the center.
     // With crush false (takeoff) every cell goes the silent way: the sound plays and the roof
     // opens, but nothing under it is hurt and no rubble falls, so squadmates standing beside
-    // the wearer at launch are spared. The landing keeps the full collapse.
+    // the wearer at launch are spared. The landing keeps the full collapse. A radius of 0
+    // punches nothing; the wearer then passes through the roof untouched, as on a jump pack.
     private void PunchRoof(IntVec3 center, Map map, Pawn wearer, bool crush)
     {
+        if (Ext.roofPunchRadius <= 0f)
+            return;
         roofScratch.Clear();
         RoofDef punched = null;
         foreach (var cell in GenRadial.RadialCellsAround(center, Ext.roofPunchRadius, true))

@@ -16,7 +16,7 @@ and `casco <set> de ataúd de guerra` for the other parts; this mod follows it.
 | warcasket | ataúd de guerra (pl. ataúdes de guerra) | Community VFEP (`VFEP_Warcasket_Warcasket.label`). Also the Workshop title anchor. |
 | shipcracker (set name, also the trooper in lore paragraph 3) | rompenaves | **Coined.** Royalty's `Shipcracker37.title` in the Castilian tar is `navegante` ("navigator"), which drops the ship-breaking sense entirely and would read as a navigation set. `rompenaves` follows the productive verb+noun pattern of `rompehielos`/`rompeolas`; it is invariable in gender and number, so it sits after `hombreras` and `casco` without agreement and doubles as a person noun ("Un rompenaves se lanza..."). The Workshop page still cites the backstory by its in-game title, `"navegante"`. |
 | shipcracker warcasket / shoulders / helmet | ataúd de guerra rompenaves / hombreras rompenaves de ataúd de guerra / casco rompenaves de ataúd de guerra | Community VFEP label pattern (`ataúd de guerra bruto`, `hombreras bruto de ataúd de guerra`, `casco bruto de ataúd de guerra`). |
-| Workshop title | Ataúd de guerra rompenaves | Sentence case, contains the VFEP term. The mod has no settings key to match. |
+| Workshop title | Ataúd de guerra rompenaves | Sentence case, contains the VFEP term. Also the `SCWC_SettingsCategory` value (title coupling). |
 | warcasket shell / pauldrons (shoulders) / helmet | armazón / hombreras / casco | Community VFEP (`Un armazón de ataúd de guerra...`, `VFEP.Shoulderpads`, `VFEP.Helmet`). |
 | warcasket foundry | forja de ataúd de guerra | Community VFEP `VFEP_WarcasketFoundry.label`. |
 | entomb / welded into | sepultar / sepultado en | Community VFEP `VFEPirates.EntombingWarning` ("Sepultar colonos en un ataúd de guerra"). |

@@ -37,7 +37,7 @@ Workshop 3643091941), confirmed from its ThingDef and Keyed files.
 | wall / roof | parede / telhado | Core `Wall.label`, `RoofConstructed.label`. Workshop prose uses "muros" where the English means clearing obstacles, as Core's breaching raid text does ("quebrar seus muros"). |
 | backstory (Workshop) | passado | Core Keyed `Backstory` = "Passado". |
 | astrofuel (VGE, Workshop) | astrocombustível | Coined; VGE's own pt-BR rendering not checked. |
-| Workshop title | Carcaça de Guerra Quebra-Naves | Contains the pack's "carcaça de guerra". Title Case like the sibling mod's pt-BR title. The mod has no settings key to couple. |
+| Workshop title | Carcaça de Guerra Quebra-Naves | Contains the pack's "carcaça de guerra". Title Case like the sibling mod's pt-BR title. Also the `SCWC_SettingsCategory` value (title coupling). |
 
 Lore paragraph 3 mirrors Royalty's `Shipcracker37.description` ("lançar-se através do vácuo do espaço, aterrissar no casco da nave inimiga ... e conquistá-la em combate de sala em sala") in verb choice and order, but not its "fazer furos no interior", which misreads "punch holes to the interior".
 

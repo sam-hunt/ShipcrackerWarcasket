@@ -8,7 +8,14 @@
     ability class and set false only to document the planet rule. gizmoClass adds the
     "jumps / max" count in the button's top-right corner, where vanilla's jump pack shows its own.
 
-    fuelPerJump 20 of the armor's 100-charge chemfuel tank: Aerial's numbers, 5 jumps.
+    The mod settings (Source/1.6/Settings/) take their defaults from the extension's fuel,
+    blast, damage and roof numbers, cooldownTime (unset, so none), the armor's tank size and
+    range offset, the shoulders' breach power and SCWC_Breach's structure factors, and write
+    the player's values over them.
+
+    fuelPerJump 20 chemfuel of the armor's 100-charge chemfuel tank: Aerial's numbers, 5
+    jumps. It stays in chemfuel when the VGE root switches the tank to astrofuel; that root
+    sets chemfuelPerAmmo instead.
     breachDamage 20 is the pawn-facing number (Aerial's jump 15, a frag grenade 50); building
     damage and wound splitting come from the SCWC_Breach DamageDef. breachArmorPenetration 0.15
     (Aerial's works out at 0.225, a grenade's 0.75) is passed explicitly because GenExplosion
@@ -16,7 +23,8 @@
     hole in the wall it lands beside (vanilla's explosion also hits walls adjacent to the open
     cells it reaches) rather than a leveled room. Wearer excluded; allies are not, as with
     Aerial. roofPunchRadius 1 keeps the ceiling hole tighter than the wall hole; in
-    space that vents the gravship room the wearer leaves or breaches into.
+    space that vents the gravship room the wearer leaves or breaches into. A radius of 0
+    turns the blast or the roof punch off.
 
     Space flight runs at spaceFlightSpeedFactor 3 times the wearer's VFEP_FlightSpeed (36
     cells/s at the base 12; Aerial's full set reaches 27 on a planet), capped at

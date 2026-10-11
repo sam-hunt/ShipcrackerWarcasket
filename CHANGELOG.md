@@ -21,6 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - The Breach Jump button now shows how many jumps the tank holds in its top-right corner, like the jump pack.
+- Mod settings for the Breach Jump: fuel per jump, tank size, range and an optional cooldown.
+- Mod settings for the landing: blast and roof punch radius (either can be turned off), damage to creatures, walls and other structures, armor penetration, and the shoulders' bonus to structures.
+- A mod setting to turn off the Breach Burn's unlimited range, so jumps in space follow the same rules as on a planet.
 
 ## [1.0.2] - 2026-10-11
 

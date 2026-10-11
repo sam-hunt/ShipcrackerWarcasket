@@ -2,7 +2,8 @@ using Xunit;
 
 namespace ShipcrackerWarcasket.Tests;
 
-// The Breach Jump gizmo's "jumps / max" count: whole jumps the tank holds, floored.
+// The Breach Jump gizmo's "jumps / max" count: whole jumps the tank holds, floored, from the
+// charges a jump burns (BreachJumpExtension.ChargesPerJump).
 public class JumpsLabelTests
 {
     [Fact]

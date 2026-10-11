@@ -51,7 +51,7 @@ different mod (Vanilla Armour Expanded) renders "siegebreaker" as
 | siegebreaker / brute / guardian | シージブレーカー / ブルート / ガーディアン | Katakana; シージブレーカー attested in Vanilla Armour Expanded's Japanese, the other two coined to match. |
 | spacewalking | 船外活動 | Plain standard term. |
 | astrofuel (VGE) | アストロ燃料 | Coined; VGE has no Japanese translation found. |
-| Workshop title | シップクラッカー・ウォーキャスケット | Equals the armor label. |
+| Workshop title | シップクラッカー・ウォーキャスケット | Equals the armor label. Also the `SCWC_SettingsCategory` value (title coupling). |
 | fuel unit (`chargeNoun`, the tank's charge word) | 燃料 | Plain mass noun reads naturally in every slot (燃料残数, 燃料回復コスト); 燃料ユニット would be a calque. No plural change, no lookup file. |
 
 ## Pending native review

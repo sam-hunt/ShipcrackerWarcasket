@@ -1,6 +1,6 @@
 ---
 name: translate
-description: Generate, update, or audit mod localization (DefInjected only) for a target language, grounded in Vanilla Factions Expanded - Pirates warcasket terminology plus vanilla Core/Odyssey apparel terminology for Shipcracker Warcasket's single warcasket set. Use when asked to add a language, update translations, or check translation freshness.
+description: Generate, update, or audit mod localization (DefInjected and the settings window's Keyed strings) for a target language, grounded in Vanilla Factions Expanded - Pirates warcasket terminology plus vanilla Core/Odyssey apparel terminology for Shipcracker Warcasket's single warcasket set. Use when asked to add a language, update translations, or check translation freshness.
 argument-hint: "[language, e.g. German | update | check]"
 ---
 
@@ -44,10 +44,22 @@ notes for the shim or flow edit this repo owes before continuing.
 
 ## This mod's translation surface
 
-- **No Keyed strings and no English Languages tree at all.** English is
-  served entirely by the def XML's own fields; there is nothing under
-  `1.6/Languages/English/`. The translation surface is DefInjected only,
-  plus the Workshop page under `.steamworkshop/`.
+- **Two surfaces: DefInjected for the defs, Keyed for the mod settings.**
+  The defs' English is served by the def XML's own fields; the settings
+  window's English is `1.6/Languages/English/Keyed/ShipcrackerWarcasket.xml`,
+  the only file under `1.6/Languages/English/`. Each language mirrors it at
+  `1.6/Languages/<Language>/Keyed/ShipcrackerWarcasket.xml` (main tree: the
+  settings exist in every world). Plus the Workshop page under
+  `.steamworkshop/`.
+- **Keyed specifics.** `{0}`..`{4}` are numbers (in `SCWC_WallDamageDesc`,
+  `{1}` and `{2}` are a steel and a plasteel wall's hit points), except `{1}` in
+  `SCWC_JumpSummary` and `{0}` in `SCWC_FuelPerJump` and `SCWC_TankCapacity`,
+  which take the tank's fuel name (chemfuel, or astrofuel under VGE) as the
+  game translates it, lowercase as a def label; keep each placeholder and
+  the literal `\n` in `SCWC_LandingSummary`. The two `...Suffix` values are
+  appended to another string, so keep their leading space. "Pilot" is the
+  wearer, as in the descriptions; "overhead mountain" is Core's thick-roof
+  label, so use that language's rendering of it.
 - **Enumerate the key set from `Scripts/expected-injections.json`, never
   from a Languages folder or by scanning `1.6/Defs/`.** The sidecar is a
   dump of what the live game walks; regenerate it (game closed) with
@@ -102,8 +114,9 @@ notes for the shim or flow edit this repo owes before continuing.
 - **Workshop page:** `.steamworkshop/Description/<Language>.txt`, per
   `l10n/workshop.md` and the folder's own `README.md`. The title's anchor
   term is "warcasket"; every localized title must contain the rendering of
-  "warcasket" recorded in that language's glossary. There is no Keyed
-  title key to keep in step with (`WORKSHOP_TITLE_KEY` is `None`).
+  "warcasket" recorded in that language's glossary. The title must also
+  equal that language's `SCWC_SettingsCategory` (`WORKSHOP_TITLE_KEY`); the
+  checker enforces the coupling.
 
 ## This mod's grounding domain
 

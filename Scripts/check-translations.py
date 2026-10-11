@@ -36,16 +36,13 @@ engine.DEF_TYPE_ALIASES = {
     "VFEPirates.WarcasketDef": "ThingDef",
 }
 
-# This mod ships no Languages/ tree yet: its translatable surface is
-# DefInjected only (the three defs' text fields) and there are no Keyed
-# strings in code. That is a legal state, not a config error, so the engine
-# notes it and checks sidecar freshness alone. Flip to False when a Keyed
-# file lands (e.g. for mod settings).
-engine.ALLOW_NO_KEYED_SURFACE = True
+# The mod settings window is a real Keyed surface, so a missing Languages/
+# tree is a hard config error, not a legal state.
+engine.ALLOW_NO_KEYED_SURFACE = False
 
-# No Keyed surface, so there is no settings-header key to couple the Steam
-# Workshop title to. The description format/coverage checks still run
-# against .steamworkshop/Description/ once that folder exists.
-engine.WORKSHOP_TITLE_KEY = None
+# The localized Steam Workshop title lives in this Keyed key (the
+# settings-window header); the checker enforces the title-coupling rule
+# against each .steamworkshop/Description/<Language>.txt title line.
+engine.WORKSHOP_TITLE_KEY = "SCWC_SettingsCategory"
 
 raise SystemExit(engine.main())

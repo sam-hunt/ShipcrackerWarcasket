@@ -44,7 +44,7 @@ up, re-ground against them and prefer its renderings.
 | line of sight | Sichtlinie | No vanilla attestation found; ordinary German gaming term. |
 | wall / roof | Wand / Dach | Core `Wall.label`, `Wall.description`. |
 | backstory (Workshop) | Vorgeschichte | Core Keyed `Backstory`. |
-| Workshop title | Schiffsknacker-Kriegssarg | Byte-identical to the body label; contains Kriegssarg. The mod has no settings key to match. |
+| Workshop title | Schiffsknacker-Kriegssarg | Byte-identical to the body label; contains Kriegssarg. Also the `SCWC_SettingsCategory` value (title coupling). |
 | fuel unit (`chargeNoun`, the tank's charge word) | Treibstoffeinheit | Generic Treibstoff, matching the `treibstoffbetrieben` row (chemfuel or astrofuel). Core's `WordInfo/plural.txt` has no entry for it and the fallback would append `s`, so `1.6/Languages/German/WordInfo/plural.txt` maps it to `Treibstoffeinheiten`; `plural_decline` misses and returns that plural unchanged, giving `Keine Treibstoffeinheiten mehr.` |
 
 ## Pending native review

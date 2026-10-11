@@ -38,6 +38,9 @@ A: No, though it's definitely designed with VGE2's ship-to-ship combat in mind, 
 [b]Q: How do I get it?[/b]
 A: Research VFE Pirates' "Spacer Warcaskets" project, then weld it on at the warcasket foundry like any other set. Mix and match the pieces with VFE Pirates' own sets as you please.
 
+[b]Q: Is this imbalanced?[/b]
+A: That's up to you. The defaults are balanced against VFE Pirates' other late spacer sets. If you want it easier or harder, tweak the fuel cost, cooldown, range or damage etc in the mod settings. Your colony, your rules.
+
 [b]Q: Was this made with LLM assistance?[/b]
 A: Some of the grunt code, and most localizations. I'm a software engineer by trade, and have been writing code for 25 years. All code is manually reviewed and tested; all bug reports and mod-conflicts followed up personally as time and detail allows. All art is either commissioned from humans, hand-authored in Krita, or both.
 
