@@ -18,6 +18,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-10-11
+
+### Changed
+
+- Mod description now lists Combat Extended as reported working.
+
+### Fixed
+
+- The helmet's chosen color now tints only its painted plating instead of the whole helmet.
+
 ## [1.1.0] - 2026-10-11
 
 ### Added
@@ -61,7 +71,8 @@ First release.
 - Save Our Ship 2 and Vanilla Gravship Expanded support.
 - Translated into 9 languages.
 
-[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.1.1
 [1.1.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.1.0
 [1.0.2]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.0.2
 [1.0.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.0.1
