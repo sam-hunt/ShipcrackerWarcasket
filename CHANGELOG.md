@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- German and Spanish reload stat descriptions now use the feminine article for the armor's fuel unit.
+
 ## [1.1.1] - 2026-10-11
 
 ### Changed

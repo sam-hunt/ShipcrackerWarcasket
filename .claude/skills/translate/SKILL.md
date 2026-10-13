@@ -99,8 +99,13 @@ notes for the shim or flow edit this repo owes before continuing.
   game assembles each lookup table from every language folder, mods
   included, and resolves the file name lowercased, so keep the file names
   lowercase. French's worker never reads the table, so French takes a
-  single-word noun instead. The checker ignores these files; the glossary
-  row for the noun names the one it relies on.
+  single-word noun instead. German's and Spanish's reload stat texts also
+  switch on `{CHARGENOUN_gender}` (Spanish `{CHARGENOUN_indefinite}` too),
+  and a gender lookup that misses defaults to masculine, so a non-masculine
+  noun ships its exact lowercase label as a bare line (no comments: every
+  line is a key) in `WordInfo/Gender/Female.txt` or `Neuter.txt`. The
+  checker ignores these files; the glossary row for the noun names the one
+  it relies on.
 - **One compat root carries strings: Vanilla Gravship Expanded.** Its
   `HelmetOxygen.xml` patch adds an oxygen comp to the main-tree helmet, and
   the comp's `chargeNoun` ("oxygen u³") is a key that exists only while VGE
