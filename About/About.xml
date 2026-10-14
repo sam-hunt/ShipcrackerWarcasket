@@ -13,6 +13,7 @@ Fuel cost, range, cooldown, blast size and damage can all be adjusted in the mod
 Odyssey is optional. Compatible with Save Our Ship 2 and Vanilla Gravship Expanded. Requires Vanilla Factions Expanded - Pirates.</description>
   <supportedVersions>
     <li>1.6</li>
+    <li>1.7</li>
   </supportedVersions>
   <modDependencies>
     <li>

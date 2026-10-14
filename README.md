@@ -2,7 +2,7 @@
 
 > A RimWorld mod adding a late-game warcasket set for Vanilla Factions Expanded - Pirates
 
-[![RimWorld](https://img.shields.io/badge/RimWorld-1.6-blue.svg)](https://rimworldgame.com/)
+[![RimWorld](https://img.shields.io/badge/RimWorld-1.6%20%7C%201.7-blue.svg)](https://rimworldgame.com/)
 [![Subscribers](https://img.shields.io/steam/subscriptions/3814428597?logo=steam&label=subscribers)](https://steamcommunity.com/sharedfiles/filedetails/?id=3814428597)
 [![Downloads](https://img.shields.io/steam/downloads/3814428597?logo=steam&label=downloads)](https://steamcommunity.com/sharedfiles/filedetails/?id=3814428597)
 [![Favorites](https://img.shields.io/steam/favorites/3814428597?logo=steam&label=favorites)](https://steamcommunity.com/sharedfiles/filedetails/?id=3814428597)
@@ -56,7 +56,7 @@ gravship's roof vents the room behind it.
 
 ## Requirements
 
-- **RimWorld 1.6** or later
+- **RimWorld 1.6** or **1.7**
 - **Vanilla Factions Expanded - Pirates** (required), which itself requires
   **Vanilla Expanded Framework**
 - **Harmony** (auto-download from Steam Workshop if you don't have it)
