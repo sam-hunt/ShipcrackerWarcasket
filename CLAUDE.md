@@ -43,21 +43,33 @@ RIMWORLD_PATH="/path/to/RimWorld" dotnet build ShipcrackerWarcasket.sln -c Relea
 # Or: dotnet build -p:RimWorldPath="/path/to/RimWorld"
 ```
 
-The build auto-detects the RimWorld install (Windows/Linux/Mac, including WSL targeting a Windows
-install), falling back to the `Krafs.Rimworld.Ref` NuGet package in CI. Debug builds go to the
-default `bin/` and never deploy; only Release builds touch `1.6/Assemblies/` and the Mods folder.
+The build compiles against the `Krafs.Rimworld.Ref` NuGet package, pinned to the final 1.6 build,
+locally and in CI alike; the local install is never referenced (since 1.7 it carries no 1.6
+assemblies) and only serves as the decompile target. The RimWorld install path, auto-detected on
+Windows/Linux/Mac including WSL targeting a Windows install, decides deployment alone. Debug builds
+go to the default `bin/` and never deploy; only Release builds touch `1.6/Assemblies/` and the Mods
+folder. The mod runs on 1.6 and 1.7 from the one `1.6/` tree (`LoadFolders.xml` lists it under both
+versions): the 1.7 runtime maps every UnityEngine reference onto its `UnityStubs` assembly, so the
+net472 DLL loads unchanged.
 
 **WSL setup:** `RIMWORLD_PATH` in `~/.bashrc` pointing at the Windows install, e.g.
-`/mnt/c/Program Files (x86)/Steam/steamapps/common/RimWorld`.
+`/mnt/c/Program Files (x86)/Steam/steamapps/common/RimWorld`. The test suite's 1.6 runtime
+assemblies come from `~/.local/share/RimWorld-1.6/Managed` by default, or `RIMWORLD_MANAGED_1_6`
+(see Tests).
 
 ### Tests
 
 `Tests/1.6/` is a headless xUnit (net472) suite, never shipped: `dotnet test
 Tests/1.6/ShipcrackerWarcasket.Tests.csproj` (vstest hosts it through mono on Linux/WSL). It
-copies the local install's runtime DLLs into its output, so CI builds it through the sln but
-cannot run it. Tests may only load types free of VEF and VFEP, whose DLLs never reach the test
-output, so logic worth testing is pulled out of the ability and flyer classes into plain ones
-(`SpacePreviewCache`, `BreachJumpExtension.FlightSeconds`). The XML tests read the repo's defs
+copies the game's real 1.6 runtime DLLs into its output (Krafs's reference-only stubs cannot load
+at run time), resolved from `RIMWORLD_MANAGED_1_6`, then a 1.6 install's `<Data>/Managed/`, then
+the frozen copy at `~/.local/share/RimWorld-1.6/Managed` (its README.txt records provenance), the
+only source on a 1.7 install. With none found the build stays green on the Krafs fallback but every
+test fails with `TypeLoadException`, and that run overwrites any real DLLs an earlier build had
+copied into the test bin. CI builds the suite through the sln but cannot run it. Tests may only
+load types free of VEF and VFEP, whose DLLs never reach the test output, so logic worth testing is
+pulled out of the ability and flyer classes into plain ones (`SpacePreviewCache`,
+`BreachJumpExtension.FlightSeconds`). The XML tests read the repo's defs
 and patches from disk. The release skill runs the suite and a Release build as its first gate,
 before anything that boots the game or commits.
 
