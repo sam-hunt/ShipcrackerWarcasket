@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-15
+
+### Added
+
+- RimWorld 1.7 support. Save Our Ship 2 itself does not start cleanly on 1.7 yet, so its compatibility is only confirmed on 1.6 until SOS2 updates.
+
 ### Fixed
 
 - German and Spanish reload stat descriptions now use the feminine article for the armor's fuel unit.
@@ -75,7 +81,8 @@ First release.
 - Save Our Ship 2 and Vanilla Gravship Expanded support.
 - Translated into 9 languages.
 
-[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.2.0
 [1.1.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.1.1
 [1.1.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.1.0
 [1.0.2]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.0.2
