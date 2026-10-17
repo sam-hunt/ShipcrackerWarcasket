@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-10-17
+
+### Changed
+
+- The mod preview image now shows RimWorld 1.7.
+
 ## [1.2.0] - 2026-10-15
 
 ### Added
@@ -81,7 +87,8 @@ First release.
 - Save Our Ship 2 and Vanilla Gravship Expanded support.
 - Translated into 9 languages.
 
-[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.2.1
 [1.2.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.2.0
 [1.1.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.1.1
 [1.1.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.1.0
