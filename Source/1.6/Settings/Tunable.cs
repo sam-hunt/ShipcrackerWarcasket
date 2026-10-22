@@ -4,12 +4,15 @@ using Verse;
 
 namespace ShipcrackerWarcasket;
 
-// One player-tunable number, stored in the units of the def field it overrides. Until the
-// player moves its slider it is DefaultValue, read from that field when defs load
-// (ShipcrackerWarcasketSettings.LoadDefaultsFromDefs), so the def and its header stay the record
-// of the shipped tuning and another mod's XML patch moves the default too. Only an override is
-// saved; a slider landing within half a step of the default clears it, and a saved override
-// outside the slider's range (saved before the range moved) reads as its nearest end.
+// One player-tunable number, held in the units the settings store it in (the def field's, or
+// the ones they convert that field to), shown as they are or scaled by DisplayScale. Until the
+// player moves its slider it is DefaultValue, read from the def field it overrides when defs
+// load (the settings' LoadDefaultsFromDefs), so the def and its header stay the record of the
+// shipped tuning and another mod's XML patch moves the default too. Only an override is saved;
+// a slider landing within half a step of the default clears it, and a saved override outside
+// the slider's range (saved before the range moved) reads as its nearest end.
+// The file is shared across the warcasket family and must stay byte-identical between the mods
+// but for the namespace and the key prefix; change it in one and copy it to the others.
 public sealed class Tunable
 {
     private const float Unset = -1f;
@@ -19,9 +22,9 @@ public sealed class Tunable
     // section header (Listing.Indent only moves the cursor and would push the row off the right)
     // and padded on the right so it does not run up against the scrollbar.
     // The value column is sized to the widest value a row can show, so the slider runs out to
-    // it and the row ends near the window's edge as the checkbox rows do; every format here is
-    // at most four characters, so "00.00" with the default suffix (as translated) bounds it.
-    // The settings' checkbox rows share the height, gap, indent and pad.
+    // it and the row ends near the window's edge; every format here is at most four characters,
+    // so "00.00" with the default suffix (as translated) bounds it.
+    // The settings' summary and checkbox rows lay out with these constants too.
     internal const float RowHeight = 30f;
     internal const float RowGap = 6f;
     internal const float RowIndent = Listing.DefaultIndent;
@@ -49,20 +52,28 @@ public sealed class Tunable
 
     public float DefaultValue { get; set; }
 
-    // Stored units per shown unit. The fuel-per-jump row stores chemfuel, so the saved number
-    // means the same with any tank, but shows the tank's own fuel beside the rows counted in
-    // it: under VGE it reads 10 astrofuel where it stores 20 chemfuel. The slider, the value,
-    // the default and the tooltip all show scaled; Value and IntValue stay stored.
+    // Stored units per shown unit, for a row that stores one unit and shows another (a fuel row
+    // storing chemfuel, so the saved number means the same with any tank, and showing the tank's
+    // own fuel at its rate). The slider, the value, the default and the tooltip all show scaled;
+    // Value and IntValue stay stored.
     public float DisplayScale { get; set; } = 1f;
 
-    // Filled into the label as {0} when set: the name of the fuel the tank currently takes, for
-    // the rows counted in it.
+    // Filled into the label as {0} when set (the name of the fuel a row counts in).
     public string LabelArg { get; set; }
 
     // Filled into the tooltip as {1} onward when set, after the default's {0}: figures the
     // tooltip quotes from other defs, read when the defaults are, so they follow whatever the
     // loaded mods make of those defs.
     public string[] DescArgs { get; set; }
+
+    // Piecewise steps, for a row that wants a finer grid at the low end: each band covers the
+    // values from the previous band's upTo (the minimum, for the first) up to its own, in
+    // ascending order, the last ending at the maximum. A value snaps to the grid of the band it
+    // falls in, anchored at that band's start; with each band's width a whole number of its
+    // steps, every boundary lies on both neighbouring grids. Null means the single step applies
+    // over the whole range. Bands are in stored units and bypass StoredStep's whole-shown-unit
+    // rounding, so a banded row keeps DisplayScale at 1.
+    public (float upTo, float step)[] StepBands { get; set; }
 
     public float Value => value < 0f ? DefaultValue : Mathf.Clamp(value, min, max);
 
@@ -85,6 +96,36 @@ public sealed class Tunable
 
     public static float StoredStep(float step, float scale) =>
         scale == 1f ? step : Mathf.Max(1f, Mathf.Round(step / scale)) * scale;
+
+    // The banded Snap: the nearest step of the band the clamped value falls in, counted from
+    // that band's start and kept within it. A value on a boundary belongs to the band below.
+    // Pure, for the tests.
+    public static float Snap(float stored, float min, float max, (float upTo, float step)[] bands)
+    {
+        float clamped = Mathf.Clamp(stored, min, max);
+        if (bands == null || bands.Length == 0)
+            return clamped;
+        float start = min;
+        for (int i = 0; i < bands.Length; i++)
+        {
+            bool last = i == bands.Length - 1;
+            float end = last ? max : Mathf.Min(bands[i].upTo, max);
+            if (clamped <= end || last)
+                return Mathf.Clamp(start + Mathf.Round((clamped - start) / bands[i].step) * bands[i].step, start, end);
+            start = end;
+        }
+        return clamped;
+    }
+
+    // The step of the band a stored value falls in, by the same boundary rule as the banded
+    // Snap. Pure, for the tests.
+    public static float BandStep(float stored, float max, (float upTo, float step)[] bands)
+    {
+        for (int i = 0; i < bands.Length - 1; i++)
+            if (stored <= Mathf.Min(bands[i].upTo, max))
+                return bands[i].step;
+        return bands[bands.Length - 1].step;
+    }
 
     // Label "SCWC_<key>" (the unit is part of it, or LabelArg) on the left, the slider in the
     // middle, the current value on the right with "(default)" while unset, and "SCWC_<key>Desc"
@@ -117,8 +158,19 @@ public sealed class Tunable
         listing.Gap(RowGap);
         if (raw == current)
             return;
-        float snapped = Snap(raw, min, max, step, DisplayScale);
-        value = Mathf.Abs(snapped - DefaultValue) < StoredStep(step, DisplayScale) * 0.5f ? Unset : snapped;
+        float snapped;
+        float defaultStep;
+        if (StepBands == null)
+        {
+            snapped = Snap(raw, min, max, step, DisplayScale);
+            defaultStep = StoredStep(step, DisplayScale);
+        }
+        else
+        {
+            snapped = Snap(raw * DisplayScale, min, max, StepBands);
+            defaultStep = BandStep(DefaultValue, max, StepBands);
+        }
+        value = Mathf.Abs(snapped - DefaultValue) < defaultStep * 0.5f ? Unset : snapped;
     }
 
     private string Format(float stored) => format(stored / DisplayScale);
