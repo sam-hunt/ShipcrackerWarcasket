@@ -9,9 +9,9 @@ using AbilityDef = VEF.Abilities.AbilityDef;
 namespace ShipcrackerWarcasket;
 
 // The set's mod settings. Each Tunable overrides a def field, written onto the def by
-// ApplyToDefs (at startup, then whenever the window closes), so every reader of those fields,
-// vanilla's and VEF's included, sees the setting with no code of its own. The defaults, and the
-// rationale for them, are the defs'. Nothing here is saved into a game: a save loads the same
+// ApplyToDefs (on every play-data load, then whenever the window closes), so every reader of
+// those fields, vanilla's and VEF's included, sees the setting with no code of its own. The
+// defaults, and the rationale for them, are the defs'. Nothing here is saved into a game: a save loads the same
 // with any settings, and with none.
 //
 // Units are chosen so a saved setting means the same thing with or without the Vanilla
@@ -35,7 +35,7 @@ public class ShipcrackerWarcasketSettings : ModSettings
     // The whitespace above every section header but the first, and below the last row.
     private const float SectionGap = 28f;
 
-    // Bumped by every ApplyToDefs, including the one at startup.
+    // Bumped by every ApplyToDefs, including the one on each play-data load.
     public static int Generation { get; private set; }
 
     // The jump: BreachJumpExtension.fuelPerJump in chemfuel, the tank's maxCharges in its own
@@ -74,8 +74,9 @@ public class ShipcrackerWarcasketSettings : ModSettings
     private int ammoPerCharge = 1;
 
     // The jump def and its extension, for the gizmo icons beside the jump and burn headers
-    // (the landing has no gizmo of its own). Read at draw time, since VEF loads the def's icon
-    // on the long-event queue rather than with the def.
+    // (the landing has no gizmo of its own). Re-read with the defaults on every load, which
+    // replaces both. Their icons are read at draw time, since VEF loads the def's icon on the
+    // long-event queue rather than with the def.
     private AbilityDef jumpDef;
     private BreachJumpExtension jumpExt;
 
@@ -100,8 +101,8 @@ public class ShipcrackerWarcasketSettings : ModSettings
         Scribe_Values.Look(ref vacuumBurn, "VacuumBurn", true);
     }
 
-    // Reads the def-backed defaults before the first ApplyToDefs overwrites them; defs must be
-    // loaded, so ModInit's static constructor calls this, never the Mod constructor.
+    // Reads the def-backed defaults before ApplyToDefs overwrites them; defs must be loaded, so
+    // Startup.Run calls this once per load, never the Mod constructor.
     public void LoadDefaultsFromDefs()
     {
         if (!TryGetDefs(out Defs defs))

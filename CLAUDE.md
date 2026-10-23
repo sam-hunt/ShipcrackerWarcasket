@@ -163,6 +163,14 @@ TODOs.md         - Scoping notes for the feature work that has not landed yet
 - **C#:** root namespace `ShipcrackerWarcasket`; patch classes live in `Source/1.6/Patches/`
   under the `.Patches` namespace suffix to avoid RimWorld type-name conflicts. Log with the
   `[Shipcracker Warcasket]` prefix.
+- **Startup def-derived state must survive an in-process play-data reload** (a mid-session
+  language switch reloads every def, but a type initializer never runs twice). Anything that
+  reads or writes defs at startup, or caches a def instance, goes in the idempotent
+  `Startup.Run`, never in a bare static ctor: `ModInit` calls it once for the first load, which
+  the in-flight `CallAll` postfix cannot see, and `Patches/StaticConstructorOnStartupUtility_CallAll.cs`
+  on every reload; its header has the load ordering. A mod-shipped texture dies on the same
+  reload, so hold one on the def instance (`BreachJumpExtension.SpaceIcon`) or behind a getter
+  that re-resolves on a Unity-null `== null` check (never `??`), never in a static field.
 - **Warnings are build errors.** Both csproj files set `TreatWarningsAsErrors`, so every
   compiler and analyzer (Roslynator, Microsoft.Unity.Analyzers) warning fails the build, locally,
   in the Stop hook and in CI. Nothing else in the toolchain shows a warning to an agent (the LSP

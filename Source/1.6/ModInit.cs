@@ -3,9 +3,9 @@ using Verse;
 
 namespace ShipcrackerWarcasket;
 
-// Mod entry point. Applies every [HarmonyPatch] class in this assembly, then reads the setting
-// defaults from the loaded defs and writes the player's settings onto them
-// (ShipcrackerWarcasketSettings).
+// Mod entry point. Applies every [HarmonyPatch] class in this assembly, then runs the
+// def-derived startup work (Startup.Run: the settings' defaults and overrides) for this first
+// load; later play-data reloads run it again through the CallAll postfix.
 //
 // Deliberately a [StaticConstructorOnStartup] rather than a Mod-subclass constructor:
 // Mod constructors run BEFORE any defs are loaded, and applying a Harmony patch
@@ -25,7 +25,6 @@ public static class ModInit
         var harmony = new Harmony("shunter.shipcrackerwarcasket");
         harmony.PatchAll();
 
-        ShipcrackerWarcasketMod.Settings.LoadDefaultsFromDefs();
-        ShipcrackerWarcasketMod.Settings.ApplyToDefs();
+        Startup.Run();
     }
 }
