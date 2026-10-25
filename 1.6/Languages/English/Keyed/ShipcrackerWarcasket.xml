@@ -34,6 +34,8 @@
 
   <SCWC_ArmorPenetration>Armor penetration (%)</SCWC_ArmorPenetration>
   <SCWC_ArmorPenetrationDesc>The armor penetration of the landing blast's damage to creatures. Default: {0}.</SCWC_ArmorPenetrationDesc>
+  <SCWC_ArmorPenetrationMPa>Armor penetration (MPa)</SCWC_ArmorPenetrationMPa>
+  <SCWC_ArmorPenetrationMPaDesc>The armor penetration of the landing blast's damage to creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade's blast penetrates about 17, and flak armor rates 12. Default: {0}.</SCWC_ArmorPenetrationMPaDesc>
 
   <SCWC_WallDamage>Damage to walls</SCWC_WallDamage>
   <SCWC_WallDamageDesc>The damage the landing blast deals to walls and other structures that block movement. For comparison, a steel wall has {1} hit points and a plasteel wall {2}. Default: {0}.</SCWC_WallDamageDesc>

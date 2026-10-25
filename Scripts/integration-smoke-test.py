@@ -34,9 +34,13 @@ engine.PACKAGE_ID = "shunter.shipcrackerwarcasket"
 # the other optional integration: LoadFolders.xml opens the
 # 1.6/Mods/VanillaGravshipExpanded root on its package id, and that root's
 # four patches (vacuum parity, the helmet's VGE oxygen comp, astrofuel,
-# space walking) only ever run with it active. It sits before our mod, as
-# the mod a compat root complements should. Probe last (auto-quit). Plain
-# ids on purpose; see the refresh shim's "_steam" note.
+# space walking) only ever run with it active. Combat Extended is the
+# third: it opens the 1.6/Mods/CombatExtended root, whose patches rescale
+# the set's stats and the blast's penetration and would fail silently
+# against a renamed node. It loads after VFEP and SOS2, where its own
+# About.xml puts it. Each sits before our mod, as the mod a compat root
+# complements should. Probe last (auto-quit). Plain ids on purpose; see the
+# refresh shim's "_steam" note.
 engine.SMOKE_ACTIVE_MODS = [
     "brrainz.harmony",
     "ludeon.rimworld",
@@ -46,6 +50,7 @@ engine.SMOKE_ACTIVE_MODS = [
     "vanillaexpanded.gravship",
     "smashphil.vehicleframework",
     "kentington.saveourship2",
+    "ceteam.combatextended",
     "shunter.shipcrackerwarcasket",
     "shunter.l10nprobe",
 ]
@@ -57,8 +62,10 @@ engine.OWN_PATTERNS = ["ShipcrackerWarcasket", "[Shipcracker Warcasket]", "SCWC_
 # The seams: VFEP's warcasket code (foundry, entombing, Apparel_Warcasket)
 # walks our WarcasketDefs, VEF's ApparelExtension and CompShieldBubble run
 # on them, SOS2 reads the EVA tag our patch adds, and VGE1's
-# CompApparelOxygenProvider ticks on our helmet. An error mentioning any of
-# these gates the test even when the exception fires inside their code.
+# CompApparelOxygenProvider ticks on our helmet, and CE's armor and
+# inventory code reads the stats the CombatExtended root sets. An error
+# mentioning any of these gates the test even when the exception fires
+# inside their code.
 # Vehicle Framework is deliberately absent: it is only SOS2's dep and its
 # own noise is third-party.
 engine.INTEGRATION_PATTERNS = {
@@ -66,6 +73,7 @@ engine.INTEGRATION_PATTERNS = {
     "VEF": ["VEF."],
     "SOS2": ["SaveOurShip2", "SaveOurShip"],
     "VGE": ["VanillaGravshipExpanded"],
+    "CE": ["CombatExtended"],
 }
 
 raise SystemExit(engine.main())

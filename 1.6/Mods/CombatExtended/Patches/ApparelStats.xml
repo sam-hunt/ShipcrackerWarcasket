@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Combat Extended parity for the three pieces. CE reads ArmorRating_Sharp as millimetres of
+  RHA and ArmorRating_Blunt as megapascals and rescales nothing it has not patched by defName
+  (its apparel autopatcher is off by default and matches no multi-layer warcasket preset), so
+  the main tree's 2 / 1.5 is, under CE, its flak jacket. CE's own VFE Pirates patch
+  (ModPatches/Vanilla Factions Expanded - Pirates/.../Apparel_Warcaskets_Spacer.xml) reaches
+  only VFEP's defNames; from its base-class patches ours inherit Flammability 0.25 and the
+  helmet and shoulder PartialArmorExt alone. Every number here is CE's for the Guardian, the
+  10th-gen set whose blunt 1.5 pattern the Shipcracker shares (armor def header), so a mixed
+  set stays a mixed set:
+  - Plating 36 / 110 on armor and shoulders, 32 / 86 on the helmet; heat is untouched, as in
+    every CE patch. Bulk / WornBulk 275 / 35, 15 / 5, 20 / 10.
+  - CarryWeight +250 and CarryBulk +225 on the armor: CE charges a worn item's full Mass
+    against a 40 kg CarryWeight, so without them the 78 kg set moves at half speed.
+    Suppressability -100 is the spacer frames' immunity to suppression.
+  - Shield 3.0 / 0.015, CE's x1.5 on every shield it patches (VEF's CompShieldBubble absorbs
+    CE projectiles unpatched; only the numbers move).
+  - The helmet: SmokeSensitivity -1 makes the wearer immune to CE's smoke, which scales its
+    inhalation hediff by that stat and by Breathing alone, so the respirator's Breathing floor
+    does not count; immuneToToxGasExposure and NightVisionEfficiency_Apparel 0.75 are what CE
+    gives every sealed spacer helmet. The tox immunity is added only when absent, CE's own
+    guard against a second patch producing a duplicate node.
+  - Costs on CE's spacer rescale: plasteel x1.5 and two more spacer components on the armor
+    and helmet (Guardian 200 / 6 to 300 / 8, helmet 70 / 2 to 105 / 4, shoulders 80 to 120).
+    Uranium and gravlite are not touched, as CE leaves VFEP's uranium.
+  Patches in this root apply before the main tree's and the VGE root's; none of the three
+  touch the same nodes.
+-->
+<Patch>
+
+  <!-- Armor -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/statBases</xpath>
+    <value>
+      <Bulk>275</Bulk>
+      <WornBulk>35</WornBulk>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/statBases/ArmorRating_Sharp</xpath>
+    <value>
+      <ArmorRating_Sharp>36</ArmorRating_Sharp>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/statBases/ArmorRating_Blunt</xpath>
+    <value>
+      <ArmorRating_Blunt>110</ArmorRating_Blunt>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/statBases/EnergyShieldEnergyMax</xpath>
+    <value>
+      <EnergyShieldEnergyMax>3.0</EnergyShieldEnergyMax>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/statBases/EnergyShieldRechargeRate</xpath>
+    <value>
+      <EnergyShieldRechargeRate>0.015</EnergyShieldRechargeRate>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/equippedStatOffsets</xpath>
+    <value>
+      <CarryWeight>250</CarryWeight>
+      <CarryBulk>225</CarryBulk>
+      <Suppressability>-100</Suppressability>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/costList/ComponentSpacer</xpath>
+    <value>
+      <ComponentSpacer>8</ComponentSpacer>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_Warcasket_Shipcracker"]/costList/Plasteel</xpath>
+    <value>
+      <Plasteel>270</Plasteel>
+    </value>
+  </Operation>
+
+  <!-- Shoulders -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketShoulders_Shipcracker"]/statBases</xpath>
+    <value>
+      <Bulk>15</Bulk>
+      <WornBulk>5</WornBulk>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketShoulders_Shipcracker"]/statBases/ArmorRating_Sharp</xpath>
+    <value>
+      <ArmorRating_Sharp>36</ArmorRating_Sharp>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketShoulders_Shipcracker"]/statBases/ArmorRating_Blunt</xpath>
+    <value>
+      <ArmorRating_Blunt>110</ArmorRating_Blunt>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketShoulders_Shipcracker"]/costList/Plasteel</xpath>
+    <value>
+      <Plasteel>105</Plasteel>
+    </value>
+  </Operation>
+
+  <!-- Helmet -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketHelmet_Shipcracker"]/statBases</xpath>
+    <value>
+      <Bulk>20</Bulk>
+      <WornBulk>10</WornBulk>
+      <NightVisionEfficiency_Apparel>0.75</NightVisionEfficiency_Apparel>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketHelmet_Shipcracker"]/statBases/ArmorRating_Sharp</xpath>
+    <value>
+      <ArmorRating_Sharp>32</ArmorRating_Sharp>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketHelmet_Shipcracker"]/statBases/ArmorRating_Blunt</xpath>
+    <value>
+      <ArmorRating_Blunt>86</ArmorRating_Blunt>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketHelmet_Shipcracker"]/equippedStatOffsets</xpath>
+    <value>
+      <SmokeSensitivity>-1</SmokeSensitivity>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketHelmet_Shipcracker"]/apparel/immuneToToxGasExposure</xpath>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketHelmet_Shipcracker"]/apparel</xpath>
+      <value>
+        <immuneToToxGasExposure>true</immuneToToxGasExposure>
+      </value>
+    </nomatch>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketHelmet_Shipcracker"]/costList/ComponentSpacer</xpath>
+    <value>
+      <ComponentSpacer>4</ComponentSpacer>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VFEPirates.WarcasketDef[defName="SCWC_WarcasketHelmet_Shipcracker"]/costList/Plasteel</xpath>
+    <value>
+      <Plasteel>105</Plasteel>
+    </value>
+  </Operation>
+
+</Patch>

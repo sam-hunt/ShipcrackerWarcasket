@@ -17,7 +17,8 @@
     minDamageToFragment 15 is Bomb's: without it the hit lands as one wound on one random part,
     and 20 to a heart or brain kills outright; with it the hit splits into 2 to 4 wounds of 5
     to 10. defaultArmorPenetration 0.15 mirrors the value the ability passes (GenExplosion
-    ignores this field when handed a damage amount). Blunt rather than Bomb's Sharp: an impact,
+    ignores this field when handed a damage amount); the 1.6/Mods/CombatExtended/Patches/
+    root moves both to CE's megapascal scale. Blunt rather than Bomb's Sharp: an impact,
     and end-game blunt ratings run lower. No heat energy (kinetic, not incendiary).
     explosionCenterEffecter SCWC_BreachLanding adds the shockwave ring; DamageWorker fires it
     on every breach explosion, planet or space, with no C#.

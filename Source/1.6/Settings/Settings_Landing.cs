@@ -12,10 +12,22 @@ public partial class ShipcrackerWarcasketSettings
     // breachDamage and breachArmorPenetration (as a percentage), the structure damage the
     // SCWC_Breach def's factors make of it, and the shoulders' SCWC_BreachPower offset as a
     // percentage.
+    // Under Combat Extended the penetration is in megapascals, the unit CE's armor math
+    // compares it with and the one the CombatExtended root's patch sets it in, so the row
+    // stores it unscaled, as its own setting: its own label and tooltip, and a save slot a
+    // percentage saved without CE never reaches. The mod list cannot change in-process, so
+    // the test is made once.
+    private static readonly bool CombatExtendedActive =
+        ModLister.GetActiveModWithIdentifier("CETeam.CombatExtended", ignorePostfix: true) != null;
+
+    private static float PenetrationScale => CombatExtendedActive ? 1f : 100f;
+
     public readonly Tunable blastRadius = new("BlastRadius", 0f, 6f, 0.5f, OffOrRadius);
     public readonly Tunable roofRadius = new("RoofRadius", 0f, 6f, 0.5f, OffOrRadius);
     public readonly Tunable creatureDamage = new("CreatureDamage", 1f, 60f, 1f, Whole);
-    public readonly Tunable armorPenetration = new("ArmorPenetration", 0f, 100f, 5f, Whole);
+    public readonly Tunable armorPenetration = CombatExtendedActive
+        ? new("ArmorPenetrationMPa", 0f, 100f, 1f, Whole)
+        : new("ArmorPenetration", 0f, 100f, 5f, Whole);
     public readonly Tunable wallDamage = new("WallDamage", 50f, 2000f, 50f, Whole);
     public readonly Tunable structureDamage = new("StructureDamage", 25f, 1000f, 25f, Whole);
     public readonly Tunable shouldersBonus = new("ShouldersBonus", 0f, 200f, 10f, Whole);
@@ -45,7 +57,7 @@ public partial class ShipcrackerWarcasketSettings
         blastRadius.DefaultValue = defs.ext.breachRadius;
         roofRadius.DefaultValue = defs.ext.roofPunchRadius;
         creatureDamage.DefaultValue = defs.ext.breachDamage;
-        armorPenetration.DefaultValue = defs.ext.breachArmorPenetration * 100f;
+        armorPenetration.DefaultValue = defs.ext.breachArmorPenetration * PenetrationScale;
         wallDamage.DefaultValue = BreachTuning.StructureDamage(defs.ext.breachDamage,
             defs.breach.buildingDamageFactor, defs.breach.buildingDamageFactorImpassable);
         structureDamage.DefaultValue = BreachTuning.StructureDamage(defs.ext.breachDamage,
@@ -58,7 +70,7 @@ public partial class ShipcrackerWarcasketSettings
         defs.ext.breachRadius = blastRadius.Value;
         defs.ext.roofPunchRadius = roofRadius.Value;
         defs.ext.breachDamage = creatureDamage.IntValue;
-        defs.ext.breachArmorPenetration = armorPenetration.Value / 100f;
+        defs.ext.breachArmorPenetration = armorPenetration.Value / PenetrationScale;
         if (defs.breach.buildingDamageFactor <= 0f)
             defs.breach.buildingDamageFactor = 1f;
         defs.breach.buildingDamageFactorImpassable = BreachTuning.StructureFactor(wallDamage.Value,

@@ -45,9 +45,10 @@
     VFEP_General. Threat and flavor only: AI pawns never cast apparel abilities and warcasket
     parts are destroyed on drop and untradeable, so the foundry is the only source.
 
-    Compat patches reach this def from 1.6/Patches/SOS2Patch.xml (EVA tag, cold insulation) and
+    Compat patches reach this def from 1.6/Patches/SOS2Patch.xml (EVA tag, cold insulation),
     the 1.6/Mods/VanillaGravshipExpanded/Patches/ root (vacuum resistance, space walking,
-    astrofuel); see their headers.
+    astrofuel) and the 1.6/Mods/CombatExtended/Patches/ root (plating on CE's scale, bulk,
+    carry capacity, shield, costs); see their headers.
 
     renderNodeProperties: the thruster-glow node (Source/1.6/Rendering/, alpha from the
     ability's thrusterGlowCurve). The art is desaturated and color tints it chemfuel orange,

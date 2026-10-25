@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Combat Extended support: CE armor values, bulk and carry capacity in line with VFE Pirates' spacer sets, a helmet sealed against CE smoke, and a landing blast whose armor penetration is set in CE's units, with the settings slider following.
+
 ## [1.2.1] - 2026-10-17
 
 ### Changed

@@ -9,6 +9,9 @@
          path, so it must stay below "/". -->
     <li IfModActive="vanillaexpanded.gravship">Mods/VanillaGravshipExpanded</li>
     <li IfModActive="vanillaexpanded.gravship">1.6/Mods/VanillaGravshipExpanded</li>
+    <!-- Combat Extended: CE's armor scale, bulk, smoke sealing and the blast's penetration
+         in its units. Patches only, so it needs no art root. -->
+    <li IfModActive="CETeam.CombatExtended">1.6/Mods/CombatExtended</li>
   </v1.6>
   <v1.7>
     <!-- 1.7 runs the 1.6 tree unchanged: the Waylith CLR maps every UnityEngine
@@ -18,5 +21,6 @@
     <li>1.6</li>
     <li IfModActive="vanillaexpanded.gravship">Mods/VanillaGravshipExpanded</li>
     <li IfModActive="vanillaexpanded.gravship">1.6/Mods/VanillaGravshipExpanded</li>
+    <li IfModActive="CETeam.CombatExtended">1.6/Mods/CombatExtended</li>
   </v1.7>
 </loadFolders>

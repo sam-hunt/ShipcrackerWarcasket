@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  The landing blast's armor penetration on Combat Extended's scale. CE leaves a third party's
+  GenExplosion.DoExplosion alone, so the blast, the roof punch and the structure damage run as
+  in vanilla; what changes is the armor math its injuries go through, where penetration is
+  compared with blunt armor in megapascals and a blunt hit that does not exceed the rating is
+  deflected to zero. The main tree's 0.15 reads as 0.15 MPa there, under any CE shirt, so an
+  unpatched landing hurts nobody who is dressed. 6 is CE's own rule for an explosion of 20
+  damage (penetration 0.3 x damage; its 40 mm HE grenade lands at about 6.6, a frag grenade
+  at about 17), which keeps the blast's vanilla place: it wounds the unarmored and the
+  flak-vested (CE 12) and bounces off power armor. The extension's field is the one the
+  ability passes; the DamageDef's default is moved with it so the two stay the same number.
+  The settings' penetration row stores this unit under its own key while CE is active
+  (Source/1.6/Settings/Settings_Landing.cs).
+-->
+<Patch>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/VEF.Abilities.AbilityDef[defName="SCWC_BreachJump"]/modExtensions/li[@Class="ShipcrackerWarcasket.BreachJumpExtension"]/breachArmorPenetration</xpath>
+    <value>
+      <breachArmorPenetration>6</breachArmorPenetration>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/DamageDef[defName="SCWC_Breach"]/defaultArmorPenetration</xpath>
+    <value>
+      <defaultArmorPenetration>6</defaultArmorPenetration>
+    </value>
+  </Operation>
+</Patch>

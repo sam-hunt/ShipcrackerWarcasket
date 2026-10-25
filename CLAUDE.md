@@ -201,7 +201,10 @@ TODOs.md         - Scoping notes for the feature work that has not landed yet
   state a write leaves stale (a running cooldown, a tooltip cache, overfilled fuel) is reconciled
   lazily against the settings' `Generation` (`Ability_BreachJump.ReconcileSettings`). A setting
   must mean the same with every optional root loaded or not, which is why the jump's cost is in
-  chemfuel and the VGE root sets an exchange rate (`chemfuelPerAmmo`) instead of a cost.
+  chemfuel and the VGE root sets an exchange rate (`chemfuelPerAmmo`) instead of a cost. Where a
+  root changes a field's unit outright (the Combat Extended root's penetration in megapascals),
+  the row becomes a separate setting under its own key and Keyed strings, never a rescale of
+  the shared one.
 - **No em dashes in player-facing text** (def labels/descriptions, `Keyed/`, `About.xml`);
   reflow the sentence instead. This file, code comments and def comments are unaffected.
 
@@ -270,10 +273,11 @@ the English text to be final. The public language roster lives in CONTRIBUTING.m
   own database, so the game dumps and injects them under `ThingDef`; the checker maps the element
   tag via `DEF_TYPE_ALIASES`. A DefInjected folder named `WarcasketDef` would never load.
 - **Startup smoke test (pre-release):** `python3 Scripts/integration-smoke-test.py` (game closed)
-  boots the deployed mod on a pinned list (VFEP chain + Odyssey + the two optional integrations:
-  Save Our Ship 2 with Vehicle Framework so `SOS2Patch.xml` actually runs, and Vanilla Gravship
-  Expanded so the `1.6/Mods/VanillaGravshipExpanded` root opens), then classifies logged errors
-  by origin and fails on anything attributed to this mod or a VFEP/VEF/SOS2/VGE seam.
+  boots the deployed mod on a pinned list (VFEP chain + Odyssey + the three optional
+  integrations: Save Our Ship 2 with Vehicle Framework so `SOS2Patch.xml` actually runs, Vanilla
+  Gravship Expanded so the `1.6/Mods/VanillaGravshipExpanded` root opens, and Combat Extended so
+  the `1.6/Mods/CombatExtended` root opens), then classifies logged errors by origin and fails on
+  anything attributed to this mod or a VFEP/VEF/SOS2/VGE/CE seam.
   Wired into the release skill. Sibling-mod "dump WILL fail" warnings at launch are expected: the
   probe is ticked for every family mod but each boot loads only its own list.
 - **`.steamworkshop/`** holds the Workshop title and BBCode description per language

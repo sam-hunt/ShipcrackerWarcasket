@@ -23,7 +23,9 @@
     - VacuumResistance 0.7 brings the set to 1.0 under Odyssey (0.2 + 0.1 + 0.7). The VGE root
       lowers it to VGE1's warcasket-helmet 0.65 (set 0.97) and gives the helmet an oxygen
       supply that restores full immunity while it lasts (Patches/HelmetOxygen.xml there).
-    - SOS2Patch.xml gives it the EVA tag and Insulation_Cold 100 alongside the armor.
+    - SOS2Patch.xml gives it the EVA tag and Insulation_Cold 100 alongside the armor. The
+      1.6/Mods/CombatExtended/Patches/ root seals it against CE's smoke, which the respirator's
+      Breathing floor does not stop, and rescales its plating; see its header.
 
     No drawData override: the shoulders def lowers our pauldrons under every helmet instead
     (its header has the altitude derivation), so this helmet stays interchangeable with VFEP's.

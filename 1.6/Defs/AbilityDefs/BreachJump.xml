@@ -19,7 +19,8 @@
     breachDamage 20 is the pawn-facing number (Aerial's jump 15, a frag grenade 50); building
     damage and wound splitting come from the SCWC_Breach DamageDef. breachArmorPenetration 0.15
     (Aerial's works out at 0.225, a grenade's 0.75) is passed explicitly because GenExplosion
-    otherwise derives it as damage x 0.015. breachRadius 2 is a 13-cell footprint: a door-sized
+    otherwise derives it as damage x 0.015; the 1.6/Mods/CombatExtended/Patches/ root sets it
+    in CE's megapascals. breachRadius 2 is a 13-cell footprint: a door-sized
     hole in the wall it lands beside (vanilla's explosion also hits walls adjacent to the open
     cells it reaches) rather than a leveled room. Wearer excluded; allies are not, as with
     Aerial. roofPunchRadius 1 keeps the ceiling hole tighter than the wall hole; in
