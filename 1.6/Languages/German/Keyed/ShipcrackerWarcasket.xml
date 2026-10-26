@@ -57,6 +57,10 @@
   <SCWC_ArmorPenetration>Rüstungsdurchdringung (%)</SCWC_ArmorPenetration>
   <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
   <SCWC_ArmorPenetrationDesc>Die Rüstungsdurchdringung des Schadens, den die Landeexplosion an Lebewesen verursacht. Standard: {0}.</SCWC_ArmorPenetrationDesc>
+  <!-- EN: Armor penetration (MPa) -->
+  <SCWC_ArmorPenetrationMPa>Rüstungsdurchdringung (MPa)</SCWC_ArmorPenetrationMPa>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade's blast penetrates about 17, and flak armor rates 12. Default: {0}. -->
+  <SCWC_ArmorPenetrationMPaDesc>Die Rüstungsdurchdringung des Schadens, den die Landeexplosion an Lebewesen verursacht, in Megapascal, der Einheit, in der Combat Extended die Rüstung gegen Wucht angibt. Zum Vergleich: Die Explosion einer Splitterhandgranate durchdringt etwa 17, eine Schutzweste liegt bei 12. Standard: {0}.</SCWC_ArmorPenetrationMPaDesc>
 
   <!-- EN: Damage to walls -->
   <SCWC_WallDamage>Schaden an Wänden</SCWC_WallDamage>

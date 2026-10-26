@@ -57,6 +57,10 @@
   <SCWC_ArmorPenetration>Penetração de armadura (%)</SCWC_ArmorPenetration>
   <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
   <SCWC_ArmorPenetrationDesc>A penetração de armadura do dano que a explosão da aterrissagem causa a criaturas. Padrão: {0}.</SCWC_ArmorPenetrationDesc>
+  <!-- EN: Armor penetration (MPa) -->
+  <SCWC_ArmorPenetrationMPa>Penetração de armadura (MPa)</SCWC_ArmorPenetrationMPa>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade's blast penetrates about 17, and flak armor rates 12. Default: {0}. -->
+  <SCWC_ArmorPenetrationMPaDesc>A penetração de armadura do dano que a explosão da aterrissagem causa a criaturas, em megapascals, a unidade em que o Combat Extended classifica a resistência contundente. Para comparação, a explosão de uma granada de fragmentação penetra cerca de 17, e um colete de artilharia tem 12. Padrão: {0}.</SCWC_ArmorPenetrationMPaDesc>
 
   <!-- EN: Damage to walls -->
   <SCWC_WallDamage>Dano a paredes</SCWC_WallDamage>

@@ -57,6 +57,10 @@
   <SCWC_ArmorPenetration>護甲穿透值(%)</SCWC_ArmorPenetration>
   <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
   <SCWC_ArmorPenetrationDesc>著陸爆炸傷害生物時的護甲穿透值。預設值：{0}。</SCWC_ArmorPenetrationDesc>
+  <!-- EN: Armor penetration (MPa) -->
+  <SCWC_ArmorPenetrationMPa>護甲穿透值(MPa)</SCWC_ArmorPenetrationMPa>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade's blast penetrates about 17, and flak armor rates 12. Default: {0}. -->
+  <SCWC_ArmorPenetrationMPaDesc>著陸爆炸傷害生物時的護甲穿透值，以兆帕為單位，即Combat Extended衡量鈍擊防禦的單位。作為參考，手榴彈的爆炸穿透值約為17，防彈背心的防禦值為12。預設值：{0}。</SCWC_ArmorPenetrationMPaDesc>
 
   <!-- EN: Damage to walls -->
   <SCWC_WallDamage>對牆壁的傷害</SCWC_WallDamage>

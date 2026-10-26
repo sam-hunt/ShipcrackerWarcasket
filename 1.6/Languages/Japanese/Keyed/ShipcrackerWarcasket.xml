@@ -57,6 +57,10 @@
   <SCWC_ArmorPenetration>アーマー貫通力 (%)</SCWC_ArmorPenetration>
   <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
   <SCWC_ArmorPenetrationDesc>着地の爆風が生物に与えるダメージのアーマー貫通力です.デフォルト: {0}.</SCWC_ArmorPenetrationDesc>
+  <!-- EN: Armor penetration (MPa) -->
+  <SCWC_ArmorPenetrationMPa>アーマー貫通力 (MPa)</SCWC_ArmorPenetrationMPa>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade's blast penetrates about 17, and flak armor rates 12. Default: {0}. -->
+  <SCWC_ArmorPenetrationMPaDesc>着地の爆風が生物に与えるダメージのアーマー貫通力です.単位はCombat Extendedが打撲系アーマーを評価するメガパスカル(MPa)です.参考までに,手榴弾の爆風は約17を貫通し,防弾チョッキのアーマーは12です.デフォルト: {0}.</SCWC_ArmorPenetrationMPaDesc>
 
   <!-- EN: Damage to walls -->
   <SCWC_WallDamage>壁へのダメージ</SCWC_WallDamage>

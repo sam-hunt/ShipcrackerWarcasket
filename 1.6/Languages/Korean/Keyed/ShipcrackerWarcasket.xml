@@ -57,6 +57,10 @@
   <SCWC_ArmorPenetration>관통력 (%)</SCWC_ArmorPenetration>
   <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
   <SCWC_ArmorPenetrationDesc>착지 폭발이 생물에게 입히는 피해의 관통력입니다. 기본값: {0}.</SCWC_ArmorPenetrationDesc>
+  <!-- EN: Armor penetration (MPa) -->
+  <SCWC_ArmorPenetrationMPa>관통력 (MPa)</SCWC_ArmorPenetrationMPa>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade's blast penetrates about 17, and flak armor rates 12. Default: {0}. -->
+  <SCWC_ArmorPenetrationMPaDesc>착지 폭발이 생물에게 입히는 피해의 관통력으로, Combat Extended가 둔탁함 방어도를 매기는 단위인 메가파스칼(MPa)로 표시됩니다. 참고로 파편 수류탄의 폭발은 약 17을 관통하며, 방탄조끼의 방어도는 12입니다. 기본값: {0}.</SCWC_ArmorPenetrationMPaDesc>
 
   <!-- EN: Damage to walls -->
   <SCWC_WallDamage>벽 피해</SCWC_WallDamage>

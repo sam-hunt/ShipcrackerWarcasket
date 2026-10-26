@@ -57,6 +57,10 @@
   <SCWC_ArmorPenetration>Бронепробитие (%)</SCWC_ArmorPenetration>
   <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
   <SCWC_ArmorPenetrationDesc>Насколько хорошо взрыв при приземлении пробивает броню существ. По умолчанию: {0}.</SCWC_ArmorPenetrationDesc>
+  <!-- EN: Armor penetration (MPa) -->
+  <SCWC_ArmorPenetrationMPa>Бронепробитие (МПа)</SCWC_ArmorPenetrationMPa>
+  <!-- EN: The armor penetration of the landing blast's damage to creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade's blast penetrates about 17, and flak armor rates 12. Default: {0}. -->
+  <SCWC_ArmorPenetrationMPaDesc>Насколько хорошо взрыв при приземлении пробивает броню существ, в мегапаскалях, как Combat Extended оценивает броню от удара. Для сравнения: взрыв осколочной гранаты пробивает около 17, а бронежилет держит 12. По умолчанию: {0}.</SCWC_ArmorPenetrationMPaDesc>
 
   <!-- EN: Damage to walls -->
   <SCWC_WallDamage>Урон стенам</SCWC_WallDamage>
