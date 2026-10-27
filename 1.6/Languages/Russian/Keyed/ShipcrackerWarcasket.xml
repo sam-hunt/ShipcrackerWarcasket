@@ -89,6 +89,11 @@
   <!-- EN:  (requires Odyssey) -->
   <SCWC_RequiresOdysseySuffix> (требуется Odyssey)</SCWC_RequiresOdysseySuffix>
 
+  <!-- EN: Landing blast -->
+  <SCWC_LandingBlast>Взрыв при приземлении</SCWC_LandingBlast>
+  <!-- EN: Toggle the landing blast.\n\nWhen disabled, breach jumps land without the blast that breaks walls and hurts anyone nearby. This is useful for jumping around your own base. Roofs in the way are still torn open. -->
+  <SCWC_LandingBlastDesc>Включить или отключить взрыв при приземлении.\n\nЕсли отключено, пилот приземляется после пробивного прыжка без взрыва: стены уцелеют, а стоящие рядом не пострадают. Пригодится, чтобы перемещаться прыжками по своей базе. Крышу на пути пилот всё равно проламывает.</SCWC_LandingBlastDesc>
+
   <!-- EN: Off -->
   <SCWC_Off>Выкл</SCWC_Off>
   <!-- EN:  (default) -->

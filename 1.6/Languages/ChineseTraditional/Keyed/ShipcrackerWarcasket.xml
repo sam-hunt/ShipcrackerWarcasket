@@ -89,6 +89,11 @@
   <!-- EN:  (requires Odyssey) -->
   <SCWC_RequiresOdysseySuffix>(需要「漫遊」DLC)</SCWC_RequiresOdysseySuffix>
 
+  <!-- EN: Landing blast -->
+  <SCWC_LandingBlast>著陸爆炸</SCWC_LandingBlast>
+  <!-- EN: Toggle the landing blast.\n\nWhen disabled, breach jumps land without the blast that breaks walls and hurts anyone nearby. This is useful for jumping around your own base. Roofs in the way are still torn open. -->
+  <SCWC_LandingBlastDesc>切換著陸爆炸。\n\n停用時，破壁跳躍著陸不會引發爆炸，既不會炸毀牆壁，也不會傷及附近的任何人。適合在自己的基地內跳躍。路徑上的屋頂仍會被撞開。</SCWC_LandingBlastDesc>
+
   <!-- EN: Off -->
   <SCWC_Off>關閉</SCWC_Off>
   <!-- EN:  (default) -->

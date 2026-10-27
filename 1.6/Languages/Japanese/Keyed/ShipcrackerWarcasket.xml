@@ -89,6 +89,11 @@
   <!-- EN:  (requires Odyssey) -->
   <SCWC_RequiresOdysseySuffix> (Odysseyが必要)</SCWC_RequiresOdysseySuffix>
 
+  <!-- EN: Landing blast -->
+  <SCWC_LandingBlast>着地時の爆風</SCWC_LandingBlast>
+  <!-- EN: Toggle the landing blast.\n\nWhen disabled, breach jumps land without the blast that breaks walls and hurts anyone nearby. This is useful for jumping around your own base. Roofs in the way are still torn open. -->
+  <SCWC_LandingBlastDesc>着地時の爆風を切り替えます.\n\n無効にすると,ブリーチジャンプで着地しても,壁を壊して周囲の人を傷つける爆風が起こらなくなります.自分の基地の中を跳び回るときに便利です.ただし,進路上の屋根は変わらず突き破ります.</SCWC_LandingBlastDesc>
+
   <!-- EN: Off -->
   <SCWC_Off>Off</SCWC_Off>
   <!-- EN:  (default) -->

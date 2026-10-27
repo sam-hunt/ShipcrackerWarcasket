@@ -89,6 +89,11 @@
   <!-- EN:  (requires Odyssey) -->
   <SCWC_RequiresOdysseySuffix> (오디세이 필요)</SCWC_RequiresOdysseySuffix>
 
+  <!-- EN: Landing blast -->
+  <SCWC_LandingBlast>착지 폭발</SCWC_LandingBlast>
+  <!-- EN: Toggle the landing blast.\n\nWhen disabled, breach jumps land without the blast that breaks walls and hurts anyone nearby. This is useful for jumping around your own base. Roofs in the way are still torn open. -->
+  <SCWC_LandingBlastDesc>착지 폭발 여부를 설정합니다.\n\n끄면 돌파 도약으로 착지해도 벽을 부수고 주변에 있는 모두에게 피해를 주는 폭발이 일어나지 않습니다. 자신의 기지 안에서 도약할 때 유용합니다. 단, 경로에 있는 지붕은 여전히 뜯겨 나갑니다.</SCWC_LandingBlastDesc>
+
   <!-- EN: Off -->
   <SCWC_Off>없음</SCWC_Off>
   <!-- EN:  (default) -->

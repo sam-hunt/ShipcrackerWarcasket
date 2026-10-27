@@ -142,7 +142,7 @@
       },
       "SCWC_Warcasket_Shipcracker.comps.CompShieldBubble.shieldTexPath": {
         "english": "Other/ShieldBubble",
-        "normalized": "SCWC_Warcasket_Shipcracker.comps.4.shieldTexPath"
+        "normalized": "SCWC_Warcasket_Shipcracker.comps.5.shieldTexPath"
       },
       "SCWC_Warcasket_Shipcracker.description": {
         "english": "Specialized spacer-tech warcasket shell with improved impact dispersion, fitted with fuel-burning drop thrusters for breaching jumps and a ranged shield.\n\nAn Imperial pattern, not a pirate one: boarding corps built it on the 10th-generation spacer chassis to cross the gap between two ships and open the far hull from the outside. Salvage and desertion have since put it in foundries far from any Imperial dock.\n\nA shipcracker launches through the vacuum, lands on the enemy hull, punches through to the interior and takes the ship room by room. Under gravity the same burn clears a wall or a roof in a single hop. The shield stops bullets, not blades: pilots are chosen for a taste for close work.",
