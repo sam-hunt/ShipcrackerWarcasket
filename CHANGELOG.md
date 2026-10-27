@@ -18,9 +18,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-10-27
+
 ### Added
 
-- Combat Extended support: CE armor values, bulk and carry capacity in line with VFE Pirates' spacer sets, a helmet sealed against CE smoke, and a landing blast whose armor penetration is set in CE's units, with the settings slider following.
+- Combat Extended support: armor values, bulk and carry capacity matching other spacer-tier warcaskets, and the helmet blocks CE smoke.
+
+### Fixed
+
+- Mod settings keep applying after a mid-game language switch instead of falling back to the defaults until a restart.
 
 ## [1.2.1] - 2026-10-17
 
@@ -91,7 +97,8 @@ First release.
 - Save Our Ship 2 and Vanilla Gravship Expanded support.
 - Translated into 9 languages.
 
-[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.2.1...HEAD
+[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.3.0
 [1.2.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.2.1
 [1.2.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.2.0
 [1.1.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.1.1
