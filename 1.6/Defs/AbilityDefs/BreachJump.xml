@@ -39,9 +39,11 @@
     extension field rather than a patched description because a patch from a gated root would
     pull the description's DefInjected entry into that root and collide with the main tree's.
 
-    Icons sit under the mod-scoped UI/Abilities/WarcasketShipcracker/. The VGE art root
-    (Mods/VanillaGravshipExpanded/Textures/) shadows both with purple copies at the same
-    paths; keep the filenames in step.
+    Icons sit under the mod-scoped UI/Abilities/WarcasketShipcracker/, and the landing blast
+    toggle's (blastToggleIconPath, drawn by CompBreachBlastToggle beside the jump button with
+    vanilla's tick or cross over it) under UI/Commands/WarcasketShipcracker/ with vanilla's own
+    toggles. The VGE art root (Mods/VanillaGravshipExpanded/Textures/) shadows all three with
+    purple copies at the same paths; keep the filenames in step.
 
     flightEffecter / spaceFlightEffecter are on the extension so a compat root can recolor
     them by patch; see EffecterDefs/BreachJumpFlame.xml and BreachBurnFlame.xml.
@@ -81,6 +83,7 @@
           </points>
         </thrusterGlowCurve>
         <spaceIconPath>UI/Abilities/WarcasketShipcracker/BreachBurn</spaceIconPath>
+        <blastToggleIconPath>UI/Commands/WarcasketShipcracker/LandingBlast</blastToggleIconPath>
         <vacuumDescription>In vacuum the burn has no range limit, but needs a clear line to the target.</vacuumDescription>
         <vacuumLabel>breach burn</vacuumLabel>
       </li>

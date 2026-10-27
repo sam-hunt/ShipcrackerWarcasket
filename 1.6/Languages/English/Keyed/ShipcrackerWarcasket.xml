@@ -53,6 +53,9 @@
   <SCWC_VacuumBurnDesc>When enabled, the jump becomes the breach burn in vacuum: unlimited range, but only to a target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on.</SCWC_VacuumBurnDesc>
   <SCWC_RequiresOdysseySuffix> (requires Odyssey)</SCWC_RequiresOdysseySuffix>
 
+  <SCWC_LandingBlast>Landing blast</SCWC_LandingBlast>
+  <SCWC_LandingBlastDesc>Whether the pilot's landing sets off the breach blast. When enabled, a breach jump lands hard enough to break walls and hull plating and to hurt anyone close by. When disabled, the pilot lands without a blast; a roof in the way is still torn open.</SCWC_LandingBlastDesc>
+
   <SCWC_Off>Off</SCWC_Off>
   <SCWC_DefaultSuffix> (default)</SCWC_DefaultSuffix>
 

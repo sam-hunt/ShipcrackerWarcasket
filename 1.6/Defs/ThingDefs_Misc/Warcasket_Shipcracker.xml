@@ -144,6 +144,10 @@
           <li>SCWC_BreachJump</li>
         </abilities>
       </li>
+      <!-- Must directly follow the abilities comp: see CompBreachBlastToggle. -->
+      <li>
+        <compClass>ShipcrackerWarcasket.CompBreachBlastToggle</compClass>
+      </li>
       <li Class="VEF.Apparels.CompProperties_ShieldBubble">
         <compClass>VEF.Apparels.CompShieldBubble</compClass>
         <blockRangedAttack>true</blockRangedAttack>

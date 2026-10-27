@@ -89,6 +89,10 @@ public class BreachJumpExtension : DefModExtension
     // Gizmo icon shown while the jump is the breach burn; null keeps the def's iconPath.
     [NoTranslate] public string spaceIconPath;
 
+    // Icon of the landing blast toggle beside the jump button (CompBreachBlastToggle); null
+    // falls back to the def's iconPath, which the toggle's tick or cross then overlays.
+    [NoTranslate] public string blastToggleIconPath;
+
     // Sentence appended to the def's description in the gizmo tooltip, but only when a loaded
     // def can produce a space map (see Ability_BreachJump.SpaceMapsPossible) and the burn is on
     // in the settings, so the tooltip never describes a mode the game cannot reach. An extension field rather than an XML
@@ -106,17 +110,19 @@ public class BreachJumpExtension : DefModExtension
     // Texture2D fields on types without [StaticConstructorOnStartup]. Loaded lazily from the
     // gizmo path, which is always the main thread.
     [Unsaved(false)] private Texture2D spaceIcon;
+    [Unsaved(false)] private Texture2D blastToggleIcon;
 
-    public Texture2D SpaceIcon
+    public Texture2D SpaceIcon => Resolve(spaceIconPath, ref spaceIcon);
+
+    public Texture2D BlastToggleIcon => Resolve(blastToggleIconPath, ref blastToggleIcon);
+
+    private static Texture2D Resolve(string path, ref Texture2D icon)
     {
-        get
-        {
-            if (spaceIconPath.NullOrEmpty())
-                return null;
-            // Unity-overloaded ==, deliberately not ??= (UNT0023).
-            if (spaceIcon == null)
-                spaceIcon = ContentFinder<Texture2D>.Get(spaceIconPath);
-            return spaceIcon;
-        }
+        if (path.NullOrEmpty())
+            return null;
+        // Unity-overloaded ==, deliberately not ??= (UNT0023).
+        if (icon == null)
+            icon = ContentFinder<Texture2D>.Get(path);
+        return icon;
     }
 }

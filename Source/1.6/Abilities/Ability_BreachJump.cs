@@ -17,7 +17,9 @@ namespace ShipcrackerWarcasket;
 //  - Space (Map.Biome.inVacuum or Tile.LayerDef.isSpace, both vanilla fields, so no DLC gate):
 //    the breach burn, unlimited range, target must be in line of sight. The vacuumBurn setting
 //    turns the burn off, and space maps then follow the planet rules in every respect (BurnMode).
-//  - No takeoff blast; the landing fires SCWC_Breach from PawnFlyer_BreachJump.
+//  - No takeoff blast; the landing fires SCWC_Breach from PawnFlyer_BreachJump unless the
+//    wearer has switched the blast off (landingBlast, the toggle CompBreachBlastToggle shows
+//    beside the jump button). The roof punch is not part of the blast and ignores the toggle.
 //  - Takeoff and landing punch through non-thick roofs within roofPunchRadius unless the jump
 //    starts and ends in the same indoor room.
 // Fuel is the CompApparelReloadable on the same apparel as the ability comp.
@@ -74,13 +76,19 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     private BreachJumpExtension ext;
     private CompApparelReloadable tank;
 
-    // The one Command handed out by GetGizmo, and the tooltip string it shows, with the inputs
-    // that string was built from. Both are dropped by Init, which VEF runs again when the
-    // apparel changes wearer.
+    // The one Command handed out by GetGizmo, the blast toggle handed out by GetBlastToggleGizmo
+    // and the tooltip string the first shows, with the inputs that string was built from. All
+    // are dropped by Init, which VEF runs again when the apparel changes wearer.
     private Command gizmo;
+    private Command_Toggle blastToggle;
     private string description;
     private bool descriptionBurnMode;
     private float descriptionRange;
+    private bool descriptionBlast;
+
+    // Whether the landing sets off the breach blast. The player's choice for this armor, saved
+    // with the ability (so it follows the armor, not the wearer) and defaulting to on.
+    public bool landingBlast = true;
 
     // The ShipcrackerWarcasketSettings.Generation this instance last reconciled with. Never
     // scribed, so every instance reconciles once after a load too, catching settings changed
@@ -111,7 +119,14 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     {
         base.Init();
         gizmo = null;
+        blastToggle = null;
         description = null;
+    }
+
+    public override void ExposeData()
+    {
+        base.ExposeData();
+        Scribe_Values.Look(ref landingBlast, "landingBlast", true);
     }
 
     public static bool IsSpaceMap(Map map) =>
@@ -146,8 +161,9 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
 
     public override bool AutoCast => false;
 
-    // The landing blast footprint, so VEF's DrawHighlight previews it at the hovered cell.
-    public override float GetRadiusForPawn() => Ext.breachRadius;
+    // The landing blast footprint, so VEF's DrawHighlight previews it at the hovered cell and
+    // the tooltip lists it; 0 with the blast switched off, which drops both.
+    public override float GetRadiusForPawn() => landingBlast ? Ext.breachRadius : 0f;
 
     // sightCheck (def.requireLineOfSight) is deliberately ignored: the sight rule follows the map.
     public override bool CanHitTarget(LocalTargetInfo target, bool sightCheck)
@@ -307,19 +323,21 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     // vacuum sentence after the description; the generated tail is kept as VEF wrote it.
     //
     // The result is cached against everything in it that can change for this def in play: the
-    // jump or burn (label, range line) and the planet range stat. Cast time, cooldown, radius
-    // and power come straight off the def since it declares no stat factors or offsets, and it
-    // carries no AbilityExtension_AbilityMod to append lines of its own; the settings rewrite
-    // the def, and ReconcileSettings drops the cache when they do.
+    // jump or burn (label, range line), the planet range stat and the blast toggle (radius
+    // line). Cast time, cooldown, radius and power come straight off the def since it declares
+    // no stat factors or offsets, and it carries no AbilityExtension_AbilityMod to append lines
+    // of its own; the settings rewrite the def, and ReconcileSettings drops the cache when they
+    // do.
     public override string GetDescriptionForPawn()
     {
         var burnMode = BurnMode;
         var range = PlanetRange;
-        if (description != null && burnMode == descriptionBurnMode && range == descriptionRange)
+        if (description != null && burnMode == descriptionBurnMode && range == descriptionRange && landingBlast == descriptionBlast)
             return description;
 
         descriptionBurnMode = burnMode;
         descriptionRange = range;
+        descriptionBlast = landingBlast;
         return description = BuildDescription(burnMode);
     }
 
@@ -361,6 +379,32 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
         gizmo.icon = burnMode && Ext.SpaceIcon is Texture2D icon ? icon : def.icon;
         gizmo.defaultLabel = LabelCapFor(burnMode);
         return gizmo;
+    }
+
+    // Whether the blast toggle belongs on the wearer's gizmo bar: wherever the jump button
+    // shows, unless the settings have turned the blast off outright, which leaves nothing to
+    // toggle.
+    public bool ShowBlastToggle => Ext.breachRadius > 0f && ShowGizmoOnPawn();
+
+    // The landing blast toggle, vanilla's Command_Toggle so it draws the same tick or cross
+    // overlay as the draft and fire-at-will buttons and groups across selected wearers by
+    // state. Built once like the jump button; it reads landingBlast live and nothing else on it
+    // moves. Its Order copies the jump button's, so the gizmo grid's stable sort keeps the two
+    // together when CompBreachBlastToggle yields it right after.
+    public Gizmo GetBlastToggleGizmo()
+    {
+        if (blastToggle != null)
+            return blastToggle;
+
+        return blastToggle = new Command_Toggle
+        {
+            isActive = () => landingBlast,
+            toggleAction = () => landingBlast = !landingBlast,
+            icon = Ext.BlastToggleIcon is Texture2D icon ? icon : def.icon,
+            defaultLabel = "SCWC_LandingBlast".Translate(),
+            defaultDesc = "SCWC_LandingBlastDesc".Translate(),
+            Order = GetGizmo().Order,
+        };
     }
 
     // Brings this instance in line with the settings once per settings write (and once per
@@ -498,13 +542,14 @@ public class Ability_BreachJump : Ability, ISpacePreviewTester
     // in, and otherwise derives it as damage x 0.015. The wearer's SCWC_BreachPower is applied
     // to buildings alone by DamageWorker_Breach, so it is deliberately absent here. A radius
     // of 0 is the blast turned off, ring and sound included; GenExplosion would still hit the
-    // center cell.
+    // center cell. The toggle is read here rather than carried by the flyer: the wearer is
+    // not selectable mid-flight, so it cannot change between launch and landing.
     public void DoBreach(IntVec3 center, Map map, Pawn wearer, bool punchRoof)
     {
         if (punchRoof)
             PunchRoof(center, map, wearer, crush: true);
 
-        if (Ext.breachRadius <= 0f)
+        if (!landingBlast || Ext.breachRadius <= 0f)
             return;
         GenExplosion.DoExplosion(center, map, Ext.breachRadius, SCWC_DefOf.SCWC_Breach, wearer, Ext.breachDamage,
             Ext.breachArmorPenetration, ignoredThings: new List<Thing> { wearer });

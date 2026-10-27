@@ -5,8 +5,8 @@
     <li>1.6</li>
     <!-- Vanilla Gravship Expanded (chapter 1) compat, gated by package id because textures
          and DefInjected entries cannot carry MayRequire. Mods/ holds purple copies of the
-         gizmo icons at the main tree's paths; a later load folder wins a shared relative
-         path, so it must stay below "/". -->
+         ability and toggle icons at the main tree's paths; a later load folder wins a shared
+         relative path, so it must stay below "/". -->
     <li IfModActive="vanillaexpanded.gravship">Mods/VanillaGravshipExpanded</li>
     <li IfModActive="vanillaexpanded.gravship">1.6/Mods/VanillaGravshipExpanded</li>
     <!-- Combat Extended: CE's armor scale, bulk, smoke sealing and the blast's penetration
