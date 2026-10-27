@@ -11,7 +11,7 @@ Le Brise-coque est une armure spécialisée dans l'assaut par abordage, inspiré
 Les trois pièces sont blindées pour le corps à corps et trouvent un point d'équilibre entre les ensembles Brise-siège, Brute et Gardien de VFE Pirates.
 [list]
 [*][b]Torse :[/b] le moteur de largage. Il donne la capacité « saut de brèche », embarque son réservoir de carburant et projette un bouclier d'énergie contre les tirs.
-[*][b]Épaulières :[/b] les bras de brèche. Les atterrissages frappent les structures 50% plus fort et démolissent même les murs en plastacier et en uranium. Elles améliorent aussi légèrement le combat en mêlée.
+[*][b]Épaulières :[/b] les bras de brèche. L'explosion d'atterrissage frappe les structures 50% plus fort et démolit même les murs en plastacier et en uranium. Elles améliorent aussi légèrement le combat en mêlée.
 [*][b]Casque :[/b] le heaume étanche. Un respirateur intégré maintient la respiration à pleine capacité, et un léger bonus accélère la visée.
 [/list]
 Avec Odyssey : l'ensemble complet résiste au vide, et ses fonctions spatiales se paient en panneaux de gravlite.
@@ -23,7 +23,7 @@ Avec Odyssey : l'ensemble complet résiste au vide, et ses fonctions spatiales s
 [*]Ne peut pas être retiré sans risque tant qu'un colon est soudé dans l'ensemble.
 [*]Save Our Ship 2 : apte aux sorties extravéhiculaires, selon les mêmes règles que les ensembles de VFE Pirates.
 [*]Vanilla Gravship Expanded : suit ses règles de vide pour les warcaskets, et le casque emporte sa propre réserve d'oxygène rechargeable. Le porteur se déplace plus vite dans l'espace, et le saut brûle de l'astrofuel au lieu du chemfuel (violet !).
-[*]Fonctionne avec Combat Extended d'après les retours des joueurs.
+[*]Combat Extended : valeurs d'armure, masse et capacité de transport au niveau des autres warcaskets de niveau spatial, et le casque bloque la fumée de CE.
 [/list]
 
 [hr][/hr]
@@ -40,10 +40,7 @@ R : Recherchez le projet « spacer warcaskets » (warcaskets spatiaux) de VFE Pi
 [b]Q : Est-ce que c'est déséquilibré ?[/b]
 R : À vous de voir. Les valeurs par défaut sont équilibrées par rapport aux autres ensembles spatiaux avancés de VFE Pirates. Vous le voulez plus facile ou plus difficile ? Ajustez le coût en carburant, le temps de recharge, la portée, les dégâts et le reste dans les paramètres du mod. Votre colonie, vos règles.
 
-[b]Q : Est-ce que ça a été fait avec l'aide d'une IA ?[/b]
-R : Une partie du code répétitif, et la plupart des localisations. Je suis ingénieur logiciel de métier, et j'écris du code depuis 25 ans. Tout le code est relu et testé manuellement. Tous les rapports de bugs et les conflits entre mods sont suivis personnellement, selon le temps et les détails disponibles. Tous les visuels sont soit commandés à des artistes humains, soit réalisés à la main dans Krita, soit les deux.
-
 [hr][/hr]
 [h1]Liens[/h1]
-Code source, téléchargements manuels et suivi des problèmes : [url=https://github.com/sam-hunt/ShipcrackerWarcasket]GitHub[/url]
+Code source et téléchargements manuels sur [url=https://github.com/sam-hunt/ShipcrackerWarcasket]GitHub[/url]
 Illustrations par [url=https://steamcommunity.com/profiles/76561198094174176/myworkshopfiles/?appid=294100]IcingWithCheeseCake[/url]

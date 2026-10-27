@@ -11,7 +11,7 @@ Der Schiffsknacker ist eine spezialisierte Sturmrüstung für Enterkommandos, in
 Alle drei Teile sind für den Nahkampf gepanzert und treffen einen Mittelweg zwischen den Sets Belagerungsbrecher, Rohling und Wächter aus VFE Pirates.
 [list]
 [*][b]Torso:[/b] das Landetriebwerk. Bringt die Fähigkeit 'Durchbruchssprung' samt Treibstofftank mit, dazu einen Schutzschild gegen eingehenden Beschuss.
-[*][b]Schulterpanzer:[/b] die Durchbruchsarme. Landungen treffen Strukturen 50% härter und reißen selbst Wände aus Plastahl und Uran ein. Außerdem kämpft der Träger etwas besser im Nahkampf.
+[*][b]Schulterpanzer:[/b] die Durchbruchsarme. Die Landeexplosion trifft Strukturen 50% härter und reißt selbst Wände aus Plastahl und Uran ein. Außerdem kämpft der Träger etwas besser im Nahkampf.
 [*][b]Helm:[/b] der versiegelte Kopfschutz. Ein eingebautes Atemgerät sichert volle Atemleistung, und der Träger zielt etwas schneller.
 [/list]
 Mit Odyssey ist das ganze Set vakuumtauglich, und die Weltraumfunktionen bezahlt man mit Gravlitplatten.
@@ -23,7 +23,7 @@ Mit Odyssey ist das ganze Set vakuumtauglich, und die Weltraumfunktionen bezahlt
 [*]Kann nicht gefahrlos entfernt werden, solange jemand in das Set eingeschweißt ist.
 [*]Save Our Ship 2: EVA-tauglich nach denselben Regeln wie die Sets aus VFE Pirates.
 [*]Vanilla Gravship Expanded: Es gelten dessen Vakuumregeln für Kriegssärge, und der Helm hat einen eigenen, nachfüllbaren Sauerstoffvorrat. Der Träger bewegt sich schneller im Weltraum, und der Sprung verbrennt Astrosprit statt Sprit (lila!).
-[*]Laut Rückmeldungen mit Combat Extended kompatibel.
+[*]Combat Extended: Rüstungswerte, Bulk und Bulk-Kapazität liegen auf dem Niveau anderer Kriegssärge der Techstufe Raumfahrt, und der Helm blockiert den Rauch von CE.
 [/list]
 
 [hr][/hr]
@@ -40,10 +40,7 @@ A: Erforsche das VFE-Pirates-Projekt 'Raumfahrt-Kriegssärge' und schweiße dann
 [b]F: Ist das Set unausgewogen?[/b]
 A: Das entscheidest du. Die Standardwerte sind auf die anderen späten Raumfahrt-Sets aus VFE Pirates abgestimmt. Wenn du es leichter oder schwerer willst, passe in den Mod-Einstellungen Treibstoffverbrauch, Abklingzeit, Reichweite, Schaden usw. an. Deine Kolonie, deine Regeln.
 
-[b]F: Wurde das mithilfe von LLMs erstellt?[/b]
-A: Ein Teil der Fleißarbeit im Code, und die meisten Lokalisierungen. Ich bin von Beruf Softwareentwickler und schreibe seit 25 Jahren Code. Aller Code wird manuell überprüft und getestet; alle Fehlermeldungen und Mod-Konflikte werden persönlich nachverfolgt, soweit Zeit und Details es zulassen. Alle Grafiken sind entweder bei Menschen in Auftrag gegeben, von Hand in Krita erstellt, oder beides.
-
 [hr][/hr]
 [h1]Links[/h1]
-Quellcode, manuelle Downloads und Fehler-Tracker: [url=https://github.com/sam-hunt/ShipcrackerWarcasket]GitHub[/url]
+Quellcode und manuelle Downloads auf [url=https://github.com/sam-hunt/ShipcrackerWarcasket]GitHub[/url]
 Grafik von [url=https://steamcommunity.com/profiles/76561198094174176/myworkshopfiles/?appid=294100]IcingWithCheeseCake[/url]

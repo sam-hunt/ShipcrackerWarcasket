@@ -11,7 +11,7 @@ A Quebra-Naves é uma armadura especializada para assaltos de abordagem, inspira
 As três peças trazem blindagem para combate corpo a corpo e encontram um ponto de equilíbrio entre os conjuntos Quebra-cerco, Bruto e Guardião do VFE Pirates.
 [list]
 [*][b]Tronco:[/b] o motor de descida. Traz a habilidade Salto de Irrupção e seu tanque de combustível, além de uma bolha de escudo contra disparos.
-[*][b]Ombreiras:[/b] os braços de irrupção. As aterrissagens atingem estruturas com 50% mais força e derrubam até paredes de plastiaço e urânio. Também melhoram um pouco o combate corpo a corpo.
+[*][b]Ombreiras:[/b] os braços de irrupção. A explosão da aterrissagem atinge estruturas com 50% mais força e derruba até paredes de plastiaço e urânio. Também melhoram um pouco o combate corpo a corpo.
 [*][b]Capacete:[/b] o elmo selado. Um respirador embutido mantém a respiração em capacidade total, e o capacete ainda dá um pequeno bônus na velocidade de mira.
 [/list]
 Com a Odyssey: o conjunto inteiro resiste ao vácuo, e os recursos espaciais custam painéis de gravilita.
@@ -23,7 +23,7 @@ Com a Odyssey: o conjunto inteiro resiste ao vácuo, e os recursos espaciais cus
 [*]Não é seguro remover enquanto houver um colono integrado ao conjunto.
 [*]Save Our Ship 2: vale como traje de EVA pelas mesmas regras dos conjuntos do próprio VFE Pirates.
 [*]Vanilla Gravship Expanded: segue as regras de vácuo dele para carcaças de guerra, e o capacete leva o próprio suprimento de oxigênio recarregável. A caminhada espacial fica mais rápida, e o salto queima astrocombustível em vez de combustível químico (roxo!).
-[*]Relatos indicam que funciona com o Combat Extended.
+[*]Combat Extended: valores de armadura, volume e capacidade de carga equivalentes aos de outras carcaças de guerra de nível espacial, e o capacete bloqueia a fumaça do CE.
 [/list]
 
 [hr][/hr]
@@ -40,10 +40,7 @@ R: Pesquise o projeto "carcaças de guerra espaciais" do VFE Pirates e depois in
 [b]P: Isso não está desbalanceado?[/b]
 R: Quem decide é você. Equilibrei os valores padrão com base nos outros conjuntos espaciais de fim de jogo do VFE Pirates. Se quiser mais fácil ou mais difícil, ajuste o custo de combustível, o tempo de recarga, o alcance, o dano e o que mais quiser nas configurações do mod. Sua colônia, suas regras.
 
-[b]P: Isso foi feito com assistência de LLMs?[/b]
-R: Parte do código mais repetitivo, e a maioria das localizações. Sou engenheiro de software de profissão e escrevo código há 25 anos. Todo o código é revisado e testado manualmente. Todos os relatos de bugs e conflitos de mods são acompanhados pessoalmente, conforme o tempo e os detalhes permitirem. Toda a arte é encomendada de humanos, feita à mão no Krita, ou ambos.
-
 [hr][/hr]
 [h1]Links[/h1]
-Código-fonte, downloads manuais e rastreador de problemas: [url=https://github.com/sam-hunt/ShipcrackerWarcasket]GitHub[/url]
+Código-fonte e downloads manuais no [url=https://github.com/sam-hunt/ShipcrackerWarcasket]GitHub[/url]
 Arte por [url=https://steamcommunity.com/profiles/76561198094174176/myworkshopfiles/?appid=294100]IcingWithCheeseCake[/url]

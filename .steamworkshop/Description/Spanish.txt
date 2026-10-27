@@ -11,7 +11,7 @@ El rompenaves es una armadura especializada para asaltos de abordaje, inspirada 
 Las tres piezas llevan blindaje de combate cercano y encuentran un punto de equilibrio entre las series Siegebreaker, Bruto y Guardián de VFE Pirates.
 [list]
 [*][b]Torso:[/b] el motor de descenso. Incluye la habilidad "salto de brecha" y su depósito de combustible, además de un escudo que frena los disparos.
-[*][b]Hombreras:[/b] los brazos zapadores. Los aterrizajes golpean las estructuras un 50% más fuerte y derriban incluso muros de plastiacero y uranio. También mejoran un poco el combate cuerpo a cuerpo.
+[*][b]Hombreras:[/b] los brazos zapadores. La explosión del aterrizaje golpea las estructuras un 50% más fuerte y derriba incluso muros de plastiacero y uranio. También mejoran un poco el combate cuerpo a cuerpo.
 [*][b]Casco:[/b] el yelmo hermético. Su respirador integrado mantiene la respiración al máximo, y además acelera un poco el apuntado.
 [/list]
 Con Odyssey, el conjunto completo resiste el vacío, y sus funciones espaciales se pagan en paneles de gravilita.
@@ -23,7 +23,7 @@ Con Odyssey, el conjunto completo resiste el vacío, y sus funciones espaciales 
 [*]No es seguro quitarlo mientras haya alguien sepultado en el conjunto.
 [*]Save Our Ship 2: apto para EVA con las mismas reglas que las series propias de VFE Pirates.
 [*]Vanilla Gravship Expanded: sigue sus reglas de vacío para ataúdes de guerra, y el casco lleva su propia reserva de oxígeno recargable. Mejora la velocidad en los paseos espaciales, y el salto quema astrocombustible en lugar de biocombustible (¡púrpura!).
-[*]Según los informes, funciona con Combat Extended.
+[*]Combat Extended: valores de armadura, volumen equipado y capacidades de masa y de volumen a la par de otros ataúdes de guerra de la era espacial, y el casco bloquea el humo de CE.
 [/list]
 
 [hr][/hr]
@@ -40,10 +40,7 @@ R: Investiga el proyecto "ataúdes de guerra de la era espacial" de VFE Pirates 
 [b]P: ¿Está desequilibrado?[/b]
 R: Eso lo decides tú. Los valores por defecto están equilibrados frente a las demás series avanzadas de la era espacial de VFE Pirates. Si lo quieres más fácil o más difícil, ajusta el coste de combustible, el enfriamiento, el alcance, el daño y demás en las opciones del mod. Tu colonia, tus reglas.
 
-[b]P: ¿Esto se hizo con ayuda de un LLM?[/b]
-R: Parte del código más mecánico, y la mayoría de las localizaciones. Soy ingeniero de software de profesión y llevo 25 años escribiendo código. Todo el código se revisa y se prueba manualmente; todos los informes de errores y conflictos entre mods se atienden personalmente según el tiempo y el detalle lo permitan. Todo el arte está encargado a personas, hecho a mano en Krita, o ambas cosas.
-
 [hr][/hr]
 [h1]Enlaces[/h1]
-Código fuente, descargas manuales y seguimiento de incidencias: [url=https://github.com/sam-hunt/ShipcrackerWarcasket]GitHub[/url]
+Código fuente y descargas manuales en [url=https://github.com/sam-hunt/ShipcrackerWarcasket]GitHub[/url]
 Arte por [url=https://steamcommunity.com/profiles/76561198094174176/myworkshopfiles/?appid=294100]IcingWithCheeseCake[/url]
