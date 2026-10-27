@@ -54,7 +54,7 @@
   <SCWC_RequiresOdysseySuffix> (requires Odyssey)</SCWC_RequiresOdysseySuffix>
 
   <SCWC_LandingBlast>Landing blast</SCWC_LandingBlast>
-  <SCWC_LandingBlastDesc>Whether the pilot's landing sets off the breach blast. When enabled, a breach jump lands hard enough to break walls and hull plating and to hurt anyone close by. When disabled, the pilot lands without a blast; a roof in the way is still torn open.</SCWC_LandingBlastDesc>
+  <SCWC_LandingBlastDesc>Toggle the landing blast.\n\nWhen disabled, breach jumps land without the blast that breaks walls and hurts anyone nearby. This is useful for jumping around your own base. Roofs in the way are still torn open.</SCWC_LandingBlastDesc>
 
   <SCWC_Off>Off</SCWC_Off>
   <SCWC_DefaultSuffix> (default)</SCWC_DefaultSuffix>
