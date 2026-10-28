@@ -18,13 +18,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.1] - 2026-10-28
+
 ### Changed
 
-- Smaller download: the shipped XML no longer carries developer comments, and every image is recompressed without any change to the pixels
+- Smaller download: developer comments stripped and images losslessly recompressed.
 
 ### Fixed
 
-- Without Odyssey, the vacuum burn setting no longer shows as ticked, and its whole row is greyed out
+- Without Odyssey, the vacuum burn setting now shows unticked and greyed out.
+- The "(requires Odyssey)" settings note is now Odyssey purple.
 
 ## [1.4.0] - 2026-10-27
 
@@ -111,7 +114,8 @@ First release.
 - Save Our Ship 2 and Vanilla Gravship Expanded support.
 - Translated into 9 languages.
 
-[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/sam-hunt/ShipcrackerWarcasket/compare/v1.4.1...HEAD
+[1.4.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.4.1
 [1.4.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.4.0
 [1.3.0]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.3.0
 [1.2.1]: https://github.com/sam-hunt/ShipcrackerWarcasket/releases/tag/v1.2.1
