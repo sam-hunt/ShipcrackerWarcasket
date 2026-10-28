@@ -1,3 +1,4 @@
+using UnityEngine;
 using Verse;
 
 namespace ShipcrackerWarcasket;
@@ -30,6 +31,12 @@ public partial class ShipcrackerWarcasketSettings
         vacuumBurn = true;
     }
 
+    // The "(requires Odyssey)" suffix's colour. Vanilla names an expansion in text in its
+    // ExpansionDef.primaryColor (the research tab's source line), which the game's own data makes
+    // white for Odyssey, so the suffix takes a purple from the colour library instead, after the
+    // DLC's branding; Toxin Warcasket's Odyssey note uses the same one.
+    private static readonly Color OdysseyColor = ColorLibrary.LightPurple;
+
     private void DrawBurnSection(Listing_Standard listing)
     {
         SectionHeader(listing, "SCWC_SectionBurn", jumpExt.SpaceIcon);
@@ -38,13 +45,15 @@ public partial class ShipcrackerWarcasketSettings
 
     // Shown off and disabled, and labelled as needing Odyssey, when no loaded def can make a
     // space map (Ability_BreachJump.SpaceMapsPossible); the setting itself is read live, so a
-    // change needs no restart.
+    // change needs no restart. The suffix is coloured after it is resolved, since appending a
+    // TaggedString to a string strips its tags, and it stays at full colour in the greyed label
+    // on 1.7, where a colour tag replaces the draw colour rather than tinting it.
     private void DoVacuumBurnRow(Listing_Standard listing)
     {
         bool spaceMaps = Ability_BreachJump.SpaceMapsPossible;
         string label = "SCWC_VacuumBurn".Translate();
         if (!spaceMaps)
-            label += "SCWC_RequiresOdysseySuffix".Translate();
+            label += "SCWC_RequiresOdysseySuffix".Translate().Colorize(OdysseyColor);
         ToggleRow(listing, label, "SCWC_VacuumBurnDesc".Translate(), ref vacuumBurn, spaceMaps ? null : false);
     }
 }
