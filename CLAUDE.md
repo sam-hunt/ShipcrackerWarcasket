@@ -26,7 +26,9 @@ other files. Do not restate def values or call paths here; they drift.
 current state where the code does not make it obvious: engine facts it relies on, what a number is
 balanced against, cross-file coupling. It carries no dates, no previous values, no record of what
 was tried and dropped, and no "seen in game" notes; that history belongs in the commit message
-and diff. Def comments ship in the bundle, so keep them lean.
+and diff. Comments never ship: `StageMod` strips every comment node from the staged XML (the def
+headers, the patch rationale, the translation files' `EN:` lines), so a def header can carry its
+full rationale at no download cost.
 
 ## Build Commands
 
@@ -98,6 +100,10 @@ atomically. The deploy folder name follows the project name (`Mods/ShipcrackerWa
   `Source/1.6/ShipcrackerWarcasket.csproj`; see that target's comments for how it globs and what
   it excludes. It is generic over folders, so a new `1.7/` or `Sounds/` needs no build change; only
   a brand-new *file type* does. Local deploy and CI release both call it, so they can't drift.
+  After the copy it rewrites every staged `.xml` without its comments (the inline
+  `StripXmlComments` task beside it); the repo files are untouched, and everything that reads
+  XML from disk (the checker, the probe, the tests) reads the repo, while the smoke test boots
+  the stripped copy. The Steam upload is this same local deploy, so it ships stripped too.
 - **Stop hook (`.claude/hooks/sync-mod.sh`):** rebuilds+redeploys after a turn only when
   mod-relevant files changed, logs to `$TMPDIR/ShipcrackerWarcasket-build.log`. On failure it
   exits 2 with the errors on stderr, which Claude Code feeds back to the agent and the turn
