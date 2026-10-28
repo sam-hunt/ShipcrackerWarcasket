@@ -21,9 +21,9 @@ Con Odyssey, el conjunto completo resiste el vacío, y sus funciones espaciales 
 [list]
 [*]Seguro de añadir a partidas existentes.
 [*]No es seguro quitarlo mientras haya alguien sepultado en el conjunto.
-[*]Save Our Ship 2: apto para EVA con las mismas reglas que las series propias de VFE Pirates.
-[*]Vanilla Gravship Expanded: sigue sus reglas de vacío para ataúdes de guerra, y el casco lleva su propia reserva de oxígeno recargable. Mejora la velocidad en los paseos espaciales, y el salto quema astrocombustible en lugar de biocombustible (¡púrpura!).
-[*]Combat Extended: valores de armadura, volumen equipado y capacidades de masa y de volumen a la par de otros ataúdes de guerra de la era espacial, y el casco bloquea el humo de CE.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]: apto para EVA con las mismas reglas que las series propias de VFE Pirates.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]: sigue sus reglas de vacío para ataúdes de guerra, y el casco lleva su propia reserva de oxígeno recargable. Mejora la velocidad en los paseos espaciales, y el salto quema astrocombustible en lugar de biocombustible (¡púrpura!).
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2890901044]Combat Extended[/url]: valores de armadura, volumen equipado y capacidades de masa y de volumen a la par de otros ataúdes de guerra de la era espacial, y el casco bloquea el humo de CE.
 [/list]
 
 [hr][/hr]

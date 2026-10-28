@@ -21,9 +21,9 @@ Avec Odyssey : l'ensemble complet résiste au vide, et ses fonctions spatiales s
 [list]
 [*]Peut être ajouté sans risque à une partie en cours.
 [*]Ne peut pas être retiré sans risque tant qu'un colon est soudé dans l'ensemble.
-[*]Save Our Ship 2 : apte aux sorties extravéhiculaires, selon les mêmes règles que les ensembles de VFE Pirates.
-[*]Vanilla Gravship Expanded : suit ses règles de vide pour les warcaskets, et le casque emporte sa propre réserve d'oxygène rechargeable. Le porteur se déplace plus vite dans l'espace, et le saut brûle de l'astrofuel au lieu du chemfuel (violet !).
-[*]Combat Extended : valeurs d'armure, masse et capacité de transport au niveau des autres warcaskets de niveau spatial, et le casque bloque la fumée de CE.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url] : apte aux sorties extravéhiculaires, selon les mêmes règles que les ensembles de VFE Pirates.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url] : suit ses règles de vide pour les warcaskets, et le casque emporte sa propre réserve d'oxygène rechargeable. Le porteur se déplace plus vite dans l'espace, et le saut brûle de l'astrofuel au lieu du chemfuel (violet !).
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2890901044]Combat Extended[/url] : valeurs d'armure, masse et capacité de transport au niveau des autres warcaskets de niveau spatial, et le casque bloque la fumée de CE.
 [/list]
 
 [hr][/hr]

@@ -21,9 +21,9 @@ Com a Odyssey: o conjunto inteiro resiste ao vácuo, e os recursos espaciais cus
 [list]
 [*]Seguro para adicionar a jogos salvos existentes.
 [*]Não é seguro remover enquanto houver um colono integrado ao conjunto.
-[*]Save Our Ship 2: vale como traje de EVA pelas mesmas regras dos conjuntos do próprio VFE Pirates.
-[*]Vanilla Gravship Expanded: segue as regras de vácuo dele para carcaças de guerra, e o capacete leva o próprio suprimento de oxigênio recarregável. A caminhada espacial fica mais rápida, e o salto queima astrocombustível em vez de combustível químico (roxo!).
-[*]Combat Extended: valores de armadura, volume e capacidade de carga equivalentes aos de outras carcaças de guerra de nível espacial, e o capacete bloqueia a fumaça do CE.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]: vale como traje de EVA pelas mesmas regras dos conjuntos do próprio VFE Pirates.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]: segue as regras de vácuo dele para carcaças de guerra, e o capacete leva o próprio suprimento de oxigênio recarregável. A caminhada espacial fica mais rápida, e o salto queima astrocombustível em vez de combustível químico (roxo!).
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2890901044]Combat Extended[/url]: valores de armadura, volume e capacidade de carga equivalentes aos de outras carcaças de guerra de nível espacial, e o capacete bloqueia a fumaça do CE.
 [/list]
 
 [hr][/hr]

@@ -21,9 +21,9 @@
 [list]
 [*]可安全加入現有的存檔。
 [*]有殖民者封在這套戰棺內時，請勿移除本模組。
-[*]Save Our Ship 2：與VFE Pirates原有的套裝採用相同規則，具備EVA能力。
-[*]Vanilla Gravship Expanded：遵循其戰棺的真空規則，頭盔另有可補充的氧氣供應。太空漫步速度提升，跳躍改燒太空燃料而非化合燃料(紫色的！)。
-[*]Combat Extended：護甲數值、穿著體積與體積攜帶能力比照其他太空等級的戰棺，頭盔能隔絕CE的煙霧。
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]：與VFE Pirates原有的套裝採用相同規則，具備EVA能力。
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]：遵循其戰棺的真空規則，頭盔另有可補充的氧氣供應。太空漫步速度提升，跳躍改燒太空燃料而非化合燃料(紫色的！)。
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2890901044]Combat Extended[/url]：護甲數值、穿著體積與體積攜帶能力比照其他太空等級的戰棺，頭盔能隔絕CE的煙霧。
 [/list]
 
 [hr][/hr]

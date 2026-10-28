@@ -21,9 +21,9 @@
 [list]
 [*]可安全添加至现有存档。
 [*]仍有殖民者封在这套战棺里时，不可安全移除。
-[*]Save Our Ship 2：与VFE海盗自带套装遵循相同规则，具备舱外活动（EVA）能力。
-[*]Vanilla Gravship Expanded：遵循其战棺真空规则，头盔自带可补充的氧气供应。太空行走速度更快，跳跃改烧天体燃料而非化合燃料（紫色的！）。
-[*]Combat Extended：护甲值、体积与体积携带能力和其他太空时代战棺相当，头盔可隔绝CE烟雾。
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]：与VFE海盗自带套装遵循相同规则，具备舱外活动（EVA）能力。
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]：遵循其战棺真空规则，头盔自带可补充的氧气供应。太空行走速度更快，跳跃改烧天体燃料而非化合燃料（紫色的！）。
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2890901044]Combat Extended[/url]：护甲值、体积与体积携带能力和其他太空时代战棺相当，头盔可隔绝CE烟雾。
 [/list]
 
 [hr][/hr]

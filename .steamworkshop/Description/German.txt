@@ -21,9 +21,9 @@ Mit Odyssey ist das ganze Set vakuumtauglich, und die Weltraumfunktionen bezahlt
 [list]
 [*]Kann gefahrlos zu bestehenden Spielständen hinzugefügt werden.
 [*]Kann nicht gefahrlos entfernt werden, solange jemand in das Set eingeschweißt ist.
-[*]Save Our Ship 2: EVA-tauglich nach denselben Regeln wie die Sets aus VFE Pirates.
-[*]Vanilla Gravship Expanded: Es gelten dessen Vakuumregeln für Kriegssärge, und der Helm hat einen eigenen, nachfüllbaren Sauerstoffvorrat. Der Träger bewegt sich schneller im Weltraum, und der Sprung verbrennt Astrosprit statt Sprit (lila!).
-[*]Combat Extended: Rüstungswerte, Bulk und Bulk-Kapazität liegen auf dem Niveau anderer Kriegssärge der Techstufe Raumfahrt, und der Helm blockiert den Rauch von CE.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]: EVA-tauglich nach denselben Regeln wie die Sets aus VFE Pirates.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]: Es gelten dessen Vakuumregeln für Kriegssärge, und der Helm hat einen eigenen, nachfüllbaren Sauerstoffvorrat. Der Träger bewegt sich schneller im Weltraum, und der Sprung verbrennt Astrosprit statt Sprit (lila!).
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2890901044]Combat Extended[/url]: Rüstungswerte, Bulk und Bulk-Kapazität liegen auf dem Niveau anderer Kriegssärge der Techstufe Raumfahrt, und der Helm blockiert den Rauch von CE.
 [/list]
 
 [hr][/hr]
