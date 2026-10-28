@@ -140,6 +140,29 @@ public partial class ShipcrackerWarcasketSettings : ModSettings
         GUI.color = Color.white;
     }
 
+    // A checkbox row laid out as a Tunable row is, the box where a slider row shows its value.
+    // A row with a forced value (a missing DLC holds it off) is disabled and shows that value,
+    // never the saved one, so it cannot read as on while it is not; the field is left alone, so
+    // the player's choice returns once the row frees up. A disabled row draws its label in the
+    // greyed box's colour too, since CheckboxLabeled only greys the box.
+    private static void ToggleRow(Listing_Standard listing, string label, string tooltip, ref bool value, bool? forced = null)
+    {
+        Rect row = listing.GetRect(Tunable.RowHeight);
+        row.xMin += Tunable.RowIndent;
+        row.xMax -= Tunable.RowEndPad;
+        Widgets.DrawHighlightIfMouseover(row);
+        TooltipHandler.TipRegion(row, tooltip);
+        if (forced is bool shown)
+        {
+            GUI.color = Widgets.InactiveColor;
+            Widgets.CheckboxLabeled(row, label, ref shown, disabled: true);
+        }
+        else
+            Widgets.CheckboxLabeled(row, label, ref value);
+        GUI.color = Color.white;
+        listing.Gap(Tunable.RowGap);
+    }
+
     // The header's text in the medium font after its icon, a square as tall as the header; a
     // header without one (the landing's, or one whose texture is missing) starts its text at
     // the left edge rather than after an empty slot.

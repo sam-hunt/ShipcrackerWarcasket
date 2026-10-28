@@ -1,4 +1,3 @@
-using UnityEngine;
 using Verse;
 
 namespace ShipcrackerWarcasket;
@@ -37,23 +36,15 @@ public partial class ShipcrackerWarcasketSettings
         DoVacuumBurnRow(listing);
     }
 
-    // A checkbox row laid out as a Tunable row is, the box where a slider row shows its value.
-    // Disabled, and labelled as needing Odyssey, when no loaded def can make a space map
-    // (Ability_BreachJump.SpaceMapsPossible); the setting itself is read live, so a change
-    // needs no restart.
+    // Shown off and disabled, and labelled as needing Odyssey, when no loaded def can make a
+    // space map (Ability_BreachJump.SpaceMapsPossible); the setting itself is read live, so a
+    // change needs no restart.
     private void DoVacuumBurnRow(Listing_Standard listing)
     {
-        Rect row = listing.GetRect(Tunable.RowHeight);
-        row.xMin += Tunable.RowIndent;
-        row.xMax -= Tunable.RowEndPad;
-        Widgets.DrawHighlightIfMouseover(row);
-        TooltipHandler.TipRegion(row, "SCWC_VacuumBurnDesc".Translate());
-
         bool spaceMaps = Ability_BreachJump.SpaceMapsPossible;
         string label = "SCWC_VacuumBurn".Translate();
         if (!spaceMaps)
             label += "SCWC_RequiresOdysseySuffix".Translate();
-        Widgets.CheckboxLabeled(row, label, ref vacuumBurn, disabled: !spaceMaps);
-        listing.Gap(Tunable.RowGap);
+        ToggleRow(listing, label, "SCWC_VacuumBurnDesc".Translate(), ref vacuumBurn, spaceMaps ? null : false);
     }
 }

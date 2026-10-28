@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Smaller download: the shipped XML no longer carries developer comments, and every image is recompressed without any change to the pixels
 
+### Fixed
+
+- Without Odyssey, the vacuum burn setting no longer shows as ticked, and its whole row is greyed out
+
 ## [1.4.0] - 2026-10-27
 
 ### Added
