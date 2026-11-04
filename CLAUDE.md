@@ -1,322 +1,89 @@
 # CLAUDE.md
 
-Guidance for Claude Code (claude.ai/code) when working in this repository.
+Guidance for Claude Code when working in this repository. This file holds only what cuts
+across the whole repo. Each domain folder carries its own `CLAUDE.md`, loaded when you work
+there, and every def, patch, script and class carries its rationale in its own header.
 
-## Project Overview
+## Project
 
-**Shipcracker Warcasket** is a RimWorld 1.6 mod adding a single new warcasket apparel set
-(armor, shoulder pads, helmet) for Vanilla Factions Expanded - Pirates (VFE Pirates), tuned for
-the Odyssey DLC's end-game content. VFE Pirates is a hard dependency; Odyssey is optional and
-Odyssey-only content must load only when the DLC is active. Requires Harmony (bootstrapped in
-`ModInit.cs`; the patch classes live in `Source/1.6/Patches/`).
+**Shipcracker Warcasket** is a RimWorld 1.6/1.7 mod adding one warcasket apparel set (armor,
+shoulder pads, helmet) with a thruster-driven Breach Jump to Vanilla Factions Expanded -
+Pirates (VFEP, hard dependency). Odyssey is optional and its content loads only when the DLC
+is active. C# (net472) with Harmony, XML defs under the `SCWC_` prefix. `TODOs.md` scopes the
+work that has not landed; `Docs/Research/` holds the VFEP stat and ability surveys.
 
-**Key technologies:** C# (.NET Framework 4.7.2), Harmony, RimWorld modding API, XML defs.
+Reference checkouts of the upstream repos sit beside this one under `../VanillaExpanded/`
+(VFEP's `CLAUDE.md` maps its warcasket subsystem). Read from them, never commit into them.
 
-**Def prefix:** `SCWC_`. Stat/cost tuning has started (each def's header carries its
-rationale); `TODOs.md` holds the scoping notes for what has not landed.
+## Documentation rules
 
-### Where documentation lives
+- **Rationale lives in the file it explains.** Per-item values, tuning and decompile-verified
+  call paths go in that def's or class's header comment; a `CLAUDE.md` gets a line only when
+  the rule constrains work in other files. Never restate def values here; they drift.
+- **Comments describe the present, git describes the past.** No dates, previous values,
+  dropped attempts or "seen in game" notes in any comment; that history is the commit message.
+  Shipped XML is comment-stripped at deploy (`StageMod`), so a def header costs nothing.
+- **No em dashes in player-facing text** (labels, descriptions, `Keyed/`, `About.xml`,
+  `.steamworkshop/`); reflow the sentence. Code, comments and this file are unaffected.
 
-**This file holds only cross-cutting rules and rationale.** Per-item values, tuning numbers and
-decompile-verified call paths live in the header comment of the file they describe. When adding
-or changing something, put the *why* there and only add a line here if it constrains work in
-other files. Do not restate def values or call paths here; they drift.
-
-**Comments describe the present, git describes the past.** A header or code comment explains the
-current state where the code does not make it obvious: engine facts it relies on, what a number is
-balanced against, cross-file coupling. It carries no dates, no previous values, no record of what
-was tried and dropped, and no "seen in game" notes; that history belongs in the commit message
-and diff. Comments never ship: `StageMod` strips every comment node from the staged XML (the def
-headers, the patch rationale, the translation files' `EN:` lines), so a def header can carry its
-full rationale at no download cost.
-
-## Build Commands
+## Commands
 
 ```bash
-# Build (outputs to 1.6/Assemblies/ AND atomically redeploys to the RimWorld Mods folder)
-dotnet build ShipcrackerWarcasket.sln -c Release
-
-# Stage the mod into an arbitrary folder (used by CI; same manifest as the local deploy)
-dotnet build Source/1.6/ShipcrackerWarcasket.csproj -c Release \
-  -t:StageMod -p:StageDir=/path/to/output/ShipcrackerWarcasket
-
-# Override RimWorld install path
-RIMWORLD_PATH="/path/to/RimWorld" dotnet build ShipcrackerWarcasket.sln -c Release
-# Or: dotnet build -p:RimWorldPath="/path/to/RimWorld"
+dotnet build ShipcrackerWarcasket.sln -c Release     # build + atomic redeploy into the Mods folder
+dotnet test Tests/1.6/ShipcrackerWarcasket.Tests.csproj
+python3 Scripts/check-translations.py                # l10n gate (also CI)
+python3 Scripts/integration-smoke-test.py            # boots the game; game must be closed
 ```
 
-The build compiles against the `Krafs.Rimworld.Ref` NuGet package, pinned to the final 1.6 build,
-locally and in CI alike; the local install is never referenced (since 1.7 it carries no 1.6
-assemblies) and only serves as the decompile target. The RimWorld install path, auto-detected on
-Windows/Linux/Mac including WSL targeting a Windows install, decides deployment alone. Debug builds
-go to the default `bin/` and never deploy; only Release builds touch `1.6/Assemblies/` and the Mods
-folder. The mod runs on 1.6 and 1.7 from the one `1.6/` tree (`LoadFolders.xml` lists it under both
-versions): the 1.7 runtime maps every UnityEngine reference onto its `UnityStubs` assembly, so the
-net472 DLL loads unchanged.
+Release builds compile against the Krafs 1.6 reference package and deploy to the RimWorld
+install the csproj auto-detects (`RIMWORLD_PATH` or `-p:RimWorldPath=` overrides it; on WSL
+point it at the Windows install). Debug builds never deploy. The 1.7 runtime loads the one
+`1.6/` tree unchanged. How the dependency DLLs (VFEPirates, VEF) and the test suite's runtime
+assemblies are resolved is documented in the two csproj files.
 
-**WSL setup:** `RIMWORLD_PATH` in `~/.bashrc` pointing at the Windows install, e.g.
-`/mnt/c/Program Files (x86)/Steam/steamapps/common/RimWorld`. The test suite's 1.6 runtime
-assemblies come from `~/.local/share/RimWorld-1.6/Managed` by default, or `RIMWORLD_MANAGED_1_6`
-(see Tests).
+**Warnings are build errors** in both csproj files, locally, in the Stop hook and in CI;
+nothing else surfaces a warning to an agent. Fix the code, not the severity (`.editorconfig`
+pins the severities and explains the RCS1146 exception).
 
-### Tests
+**Releases:** `/release`. `CHANGELOG.md` is Keep a Changelog; changes are recorded under
+`## [Unreleased]` as they land, and the release workflow fails without the tag's section.
+Candidates are `X.Y.Z-rc.N` tags: prerelease, no CHANGELOG section, no Workshop upload.
 
-`Tests/1.6/` is a headless xUnit (net472) suite, never shipped: `dotnet test
-Tests/1.6/ShipcrackerWarcasket.Tests.csproj` (vstest hosts it through mono on Linux/WSL). It
-copies the game's real 1.6 runtime DLLs into its output (Krafs's reference-only stubs cannot load
-at run time), resolved from `RIMWORLD_MANAGED_1_6`, then a 1.6 install's `<Data>/Managed/`, then
-the frozen copy at `~/.local/share/RimWorld-1.6/Managed` (its README.txt records provenance), the
-only source on a 1.7 install. With none found the build stays green on the Krafs fallback but every
-test fails with `TypeLoadException`, and that run overwrites any real DLLs an earlier build had
-copied into the test bin. CI builds the suite through the sln but cannot run it. Tests may only
-load types free of VEF and VFEP, whose DLLs never reach the test output, so logic worth testing is
-pulled out of the ability and flyer classes into plain ones (`SpacePreviewCache`,
-`BreachJumpExtension.FlightSeconds`). The XML tests read the repo's defs
-and patches from disk. The release skill runs the suite and a Release build as its first gate,
-before anything that boots the game or commits.
+**Debugging:** the `rimworld-logs` skill (log locations, 1.6 vs 1.7 log formats, `monodis` and
+`ilspycmd` against the local install). Our log lines carry the `[Shipcracker Warcasket]` prefix.
 
-### Dependency-mod assemblies
-
-`VFEPirates.dll` and `VEF.dll` are referenced compile-only (`Private="false"`), resolved by the
-csproj in this order: explicit override (`-p:VfePiratesDir=` / `-p:VefDir=` or the `VFEP_PATH` /
-`VEF_PATH` env vars), the Steam Workshop copy beside the install (ids 2723801948 and 2023507013),
-the sibling source checkouts under `../VanillaExpanded/`, then the RimWorld `Mods/` folder. The
-Workshop copy is preferred because it is what players run against. Both references are skipped
-silently when the DLL is absent, so a build still succeeds without them until code uses their
-types. CI fetches both DLLs from the Workshop with SteamCMD in the release workflow and injects
-them via the `VEF_PATH` / `VFEP_PATH` environment variables.
-
-Reference source checkouts: `../VanillaExpanded/VanillaFactionsExpanded-Pirates/` (its
-`CLAUDE.md` maps the warcasket subsystem: `WarcasketDef`, `Apparel_Warcasket`,
-`Building_WarcasketFoundry`, the entombing jobs) and `../VanillaExpanded/VanillaExpandedFramework/`.
-Both are upstream repos, not ours: read from them, never commit into them from here.
-
-### Deployment
-
-The repo lives outside the Mods folder; every local Release build redeploys automatically and
-atomically. The deploy folder name follows the project name (`Mods/ShipcrackerWarcasket`).
-
-- **One manifest, one place:** the `_ModFiles` ItemGroup in the `StageMod` target of
-  `Source/1.6/ShipcrackerWarcasket.csproj`; see that target's comments for how it globs and what
-  it excludes. It is generic over folders, so a new `1.7/` or `Sounds/` needs no build change; only
-  a brand-new *file type* does. Local deploy and CI release both call it, so they can't drift.
-  After the copy it rewrites every staged `.xml` without its comments (the inline
-  `StripXmlComments` task beside it); the repo files are untouched, and everything that reads
-  XML from disk (the checker, the probe, the tests) reads the repo, while the smoke test boots
-  the stripped copy. The Steam upload is this same local deploy, so it ships stripped too.
-- **Stop hook (`.claude/hooks/sync-mod.sh`):** rebuilds+redeploys after a turn only when
-  mod-relevant files changed, logs to `$TMPDIR/ShipcrackerWarcasket-build.log`. On failure it
-  exits 2 with the errors on stderr, which Claude Code feeds back to the agent and the turn
-  continues, so the agent fixes the build rather than the user finding it later; a second
-  failure in the same turn (`stop_hook_active`) only warns, so it cannot loop. Tracked and wired
-  by the tracked `.claude/settings.json`; the script is byte-identical across the mod family
-  and derives the solution, project folder and mod name itself, so change it in the template
-  and copy it verbatim, never per repo. It bails when no RimWorld install is found, so CI and
-  contributors without the game are unaffected.
-
-**`.claude/` is only partly gitignored.** `.gitignore` carries `.claude/*` followed by
-`!.claude/skills/`, `!.claude/hooks/` and `!.claude/settings.json`, so the skills, the Stop hook
-and its wiring are tracked and shared while `settings.local.json` (personal permissions) stays
-local per machine. Editing a skill is a committed, team-visible change and must keep in step with
-whatever it automates (e.g. `/release` encodes the CHANGELOG layout and the version scheme:
-release candidates are `X.Y.Z-rc.N` tags, CHANGELOG-less and Workshop-less, with the suffix in
-`modVersion` and `AssemblyInformationalVersion` only; `release.yml` treats any suffixed tag as a
-prerelease to match).
-
-## Project Structure
+## Layout
 
 ```
-About/           - Mod metadata (About.xml, ModIcon.png, Preview.png, PublishedFileId.txt)
-Textures/        - Art (version-independent, loaded via the "/" root; no Common/ root)
-1.6/             - RimWorld 1.6 specific content
-  Assemblies/    - Compiled DLLs (build output, gitignored)
-  Defs/          - XML definitions (ThingDefs, etc.)
-  Patches/       - XML patches to modify base game/other mods
-  Mods/<Name>/   - Optional-mod/DLC compat roots (version-specific), gated in LoadFolders.xml
-Mods/<Name>/     - Optional-mod/DLC compat roots (version-independent art)
-Source/1.6/      - C# source code targeting net472
-Tests/1.6/       - Headless xUnit suite (not shipped)
-Scripts/         - l10n config shims + the expected-injections.json sidecar (not shipped)
-l10n/            - rimworld-l10n toolkit, git submodule pinned to a release tag (not shipped)
-LoadFolders.xml  - Tells RimWorld which folders to load per game version
-CHANGELOG.md     - Keep a Changelog format; load-bearing for releases (see below)
-TODOs.md         - Scoping notes for the feature work that has not landed yet
+About/            Mod metadata
+Textures/         Art, loaded via the "/" root
+1.6/              Defs, Patches, Languages, Mods/<Name>/ compat roots   -> 1.6/CLAUDE.md
+Mods/<Name>/      Version-independent compat art                       -> Mods/CLAUDE.md
+Source/1.6/       C# (net472)                                           -> Source/1.6/CLAUDE.md
+Tests/1.6/        Headless xUnit suite, not shipped                     -> Tests/1.6/CLAUDE.md
+Scripts/          l10n checker/refresh/smoke shims + the sidecar        -> Scripts/CLAUDE.md
+l10n/             rimworld-l10n toolkit, submodule pinned to a release tag
+.steamworkshop/   Workshop title and description per language (its README.md has the rules)
+LoadFolders.xml   Load roots per game version; the compat gates live here
 ```
 
-## RimWorld Modding Context
+## Repo-wide conventions
 
-- Target framework: .NET Framework 4.7.2
-- References RimWorld assemblies via cross-platform paths in .csproj
-- Uses `Verse` namespace for core modding APIs
-- XML Defs define game objects; Patches modify existing Defs via XPath
-- Harmony is referenced (`Lib.Harmony`, compile-only) and bootstrapped in `ModInit.cs`; the
-  runtime DLL comes from the `brrainz.harmony` mod dependency declared in About.xml.
-
-### Conventions
-
-- All defs use the `SCWC_` prefix. **One def per file** in every `Defs/` `.xml`, named after the
-  def with the prefix stripped. Defs load recursively and the deploy manifest globs, so new
-  files/subfolders need no build change.
-- Warcasket parts are `VFEPirates.WarcasketDef`s parented on VFEP's abstract bases
-  (`VFEP_WarcasketArmorBase`, `VFEP_WarcasketShoulderPadBase`, `VFEP_WarcasketHelmetBase`), so
-  the foundry, entombing flow and removal surgery pick them up without C#. Check VFEP's XML
-  before reimplementing anything a base already provides.
-- Every VFEP warcasket base already carries a `VEF.Apparels.ApparelExtension`, and VEF merges
-  duplicate extensions at resolve time, keeping the highest `priority` and dropping fields its
-  `Merge` does not copy. Our extension entries carry `priority` 1 so ours survive; any new
-  `ApparelExtension` field, from any load root, must go on that entry (rationale in the armor
-  def's header).
-- **C#:** root namespace `ShipcrackerWarcasket`; patch classes live in `Source/1.6/Patches/`
-  under the `.Patches` namespace suffix to avoid RimWorld type-name conflicts. Log with the
-  `[Shipcracker Warcasket]` prefix.
-- **Startup def-derived state must survive an in-process play-data reload** (a mid-session
-  language switch reloads every def, but a type initializer never runs twice). Anything that
-  reads or writes defs at startup, or caches a def instance, goes in the idempotent
-  `Startup.Run`, never in a bare static ctor: `ModInit` calls it once for the first load, which
-  the in-flight `CallAll` postfix cannot see, and `Patches/StaticConstructorOnStartupUtility_CallAll.cs`
-  on every reload; its header has the load ordering. A mod-shipped texture dies on the same
-  reload, so hold one on the def instance (`BreachJumpExtension.SpaceIcon`) or behind a getter
-  that re-resolves on a Unity-null `== null` check (never `??`), never in a static field.
-- **Warnings are build errors.** Both csproj files set `TreatWarningsAsErrors`, so every
-  compiler and analyzer (Roslynator, Microsoft.Unity.Analyzers) warning fails the build, locally,
-  in the Stop hook and in CI. Nothing else in the toolchain shows a warning to an agent (the LSP
-  exposes no diagnostics; a passing build log is never read), so a warning that merely prints
-  is one that is never fixed. Severities are pinned in `.editorconfig`: `warning` blocks the
-  build, `suggestion` is IDE-only (RCS1146 sits there deliberately; see the note in that file).
-  Fix the code, not the severity, unless the rule is wrong for this domain.
-- **Drawing on the wearer goes through the pawn render tree, not draw hooks.** Extra worn
-  graphics are `apparel.renderNodeProperties` entries on the def (additive to the default
-  worn-graphic node; the armor's thruster glow is the model). The zoomed-out pawn cache bakes
-  the tree once with DrawMeshNow, which ignores property blocks: anything that changes per frame
-  must skip the cache bake or bake a fixed state and mark the wearer's frames dirty at each
-  transition (`GlobalTextureAtlasManager.TryMarkPawnFrameSetDirty`); the glow's on/off bake is
-  the precedent. That bake also draws in request order with no render-queue sorting, so a
-  transparent node must sit after the opaque node it overlays in the tree (the glow's
-  `AddChildren` postfix reorders it). Do not force a live render instead (a `disableCache`
-  prefix on `PawnRenderer`): that check runs for every humanlike pawn drawn, every frame.
-- **Patch timing is the load-bearing hazard of this mod.** `PatchAll()` runs from a
-  `[StaticConstructorOnStartup]` (`ModInit.cs`), *not* a `Mod` subclass constructor, on purpose:
-  Mod constructors run before defs load, and applying a detour JIT-compiles the target and runs
-  its declaring type's static ctor. Our targets will often be VFEP's own methods, and a VFEP type
-  whose cctor resolves defs would be permanently broken by an early patch (the BetterTradersGuild
-  v1.1.0 CWTL incident). Static ctors on startup run after defs load, so foreign targets are safe
-  there. `ShipcrackerWarcasketMod` (the settings) leaves `PatchAll` there for that reason.
-- **Mod settings override def fields in place** (`Source/1.6/Settings/`). Defaults are read
-  from the defs after every patch has applied, so a def's header stays the record of the shipped
-  tuning and a compat root's patch moves the default too. Settings never reach a save: per-instance
-  state a write leaves stale (a running cooldown, a tooltip cache, overfilled fuel) is reconciled
-  lazily against the settings' `Generation` (`Ability_BreachJump.ReconcileSettings`). A setting
-  must mean the same with every optional root loaded or not, which is why the jump's cost is in
-  chemfuel and the VGE root sets an exchange rate (`chemfuelPerAmmo`) instead of a cost. Where a
-  root changes a field's unit outright (the Combat Extended root's penetration in megapascals),
-  the row becomes a separate setting under its own key and Keyed strings, never a rescale of
-  the shared one.
-- **No em dashes in player-facing text** (def labels/descriptions, `Keyed/`, `About.xml`);
-  reflow the sentence instead. This file, code comments and def comments are unaffected.
-
-## Localization and Optional-Content Gating
-
-- `MayRequire`/`MayRequireAnyOf` work on def root nodes and list items, but the DefInjected loader
-  ignores XML attributes entirely. A DefInjected entry for a gated def placed in the main tree
-  loads unconditionally and logs a "found no def named ..." startup error whenever the gating
-  mod/DLC is absent.
-- The fix is a folder gate: ship the gated content from a compat load root, loaded via an
-  `IfModActive` entry in `LoadFolders.xml` (the Vanilla Gravship Expanded pair is the model).
-  Two flavors, mirroring the ungated roots: `1.6/Mods/<Mod Name>/` for version-specific content
-  (Defs, and the DefInjected targeting them) and root-level `Mods/<Mod Name>/` for
-  version-independent content (art). The def's `MayRequire` becomes redundant and should be
-  dropped when it moves. A compat art variant (VGE's purple Breach Jump icons) goes at the
-  main tree's exact texture path in the `Mods/<Mod Name>/` root, not under a new name behind
-  a patch: a load folder listed later wins a shared relative path, so the gated root must stay
-  below `/` in `LoadFolders.xml`. Gate on the package id (`ludeon.rimworld.odyssey`), never
-  `PatchOperationFindMod` (matches by display name). The one deliberate exception is a patch
-  that mirrors a VFEP patch: `1.6/Patches/SOS2Patch.xml` copies VFEP's own display-name gate so
-  the Shipcracker and VFEP's sets flip to EVA-rated under exactly the same condition.
-- Compat roots must sit BESIDE the well-known folders, never inside them: anything under
-  `1.6/Defs/**` or `1.6/Languages/**` loads unconditionally at any depth.
-- The game gates a DefInjected entry by the load root that CONTAINS it, never by the def it
-  targets. The reverse mistake also bites: a main-tree def's translation placed in a compat root
-  silently vanishes when the gate is closed. A field that a compat root's *patch* adds to a
-  main-tree def (the VGE helmet's oxygen `chargeNoun`) is a key that exists only behind that
-  gate, so its translation also lives in the gate's root; the sidecar's `worlds` field marks
-  such keys.
-- A compat root's language files must never reuse a main-tree file's language-relative path
-  (`DefInjected/<Type>/<File>.xml`, `Keyed/<File>.xml`): the game dedups language files per mod by
-  that path and silently skips one whole file, in an enumeration order that is not LoadFolders
-  order. Suffix compat-root filenames with the gate's name (`Apparel_Odyssey.xml`).
-
-## Localization Toolchain
-
-English (the def XML's `label`, `description` and VFEP's `shortDescription`, plus the settings
-window's `1.6/Languages/English/Keyed/ShipcrackerWarcasket.xml`, the only English `Languages/`
-file) is the source of truth. Other languages derive from it via the `/translate` skill (`.claude/skills/translate/SKILL.md`: this mod's surface, grounding
-domain and per-language glossary; the family-wide process lives in the `l10n/` submodule) and
-are validated deterministically by `python3 Scripts/check-translations.py` (also a CI release
-gate). The DefInjected expected set is the checked-in sidecar `Scripts/expected-injections.json`:
-a dump of every injection point the *live* game sees for this mod, produced by
-`Scripts/refresh-translation-expectations.py` driving the L10nProbe dev mod (source at
-`l10n/probe/`; build/deploy it only from the canonical `~/dev/rimworld-l10n` checkout; this mod
-is ticked in the probe's settings) through the game's own walker. The sidecar is multi-world: the
-refresh shim's `WORLDS` boots the game once per optional-package combination (base, odyssey,
-vge) and the checker validates each language against every world as the game would load it,
-which is what lets a gated root hold only the keys that exist behind its gate. The checker
-refuses to run against stale expectations, so new content forces a regen; the release skill
-regenerates every release. Translation passes are deferred to the release gate and must wait for
-the English text to be final. The public language roster lives in CONTRIBUTING.md.
-
-- **Shared l10n toolkit (`l10n/` submodule):** the checker/refresh/smoke engines, per-language
-  mechanics references, cross-language lessons and Workshop conventions come from the
-  `rimworld-l10n` repo, consumed as a git submodule pinned to a semver release tag (`git submodule
-  status` names it; if `l10n/` is empty, run `git submodule update --init`). `Scripts/*.py` are
-  thin per-repo config shims over its engines; each shim's comments carry this repo's rationale
-  (the VFEP dependency chain, which worlds are booted and why, why SOS2 and VGE1 are on the
-  smoke list).
-  Never edit `l10n/` in place here: mod-independent learnings go upstream in the canonical
-  checkout; mod-specific ones go in the skill's glossary. The pin moves only at release, at the
-  start of a translation pass, or when a new major lands (`l10n/tools/bump-consumer.sh`), never
-  per upstream commit.
-- **Def type folder:** the defs are `VFEPirates.WarcasketDef`, a `ThingDef` subclass without its
-  own database, so the game dumps and injects them under `ThingDef`; the checker maps the element
-  tag via `DEF_TYPE_ALIASES`. A DefInjected folder named `WarcasketDef` would never load.
-- **Startup smoke test (pre-release):** `python3 Scripts/integration-smoke-test.py` (game closed)
-  boots the deployed mod on a pinned list (VFEP chain + Odyssey + the three optional
-  integrations: Save Our Ship 2 with Vehicle Framework so `SOS2Patch.xml` actually runs, Vanilla
-  Gravship Expanded so the `1.6/Mods/VanillaGravshipExpanded` root opens, and Combat Extended so
-  the `1.6/Mods/CombatExtended` root opens), then classifies logged errors by origin and fails on
-  anything attributed to this mod or a VFEP/VEF/SOS2/VGE/CE seam.
-  Wired into the release skill. Sibling-mod "dump WILL fail" warnings at launch are expected: the
-  probe is ticked for every family mod but each boot loads only its own list.
-- **`.steamworkshop/`** holds the Workshop title and BBCode description per language
-  (`Description/<Language>.txt`, the toolkit's convention; its `README.md` has the format and
-  title rule). It is player-facing text and quotes def numbers, so a tuning change that moves
-  one updates `English.txt` in the same commit; the release skill translates it from there.
-
-**Releases:** run the `/release` skill, or by hand: rename the `## [Unreleased]` section of
-`CHANGELOG.md` to `## [X.Y.Z] - date` (merged contributions are recorded there as they land, so
-nothing is carried out of band), bump `About/About.xml` `<modVersion>` and
-`Source/1.6/Properties/AssemblyInfo.cs`, then push a `v*.*.*` tag. The GitHub Actions workflow (`.github/workflows/release.yml`) builds,
-stages via `StageMod`, lifts the tag's CHANGELOG section into the release body, and **fails the
-release if that section is missing** (except for a suffixed `X.Y.Z-rc.N` candidate tag, which gets
-a stub body and is marked a prerelease).
-
-## Debugging
-
-1. **Dev Mode:** Settings > Dev Mode > Logging.
-2. **Log:** under `%USERPROFILE%\AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\`
-   (WSL: `/mnt/c/Users/*/AppData/LocalLow/Ludeon Studios/RimWorld by Ludeon Studios/`; Linux:
-   `~/.config/unity3d/Ludeon Studios/RimWorld by Ludeon Studios/`). On 1.7 it is `Logs/Player.log`,
-   with a timestamp and level (`ERROR`, `WARN`, `INFO`) on every entry and `    at ...` stack frames
-   under it; on 1.6 it is `Player.log` one level up. A 1.7 install leaves the 1.6 file in place,
-   stale.
-3. **Logging convention:** `Log.Message("[Shipcracker Warcasket] ...")`; grep the prefix to
-   isolate our output. VFEP's own messages carry no prefix; search by class name.
-4. **Inspect the API:** `monodis` for signatures, `ilspycmd -t "Namespace.ClassName"` for method
-   bodies, against the local install's `Assembly-CSharp.dll` (source of truth over the Krafs ref
-   package) or the resolved `VFEPirates.dll` / `VEF.dll`. On 1.7 the assembly sits flat in the
-   install root with `UnityStubs.dll` beside it for Unity-facing signatures; on 1.6 it is under
-   `RimWorldWin64_Data/Managed/`. The local install's assembly is now the 1.7 one, so a
-   decompile-verified call path in a def or code header that was verified on 1.6 should say so if
-   it is re-verified on 1.7 and differs. The `rimworld-logs` skill covers both.
-5. **In-game test list:** VFE Pirates (Workshop 2723801948) and Vanilla Expanded Framework must
-   both be active and load before this mod; the local deploy shows up as `ShipcrackerWarcasket`
-   in the mod list.
+- Defs use the `SCWC_` prefix, **one def per file**, named after the def minus the prefix.
+  Defs load recursively and the deploy manifest globs, so new files and folders need no build
+  change; only a new *file type* does. The `StageMod` target in the main csproj is the one
+  manifest, shared by local deploy and CI, so they cannot drift.
+- **`.claude/` is partly tracked:** `skills/`, `hooks/` and `settings.json` are committed and
+  shared; `settings.local.json` is personal. Editing a skill is a team-visible change that must
+  keep in step with what it automates (`/release` encodes the CHANGELOG layout and the
+  version scheme; `release.yml` matches it).
+- The Stop hook (`.claude/hooks/sync-mod.sh`) rebuilds and redeploys after any turn that
+  changed mod files and feeds build errors back to the agent. It is byte-identical across the
+  mod family: change the template and copy it verbatim, never edit it per repo.
+- `l10n/` is upstream: never edit it in place. Mod-independent l10n learnings go to the
+  canonical `~/dev/rimworld-l10n` checkout; mod-specific ones to the translate skill's
+  glossary. The pin moves only at release, at the start of a translation pass or on a new
+  upstream major (`l10n/tools/bump-consumer.sh`), never per upstream commit.
+- English is the localization source of truth (the def XML's fields plus the one English
+  Keyed file). Other languages come from `/translate` and are validated by the checker.
+  Translation passes wait for the English to be final and run at the release gate.
