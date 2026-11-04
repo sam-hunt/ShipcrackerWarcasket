@@ -20,10 +20,10 @@ With Odyssey: the full set is vacuum rated, and the space features are paid for 
 [h1]Mod Compatibility[/h1]
 [list]
 [*]Safe to add to existing saves.
-[*]Not safe to remove while a pawn is welded into the set.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]: EVA rated under the same rules as VFE Pirates' own sets.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]: follows its vacuum rules for warcaskets, and the helmet carries its own refillable oxygen supply. Improves spacewalking speed, and the jump burns astrofuel instead of chemfuel (purple!).
+[*]Not safe to remove while a pawn is entombed in the set.
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2890901044]Combat Extended[/url]: armor values, bulk and carry capacity matching other spacer-tier warcaskets, and the helmet blocks CE smoke.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]: follows its vacuum rules for warcaskets, and the helmet carries its own refillable oxygen supply. Improves spacewalking speed, and the jump burns astrofuel instead of chemfuel (purple!).
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]: EVA rated under the same rules as VFE Pirates' own sets.
 [/list]
 
 [hr][/hr]
@@ -38,7 +38,7 @@ A: No, though it's definitely designed with VGE2's ship-to-ship combat in mind, 
 A: Research VFE Pirates' "Spacer Warcaskets" project, then weld it on at the warcasket foundry like any other set. Mix and match the pieces with VFE Pirates' own sets as you please.
 
 [b]Q: Is this imbalanced?[/b]
-A: That's up to you. The defaults are balanced against VFE Pirates' other late spacer sets. If you want it easier or harder, tweak the fuel cost, cooldown, range or damage etc in the mod settings. Your colony, your rules.
+A: That's up to you. The defaults are balanced against VFE Pirates' other late spacer sets. If you want it easier or harder, tweak the ability cost, cooldown, range, damage etc in the mod settings. Your colony, your rules.
 
 [hr][/hr]
 [h1]Links[/h1]
