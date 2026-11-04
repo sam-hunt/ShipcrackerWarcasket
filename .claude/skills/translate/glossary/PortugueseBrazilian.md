@@ -25,7 +25,7 @@ Workshop 3643091941), confirmed from its ThingDef and Keyed files.
 | breach burn (vacuumLabel) / the burn (prose) | impulso de irrupção / o impulso | **Coined.** "queima" is the aerospace calque but reads as "burning" to a player; "impulso" carries the thrust sense and is used everywhere "burn" appears (lore, vacuumDescription, Workshop). |
 | breach jump range | alcance do salto de irrupção | Royalty `JumpRange.label`. Description mirrors `JumpRange.description` ("O máximo alcance do salto") in register. |
 | breach power | poder de irrupção | Coined; description mirrors Core `MeleeDamageFactor.description` ("Um multiplicador na quantidade de dano..."). |
-| deathMessage | {0} morreu esmagad{PAWN_gender ? o : a} por um impacto de irrupção. (predates the English "{0} has been crushed to death by a breach landing."; re-derive, keeping the Crush mirror and the gender split) | Mirrors Core `Crush.deathMessage`. `PAWN` is a named argument at the call site (`deathMessage.Formatted(pawn.LabelShortCap, pawn.Named("PAWN"))`, decompiled), so the resolver split is safe. |
+| deathMessage / breach landing | {0} morreu esmagad{PAWN_gender ? o : a} por uma aterrissagem de irrupção. / aterrissagem de irrupção | Mirrors Core `Crush.deathMessage`. `PAWN` is a named argument at the call site (`deathMessage.Formatted(pawn.LabelShortCap, pawn.Named("PAWN"))`, decompiled), so the resolver split is safe. |
 | drop thrusters | propulsores de descida | Coined; pack uses "propulsores" (`propulsores de foguete`, `propulsores de ombro`), "de descida" for "drop". |
 | breaching arms | braços de irrupção | Coined from the breach qualifier. |
 | ranged shield / shield bubble | escudo contra ataques à distância / bolha de escudo | Pack Brute lore ("ataques à distância"); "bolha de escudo" on the Workshop page only. |
@@ -56,5 +56,5 @@ Lore paragraph 3 mirrors Royalty's `Shipcracker37.description` ("lançar-se atra
 - "irrupção" as the breach qualifier: vanilla-attested but rare in speech. "arrombamento" (salto de arrombamento, impacto de arrombamento) is the more colloquial alternative if a native reader finds "irrupção" stiff.
 - "impulso de irrupção" for "breach burn".
 - "propulsores de descida" for "drop thrusters".
-- The lore voice in paragraphs 2 and 3, especially "destroços recuperados e desertores o levaram a fundições" and "os pilotos são escolhidos entre quem gosta de lutar de perto".
+- The lore voice in paragraph 3, especially "destroços recuperados e desertores levaram o modelo a fundições" and "esta série é indicada para pilotos que preferem lutar de perto".
 - Workshop prose, particularly "concorrente pesada para o combate corpo a corpo em solo" and the VGE answer's tone.

@@ -3,8 +3,8 @@
 
   <!-- EN: Shipcracker Warcasket -->
   <SCWC_SettingsCategory>Warcasket brise-coque</SCWC_SettingsCategory>
-  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket's definitions, so the set keeps its built-in values. -->
-  <SCWC_SettingsUnavailable>Ces paramètres sont indisponibles. Un autre mod a modifié les définitions du warcasket brise-coque, l'ensemble conserve donc ses valeurs d'origine.</SCWC_SettingsUnavailable>
+  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket, so the set will use its built-in values. -->
+  <SCWC_SettingsUnavailable>Ces paramètres sont indisponibles. Un autre mod a modifié le warcasket brise-coque, l'ensemble utilisera donc ses valeurs d'origine.</SCWC_SettingsUnavailable>
 
   <!-- EN: Breach jump -->
   <SCWC_SectionJump>Saut de brèche</SCWC_SectionJump>
@@ -20,8 +20,8 @@
 
   <!-- EN: Tank capacity ({0}) -->
   <SCWC_TankCapacity>Capacité du réservoir ({0})</SCWC_TankCapacity>
-  <!-- EN: The amount of fuel the armor's tank holds when full. A tank already holding more than this loses the excess. Default: {0}. -->
-  <SCWC_TankCapacityDesc>La quantité de carburant que contient le réservoir de l'armure quand il est plein. Un réservoir qui en contient déjà davantage perd l'excédent. Par défaut : {0}.</SCWC_TankCapacityDesc>
+  <!-- EN: The amount of fuel the armor's tank holds when full. Default: {0}. -->
+  <SCWC_TankCapacityDesc>La quantité de carburant que contient le réservoir de l'armure quand il est plein. Par défaut : {0}.</SCWC_TankCapacityDesc>
 
   <!-- EN: Range (cells) -->
   <SCWC_JumpRange>Portée (cases)</SCWC_JumpRange>
@@ -40,13 +40,13 @@
 
   <!-- EN: Blast radius (cells) -->
   <SCWC_BlastRadius>Rayon de l'explosion (cases)</SCWC_BlastRadius>
-  <!-- EN: The radius of the blast when the pilot lands. At 0, landings cause no blast. Default: {0}. -->
-  <SCWC_BlastRadiusDesc>Le rayon de l'explosion quand le pilote atterrit. À 0, les atterrissages ne provoquent aucune explosion. Par défaut : {0}.</SCWC_BlastRadiusDesc>
+  <!-- EN: The radius of the blast when the pilot lands. Default: {0}. -->
+  <SCWC_BlastRadiusDesc>Le rayon de l'explosion quand le pilote atterrit. Par défaut : {0}.</SCWC_BlastRadiusDesc>
 
   <!-- EN: Roof punch radius (cells) -->
   <SCWC_RoofRadius>Rayon d'ouverture du toit (cases)</SCWC_RoofRadius>
-  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Below 1, only the roof over the pilot's own cell opens; at 0, roofs are left intact. A jump within a single room never breaks the roof, and overhead mountain always holds. Default: {0}. -->
-  <SCWC_RoofRadiusDesc>Au décollage et à l'atterrissage, le pilote arrache le toit dans ce rayon autour de lui. En dessous de 1, seul le toit au-dessus de sa propre case s'ouvre. À 0, les toits restent intacts. Un saut à l'intérieur d'une même pièce ne perce jamais le toit, et un plafond rocheux épais résiste toujours. Par défaut : {0}.</SCWC_RoofRadiusDesc>
+  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Overhead mountain is never broken. Default: {0}. -->
+  <SCWC_RoofRadiusDesc>Au décollage et à l'atterrissage, le pilote arrache le toit dans ce rayon autour de lui. Un plafond rocheux épais n'est jamais percé. Par défaut : {0}.</SCWC_RoofRadiusDesc>
 
   <!-- EN: Damage to creatures -->
   <SCWC_CreatureDamage>Dégâts aux créatures</SCWC_CreatureDamage>
@@ -55,12 +55,12 @@
 
   <!-- EN: Armor penetration (%) -->
   <SCWC_ArmorPenetration>Pénétration d'armure (%)</SCWC_ArmorPenetration>
-  <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
-  <SCWC_ArmorPenetrationDesc>La pénétration d'armure des dégâts que l'explosion inflige aux créatures lors de l'atterrissage. Par défaut : {0}.</SCWC_ArmorPenetrationDesc>
+  <!-- EN: The armor penetration of the landing blast against creatures. Default: {0}. -->
+  <SCWC_ArmorPenetrationDesc>La pénétration d'armure de l'explosion d'atterrissage contre les créatures. Par défaut : {0}.</SCWC_ArmorPenetrationDesc>
   <!-- EN: Armor penetration (MPa) -->
   <SCWC_ArmorPenetrationMPa>Pénétration d'armure (MPa)</SCWC_ArmorPenetrationMPa>
-  <!-- EN: The armor penetration of the landing blast's damage to creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade's blast penetrates about 17, and flak armor rates 12. Default: {0}. -->
-  <SCWC_ArmorPenetrationMPaDesc>La pénétration d'armure des dégâts que l'explosion inflige aux créatures lors de l'atterrissage, en mégapascals, l'unité dans laquelle Combat Extended évalue l'armure contondante. À titre de comparaison, l'explosion d'une grenade à fragmentation pénètre environ 17, et un gilet pare-balles est à 12. Par défaut : {0}.</SCWC_ArmorPenetrationMPaDesc>
+  <!-- EN: The armor penetration of the landing blast against creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade penetrates about 17 and flak armor rates 12. Default: {0}. -->
+  <SCWC_ArmorPenetrationMPaDesc>La pénétration d'armure de l'explosion d'atterrissage contre les créatures, en mégapascals, l'unité dans laquelle Combat Extended évalue l'armure contondante. À titre de comparaison, une grenade à fragmentation pénètre environ 17 et un gilet pare-balles est à 12. Par défaut : {0}.</SCWC_ArmorPenetrationMPaDesc>
 
   <!-- EN: Damage to walls -->
   <SCWC_WallDamage>Dégâts aux murs</SCWC_WallDamage>
@@ -84,8 +84,8 @@
 
   <!-- EN: Unlimited range in vacuum -->
   <SCWC_VacuumBurn>Portée illimitée dans le vide</SCWC_VacuumBurn>
-  <!-- EN: When enabled, the jump becomes the breach burn in vacuum: unlimited range, but only to a target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
-  <SCWC_VacuumBurnDesc>Si cette option est activée, le saut devient une poussée de brèche dans le vide : sa portée est illimitée, mais la cible doit être en ligne de vue. Si elle est désactivée, les sauts dans le vide suivent les mêmes règles que sous gravité. Par défaut : activée.</SCWC_VacuumBurnDesc>
+  <!-- EN: When enabled, a breach jump made in vacuum becomes a breach burn, with unlimited range to any target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
+  <SCWC_VacuumBurnDesc>Si cette option est activée, un saut de brèche dans le vide devient une poussée de brèche, qui atteint sans limite de portée n'importe quelle cible en ligne de vue. Si elle est désactivée, les sauts dans le vide suivent les mêmes règles que sous gravité. Par défaut : activée.</SCWC_VacuumBurnDesc>
   <!-- EN:  (requires Odyssey) -->
   <SCWC_RequiresOdysseySuffix> (nécessite Odyssey)</SCWC_RequiresOdysseySuffix>
 

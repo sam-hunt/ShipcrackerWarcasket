@@ -3,12 +3,12 @@
 
   <!-- EN: breach jump range -->
   <SCWC_BreachJumpRange.label>alcance do salto de irrupção</SCWC_BreachJumpRange.label>
-  <!-- EN: The farthest a breach jump can carry the wearer. -->
-  <SCWC_BreachJumpRange.description>A distância máxima que um salto de irrupção leva o portador.</SCWC_BreachJumpRange.description>
+  <!-- EN: The maximum distance of a breach jump. -->
+  <SCWC_BreachJumpRange.description>A distância máxima de um salto de irrupção.</SCWC_BreachJumpRange.description>
 
   <!-- EN: breach power -->
   <SCWC_BreachPower.label>poder de irrupção</SCWC_BreachPower.label>
-  <!-- EN: Multiplier on the damage a breach jump landing deals to walls and other structures. Damage to creatures and mechanoids is unaffected. -->
-  <SCWC_BreachPower.description>Um multiplicador no dano que a aterrissagem de um salto de irrupção causa em paredes e outras estruturas. O dano a criaturas e mecanoides não é afetado.</SCWC_BreachPower.description>
+  <!-- EN: A multiplier on the damage a breach jump landing deals to walls and other structures. Creatures and mechanoids take no extra damage. -->
+  <SCWC_BreachPower.description>Um multiplicador no dano que a aterrissagem de um salto de irrupção causa em paredes e outras estruturas. Criaturas e mecanoides não sofrem dano extra.</SCWC_BreachPower.description>
 
 </LanguageData>

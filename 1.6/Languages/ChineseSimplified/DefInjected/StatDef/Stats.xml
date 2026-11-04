@@ -2,11 +2,11 @@
 <LanguageData>
   <!-- EN: breach jump range -->
   <SCWC_BreachJumpRange.label>破墙跳跃距离</SCWC_BreachJumpRange.label>
-  <!-- EN: The farthest a breach jump can carry the wearer. -->
+  <!-- EN: The maximum distance of a breach jump. -->
   <SCWC_BreachJumpRange.description>破墙跳跃的最大距离。</SCWC_BreachJumpRange.description>
 
   <!-- EN: breach power -->
   <SCWC_BreachPower.label>破墙威力</SCWC_BreachPower.label>
-  <!-- EN: Multiplier on the damage a breach jump landing deals to walls and other structures. Damage to creatures and mechanoids is unaffected. -->
-  <SCWC_BreachPower.description>破墙跳跃着陆时对墙体等建筑结构造成的伤害乘数。对生物与机械族的伤害不受影响。</SCWC_BreachPower.description>
+  <!-- EN: A multiplier on the damage a breach jump landing deals to walls and other structures. Creatures and mechanoids take no extra damage. -->
+  <SCWC_BreachPower.description>破墙跳跃着陆时对墙体等建筑结构造成的伤害乘数。生物与机械族不会受到额外伤害。</SCWC_BreachPower.description>
 </LanguageData>

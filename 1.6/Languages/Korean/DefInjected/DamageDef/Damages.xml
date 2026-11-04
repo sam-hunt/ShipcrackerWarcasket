@@ -3,7 +3,7 @@
 
   <!-- EN: breach -->
   <SCWC_Breach.label>돌파</SCWC_Breach.label>
-  <!-- EN: {0} has been crushed by a breaching impact. -->
-  <SCWC_Breach.deathMessage>{0}(이)가 돌파 충격에 압사했습니다.</SCWC_Breach.deathMessage>
+  <!-- EN: {0} has been crushed to death by a breach landing. -->
+  <SCWC_Breach.deathMessage>{0}(이)가 돌파 도약의 착지에 압사했습니다.</SCWC_Breach.deathMessage>
 
 </LanguageData>

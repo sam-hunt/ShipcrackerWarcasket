@@ -2,7 +2,7 @@
 <LanguageData>
   <!-- EN: breach jump -->
   <SCWC_BreachJump.label>破墙跳跃</SCWC_BreachJump.label>
-  <!-- EN: Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short but needs no clear path. -->
+  <!-- EN: Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short, but it does not need a clear path. -->
   <SCWC_BreachJump.description>点燃装甲的空降推进器，跳跃至指定位置，着陆的冲击力足以击穿墙体与舱壁。跳跃距离较短，但不需要畅通的路径。</SCWC_BreachJump.description>
   <!-- EN: In vacuum the burn has no range limit, but needs a clear line to the target. -->
   <SCWC_BreachJump.modExtensions.0.vacuumDescription>在真空中，推进不受距离限制，但目标必须处于视线之内。</SCWC_BreachJump.modExtensions.0.vacuumDescription>

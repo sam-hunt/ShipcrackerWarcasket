@@ -19,20 +19,22 @@ up, re-ground against them and prefer its renderings.
 | shipcracker warcasket / shoulders / helmet (labels) | Schiffsknacker-Kriegssarg / Schiffsknacker-Kriegssarg-Schulterpanzer / Schiffsknacker-Kriegssarg-Helm | VFEP's `<set> warcasket <part>` label pattern. |
 | pauldrons / shoulders / shoulder pads | Schulterpanzer | Ordinary German armor term; "Schultern" alone reads as the body part. Used for VFEP's "warcasket shoulders" pattern and the Workshop "shoulder pads". |
 | warcasket foundry (coined) | Kriegssarg-Gießerei | foundry = Gießerei per Core `FoundryApprentice76.title` = Gießereilehrling. |
-| entomb (coined, not used in this mod's strings) | einsargen | Real German verb (to put into a coffin), derived directly from Kriegssarg. The Workshop page's "weld" stays einschweißen, as in English. |
+| entomb (coined; Workshop compatibility line) | einsargen ("in das Set eingesargt") | Real German verb (to put into a coffin), derived directly from Kriegssarg. The FAQ's "weld" stays einschweißen, as in English. |
 | spacer warcaskets (VFEP research, cited in FAQ) | 'Raumfahrt-Kriegssärge' | Core `TechLevel_Spacer` = Raumfahrt; single-quoted as a cited label per the language file. |
 | VFEP set names cited on the Workshop page (coined) | Belagerungsbrecher (siegebreaker), Rohling (brute), Wächter (guardian) | Plain renderings; also for later passes: controller = Kontrolleur, sarcophagus = Sarkophag (Core `Sarcophagus` label). |
 | spacer-tech | aus der Raumfahrttechnik | Core `Plasteel.description` / `Synthread.description` render "spacer-tech" exactly so. |
 | Imperial | imperial (imperiale, imperialen ...) | Royalty `PawnKinds_Empire` (imperialer Grenadier) and `Apparel_ArmorRecon.description` (imperialen Spähtrupps). |
 | boarding corps | Enterkommandos | Royalty `ResearchProjects_Apparel` story line "Kataphraktrüstungen für imperiale Enterkommandos"; Core `PirateTrooper73` "Enterkommandos". |
-| lore paragraph 3, first sentence | lässt sich durch das Vakuum schießen, landet auf dem feindlichen Rumpf, reißt ein Loch ins Innere und erobert das Schiff Raum für Raum | Mirrors Royalty `Shipcracker37.description` ("sich in die Leere des Weltraums schießen zu lassen, auf dem Rumpf eines feindlichen Schiffes zu landen, Löcher in das Innere zu reißen und das Schiff Raum für Raum zu erobern"), with Odyssey's Vakuum for "vacuum". |
+| lore paragraph 3 (thrusters throw the pilot across the vacuum, landing punches through, take a ship room by room) | Ihre Landeschubdüsen schießen den Piloten durch das Vakuum auf den feindlichen Rumpf, und die Landung reißt ein Loch ins Innere. ... ein Schiff Raum für Raum erobern | Mirrors Royalty `Shipcracker37.description` ("sich in die Leere des Weltraums schießen zu lassen, auf dem Rumpf eines feindlichen Schiffes zu landen, Löcher in das Innere zu reißen und das Schiff Raum für Raum zu erobern"), with Odyssey's Vakuum for "vacuum". |
 | hull / hull plating | Rumpf / Schiffshüllen | Rumpf per `Shipcracker37.description`; hull plating after Odyssey `GravshipHull` = Gravschiffhülle. |
 | breach (damage label) and the breach- prefix | Durchbruch, combining form Durchbruchs- | Core `MeleeWeapon_BreachAxe` = Durchbruchsaxt, `Tribal_Breacher` = Durchbrecher, breach raids "Mauern durchbrechen". |
 | breach jump | Durchbruchssprung | Durchbruchs- + Sprung (Royalty jump pack verb springen). |
 | breach burn (vacuum label) | Durchbruchsschub | Schub (thrust) for an engine burn; Odyssey thruster = Schubdüse. |
 | breach jump range | Durchbruchssprungweite | Royalty `JumpRange` = Sprungweite; long compound in the style of vanilla stat labels (Schildenergiekapazität, Nahkampftrefferchance). Description mirrors Core `Ability_Range`. |
 | breach power | Durchbruchskraft | Description mirrors Core `MeleeDamageFactor` ("Ein Multiplikator auf ..."). |
-| deathMessage | {0} wurde von einem Durchbruchseinschlag zu Tode gequetscht. | Mirrors Core `Crush.deathMessage` = "{0} wurde zu Tode gequetscht."; `{0}` bare. Einschlag after Core `MeteoriteImpact` = Meteoriteneinschlag. |
+| deathMessage | {0} wurde von einer Durchbruchslandung zu Tode gequetscht. | Mirrors Core `Crush.deathMessage` = "{0} wurde zu Tode gequetscht."; `{0}` bare. |
+| breach landing | Durchbruchslandung | Durchbruchs- prefix + Landung (the settings' Landung / Landeexplosion). |
+| Shipcracker series / boarding pattern (lore paragraph 3) | Schiffsknacker-Baureihe / imperiale Bauart für Enterkommandos | Baureihe as in the VFEP 10th-generation paragraph ("armour series"); Enterkommandos per the boarding corps row. |
 | drop thrusters / drop engine | Landeschubdüsen / Landetriebwerk | Core drop pod = Landekapsel, Odyssey thruster = Schubdüse. |
 | chemfuel / astrofuel (Workshop) | Sprit / Astrosprit | Sprit is Core's chemfuel; Astrosprit coined by analogy (VGE's own German term unknown). |
 | impact dispersion | Stoßverteilung | Plain technical coinage. |
@@ -44,7 +46,7 @@ up, re-ground against them and prefer its renderings.
 | wall / roof | Wand / Dach | Core `Wall.label`, `Wall.description`. |
 | backstory (Workshop) | Vorgeschichte | Core Keyed `Backstory`. |
 | Workshop title | Schiffsknacker-Kriegssarg | Byte-identical to the body label; contains Kriegssarg. Also the `SCWC_SettingsCategory` value (title coupling). |
-| fuel unit (`chargeNoun`, the tank's charge word) | Treibstoffeinheit | Generic Treibstoff, matching the `treibstoffbetrieben` row (chemfuel or astrofuel). Core's `WordInfo/plural.txt` has no entry for it and the fallback would append `s`, so `1.6/Languages/German/WordInfo/plural.txt` maps it to `Treibstoffeinheiten`; `plural_decline` misses and returns that plural unchanged, giving `Keine Treibstoffeinheiten mehr.` Feminine, and a gender miss defaults to masculine (`einen Treibstoffeinheit` in the reload-cost stat text), so `1.6/Languages/German/WordInfo/Gender/Female.txt` lists `treibstoffeinheit`. |
+| fuel unit (`chargeNoun`, the tank's charge word) | Treibstoffeinheit | Generic Treibstoff, since the tank holds chemfuel or astrofuel. Core's `WordInfo/plural.txt` has no entry for it and the fallback would append `s`, so `1.6/Languages/German/WordInfo/plural.txt` maps it to `Treibstoffeinheiten`; `plural_decline` misses and returns that plural unchanged, giving `Keine Treibstoffeinheiten mehr.` Feminine, and a gender miss defaults to masculine (`einen Treibstoffeinheit` in the reload-cost stat text), so `1.6/Languages/German/WordInfo/Gender/Female.txt` lists `treibstoffeinheit`. |
 | landing blast (settings) | Landeexplosion; "blast radius" = Explosionsradius | Lande- as in Landekapsel / Landeschubdüsen; vanilla has no Druckwelle and no Explosionsradius label (Core `AbilityEffectRadius` = Wirkungsradius). |
 | structures that (do not) block movement (settings) | (un)passierbare Strukturen | Core Keyed `BuildingDamageFactorImpassable` / `Passable` = Bauwerkschaden-Faktor (unpassierbar / passierbar); kept Strukturen, not vanilla's Bauwerke, to match this mod's `SCWC_BreachPower.description`. |
 | overhead mountain | massive Höhlendecke | Core `RoofRockThick.label` = Höhlendecke (massiv). |
@@ -72,5 +74,5 @@ up, re-ground against them and prefer its renderings.
 - Durchbruchs- with the linking s (Durchbruchssprung, Durchbruchsschub, Durchbruchssprungweite) follows vanilla Durchbruchsaxt; a reviewer may prefer Durchbruchsprung.
 - Durchbruchsschub for "breach burn". Rejected: Durchbruchszündung (sounds like a single ignition), Durchbruchsflug (loses the engine sense).
 - Landeschubdüsen for "drop thrusters". Rejected: Sprungdüsen (loses the orbital-drop sense), Absetzdüsen (unidiomatic).
-- Lore paragraphs 2 and 3 were reworded in English after this generation: paragraph 2 is now VFEP's 10th generation paragraph (no community German rendering to lift; translate fresh), paragraph 3 the Shipcracker series paragraph. "Imperiale Bauart, kein Piratenwerk" and "Als Piloten wählt man Leute, die gern aus nächster Nähe kämpfen" no longer have a source sentence.
+- Lore paragraph 3 (Schiffsknacker-Baureihe, Bauart für Enterkommandos) is free prose; paragraph 2 is the family's 10th-generation rendering, shared verbatim with the other warcasket sets.
 - Astrosprit (VGE astrofuel) and the whole Workshop page prose.

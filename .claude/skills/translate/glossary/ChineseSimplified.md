@@ -14,11 +14,10 @@ grounded against the Core, Royalty and Odyssey `ChineseSimplified (简体中文)
 |---|---|---|
 | warcasket | 战棺 | Community VFEP pack throughout (`VFEP.RequiresWarcasket` = 需要战棺, every set label). |
 | shipcracker (set name) | 飞船突袭型 | Royalty `Shipcracker37.title`/`titleShort` = 飞船突袭者, cut to the community pack's `<set>型` set-name pattern (破袭型 / 圣盾型 / 狂怒型 / 突击型). |
-| shipcracker (the soldier, lore paragraph 3) | 飞船突袭者 | Royalty `Shipcracker37.title` verbatim, so the lore sentence names the backstory it paraphrases. |
 | shipcracker warcasket / shoulders / helmet | 飞船突袭型战棺装甲 / 飞船突袭型战棺护肩 / 飞船突袭型战棺头盔 | Community pattern `<set>型战棺装甲/护肩/头盔` (`VFEP_Warcasket_Siegebreaker.label` = 破袭型战棺装甲 and siblings). The body piece takes 装甲 although the English label has no noun, exactly as the pack does. |
 | siegebreaker / guardian / brute (Workshop) | 破袭型 / 圣盾型 / 狂怒型 | Community pack labels. The third-party 无畏 prefix (WarCasket Expanded) is not used; the VFEP pack has none. |
 | Specialized spacer-tech warcasket shell/pauldrons/helmet | 特化型太空时代级别战棺装甲/护肩/头盔 | Community pack's opening phrase for every 10th-generation part, verbatim. |
-| 10th generation paragraph (paragraph 2) | the pack's paragraph, verbatim | Paragraph 2 of the descriptions is VFEP's own 10th generation paragraph; lift the community pack's rendering of it verbatim so the set reads as one of VFEP's own. |
+| 10th generation paragraph (paragraph 2) | the family's rendering, verbatim | Paragraph 2 of the descriptions is the family's rendering of VFEP's 10th generation paragraph, shared verbatim with the other warcasket sets. |
 | improved impact dispersion | 改进型冲击力偏转模块 | Community `VFEP_WarcasketHelmet_Guardian.description` (配备有改进型的冲击力偏转模块), trimmed of 的. |
 | melee assistor modules | 近战辅助模块 | Community `VFEP_WarcasketShoulders_Brute.description`. |
 | standard ranged shield | 标准型远程能量护盾 | Community Siegebreaker lore uses 远程能量护盾; 标准型 mirrors the pack's 标准型/改进型 register. |
@@ -32,7 +31,8 @@ grounded against the Core, Royalty and Odyssey `ChineseSimplified (简体中文)
 | breach jump range | 破墙跳跃距离 | Royalty `JumpRange.label` = 跳跃距离; description mirrors `JumpRange.description` = 最大跳跃距离。 |
 | breach power | 破墙威力 | Coined. Description mirrors Core `MeleeDamageFactor.description` (…伤害乘数。). |
 | breach (DamageDef label) | 破墙冲击 | Coined. Vanilla damage labels are mostly X伤, but the breach term needed to stay recognisable; 冲击 carries the impact sense. |
-| deathMessage | {0}被破墙冲击压死了。 (predates the English "{0} has been crushed to death by a breach landing."; re-derive, keeping the Crush mirror) | Mirrors Core `Crush.deathMessage` = {0}被压死了。 (the def's hediff is Crush). |
+| deathMessage | {0}在破墙着陆中被压死了。 | Mirrors Core `Crush.deathMessage` = {0}被压死了。 (the def's hediff is Crush), with the cause as a 在…中 adverbial. |
+| breach landing | 破墙着陆 | Coined on the 破墙 prefix + 着陆 (the settings' Landing section). |
 | drop thrusters | 空降推进器 | Coined from community `VFEP_ActiveDropPawn.label` = 空投舱 (drop) and Odyssey 推进器 (thruster). |
 | breaching arms | 破墙臂 | Coined on the 破墙 prefix. |
 | respirator | 呼吸器 | Coined (no vanilla respirator item or gene in the zh tars); plain everyday word. |
@@ -59,9 +59,9 @@ grounded against the Core, Royalty and Odyssey `ChineseSimplified (简体中文)
 | Off / default / Default: on | 关 / 默认 / 默认：启用 | Core Keyed `Off`, `Default`, `Enabled`. |
 | settings suffixes | （需要奥德赛） / （默认） | Full-width parens with no leading space, as vanilla 锻造台（燃料）. |
 
-Lore paragraph 3's first sentence mirrors Royalty's `Shipcracker37.description`
-(降落在敌舰的船体上，打孔到舰内) but renders "room by room" as 逐个舱室, not the
-official 一对一的战斗 (a mistranslation of room-to-room).
+Lore paragraph 3's boarding sentence follows Royalty's `Shipcracker37.description`
+(落到敌舰的船体上) but renders "room by room" as 逐个舱室, not the official
+一对一的战斗 (a mistranslation of room-to-room).
 
 ## Pending native review
 

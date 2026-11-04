@@ -3,12 +3,12 @@
 
   <!-- EN: breach jump range -->
   <SCWC_BreachJumpRange.label>Durchbruchssprungweite</SCWC_BreachJumpRange.label>
-  <!-- EN: The farthest a breach jump can carry the wearer. -->
-  <SCWC_BreachJumpRange.description>Die maximale Entfernung, die der Träger mit einem Durchbruchssprung zurücklegen kann.</SCWC_BreachJumpRange.description>
+  <!-- EN: The maximum distance of a breach jump. -->
+  <SCWC_BreachJumpRange.description>Die maximale Entfernung eines Durchbruchssprungs.</SCWC_BreachJumpRange.description>
 
   <!-- EN: breach power -->
   <SCWC_BreachPower.label>Durchbruchskraft</SCWC_BreachPower.label>
-  <!-- EN: Multiplier on the damage a breach jump landing deals to walls and other structures. Damage to creatures and mechanoids is unaffected. -->
-  <SCWC_BreachPower.description>Ein Multiplikator auf den Schaden, den die Landung eines Durchbruchssprungs an Wänden und anderen Strukturen verursacht. Der Schaden an Lebewesen und Mechanoiden bleibt unverändert.</SCWC_BreachPower.description>
+  <!-- EN: A multiplier on the damage a breach jump landing deals to walls and other structures. Creatures and mechanoids take no extra damage. -->
+  <SCWC_BreachPower.description>Ein Multiplikator auf den Schaden, den die Landung eines Durchbruchssprungs an Wänden und anderen Strukturen verursacht. Lebewesen und Mechanoiden erleiden keinen zusätzlichen Schaden.</SCWC_BreachPower.description>
 
 </LanguageData>

@@ -19,11 +19,10 @@ this mod copies both patterns so the set reads like one of VFEP's own.
 | entomb / weld on | 안치 (워캐스킷에 안치) | RMK `VFEPirates.EntombInWarcasket`; the Workshop's "welded into" / "weld it on" both use 안치. |
 | siegebreaker / brute / guardian | 돌격 / 야수 / 수호 | RMK set prefixes (Workshop "pitched between" line). |
 | shipcracker (set name) | 함선 침투 | Royalty `Shipcracker37.title` = `함선 침투원`. The set prefix drops the person suffix `원` so it names the role like RMK's action-noun prefixes (돌격, 강습, 수호): `함선 침투 워캐스킷`. Deviation from verbatim reuse, flagged below. |
-| a shipcracker (the pilot, lore paragraph 3) | 함선 침투원 | Royalty `Shipcracker37.title`, verbatim. The rest of that sentence mirrors `Shipcracker37.description` (`...적 함선의 선체에 착륙, 구멍을 뚫고 침투해 선실을 하나씩 제압...`). |
 | Imperial | 제국 (bare prefix) | Royalty backstories: `제국 부대`, `제국 사제`, `제국군`. |
 | spacer-tech / spacer | 우주시대 기술 / 우주시대 | RMK VFEP descriptions (`우주시대 기술로 특화된`); Core `TechLevel_Spacer` = `우주`. |
 | improved impact dispersion | 개선된 충격 분산 능력 | RMK Guardian/Brute descriptions, verbatim. |
-| 10th generation (paragraph 2) | 10세대 | RMK `10세대 워캐스킷`. Paragraph 2 of the descriptions is VFEP's own 10th generation paragraph; lift the community pack's rendering of it verbatim so the set reads as one of VFEP's own. "chassis" left the English. |
+| 10th generation (paragraph 2) | 10세대 | RMK `10세대 워캐스킷`. Paragraph 2 of the descriptions is the family's rendering of VFEP's 10th generation paragraph, shared verbatim with the other warcasket sets. "chassis" left the English. |
 | pilot | 조종사 | RMK `VFEP_WarcasketHelmet_Shock` (`조종사의 반응 시간`). |
 | breach (damage label, "breaching") | 돌파 | Core `Tribal_Breacher` = `돌파자`, `Gun_ThumpCannon` `돌파용 폭탄`. `DamageDef` label shape follows Core `Bomb` = `폭발`. |
 | jump | 도약 | Royalty `Apparel_ArmorLocust.verbs.jump` = `도약`; RMK Aerial `충격 도약`. |
@@ -43,10 +42,10 @@ this mod copies both patterns so the set reads like one of VFEP's own.
 | plasteel / uranium / chemfuel | 플라스틸 / 우라늄 / 화학연료 | Core / Odyssey labels. |
 | spacewalk / EVA | 선외활동 | Biotech `Starjack.description`. |
 | salvage | 인양 | Odyssey `Salvagers` = `인양단`. |
-| boarding corps | 승선 전투 부대 | Coined; avoids 강습 and 돌격, which RMK spends on set names. |
+| boarding corps / boarding pattern | 승선 전투 부대 / 승선 전투용 설계 | Coined; avoids 강습 and 돌격, which RMK spends on set names. |
 | backstory (Workshop) | 성장 환경 | Core Keyed `Backstory`. |
 | astrofuel (VGE, Workshop only) | 아스트로연료 | Coined transliteration; no VGE Korean source checked. |
-| deathMessage | `{0}(이)가 돌파 충격에 압사했습니다.` | Mirrors Core `Crush.deathMessage` = `{0}(이)가 압사했습니다.`; bare `{0}` with the `(이)가` marker. |
+| deathMessage | `{0}(이)가 돌파 도약의 착지에 압사했습니다.` | Mirrors Core `Crush.deathMessage` = `{0}(이)가 압사했습니다.`; bare `{0}` with the `(이)가` marker. "breach landing" is `돌파 도약의 착지`, the phrase the stat descriptions already use. |
 | Workshop title | 함선 침투 워캐스킷 | The armor label; contains `워캐스킷`. Also the `SCWC_SettingsCategory` value (title coupling). |
 | fuel unit (`chargeNoun`, the tank's charge word) | 연료 | Plain mass noun reads naturally in every slot (잔여 연료, 연료당 재장전 비용); generic, covering 화학연료 and 아스트로연료. No plural change, no lookup file. |
 | landing (settings section) | 착지 | Matches this mod's DefInjected (`착지 충격`, `돌파 도약의 착지`). |
@@ -68,8 +67,7 @@ this mod copies both patterns so the set reads like one of VFEP's own.
 - `돌파 분사` for the vacuum-mode label, and `분사` for "burn" in lore.
 - `강하 추진기`, `돌파용 강화 팔`, `승선 전투 부대`, `아스트로연료`: coined
   with no vanilla or community precedent.
-- The closing sentence `...주조대에까지 흘러들었습니다`, now the last sentence
-  of the series paragraph (paragraph 3). The two-sentence split of "The shield
-  stops bullets, not blades" has no source sentence any more.
+- The closing sentence `...주조대에까지 흘러들었습니다` of the series paragraph
+  (paragraph 3).
 - Whole Workshop description (`.steamworkshop/Description/Korean.txt`) is a
   first machine-assisted pass.

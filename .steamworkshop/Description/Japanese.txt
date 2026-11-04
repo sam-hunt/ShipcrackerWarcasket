@@ -20,10 +20,10 @@ Odysseyがある場合は,セット全体が真空に対応し,宇宙用機能�
 [h1]互換性[/h1]
 [list]
 [*]既存のセーブデータに追加しても安全です.
-[*]ポーンがセットに溶接されている間は,MODを削除しないでください.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]: VFE Pirates本体のセットと同じ条件でEVA対応になります.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]: ウォーキャスケット向けの真空ルールに従い,ヘルメットには補充できる専用の酸素供給が付きます.船外活動の速度が上がり,ジャンプはバイオ液化燃料の代わりにアストロ燃料を消費します(紫色!).
+[*]ポーンがセットに封入されている間は,MODを削除しないでください.
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2890901044]Combat Extended[/url]: アーマー値,かさ,積載量が他の宇宙世紀のウォーキャスケットと同水準に調整され,ヘルメットはCEの煙を通しません.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]: ウォーキャスケット向けの真空ルールに従い,ヘルメットには補充できる専用の酸素供給が付きます.船外活動の速度が上がり,ジャンプはバイオ液化燃料の代わりにアストロ燃料を消費します(紫色!).
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]: VFE Pirates本体のセットと同じ条件でEVA対応になります.
 [/list]
 
 [hr][/hr]
@@ -38,7 +38,7 @@ A: いいえ.とはいえ,VGE2の艦対艦戦闘を強く意識して設計し�
 A: VFE Piratesの研究「宇宙世紀のウォーキャスケット」を完了したら,ほかのセットと同じくウォーキャスケット鋳造台で溶接します.VFE Pirates本体のセットとも自由に組み合わせられます.
 
 [b]Q: バランスが崩れていませんか?[/b]
-A: それはあなた次第です.デフォルト値は,VFE Piratesのほかの宇宙世紀後期のセットと釣り合うように調整しています.もっと簡単にしたい,あるいは難しくしたいなら,Mod 設定で燃料の消費量,クールダウン,範囲,ダメージなどを調整してください.あなたのコロニーですから,ルールもあなたが決めてください.
+A: それはあなた次第です.デフォルト値は,VFE Piratesのほかの宇宙世紀後期のセットと釣り合うように調整しています.もっと簡単にしたい,あるいは難しくしたいなら,Mod 設定で能力のコスト,クールダウン,範囲,ダメージなどを調整してください.あなたのコロニーですから,ルールもあなたが決めてください.
 
 [hr][/hr]
 [h1]リンク[/h1]

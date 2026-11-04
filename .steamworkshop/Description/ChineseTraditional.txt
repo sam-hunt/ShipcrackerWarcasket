@@ -21,9 +21,9 @@
 [list]
 [*]可安全加入現有的存檔。
 [*]有殖民者封在這套戰棺內時，請勿移除本模組。
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]：與VFE Pirates原有的套裝採用相同規則，具備EVA能力。
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]：遵循其戰棺的真空規則，頭盔另有可補充的氧氣供應。太空漫步速度提升，跳躍改燒太空燃料而非化合燃料(紫色的！)。
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2890901044]Combat Extended[/url]：護甲數值、穿著體積與體積攜帶能力比照其他太空等級的戰棺，頭盔能隔絕CE的煙霧。
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]：遵循其戰棺的真空規則，頭盔另有可補充的氧氣供應。太空漫步速度提升，跳躍改燒太空燃料而非化合燃料(紫色的！)。
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]：與VFE Pirates原有的套裝採用相同規則，具備EVA能力。
 [/list]
 
 [hr][/hr]
@@ -38,7 +38,7 @@
 答：完成VFE Pirates的「太空戰棺」研究後，和其他套裝一樣到戰棺鑄造廠組裝即可。各部件也能和VFE Pirates原有的套裝自由混搭。
 
 [b]問：這會不會不平衡？[/b]
-答：由你決定。預設值的平衡基準是VFE Pirates其他後期的太空戰棺套裝。想讓它弱一點或強一點，到模組設定裡調整燃料消耗、冷卻時間、距離或傷害等數值就行。你的殖民地，你說了算。
+答：由你決定。預設值的平衡基準是VFE Pirates其他後期的太空戰棺套裝。想讓它弱一點或強一點，到模組設定裡調整技能消耗、冷卻時間、距離、傷害等數值就行。你的殖民地，你說了算。
 
 [hr][/hr]
 [h1]連結[/h1]

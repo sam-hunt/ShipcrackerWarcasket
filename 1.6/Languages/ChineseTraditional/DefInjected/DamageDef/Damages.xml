@@ -3,6 +3,6 @@
   <!-- EN: breach -->
   <SCWC_Breach.label>破壁衝擊</SCWC_Breach.label>
 
-  <!-- EN: {0} has been crushed by a breaching impact. -->
-  <SCWC_Breach.deathMessage>{0}被破壁衝擊壓死了。</SCWC_Breach.deathMessage>
+  <!-- EN: {0} has been crushed to death by a breach landing. -->
+  <SCWC_Breach.deathMessage>{0}被破壁著陸壓死了。</SCWC_Breach.deathMessage>
 </LanguageData>

@@ -3,12 +3,12 @@
 
   <!-- EN: breach jump range -->
   <SCWC_BreachJumpRange.label>돌파 도약 거리</SCWC_BreachJumpRange.label>
-  <!-- EN: The farthest a breach jump can carry the wearer. -->
-  <SCWC_BreachJumpRange.description>돌파 도약으로 이동할 수 있는 최대 거리입니다.</SCWC_BreachJumpRange.description>
+  <!-- EN: The maximum distance of a breach jump. -->
+  <SCWC_BreachJumpRange.description>돌파 도약의 최대 거리입니다.</SCWC_BreachJumpRange.description>
 
   <!-- EN: breach power -->
   <SCWC_BreachPower.label>돌파력</SCWC_BreachPower.label>
-  <!-- EN: Multiplier on the damage a breach jump landing deals to walls and other structures. Damage to creatures and mechanoids is unaffected. -->
-  <SCWC_BreachPower.description>돌파 도약의 착지가 벽과 기타 구조물에 입히는 피해의 배율입니다. 생물과 메카노이드에게 입히는 피해에는 영향을 주지 않습니다.</SCWC_BreachPower.description>
+  <!-- EN: A multiplier on the damage a breach jump landing deals to walls and other structures. Creatures and mechanoids take no extra damage. -->
+  <SCWC_BreachPower.description>돌파 도약의 착지가 벽과 기타 구조물에 입히는 피해에 적용되는 배율입니다. 생물과 메카노이드는 추가 피해를 받지 않습니다.</SCWC_BreachPower.description>
 
 </LanguageData>

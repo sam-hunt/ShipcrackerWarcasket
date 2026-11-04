@@ -3,8 +3,8 @@
 
   <!-- EN: breach jump -->
   <SCWC_BreachJump.label>salto de irrupção</SCWC_BreachJump.label>
-  <!-- EN: Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short but needs no clear path. -->
-  <SCWC_BreachJump.description>Acione os propulsores de descida da armadura para saltar até um local e aterrissar com força suficiente para romper paredes e cascos de nave. O salto é curto, mas dispensa caminho livre.</SCWC_BreachJump.description>
+  <!-- EN: Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short, but it does not need a clear path. -->
+  <SCWC_BreachJump.description>Acione os propulsores de descida da armadura para saltar até um local e aterrissar com força suficiente para romper paredes e cascos de nave. O salto é curto, mas não precisa de um caminho livre.</SCWC_BreachJump.description>
   <!-- EN: In vacuum the burn has no range limit, but needs a clear line to the target. -->
   <SCWC_BreachJump.modExtensions.0.vacuumDescription>No vácuo, o impulso não tem limite de alcance, mas exige linha de visão livre até o alvo.</SCWC_BreachJump.modExtensions.0.vacuumDescription>
   <!-- EN: breach burn -->

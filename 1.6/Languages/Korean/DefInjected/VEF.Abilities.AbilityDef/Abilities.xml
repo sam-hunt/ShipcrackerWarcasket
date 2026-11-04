@@ -3,7 +3,7 @@
 
   <!-- EN: breach jump -->
   <SCWC_BreachJump.label>돌파 도약</SCWC_BreachJump.label>
-  <!-- EN: Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short but needs no clear path. -->
+  <!-- EN: Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short, but it does not need a clear path. -->
   <SCWC_BreachJump.description>갑옷의 강하 추진기를 점화해 지정한 위치로 도약합니다. 착지 충격만으로 벽과 선체 외벽을 뚫을 수 있습니다. 도약 거리는 짧지만, 가는 길이 막혀 있어도 상관없습니다.</SCWC_BreachJump.description>
   <!-- EN: In vacuum the burn has no range limit, but needs a clear line to the target. -->
   <SCWC_BreachJump.modExtensions.0.vacuumDescription>진공에서는 분사 거리에 제한이 없지만, 대상까지 시야가 확보되어야 합니다.</SCWC_BreachJump.modExtensions.0.vacuumDescription>

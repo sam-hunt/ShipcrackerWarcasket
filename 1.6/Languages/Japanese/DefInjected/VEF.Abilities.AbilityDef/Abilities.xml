@@ -3,8 +3,8 @@
 
   <!-- EN: breach jump -->
   <SCWC_BreachJump.label>ブリーチジャンプ</SCWC_BreachJump.label>
-  <!-- EN: Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short but needs no clear path. -->
-  <SCWC_BreachJump.description>アーマーのドロップスラスターを噴射して指定地点へジャンプし,壁や船体装甲を突き破るほどの勢いで着地します.跳べる距離は短いものの,経路上の障害物は関係ありません.</SCWC_BreachJump.description>
+  <!-- EN: Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short, but it does not need a clear path. -->
+  <SCWC_BreachJump.description>アーマーのドロップスラスターを噴射して指定地点へジャンプし,壁や船体装甲を突き破るほどの勢いで着地します.跳べる距離は短いものの,経路が開けている必要はありません.</SCWC_BreachJump.description>
   <!-- EN: In vacuum the burn has no range limit, but needs a clear line to the target. -->
   <SCWC_BreachJump.modExtensions.0.vacuumDescription>真空中では噴射の距離に制限がなくなりますが,ターゲットまで視線が通っている必要があります.</SCWC_BreachJump.modExtensions.0.vacuumDescription>
   <!-- EN: breach burn -->

@@ -31,7 +31,7 @@ checked character by character against the zh-Hant Core/Royalty/Odyssey tars
 | breach jump range | 破壁跳躍距離 | Mirrors Royalty `JumpRange.label`; description mirrors `JumpRange.description` 最大跳躍距離。 |
 | breach power | 破壁威力 | Coined. Description mirrors Core `MeleeDamageFactor` (…傷害的倍率。). |
 | breach (DamageDef label) | 破壁衝擊 | Coined; vanilla damage labels are injury nouns (Crush 壓傷, Bomb 炸傷) but none fits, so the label names the impact. |
-| deathMessage | {0}被破壁衝擊壓死了。 | Mirrors Core `Crush.deathMessage` {0}被壓死了。 |
+| deathMessage / breach landing | {0}被破壁著陸壓死了。 / 破壁著陸 | Mirrors Core `Crush.deathMessage` {0}被壓死了。; 破壁著陸 is coined from 破壁 + 著陸 (the settings' Landing section). |
 | drop thrusters / drop engine | 空降推進器 / 空降引擎 | Coined; 推進器 as above. |
 | breaching arms | 破壁臂 (hardened: 硬化破壁臂) | Coined, consistent with 破壁. |
 | melee assistor modules | 近戰輔助模組 | zh-Hans pack 近战辅助模块; 模組 is Taiwan usage for a hardware module too (Core `Ship_SensorCluster` 感測器模組). |
@@ -63,7 +63,6 @@ checked character by character against the zh-Hant Core/Royalty/Odyssey tars
 - 強化了衝擊分散性能 deviates from the zh-Hans pack's phrasing for the same
   English; a reviewer may prefer consistency with how the community pack
   renders the Brute/Guardian pieces.
-- The lore paragraphs' voice (這是帝國的設計，不是海盜的。 / 護盾擋得住子彈，擋不住刀刃，
-  所以駕駛員專挑愛打近身戰的人。) and 逐間掃蕩 for "room by room".
+- The series paragraph's voice (paragraph 3) and 逐間 for "room by room".
 - 破壁衝擊 as a damage label, and 太空燃料 for VGE's astrofuel.
-- Paragraph 2 of the descriptions is now VFEP's own 10th generation paragraph; convert the zh-Hans pack's rendering of it, as with the other pack terms.
+- Paragraph 2 of the descriptions is the family's rendering of VFEP's 10th generation paragraph, shared verbatim with the other warcasket sets.

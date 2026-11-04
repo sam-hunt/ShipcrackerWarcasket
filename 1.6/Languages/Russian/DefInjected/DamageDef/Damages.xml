@@ -2,6 +2,6 @@
 <LanguageData>
   <!-- EN: breach -->
   <SCWC_Breach.label>пробой</SCWC_Breach.label>
-  <!-- EN: {0} has been crushed by a breaching impact. -->
-  <SCWC_Breach.deathMessage>{0} {PAWN_gender ? раздавлен : раздавлена} пробивным ударом.</SCWC_Breach.deathMessage>
+  <!-- EN: {0} has been crushed to death by a breach landing. -->
+  <SCWC_Breach.deathMessage>{0} {PAWN_gender ? раздавлен : раздавлена} при приземлении после пробивного прыжка.</SCWC_Breach.deathMessage>
 </LanguageData>

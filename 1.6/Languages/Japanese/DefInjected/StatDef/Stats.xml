@@ -3,11 +3,11 @@
 
   <!-- EN: breach jump range -->
   <SCWC_BreachJumpRange.label>ブリーチジャンプ範囲</SCWC_BreachJumpRange.label>
-  <!-- EN: The farthest a breach jump can carry the wearer. -->
+  <!-- EN: The maximum distance of a breach jump. -->
   <SCWC_BreachJumpRange.description>ブリーチジャンプの最大距離です.</SCWC_BreachJumpRange.description>
   <!-- EN: breach power -->
   <SCWC_BreachPower.label>ブリーチ威力</SCWC_BreachPower.label>
-  <!-- EN: Multiplier on the damage a breach jump landing deals to walls and other structures. Damage to creatures and mechanoids is unaffected. -->
-  <SCWC_BreachPower.description>ブリーチジャンプの着地で壁などの建造物に与えるダメージの掛け率です.生物やメカノイドへのダメージには影響しません.</SCWC_BreachPower.description>
+  <!-- EN: A multiplier on the damage a breach jump landing deals to walls and other structures. Creatures and mechanoids take no extra damage. -->
+  <SCWC_BreachPower.description>ブリーチジャンプの着地で壁などの建造物に与えるダメージの掛け率です.生物やメカノイドが受けるダメージは増えません.</SCWC_BreachPower.description>
 
 </LanguageData>

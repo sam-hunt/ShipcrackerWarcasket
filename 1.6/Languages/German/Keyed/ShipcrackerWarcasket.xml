@@ -3,8 +3,8 @@
 
   <!-- EN: Shipcracker Warcasket -->
   <SCWC_SettingsCategory>Schiffsknacker-Kriegssarg</SCWC_SettingsCategory>
-  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket's definitions, so the set keeps its built-in values. -->
-  <SCWC_SettingsUnavailable>Diese Einstellungen sind nicht verfügbar. Eine andere Mod hat die Definitionen des Schiffsknacker-Kriegssargs verändert, daher behält das Set seine eingebauten Werte.</SCWC_SettingsUnavailable>
+  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket, so the set will use its built-in values. -->
+  <SCWC_SettingsUnavailable>Diese Einstellungen sind nicht verfügbar. Eine andere Mod hat den Schiffsknacker-Kriegssarg verändert, daher verwendet das Set seine eingebauten Werte.</SCWC_SettingsUnavailable>
 
   <!-- EN: Breach jump -->
   <SCWC_SectionJump>Durchbruchssprung</SCWC_SectionJump>
@@ -20,8 +20,8 @@
 
   <!-- EN: Tank capacity ({0}) -->
   <SCWC_TankCapacity>Tankkapazität ({0})</SCWC_TankCapacity>
-  <!-- EN: The amount of fuel the armor's tank holds when full. A tank already holding more than this loses the excess. Default: {0}. -->
-  <SCWC_TankCapacityDesc>Wie viel Treibstoff der volle Tank der Rüstung fasst. Enthält ein Tank bereits mehr, verliert er den Überschuss. Standard: {0}.</SCWC_TankCapacityDesc>
+  <!-- EN: The amount of fuel the armor's tank holds when full. Default: {0}. -->
+  <SCWC_TankCapacityDesc>Wie viel Treibstoff der volle Tank der Rüstung fasst. Standard: {0}.</SCWC_TankCapacityDesc>
 
   <!-- EN: Range (cells) -->
   <SCWC_JumpRange>Reichweite (Zellen)</SCWC_JumpRange>
@@ -40,13 +40,13 @@
 
   <!-- EN: Blast radius (cells) -->
   <SCWC_BlastRadius>Explosionsradius (Zellen)</SCWC_BlastRadius>
-  <!-- EN: The radius of the blast when the pilot lands. At 0, landings cause no blast. Default: {0}. -->
-  <SCWC_BlastRadiusDesc>Der Radius der Explosion, wenn der Pilot landet. Bei 0 lösen Landungen keine Explosion aus. Standard: {0}.</SCWC_BlastRadiusDesc>
+  <!-- EN: The radius of the blast when the pilot lands. Default: {0}. -->
+  <SCWC_BlastRadiusDesc>Der Radius der Explosion, wenn der Pilot landet. Standard: {0}.</SCWC_BlastRadiusDesc>
 
   <!-- EN: Roof punch radius (cells) -->
   <SCWC_RoofRadius>Radius des Dachdurchbruchs (Zellen)</SCWC_RoofRadius>
-  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Below 1, only the roof over the pilot's own cell opens; at 0, roofs are left intact. A jump within a single room never breaks the roof, and overhead mountain always holds. Default: {0}. -->
-  <SCWC_RoofRadiusDesc>In diesem Radius reißt der Pilot beim Abheben und bei der Landung das Dach um sich herum auf. Unter 1 öffnet sich nur das Dach über seiner eigenen Zelle, bei 0 bleiben Dächer unversehrt. Ein Sprung innerhalb eines einzigen Raums durchbricht das Dach nie, und eine massive Höhlendecke hält immer stand. Standard: {0}.</SCWC_RoofRadiusDesc>
+  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Overhead mountain is never broken. Default: {0}. -->
+  <SCWC_RoofRadiusDesc>In diesem Radius reißt der Pilot beim Abheben und bei der Landung das Dach um sich herum auf. Eine massive Höhlendecke wird nie durchbrochen. Standard: {0}.</SCWC_RoofRadiusDesc>
 
   <!-- EN: Damage to creatures -->
   <SCWC_CreatureDamage>Schaden an Lebewesen</SCWC_CreatureDamage>
@@ -55,12 +55,12 @@
 
   <!-- EN: Armor penetration (%) -->
   <SCWC_ArmorPenetration>Rüstungsdurchdringung (%)</SCWC_ArmorPenetration>
-  <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
-  <SCWC_ArmorPenetrationDesc>Die Rüstungsdurchdringung des Schadens, den die Landeexplosion an Lebewesen verursacht. Standard: {0}.</SCWC_ArmorPenetrationDesc>
+  <!-- EN: The armor penetration of the landing blast against creatures. Default: {0}. -->
+  <SCWC_ArmorPenetrationDesc>Die Rüstungsdurchdringung der Landeexplosion gegen Lebewesen. Standard: {0}.</SCWC_ArmorPenetrationDesc>
   <!-- EN: Armor penetration (MPa) -->
   <SCWC_ArmorPenetrationMPa>Rüstungsdurchdringung (MPa)</SCWC_ArmorPenetrationMPa>
-  <!-- EN: The armor penetration of the landing blast's damage to creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade's blast penetrates about 17, and flak armor rates 12. Default: {0}. -->
-  <SCWC_ArmorPenetrationMPaDesc>Die Rüstungsdurchdringung des Schadens, den die Landeexplosion an Lebewesen verursacht, in Megapascal, der Einheit, in der Combat Extended die Rüstung gegen Wucht angibt. Zum Vergleich: Die Explosion einer Splitterhandgranate durchdringt etwa 17, eine Schutzweste liegt bei 12. Standard: {0}.</SCWC_ArmorPenetrationMPaDesc>
+  <!-- EN: The armor penetration of the landing blast against creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade penetrates about 17 and flak armor rates 12. Default: {0}. -->
+  <SCWC_ArmorPenetrationMPaDesc>Die Rüstungsdurchdringung der Landeexplosion gegen Lebewesen, in Megapascal, der Einheit, in der Combat Extended die Rüstung gegen Wucht angibt. Zum Vergleich: Eine Splitterhandgranate durchdringt etwa 17, eine Schutzweste liegt bei 12. Standard: {0}.</SCWC_ArmorPenetrationMPaDesc>
 
   <!-- EN: Damage to walls -->
   <SCWC_WallDamage>Schaden an Wänden</SCWC_WallDamage>
@@ -84,8 +84,8 @@
 
   <!-- EN: Unlimited range in vacuum -->
   <SCWC_VacuumBurn>Unbegrenzte Reichweite im Vakuum</SCWC_VacuumBurn>
-  <!-- EN: When enabled, the jump becomes the breach burn in vacuum: unlimited range, but only to a target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
-  <SCWC_VacuumBurnDesc>Wenn aktiviert, wird der Sprung im Vakuum zum Durchbruchsschub: unbegrenzte Reichweite, aber nur zu einem Ziel in Sichtlinie. Wenn deaktiviert, gelten für Sprünge im Vakuum dieselben Regeln wie unter Schwerkraft. Standard: an.</SCWC_VacuumBurnDesc>
+  <!-- EN: When enabled, a breach jump made in vacuum becomes a breach burn, with unlimited range to any target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
+  <SCWC_VacuumBurnDesc>Wenn aktiviert, wird ein Durchbruchssprung im Vakuum zum Durchbruchsschub, mit unbegrenzter Reichweite zu jedem Ziel in Sichtlinie. Wenn deaktiviert, gelten für Sprünge im Vakuum dieselben Regeln wie unter Schwerkraft. Standard: an.</SCWC_VacuumBurnDesc>
   <!-- EN:  (requires Odyssey) -->
   <SCWC_RequiresOdysseySuffix> (erfordert Odyssey)</SCWC_RequiresOdysseySuffix>
 

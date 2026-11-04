@@ -21,9 +21,9 @@
 [list]
 [*]可安全添加至现有存档。
 [*]仍有殖民者封在这套战棺里时，不可安全移除。
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]：与VFE海盗自带套装遵循相同规则，具备舱外活动（EVA）能力。
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]：遵循其战棺真空规则，头盔自带可补充的氧气供应。太空行走速度更快，跳跃改烧天体燃料而非化合燃料（紫色的！）。
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2890901044]Combat Extended[/url]：护甲值、体积与体积携带能力和其他太空时代战棺相当，头盔可隔绝CE烟雾。
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]：遵循其战棺真空规则，头盔自带可补充的氧气供应。太空行走速度更快，跳跃改烧天体燃料而非化合燃料（紫色的！）。
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]：与VFE海盗自带套装遵循相同规则，具备舱外活动（EVA）能力。
 [/list]
 
 [hr][/hr]
@@ -38,7 +38,7 @@
 答：研究VFE海盗的「太空时代战棺」项目，然后像其他套装一样在战棺铸造厂完成改造。各部件可以与VFE海盗自带的套装随意混搭。
 
 [b]问：这会不会不平衡？[/b]
-答：这由你决定。默认数值以VFE海盗其他后期太空时代套装为基准做了平衡。想玩得更轻松或更有挑战，就去Mod 设置里调整燃料消耗、冷却时间、跳跃距离、伤害等数值。你的殖民地，你说了算。
+答：这由你决定。默认数值以VFE海盗其他后期太空时代套装为基准做了平衡。想玩得更轻松或更有挑战，就去Mod 设置里调整技能消耗、冷却时间、跳跃距离、伤害等数值。你的殖民地，你说了算。
 
 [hr][/hr]
 [h1]链接[/h1]

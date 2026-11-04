@@ -3,8 +3,8 @@
 
   <!-- EN: Shipcracker Warcasket -->
   <SCWC_SettingsCategory>シップクラッカー・ウォーキャスケット</SCWC_SettingsCategory>
-  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket's definitions, so the set keeps its built-in values. -->
-  <SCWC_SettingsUnavailable>これらの設定は使用できません.別のMODがシップクラッカー・ウォーキャスケットの定義を変更しているため,セットは本来の値のまま動作します.</SCWC_SettingsUnavailable>
+  <!-- EN: These settings are unavailable. Another mod has changed the shipcracker warcasket, so the set will use its built-in values. -->
+  <SCWC_SettingsUnavailable>これらの設定は使用できません.別のMODがシップクラッカー・ウォーキャスケットを変更しているため,セットは本来の値を使用します.</SCWC_SettingsUnavailable>
 
   <!-- EN: Breach jump -->
   <SCWC_SectionJump>ブリーチジャンプ</SCWC_SectionJump>
@@ -20,8 +20,8 @@
 
   <!-- EN: Tank capacity ({0}) -->
   <SCWC_TankCapacity>タンク容量 ({0})</SCWC_TankCapacity>
-  <!-- EN: The amount of fuel the armor's tank holds when full. A tank already holding more than this loses the excess. Default: {0}. -->
-  <SCWC_TankCapacityDesc>満タン時にアーマーのタンクに入る燃料の量です.すでにこの値を超える燃料が入っているタンクでは,超過分が失われます.デフォルト: {0}.</SCWC_TankCapacityDesc>
+  <!-- EN: The amount of fuel the armor's tank holds when full. Default: {0}. -->
+  <SCWC_TankCapacityDesc>満タン時にアーマーのタンクに入る燃料の量です.デフォルト: {0}.</SCWC_TankCapacityDesc>
 
   <!-- EN: Range (cells) -->
   <SCWC_JumpRange>範囲 (タイル)</SCWC_JumpRange>
@@ -40,13 +40,13 @@
 
   <!-- EN: Blast radius (cells) -->
   <SCWC_BlastRadius>爆風半径 (タイル)</SCWC_BlastRadius>
-  <!-- EN: The radius of the blast when the pilot lands. At 0, landings cause no blast. Default: {0}. -->
-  <SCWC_BlastRadiusDesc>パイロットが着地したときに起こる爆風の半径です.0にすると,着地しても爆風は起こりません.デフォルト: {0}.</SCWC_BlastRadiusDesc>
+  <!-- EN: The radius of the blast when the pilot lands. Default: {0}. -->
+  <SCWC_BlastRadiusDesc>パイロットが着地したときに起こる爆風の半径です.デフォルト: {0}.</SCWC_BlastRadiusDesc>
 
   <!-- EN: Roof punch radius (cells) -->
   <SCWC_RoofRadius>屋根破壊半径 (タイル)</SCWC_RoofRadius>
-  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Below 1, only the roof over the pilot's own cell opens; at 0, roofs are left intact. A jump within a single room never breaks the roof, and overhead mountain always holds. Default: {0}. -->
-  <SCWC_RoofRadiusDesc>離陸時と着地時に,パイロットの周囲で屋根を突き破る範囲の半径です.1未満ではパイロットのいるタイルの屋根だけが開き,0では屋根は壊れません.同じ部屋の中でのジャンプでは屋根は壊れず,岩天井(岩盤)は常に残ります.デフォルト: {0}.</SCWC_RoofRadiusDesc>
+  <!-- EN: The radius of roof torn open around the pilot at takeoff and landing. Overhead mountain is never broken. Default: {0}. -->
+  <SCWC_RoofRadiusDesc>離陸時と着地時に,パイロットの周囲で屋根を突き破る範囲の半径です.岩天井(岩盤)が壊れることはありません.デフォルト: {0}.</SCWC_RoofRadiusDesc>
 
   <!-- EN: Damage to creatures -->
   <SCWC_CreatureDamage>生物へのダメージ</SCWC_CreatureDamage>
@@ -55,12 +55,12 @@
 
   <!-- EN: Armor penetration (%) -->
   <SCWC_ArmorPenetration>アーマー貫通力 (%)</SCWC_ArmorPenetration>
-  <!-- EN: The armor penetration of the landing blast's damage to creatures. Default: {0}. -->
-  <SCWC_ArmorPenetrationDesc>着地の爆風が生物に与えるダメージのアーマー貫通力です.デフォルト: {0}.</SCWC_ArmorPenetrationDesc>
+  <!-- EN: The armor penetration of the landing blast against creatures. Default: {0}. -->
+  <SCWC_ArmorPenetrationDesc>着地の爆風の,生物に対するアーマー貫通力です.デフォルト: {0}.</SCWC_ArmorPenetrationDesc>
   <!-- EN: Armor penetration (MPa) -->
   <SCWC_ArmorPenetrationMPa>アーマー貫通力 (MPa)</SCWC_ArmorPenetrationMPa>
-  <!-- EN: The armor penetration of the landing blast's damage to creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade's blast penetrates about 17, and flak armor rates 12. Default: {0}. -->
-  <SCWC_ArmorPenetrationMPaDesc>着地の爆風が生物に与えるダメージのアーマー貫通力です.単位はCombat Extendedが打撲系アーマーを評価するメガパスカル(MPa)です.参考までに,手榴弾の爆風は約17を貫通し,防弾チョッキのアーマーは12です.デフォルト: {0}.</SCWC_ArmorPenetrationMPaDesc>
+  <!-- EN: The armor penetration of the landing blast against creatures, in megapascals as Combat Extended rates blunt armor. For comparison, a frag grenade penetrates about 17 and flak armor rates 12. Default: {0}. -->
+  <SCWC_ArmorPenetrationMPaDesc>着地の爆風の,生物に対するアーマー貫通力です.単位はCombat Extendedが打撲系アーマーを評価するメガパスカル(MPa)です.参考までに,手榴弾は約17を貫通し,防弾チョッキのアーマーは12です.デフォルト: {0}.</SCWC_ArmorPenetrationMPaDesc>
 
   <!-- EN: Damage to walls -->
   <SCWC_WallDamage>壁へのダメージ</SCWC_WallDamage>
@@ -84,8 +84,8 @@
 
   <!-- EN: Unlimited range in vacuum -->
   <SCWC_VacuumBurn>真空中は距離無制限</SCWC_VacuumBurn>
-  <!-- EN: When enabled, the jump becomes the breach burn in vacuum: unlimited range, but only to a target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
-  <SCWC_VacuumBurnDesc>有効にすると,真空中ではジャンプがブリーチ噴射になります.距離の制限はなくなりますが,視線が通るターゲットにしか向かえません.無効にすると,真空中のジャンプも重力下と同じルールに従います.デフォルト: On.</SCWC_VacuumBurnDesc>
+  <!-- EN: When enabled, a breach jump made in vacuum becomes a breach burn, with unlimited range to any target in line of sight. When disabled, jumps in vacuum follow the same rules as under gravity. Default: on. -->
+  <SCWC_VacuumBurnDesc>有効にすると,真空中で行うブリーチジャンプがブリーチ噴射になり,視線が通るターゲットであれば距離の制限なく向かえます.無効にすると,真空中のジャンプも重力下と同じルールに従います.デフォルト: On.</SCWC_VacuumBurnDesc>
   <!-- EN:  (requires Odyssey) -->
   <SCWC_RequiresOdysseySuffix> (Odysseyが必要)</SCWC_RequiresOdysseySuffix>
 

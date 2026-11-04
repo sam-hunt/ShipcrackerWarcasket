@@ -17,9 +17,8 @@ This mod follows that pattern so the set reads like one of VFEP's own.
 | entomb / weld into (the set) | заковать в броню мертвеца | Community VFEP pack (`VFEPirates.EntombInWarcasket`). Used in the Workshop page for "weld it on" and "welded into the set". |
 | shipcracker (set name) | абордажная (броня мертвеца) | **Coined.** Royalty's `Shipcracker37.title` is `штурмовик`, but its adjective `штурмовая` is already the community pack's Shock set (`штурмовая броня мертвеца`), so reusing it would collide. `абордажная` (boarding) follows the pack's adjective pattern and names the same role the backstory describes. |
 | shipcracker warcasket / shoulders / helmet | абордажная броня мертвеца / наплечники абордажной брони / шлем абордажной брони | Pack pattern for named sets (Siegebreaker: `прорывная броня мертвеца`, `наплечники прорывной брони`, `шлем прорывной брони`). |
-| a shipcracker (the pilot, lore paragraph 3) | штурмовик | Royalty `Shipcracker37.title`, verbatim. Used only as a person noun ("Штурмовик в такой броне"), never as the set adjective. |
 | Shipcracker backstory (Workshop page) | предыстория «Штурмовик» | Royalty `Shipcracker37.title`, capitalized and in guillemets as a cited name. |
-| launch through the vacuum ... room-to-room combat | летит сквозь пустоту космоса к вражескому кораблю ... в тесном бою | Mirrors Royalty `Shipcracker37.description` ("полёт ... сквозь пустоту космоса в сторону вражеского корабля ... захват в тесном бою"), recast into finite verbs. |
+| across the vacuum ... take a ship room by room | переносят пилота сквозь пустоту космоса ... брать корабль отсек за отсеком | Mirrors Royalty `Shipcracker37.description` ("полёт ... сквозь пустоту космоса в сторону вражеского корабля"), recast into finite verbs. |
 | Imperial | имперский | Royalty (`имперский дезертир`, `имперский торговец`). |
 | spacer-tech (warcasket) | космического уровня | Core `TechLevel_Spacer` = `космический`; the pack's spacer sets say `сделанная по технологиям космического уровня`, shortened here. |
 | improved impact dispersion | улучшенное рассеивание энергии ударов | Community pack, Guardian (`с продвинутым рассеиванием энергии ударов`), with `улучшенным` for "improved". |
@@ -38,7 +37,7 @@ This mod follows that pattern so the set reads like one of VFEP's own.
 | structures (stat description) | постройки | Core `Structure.label` = `постройка`. |
 | plasteel / uranium / gravlite panel | пласталь / уран / панель из гравлита | Core; Odyssey `GravlitePanel`. |
 | chemfuel / astrofuel | химтопливо / астротопливо | Short form as in Odyssey and the pack (`химтоплива`); astrofuel is coined (VGE's Russian label not checked). |
-| deathMessage | `{0} {PAWN_gender ? раздавлен : раздавлена} пробивным ударом.` | Mirrors Core `Crush.deathMessage` (`раздавлен : раздавлена`). Keeps the English `{0}`; `PAWN` is supplied by the call site (`deathMessage.Formatted(pawn.LabelShortCap, pawn.Named("PAWN"))`, decompile-verified). |
+| deathMessage | `{0} {PAWN_gender ? раздавлен : раздавлена} при приземлении после пробивного прыжка.` | Mirrors Core `Crush.deathMessage` (`раздавлен : раздавлена`; Core drops "to death", so does this). "Breach landing" is `приземление после пробивного прыжка`, as in the breach power stat description. Keeps the English `{0}`; `PAWN` is supplied by the call site (`deathMessage.Formatted(pawn.LabelShortCap, pawn.Named("PAWN"))`, decompile-verified). |
 | Siegebreaker / Brute / Guardian (Workshop page) | прорывная / беспощадная / охранная броня | Community pack set adjectives. |
 | spacer warcaskets (research, Workshop FAQ) | «Космическая броня мертвеца» | Coined; the pack's research label was not available to check. Quoted as a project label because the English FAQ names the project. |
 | Workshop title | Абордажная броня мертвеца | Contains `броня мертвеца`; sentence case. Also the `SCWC_SettingsCategory` value (title coupling). |
@@ -56,8 +55,7 @@ This mod follows that pattern so the set reads like one of VFEP's own.
 ## Pending native review
 
 - `абордажная` as the set adjective, instead of Royalty's `штурмовик`/`штурмовая`
-  (taken by the pack's Shock set). Is the person noun `штурмовик` in lore
-  paragraph 3 confusing next to the Shock set?
+  (taken by the pack's Shock set).
 - The coined breach family (`пробивной прыжок`, `пробивной рывок`, `пробой`,
   `сила пробоя`, `пробивным ударом`) and `десантные двигатели`.
 - `пробивные манипуляторы` for "breaching arms": whether "arms" reads better as

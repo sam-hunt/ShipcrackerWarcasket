@@ -30,7 +30,8 @@ different mod (Vanilla Armour Expanded) renders "siegebreaker" as
 | breach burn (vacuum label) | ブリーチ噴射 | Coined. 噴射 is the ordinary word for a rocket burn; also used for "the burn" in descriptions. |
 | breach power | ブリーチ威力 | Coined; description mirrors Core `MeleeDamageFactor` (…の掛け率です). |
 | breach (DamageDef label) | 突破 | Coined noun, alongside Core damage labels such as 爆発. |
-| deathMessage | {0}は 突破時の衝撃で押し潰されて死亡しました. | Mirrors Core `Crush.deathMessage` ({0}は 押し潰されて死亡しました.), keeping vanilla's space after the name; `{0}` bare. |
+| deathMessage | {0}は ブリーチ着地で押し潰されて死亡しました. | Mirrors Core `Crush.deathMessage` ({0}は 押し潰されて死亡しました.), keeping vanilla's space after the name; `{0}` bare. |
+| breach landing | ブリーチ着地 | Coined to match ブリーチジャンプ / ブリーチ噴射; covers both, where ブリーチジャンプの着地 would exclude the burn. |
 | breaching arms | ブリーチングアーム | Coined from Core's ブリーチング. |
 | drop thrusters | ドロップスラスター | Odyssey `Thruster.label` スラスター. |
 | hull / hull plating | 船体 / 船体装甲 | 船体 from Royalty `Shipcracker37` and Core `Ship_Beam` (船体骨格); 船体装甲 coined. Not Odyssey's `GravshipHull` (グラヴシップ壁), which is a specific wall building. |
@@ -79,4 +80,4 @@ different mod (Vanilla Armour Expanded) renders "siegebreaker" as
   the community VFEP translation surfaces, align these and the set names to it.
 - Lore paragraphs 2 and 3 and the whole Workshop page: first machine-assisted
   prose pass, checked for natural clause order but not by a native reader.
-- Paragraph 2 of the descriptions is now VFEP's own 10th generation paragraph; no community Japanese rendering is known, so translate it fresh in the pack's register once one surfaces.
+- Paragraph 2 of the descriptions is the family's rendering of VFEP's 10th generation paragraph, shared verbatim with the other warcasket sets. No community Japanese rendering is known; re-ground it if one surfaces.

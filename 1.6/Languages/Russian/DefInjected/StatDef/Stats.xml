@@ -2,10 +2,10 @@
 <LanguageData>
   <!-- EN: breach jump range -->
   <SCWC_BreachJumpRange.label>дальность пробивного прыжка</SCWC_BreachJumpRange.label>
-  <!-- EN: The farthest a breach jump can carry the wearer. -->
+  <!-- EN: The maximum distance of a breach jump. -->
   <SCWC_BreachJumpRange.description>Максимальная дальность пробивного прыжка.</SCWC_BreachJumpRange.description>
   <!-- EN: breach power -->
   <SCWC_BreachPower.label>сила пробоя</SCWC_BreachPower.label>
-  <!-- EN: Multiplier on the damage a breach jump landing deals to walls and other structures. Damage to creatures and mechanoids is unaffected. -->
-  <SCWC_BreachPower.description>Множитель урона, который приземление после пробивного прыжка наносит стенам и другим постройкам. На урон по существам и механоидам не влияет.</SCWC_BreachPower.description>
+  <!-- EN: A multiplier on the damage a breach jump landing deals to walls and other structures. Creatures and mechanoids take no extra damage. -->
+  <SCWC_BreachPower.description>Множитель урона, который приземление после пробивного прыжка наносит стенам и другим постройкам. Существа и механоиды дополнительного урона не получают.</SCWC_BreachPower.description>
 </LanguageData>

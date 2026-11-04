@@ -20,10 +20,10 @@ Mit Odyssey ist das ganze Set vakuumtauglich, und die Weltraumfunktionen bezahlt
 [h1]Mod-Kompatibilität[/h1]
 [list]
 [*]Kann gefahrlos zu bestehenden Spielständen hinzugefügt werden.
-[*]Kann nicht gefahrlos entfernt werden, solange jemand in das Set eingeschweißt ist.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]: EVA-tauglich nach denselben Regeln wie die Sets aus VFE Pirates.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]: Es gelten dessen Vakuumregeln für Kriegssärge, und der Helm hat einen eigenen, nachfüllbaren Sauerstoffvorrat. Der Träger bewegt sich schneller im Weltraum, und der Sprung verbrennt Astrosprit statt Sprit (lila!).
+[*]Kann nicht gefahrlos entfernt werden, solange jemand in das Set eingesargt ist.
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2890901044]Combat Extended[/url]: Rüstungswerte, Bulk und Bulk-Kapazität liegen auf dem Niveau anderer Kriegssärge der Techstufe Raumfahrt, und der Helm blockiert den Rauch von CE.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]: Es gelten dessen Vakuumregeln für Kriegssärge, und der Helm hat einen eigenen, nachfüllbaren Sauerstoffvorrat. Der Träger bewegt sich schneller im Weltraum, und der Sprung verbrennt Astrosprit statt Sprit (lila!).
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131]Save Our Ship 2[/url]: EVA-tauglich nach denselben Regeln wie die Sets aus VFE Pirates.
 [/list]
 
 [hr][/hr]
@@ -38,7 +38,7 @@ A: Nein, auch wenn das Set ganz klar für die Gefechte zwischen Schiffen in VGE2
 A: Erforsche das VFE-Pirates-Projekt 'Raumfahrt-Kriegssärge' und schweiße dann einen Kolonisten wie bei jedem anderen Set in der Kriegssarg-Gießerei ein. Die Teile lassen sich nach Belieben mit den Sets aus VFE Pirates kombinieren.
 
 [b]F: Ist das Set unausgewogen?[/b]
-A: Das entscheidest du. Die Standardwerte sind auf die anderen späten Raumfahrt-Sets aus VFE Pirates abgestimmt. Wenn du es leichter oder schwerer willst, passe in den Mod-Einstellungen Treibstoffverbrauch, Abklingzeit, Reichweite, Schaden usw. an. Deine Kolonie, deine Regeln.
+A: Das entscheidest du. Die Standardwerte sind auf die anderen späten Raumfahrt-Sets aus VFE Pirates abgestimmt. Wenn du es leichter oder schwerer willst, passe in den Mod-Einstellungen Fähigkeitskosten, Abklingzeit, Reichweite, Schaden usw. an. Deine Kolonie, deine Regeln.
 
 [hr][/hr]
 [h1]Links[/h1]

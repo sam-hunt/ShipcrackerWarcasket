@@ -51,10 +51,11 @@ Workshop page is never post-processed at all.
 | breach jump range / breach power | portée du saut de brèche / puissance de brèche | Royalty `JumpRange` = `portée de saut`; BreachPower description mirrors Core `MeleeDamageFactor.description` (`Un multiplicateur sur la quantité de dégâts...`). |
 | breach (DamageDef label) | impact de brèche | Core DamageDef labels are action nouns (`écrasement`, `explosion`); bare `brèche` names the gap, not the blow. |
 | jobReportString | utilise la capacité : {0}. | Third-person present like vanilla `JobDef.reportString`s, French-spaced colon, trailing period kept. |
-| deathMessage | {0} s'est fait écraser par un impact de brèche. | Core `Crush.deathMessage` = `{0} s'est fait écraser.` verbatim plus the agent; the construction needs no gender agreement, `{0}` stays bare. |
+| deathMessage | {0} s'est fait écraser par un atterrissage de brèche. | Core `Crush.deathMessage` = `{0} s'est fait écraser.` verbatim plus the agent; the construction needs no gender agreement, `{0}` stays bare. |
+| breach landing | atterrissage de brèche | **Coined**, same attributive `de brèche` pattern; the stat and settings prose say `l'atterrissage d'un saut de brèche` / `l'explosion d'atterrissage`. |
 | Imperial | impérial | Royalty `Empire.pawnSingular`. |
 | backstory | histoire | Core Keyed `Backstory` = `Histoire :`. |
-| lore paragraph 3 (launch... room by room) | se lance à travers le vide spatial, atterrit sur la coque du vaisseau ennemi, y perce un passage jusqu'à l'intérieur et conquiert le vaisseau pièce après pièce | Mirrors Royalty `Shipcracker37.description` (`se lancer à travers le vide spatial, d'atterrir sur la coque d'un navire ennemi, de percer des trous dedans et de le conquérir ... pièce après pièce`), with Odyssey's `vaisseau` for ship. |
+| lore paragraph 3 (series paragraph: throw the pilot across the vacuum... room by room) | Ses propulseurs de largage projettent le pilote à travers le vide spatial jusque sur la coque du vaisseau ennemi, et l'atterrissage y perce un passage jusqu'à l'intérieur ... prendre un vaisseau pièce après pièce | Mirrors Royalty `Shipcracker37.description` (`se lancer à travers le vide spatial, d'atterrir sur la coque d'un navire ennemi, de percer des trous dedans et de le conquérir ... pièce après pièce`), with Odyssey's `vaisseau` for ship. |
 | hull / hull plating | coque / coques de vaisseau | Odyssey `GravshipHull` = `coque de vaisseau`. |
 | wall / roof | mur / toit | Core `Wall` = `mur`. Vanilla's RoofDef labels say `plafond`, but its prose says `sous un toit` (43 vs 13); jumping over a building reads as `toit`. |
 | line of sight | ligne de vue | Core Keyed `AbilityRequiresLOS` = `Ligne de vue requise`. |
@@ -82,11 +83,9 @@ labels and descriptions, and the Breach Jump ability text. Still open:
 - `saut de brèche` / `poussée de brèche` / `puissance de brèche` /
   `impact de brèche` / `bras de brèche`: whether `de brèche` reads naturally
   as a modifier this often.
-- Lore paragraph 3, in particular "épaves récupérées et désertions l'ont
-  répandu" for "Salvage and desertion have since put the pattern", which now
-  closes the series paragraph. "leur goût du corps à corps" has no source
-  sentence any more ("a taste for close work" became "pilots who prefer close
-  work"). Paragraph 2 is now VFEP's 10th generation paragraph, with no
+- Lore paragraph 3, in particular "épaves récupérées et désertions ont
+  répandu ce modèle" for "Salvage and desertion have since put the pattern",
+  which closes the series paragraph. Paragraph 2 is now VFEP's 10th generation paragraph, with no
   community French rendering to lift.
 - Whole Workshop description (`.steamworkshop/Description/French.txt`),
   especially "un poids lourd du corps à corps" and the "de l'espace pour voler"
