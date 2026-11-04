@@ -34,7 +34,6 @@ up, re-ground against them and prefer its renderings.
 | breach power | Durchbruchskraft | Description mirrors Core `MeleeDamageFactor` ("Ein Multiplikator auf ..."). |
 | deathMessage | {0} wurde von einem Durchbruchseinschlag zu Tode gequetscht. | Mirrors Core `Crush.deathMessage` = "{0} wurde zu Tode gequetscht."; `{0}` bare. Einschlag after Core `MeteoriteImpact` = Meteoriteneinschlag. |
 | drop thrusters / drop engine | Landeschubdüsen / Landetriebwerk | Core drop pod = Landekapsel, Odyssey thruster = Schubdüse. |
-| fuel-burning | treibstoffbetrieben | Not "spritbetrieben": with VGE the jump burns astrofuel. Odyssey `ChemfuelTank.label` = kleiner Treibstofftank. |
 | chemfuel / astrofuel (Workshop) | Sprit / Astrosprit | Sprit is Core's chemfuel; Astrosprit coined by analogy (VGE's own German term unknown). |
 | impact dispersion | Stoßverteilung | Plain technical coinage. |
 | melee assistor modules | Nahkampf-Assistenzmodule | Royalty `Apparel_ArmorCataphract.description` "Neuromemetische Assistenzsysteme". |
@@ -73,5 +72,5 @@ up, re-ground against them and prefer its renderings.
 - Durchbruchs- with the linking s (Durchbruchssprung, Durchbruchsschub, Durchbruchssprungweite) follows vanilla Durchbruchsaxt; a reviewer may prefer Durchbruchsprung.
 - Durchbruchsschub for "breach burn". Rejected: Durchbruchszündung (sounds like a single ignition), Durchbruchsflug (loses the engine sense).
 - Landeschubdüsen for "drop thrusters". Rejected: Sprungdüsen (loses the orbital-drop sense), Absetzdüsen (unidiomatic).
-- Lore voice: "Imperiale Bauart, kein Piratenwerk" and "Als Piloten wählt man Leute, die gern aus nächster Nähe kämpfen" are free renderings of the English rhythm, not literal ones.
+- Lore paragraphs 2 and 3 were reworded in English after this generation: paragraph 2 is now VFEP's 10th generation paragraph (no community German rendering to lift; translate fresh), paragraph 3 the Shipcracker series paragraph. "Imperiale Bauart, kein Piratenwerk" and "Als Piloten wählt man Leute, die gern aus nächster Nähe kämpfen" no longer have a source sentence.
 - Astrosprit (VGE astrofuel) and the whole Workshop page prose.

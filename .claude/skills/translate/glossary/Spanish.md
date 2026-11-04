@@ -37,7 +37,7 @@ and `casco <set> de ataúd de guerra` for the other parts; this mod follows it.
 | hull / hull plating | casco (de nave) / cascos de nave | Royalty `Shipcracker37.description`, Odyssey `GravshipHull` = `casco de gravinave`. Context separates it from `casco` (helmet). |
 | sealed | hermético | Odyssey (`paredes y puertas herméticas`). |
 | respirator | respirador (integrado / propio) | No vanilla Castilian item; plain word. |
-| wearer | portador | Core (`Apparel_ArmorMarineHelmetPrestige.description`). |
+| wearer (Workshop page only; the stat description no longer names a person) | portador | Core (`Apparel_ArmorMarineHelmetPrestige.description`). |
 | line of sight | línea de visión | Core smoke description (`oscureciendo la línea de visión`). |
 | plasteel / uranium / chemfuel / gravlite panel / vacuum / orbit | plastiacero / uranio / biocombustible / panel de gravilita / vacío / órbita | Core and Odyssey labels. |
 | astrofuel (VGE) | astrocombustible | Coined, parallel to Core `biocombustible`; VGE's own Spanish, if any, was not checked. |
@@ -60,7 +60,8 @@ and `casco <set> de ataúd de guerra` for the other parts; this mod follows it.
   something like `salto de asalto`.
 - `brazos zapadores` for "breaching arms".
 - The deathMessage restructure (active voice, victim as object).
-- Lore paragraphs 2 and 3, in particular "entre chatarreros y desertores" for
-  "Salvage and desertion" and "El escudo detiene balas, no filos".
+- Lore paragraph 3, in particular "entre chatarreros y desertores" for
+  "Salvage and desertion", which now closes the series paragraph. "El escudo
+  detiene balas, no filos" has no source sentence any more. Paragraph 2 of the descriptions is VFEP's own 10th generation paragraph; lift the community pack's rendering of it verbatim so the set reads as one of VFEP's own.
 - Whole Workshop description (`.steamworkshop/Description/Spanish.txt`),
   especially "una opción de peso" and "apto para EVA".

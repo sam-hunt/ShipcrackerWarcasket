@@ -23,8 +23,9 @@ and only these** (progressive disclosure; if `l10n/` is empty, run
   table for the target language. Read it in the same pass.
 - `l10n/lessons.md`, cross-language lessons; read when generating a new
   language, skim otherwise. Its free-prose register lesson applies with
-  full force here: the three descriptions are lore paragraphs with no
-  vanilla sentence to mirror, so a separate register read of every
+  full force here: the series paragraph and the first lines of the three
+  descriptions are lore prose with no vanilla sentence to mirror, so a
+  separate register read of every
   description and Workshop sentence is part of every pass.
 - `l10n/workshop.md`, the `.steamworkshop/` conventions, whenever the pass
   touches the Workshop description (every initial generation does).
@@ -85,11 +86,17 @@ notes for the shim or flow edit this repo owes before continuing.
   - Never translate or place a non-`required` sidecar entry (texture paths
     such as `shieldTexPath`) in any language file.
 - **The three descriptions share their second and third paragraphs
-  verbatim** (the Imperial-pattern lore and the boarding paragraph); only
-  the first paragraph differs per part. Keep the shared paragraphs
-  byte-identical across the three defs in every language, and keep each
-  def's `shortDescription` identical to its description's first paragraph,
-  as the English does. Paragraph breaks are the literal two-character
+  verbatim.** Paragraph two is VFEP's own 10th generation paragraph, the
+  one every VFEP spacer set carries, with `armour` respelled `armor`;
+  paragraph three is the Shipcracker series paragraph; only the first
+  paragraph differs per part. Where the language's community VFEP
+  translation renders the 10th generation paragraph (the zh-Hans pack, RMK
+  for Korean, and the Portuguese, Russian and Spanish packs named in the
+  glossary), lift that paragraph verbatim so the set reads as one of VFEP's
+  own, and derive Traditional Chinese from the zh-Hans rendering; elsewhere
+  translate it fresh. Keep the shared paragraphs byte-identical across the
+  three defs in every language, and keep each def's `shortDescription`
+  identical to its description's first paragraph, as the English does. Paragraph breaks are the literal two-character
   `\n` sequences the def XML uses.
 - **The armor's `chargeNoun` ("fuel unit") is shown only through vanilla's
   `{CHARGENOUN_plural}` and `{lookup: ...}` slots.** A rendering the language

@@ -66,3 +66,4 @@ checked character by character against the zh-Hant Core/Royalty/Odyssey tars
 - The lore paragraphs' voice (這是帝國的設計，不是海盜的。 / 護盾擋得住子彈，擋不住刀刃，
   所以駕駛員專挑愛打近身戰的人。) and 逐間掃蕩 for "room by room".
 - 破壁衝擊 as a damage label, and 太空燃料 for VGE's astrofuel.
+- Paragraph 2 of the descriptions is now VFEP's own 10th generation paragraph; convert the zh-Hans pack's rendering of it, as with the other pack terms.

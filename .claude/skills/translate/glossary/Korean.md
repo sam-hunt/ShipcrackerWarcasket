@@ -23,7 +23,7 @@ this mod copies both patterns so the set reads like one of VFEP's own.
 | Imperial | 제국 (bare prefix) | Royalty backstories: `제국 부대`, `제국 사제`, `제국군`. |
 | spacer-tech / spacer | 우주시대 기술 / 우주시대 | RMK VFEP descriptions (`우주시대 기술로 특화된`); Core `TechLevel_Spacer` = `우주`. |
 | improved impact dispersion | 개선된 충격 분산 능력 | RMK Guardian/Brute descriptions, verbatim. |
-| 10th-generation (chassis) | 10세대 (우주시대 프레임) | RMK `10세대 워캐스킷`; "chassis" follows RMK's foundry text `워캐스킷 프레임`. |
+| 10th generation (paragraph 2) | 10세대 | RMK `10세대 워캐스킷`. Paragraph 2 of the descriptions is VFEP's own 10th generation paragraph; lift the community pack's rendering of it verbatim so the set reads as one of VFEP's own. "chassis" left the English. |
 | pilot | 조종사 | RMK `VFEP_WarcasketHelmet_Shock` (`조종사의 반응 시간`). |
 | breach (damage label, "breaching") | 돌파 | Core `Tribal_Breacher` = `돌파자`, `Gun_ThumpCannon` `돌파용 폭탄`. `DamageDef` label shape follows Core `Bomb` = `폭발`. |
 | jump | 도약 | Royalty `Apparel_ArmorLocust.verbs.jump` = `도약`; RMK Aerial `충격 도약`. |
@@ -68,7 +68,8 @@ this mod copies both patterns so the set reads like one of VFEP's own.
 - `돌파 분사` for the vacuum-mode label, and `분사` for "burn" in lore.
 - `강하 추진기`, `돌파용 강화 팔`, `승선 전투 부대`, `아스트로연료`: coined
   with no vanilla or community precedent.
-- Lore paragraph 2 (`...주조대에까지 흘러들었습니다`) and the terse two-sentence
-  split of "The shield stops bullets, not blades: ...".
+- The closing sentence `...주조대에까지 흘러들었습니다`, now the last sentence
+  of the series paragraph (paragraph 3). The two-sentence split of "The shield
+  stops bullets, not blades" has no source sentence any more.
 - Whole Workshop description (`.steamworkshop/Description/Korean.txt`) is a
   first machine-assisted pass.

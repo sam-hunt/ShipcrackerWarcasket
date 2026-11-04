@@ -23,7 +23,7 @@ This mod follows that pattern so the set reads like one of VFEP's own.
 | Imperial | имперский | Royalty (`имперский дезертир`, `имперский торговец`). |
 | spacer-tech (warcasket) | космического уровня | Core `TechLevel_Spacer` = `космический`; the pack's spacer sets say `сделанная по технологиям космического уровня`, shortened here. |
 | improved impact dispersion | улучшенное рассеивание энергии ударов | Community pack, Guardian (`с продвинутым рассеиванием энергии ударов`), with `улучшенным` for "improved". |
-| 10th-generation chassis | каркас десятого поколения | Pack lore (`Броня мертвеца десятого поколения`); `каркас` is the pack's word for the warcasket frame. |
+| 10th generation (paragraph 2) | десятого поколения | Pack lore (`Броня мертвеца десятого поколения`). Paragraph 2 of the descriptions is VFEP's own 10th generation paragraph; lift the community pack's rendering of it verbatim so the set reads as one of VFEP's own. "chassis" left the English. |
 | drop thrusters | десантные двигатели | **Coined.** `десант` carries the drop-troop sense; the pack uses `реактивные двигатели` for Aerial/Shock. Odyssey's `Thruster` = `ускоритель` is the gravship building, so it is not reused. |
 | breach jump (ability) | пробивной прыжок | **Coined.** Not `прорыв-`: `прорывная` is the pack's Siegebreaker. Parallels the pack's `силовой прыжок` for VFEP's own jump. |
 | breach burn (vacuum label) | пробивной рывок | **Coined**, same root; `рывок` for the long thruster burn. |

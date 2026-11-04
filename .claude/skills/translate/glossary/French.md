@@ -82,9 +82,12 @@ labels and descriptions, and the Breach Jump ability text. Still open:
 - `saut de brèche` / `poussée de brèche` / `puissance de brèche` /
   `impact de brèche` / `bras de brèche`: whether `de brèche` reads naturally
   as a modifier this often.
-- Lore paragraphs 2 and 3, in particular "épaves récupérées et désertions l'ont
-  répandu" for "Salvage and desertion have since put it" and "leur goût du corps
-  à corps" for "a taste for close work".
+- Lore paragraph 3, in particular "épaves récupérées et désertions l'ont
+  répandu" for "Salvage and desertion have since put the pattern", which now
+  closes the series paragraph. "leur goût du corps à corps" has no source
+  sentence any more ("a taste for close work" became "pilots who prefer close
+  work"). Paragraph 2 is now VFEP's 10th generation paragraph, with no
+  community French rendering to lift.
 - Whole Workshop description (`.steamworkshop/Description/French.txt`),
   especially "un poids lourd du corps à corps" and the "de l'espace pour voler"
   pun in the Odyssey FAQ answer.

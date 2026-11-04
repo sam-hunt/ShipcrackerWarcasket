@@ -55,7 +55,7 @@
   <VEF.Abilities.AbilityDef>
     <defName>SCWC_BreachJump</defName>
     <label>breach jump</label>
-    <description>Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short but needs no clear path.</description>
+    <description>Fire the armor's drop thrusters to jump to a location, landing hard enough to breach walls and hull plating. The jump is short, but it does not need a clear path.</description>
     <abilityClass>ShipcrackerWarcasket.Ability_BreachJump</abilityClass>
     <gizmoClass>ShipcrackerWarcasket.Command_BreachJump</gizmoClass>
     <targetMode>Location</targetMode>

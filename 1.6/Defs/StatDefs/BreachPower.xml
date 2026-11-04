@@ -8,7 +8,7 @@
   <StatDef>
     <defName>SCWC_BreachPower</defName>
     <label>breach power</label>
-    <description>Multiplier on the damage a breach jump landing deals to walls and other structures. Damage to creatures and mechanoids is unaffected.</description>
+    <description>A multiplier on the damage a breach jump landing deals to walls and other structures. Creatures and mechanoids take no extra damage.</description>
     <category>BasicsPawn</category>
     <toStringStyle>PercentZero</toStringStyle>
     <defaultBaseValue>1</defaultBaseValue>

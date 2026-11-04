@@ -29,7 +29,7 @@
     <workerClass>ShipcrackerWarcasket.DamageWorker_Breach</workerClass>
     <externalViolence>true</externalViolence>
     <isExplosive>true</isExplosive>
-    <deathMessage>{0} has been crushed by a breaching impact.</deathMessage>
+    <deathMessage>{0} has been crushed to death by a breach landing.</deathMessage>
     <hediff>Crush</hediff>
     <hediffSkin>Bruise</hediffSkin>
     <hediffSolid>Crack</hediffSolid>

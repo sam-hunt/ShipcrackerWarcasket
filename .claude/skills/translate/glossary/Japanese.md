@@ -46,7 +46,7 @@ different mod (Vanilla Armour Expanded) renders "siegebreaker" as
 | plasteel / uranium / chemfuel | プラスチール / ウラン / バイオ液化燃料 | Core. |
 | ability | 能力 | Royalty Keyed (この能力を獲得しますか). |
 | pilot (warcasket wearer) | パイロット | Odyssey `PilotAssistant` (パイロットアシスタント). |
-| warcasket foundry | ウォーキャスケット鋳造台 | Coined (Workshop only; also "foundries" in lore paragraph 2 as 鋳造台). Korean community uses 주조대, the same "casting bench" idea. |
+| warcasket foundry | ウォーキャスケット鋳造台 | Coined (Workshop only; also "foundries" in lore paragraph 3 as 鋳造台). Korean community uses 주조대, the same "casting bench" idea. |
 | entomb | 封入 | Proposed coinage; not used in any shipped string of this mod. |
 | siegebreaker / brute / guardian | シージブレーカー / ブルート / ガーディアン | Katakana; シージブレーカー attested in Vanilla Armour Expanded's Japanese, the other two coined to match. |
 | spacewalking | 船外活動 | Plain standard term. |
@@ -79,3 +79,4 @@ different mod (Vanilla Armour Expanded) renders "siegebreaker" as
   the community VFEP translation surfaces, align these and the set names to it.
 - Lore paragraphs 2 and 3 and the whole Workshop page: first machine-assisted
   prose pass, checked for natural clause order but not by a native reader.
+- Paragraph 2 of the descriptions is now VFEP's own 10th generation paragraph; no community Japanese rendering is known, so translate it fresh in the pack's register once one surfaces.

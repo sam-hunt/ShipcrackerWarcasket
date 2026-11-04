@@ -18,6 +18,7 @@ grounded against the Core, Royalty and Odyssey `ChineseSimplified (简体中文)
 | shipcracker warcasket / shoulders / helmet | 飞船突袭型战棺装甲 / 飞船突袭型战棺护肩 / 飞船突袭型战棺头盔 | Community pattern `<set>型战棺装甲/护肩/头盔` (`VFEP_Warcasket_Siegebreaker.label` = 破袭型战棺装甲 and siblings). The body piece takes 装甲 although the English label has no noun, exactly as the pack does. |
 | siegebreaker / guardian / brute (Workshop) | 破袭型 / 圣盾型 / 狂怒型 | Community pack labels. The third-party 无畏 prefix (WarCasket Expanded) is not used; the VFEP pack has none. |
 | Specialized spacer-tech warcasket shell/pauldrons/helmet | 特化型太空时代级别战棺装甲/护肩/头盔 | Community pack's opening phrase for every 10th-generation part, verbatim. |
+| 10th generation paragraph (paragraph 2) | the pack's paragraph, verbatim | Paragraph 2 of the descriptions is VFEP's own 10th generation paragraph; lift the community pack's rendering of it verbatim so the set reads as one of VFEP's own. |
 | improved impact dispersion | 改进型冲击力偏转模块 | Community `VFEP_WarcasketHelmet_Guardian.description` (配备有改进型的冲击力偏转模块), trimmed of 的. |
 | melee assistor modules | 近战辅助模块 | Community `VFEP_WarcasketShoulders_Brute.description`. |
 | standard ranged shield | 标准型远程能量护盾 | Community Siegebreaker lore uses 远程能量护盾; 标准型 mirrors the pack's 标准型/改进型 register. |
@@ -30,8 +31,8 @@ grounded against the Core, Royalty and Odyssey `ChineseSimplified (简体中文)
 | breach burn (vacuumLabel) | 破墙推进 | Coined. 推进 is the Odyssey thruster vocabulary (`Thruster.label` = 推进器) and renders "burn" in lore paragraph 3 too. |
 | breach jump range | 破墙跳跃距离 | Royalty `JumpRange.label` = 跳跃距离; description mirrors `JumpRange.description` = 最大跳跃距离。 |
 | breach power | 破墙威力 | Coined. Description mirrors Core `MeleeDamageFactor.description` (…伤害乘数。). |
-| breach (DamageDef label) | 破墙冲击 | Coined. Vanilla damage labels are mostly X伤, but the breach term needed to stay recognisable; 冲击 carries "breaching impact". |
-| deathMessage | {0}被破墙冲击压死了。 | Mirrors Core `Crush.deathMessage` = {0}被压死了。 (the def's hediff is Crush). |
+| breach (DamageDef label) | 破墙冲击 | Coined. Vanilla damage labels are mostly X伤, but the breach term needed to stay recognisable; 冲击 carries the impact sense. |
+| deathMessage | {0}被破墙冲击压死了。 (predates the English "{0} has been crushed to death by a breach landing."; re-derive, keeping the Crush mirror) | Mirrors Core `Crush.deathMessage` = {0}被压死了。 (the def's hediff is Crush). |
 | drop thrusters | 空降推进器 | Coined from community `VFEP_ActiveDropPawn.label` = 空投舱 (drop) and Odyssey 推进器 (thruster). |
 | breaching arms | 破墙臂 | Coined on the 破墙 prefix. |
 | respirator | 呼吸器 | Coined (no vanilla respirator item or gene in the zh tars); plain everyday word. |

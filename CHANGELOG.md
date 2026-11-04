@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Warcasket descriptions, settings tooltips and the mod summary reworded to match vanilla and VFE Pirates phrasing; the set now shares VFE Pirates' 10th generation lore paragraph.
+
 ## [1.4.1] - 2026-10-28
 
 ### Changed
